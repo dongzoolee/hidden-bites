@@ -9,7 +9,7 @@
 - 사용자가 확정한 네이버 지도 리뷰 수집 JSON을 canonical schema로 문서화했다.
 - `location`, `collection`, `reviews`, `waiting`, `purpose`, `companion`, `extraction` 필드의 의미를 README에 정리했다.
 - Python 기반 분석 프로젝트를 가정한 planned repository structure를 추가했다.
-- 최신순 50개 수집, Naver Map 표본 편향, 가짜 리뷰 필터링 불확실성, 추출 신뢰도 한계를 README에 명시했다.
+- 최신순 장소별 최대 500개 수집, Naver Map 표본 편향, 가짜 리뷰 필터링 불확실성, 추출 신뢰도 한계를 README에 명시했다.
 
 ## 기준
 

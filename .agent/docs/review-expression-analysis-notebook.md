@@ -4,11 +4,11 @@
 
 - 파일: `notebooks/review-expression-analysis.ipynb`
 - 대상 데이터: `datasets/naver-map-reviews-2026-05-13.json`
-- 목적: 네이버 지도 리뷰 500개에서 유저 표현을 추출하고, 유사 의미 cluster와 sparse/dense 표현을 분석한다.
+- 목적: 네이버 지도 리뷰 4091개에서 유저 표현을 추출하고, 유사 의미 cluster와 sparse/dense 표현을 분석한다.
 
 ## 분석 방향
 
-현재 corpus는 장소 10개, 리뷰 500개, 작성 본문 485개 규모다. 이 규모에서는 Word2Vec을 처음부터 학습하면 안정적인 단어 임베딩을 얻기 어렵기 때문에, Word2Vec의 핵심 직관인 co-occurrence를 작은 데이터에 맞게 직접 구현했다.
+현재 corpus는 장소 10개, 리뷰 4091개, 작성 본문 3961개 규모다. Word2Vec을 처음부터 학습하기에는 여전히 과제용 corpus 규모와 품질 검증 범위가 제한적이므로, Word2Vec의 핵심 직관인 co-occurrence를 작은 데이터에 맞게 직접 구현했다.
 
 Notebook은 표현이 등장한 리뷰, 장소, 카테고리, 네이버 키워드, 방문 시간대, 동행 형태, 대기 정보, 방문 목적을 feature로 사용해 co-occurrence vector를 만든다. 이후 cosine similarity가 높은 표현끼리 graph edge로 연결하고, connected component를 표현 cluster로 사용한다.
 
@@ -58,7 +58,8 @@ Cluster는 정답 label이 아니라 탐색 도구다. 최종 시각화에서는
 
 ## 검증 기록
 
-- JSON dataset 로드 기준 `locations_count == 10`, `reviews_count == 500`, 작성 본문 리뷰 485개를 확인했다.
-- 임시 venv에서 notebook code cell을 순서대로 실행해 `expression_stats` 1,128개, `cluster_df` 10개, `signature_df` 10개가 생성되는 것을 확인했다.
-- density label은 `dense`, `middle`, `sparse_meaningful`, `sparse_noise`로 모두 채워지는 것을 확인했다.
+- JSON dataset 로드 기준 `locations_count == 10`, `reviews_count == 4091`, 작성 본문 리뷰 3961개를 확인했다.
+- 이전 500개 dataset 기준으로는 임시 venv에서 notebook code cell을 순서대로 실행해 `expression_stats` 1,128개, `cluster_df` 10개, `signature_df` 10개가 생성되는 것을 확인했다.
+- 장소별 최대 500개 dataset 반영 후 notebook 전체 재실행과 threshold 재조정은 별도 후속 작업으로 남아 있다.
+- 이전 500개 dataset 기준 density label은 `dense`, `middle`, `sparse_meaningful`, `sparse_noise`로 모두 채워지는 것을 확인했다.
 - TypeScript/eslint 설정 파일이나 `package.json`이 없어 TS/eslint 검증 대상은 없다.

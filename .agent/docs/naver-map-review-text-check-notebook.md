@@ -13,12 +13,17 @@
 
 - Dataset 로드 및 장소 수, 리뷰 수 확인
 - 장소별 이름, 분류, 카테고리, 리뷰 수 요약 테이블
-- 전체 리뷰 500개의 장소명, 최신순 순번, 방문일, 리뷰 원문 확인 테이블
+- 전체 리뷰 4091개의 장소명, 최신순 순번, 방문일, 리뷰 원문 확인 테이블
 
 ## 2026-05-13 Dataset 500개 확장 반영
 
 - `datasets/naver-map-reviews-2026-05-13.json`이 장소별 50개, 총 500개 리뷰로 덮어써진 상태를 기준으로 notebook 검증 범위를 갱신했다.
 - Colab에서 같은 raw GitHub URL을 로드하면 `locations_count == 10`, `reviews_count == 500` 기준으로 확인한다.
+
+## 2026-05-13 Dataset 최대 500개 확장 반영
+
+- `datasets/naver-map-reviews-2026-05-13.json`이 장소별 최대 500개, 총 4091개 리뷰로 덮어써진 상태를 기준으로 notebook 검증 범위를 갱신했다.
+- Colab에서 같은 raw GitHub URL을 로드하면 `locations_count == 10`, `reviews_count == 4091` 기준으로 확인한다.
 
 ## 구현 기준
 

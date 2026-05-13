@@ -32,9 +32,9 @@ The initial dataset was collected from Naver Map place pages.
 - Source: Naver Map
 - Collection scope: Seoul restaurants and cafes
 - Pilot size: 10 locations
-- Review limit: latest 50 reviews per location
+- Review limit: latest 500 reviews per location, or all available reviews when fewer than 500 exist
 - Current dataset: `datasets/naver-map-reviews-2026-05-13.json`
-- Current total: 500 reviews
+- Current total: 4,091 reviews
 - Sort order: latest
 - Unit of storage: one JSON object per location
 
@@ -57,7 +57,7 @@ Naver Map review data will be stored with the following structure:
   "collection": {
     "source": "naver_map",
     "sort": "latest",
-    "limit": 50,
+    "limit": 500,
     "collected_at": "2026-05-13T09:30:00+09:00"
   },
   "reviews": [
@@ -104,7 +104,7 @@ Naver Map review data will be stored with the following structure:
 
 - `collection.source`: Fixed as `naver_map`.
 - `collection.sort`: Review ordering used during collection. The current plan uses `latest`.
-- `collection.limit`: Target number of reviews per location. The current pilot limit is `50`.
+- `collection.limit`: Target number of reviews per location. The current pilot limit is up to `500`.
 - `collection.collected_at`: ISO 8601 timestamp with timezone.
 
 ### Reviews
@@ -204,7 +204,7 @@ This structure is a planned layout. It should be updated once reusable collectio
 
 ## Limitations
 
-- The latest 50 reviews per location may overrepresent recent events, campaigns, seasonality, or temporary popularity.
+- The latest 500 reviews per location may overrepresent recent events, campaigns, seasonality, or temporary popularity.
 - Naver Map reviews are not a neutral sample of all visitors.
 - Fake review filtering cannot be fully guaranteed from text alone.
 - Extracted labels such as purpose, companion, and waiting time are inferred from imperfect natural language.
