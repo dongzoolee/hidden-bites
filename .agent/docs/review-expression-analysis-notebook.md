@@ -27,6 +27,13 @@ Notebook은 표현이 등장한 리뷰, 장소, 카테고리, 네이버 키워�
 - 표현 cluster network plot
 - 2D SVD scatter plot
 
+## 2026-05-13 수정 기록
+
+- 표현 cluster network에서 노드 라벨 한글이 네모로 깨지던 문제를 수정했다.
+- `koreanize-matplotlib` 적용 후 실제 사용 가능한 한글 폰트 패밀리를 찾아 `matplotlib` 전역 설정에 반영하도록 했다.
+- `networkx.draw_networkx_labels`에 동일한 한글 폰트 패밀리를 명시해 NetworkX 라벨이 `DejaVu Sans` 기본값으로 돌아가지 않게 했다.
+- 노트북을 재실행해 cluster network 출력 이미지를 갱신했다.
+
 ## Sparse/Dense 기준
 
 - `dense`: 여러 리뷰와 여러 장소에 반복 등장하고 유사 이웃이 충분한 표현.
@@ -63,3 +70,4 @@ Cluster는 정답 label이 아니라 탐색 도구다. 최종 시각화에서는
 - 장소별 최대 500개 dataset 반영 후 notebook 전체 재실행과 threshold 재조정은 별도 후속 작업으로 남아 있다.
 - 이전 500개 dataset 기준 density label은 `dense`, `middle`, `sparse_meaningful`, `sparse_noise`로 모두 채워지는 것을 확인했다.
 - TypeScript/eslint 설정 파일이나 `package.json`이 없어 TS/eslint 검증 대상은 없다.
+- 2026-05-13 `/tmp/hidden-bites-notebook-venv` 임시 환경에서 `nbclient`로 `notebooks/review-expression-analysis.ipynb` 전체를 재실행했고, 표현 cluster network 출력에서 한글 라벨이 정상 표시되며 `Glyph ... missing from font(s) DejaVu Sans` warning이 더 이상 발생하지 않는 것을 확인했다.
