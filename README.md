@@ -8,7 +8,7 @@ Rather than treating review count or rating-like signals as direct proof of qual
 
 ## Project Status
 
-This repository is currently in the planning and data-contract phase. The README documents the project goal, canonical review schema, pilot locations, and planned analysis workflow. Collection scripts, notebooks, processed datasets, and visualizations will be added as the project implementation progresses.
+This repository currently contains the project goal, canonical review schema, pilot locations, collected Naver Map review dataset, and a lightweight notebook for checking review text. Processed datasets and visualizations will be added as the analysis progresses.
 
 ## Team
 
@@ -27,12 +27,14 @@ The working hypothesis is that a restaurant's perceived value depends on visit c
 
 ## Data Source
 
-The initial dataset will be collected from Naver Map place pages.
+The initial dataset was collected from Naver Map place pages.
 
 - Source: Naver Map
 - Collection scope: Seoul restaurants and cafes
 - Pilot size: 10 locations
 - Review limit: latest 50 reviews per location
+- Current dataset: `datasets/naver-map-reviews-2026-05-13.json`
+- Current total: 500 reviews
 - Sort order: latest
 - Unit of storage: one JSON object per location
 
@@ -191,7 +193,7 @@ The first collection pass will use the following Naver Map short links:
 `-- README.md
 ```
 
-This structure is a planned layout. It should be updated once collection scripts, notebooks, and visualization artifacts are added.
+This structure is a planned layout. It should be updated once reusable collection scripts, processed datasets, and visualization artifacts are added.
 
 ## Analysis Ideas
 
