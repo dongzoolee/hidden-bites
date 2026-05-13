@@ -87,3 +87,4 @@ Cluster는 정답 label이 아니라 탐색 도구다. 최종 시각화에서는
 - 2026-05-13 sparse explorer 수정 후 `/tmp/hidden-bites-notebook-venv`에서 노트북 code cell 소스를 직접 실행해 `expression_stats` 3,287개, `analysis_stats` 3,287개, `edge_df` 13,705개, `signature_df` 10개, `sparse_explorer_df` 2,960개, `coordinate_df` 3,321개 생성을 확인했다.
 - 같은 검증에서 `plot_sparse_signature_bar`, `plot_sparse_network`, `plot_sparse_scatter` 호출이 모두 성공했다.
 - 로컬 Python 3.14 `nbclient` 커널 실행은 `%pip` 제외 복사본에서도 idle 후 `DeadKernelError`로 중단되어, full notebook 저장 실행 대신 동일 셀 소스 직접 실행으로 검증했다. Colab/Jupyter 대상 notebook 코드는 유지했다.
+- 2026-05-13 Colab의 `Created using Colab` 커밋이 원격 `main`의 노트북을 slider 구현 전 정적 그래프 버전으로 덮어쓴 것을 확인했다. `origin/main`을 fast-forward한 뒤 sparse explorer 노트북 구현을 다시 적용했다.
