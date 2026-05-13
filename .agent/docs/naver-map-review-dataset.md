@@ -38,6 +38,7 @@ Dataset은 `naver-map-review-schema.md`에서 정리한 권장 구조를 기준�
 - `reviews_per_location`을 `50`으로 변경했다.
 - `reviews_count`를 `500`으로 변경했다.
 - 각 장소의 `collection.limit`을 `50`으로 변경했다.
+- 기존 notebook 호환을 위해 각 장소 item의 `position` 필드를 유지했다.
 - 각 장소의 `reviews` 배열을 최신순 50개로 확장했다.
 - Browser와 Playwright로 네이버 지도 방문자 리뷰 카드를 다시 확인해 작성 리뷰 본문을 보강했다.
 - 네이버 지도에 작성 리뷰 원문 없이 키워드만 있는 리뷰는 `text`를 빈 문자열로 두고 `naver_keywords`를 보존했다.

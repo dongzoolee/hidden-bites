@@ -78,6 +78,7 @@
 
 ## 필드 기준
 
+- `locations[].position`: 파일 안에서의 장소 순서. 기존 notebook과 호환되도록 1부터 시작하는 정수로 유지한다.
 - `location`: 장소 단위 메타데이터를 담는다.
 - `location.name`: 네이버 지도에 표시되는 장소명.
 - `location.type`: 내부 분류값. `restaurant` 또는 `cafe`.

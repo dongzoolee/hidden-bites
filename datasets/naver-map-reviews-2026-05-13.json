@@ -8,6 +8,7 @@
   "reviews_per_location": 50,
   "locations": [
     {
+      "position": 1,
       "location": {
         "name": "탕화쿵푸마라탕 압구정역점",
         "type": "restaurant",
@@ -1809,6 +1810,7 @@
       ]
     },
     {
+      "position": 2,
       "location": {
         "name": "팔로피자",
         "type": "restaurant",
@@ -3394,6 +3396,7 @@
       ]
     },
     {
+      "position": 3,
       "location": {
         "name": "보배반점 양재점",
         "type": "restaurant",
@@ -5216,6 +5219,7 @@
       ]
     },
     {
+      "position": 4,
       "location": {
         "name": "마더린러 베이글",
         "type": "cafe",
@@ -6963,6 +6967,7 @@
       ]
     },
     {
+      "position": 5,
       "location": {
         "name": "어반플랜트 합정",
         "type": "cafe",
@@ -8809,6 +8814,7 @@
       ]
     },
     {
+      "position": 6,
       "location": {
         "name": "광어연어",
         "type": "restaurant",
@@ -10575,6 +10581,7 @@
       ]
     },
     {
+      "position": 7,
       "location": {
         "name": "또바기",
         "type": "restaurant",
@@ -12257,6 +12264,7 @@
       ]
     },
     {
+      "position": 8,
       "location": {
         "name": "브로트아트 여의도 본점",
         "type": "cafe",
@@ -14010,6 +14018,7 @@
       ]
     },
     {
+      "position": 9,
       "location": {
         "name": "규카츠정 성수점",
         "type": "restaurant",
@@ -15794,6 +15803,7 @@
       ]
     },
     {
+      "position": 10,
       "location": {
         "name": "대진 도원참치 강남역점",
         "type": "restaurant",
