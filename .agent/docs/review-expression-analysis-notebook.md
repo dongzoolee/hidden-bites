@@ -34,6 +34,16 @@ Notebook은 표현이 등장한 리뷰, 장소, 카테고리, 네이버 키워�
 - `networkx.draw_networkx_labels`에 동일한 한글 폰트 패밀리를 명시해 NetworkX 라벨이 `DejaVu Sans` 기본값으로 돌아가지 않게 했다.
 - 노트북을 재실행해 cluster network 출력 이미지를 갱신했다.
 
+## 2026-05-13 Sparse Explorer 수정 기록
+
+- 5만 리뷰 규모와 sparse expression discovery를 고려해 `sentence-transformers` 기반 로컬 사전학습 embedding을 추가했다.
+- 기본 embedding 모델은 `intfloat/multilingual-e5-small`이며, 표현 단위 semantic vector를 생성한다.
+- 기존 co-occurrence similarity와 semantic embedding similarity를 `0.55:0.45` 비율로 결합한 `hybrid_similarity` edge 후보 테이블을 추가했다.
+- sparse 탐색 기준으로 `rarity_weight`, `hybrid_neighbor_count`, `sparse_signature_score`를 계산한다.
+- 7번 시각화는 `ipywidgets`와 `plotly` 기반 sparse signature bar explorer로 바꿨다.
+- 8번 시각화는 `ipywidgets`와 `networkx` 기반 sparse expression network explorer로 바꿨다.
+- 9번 시각화는 `plotly` 기반 interactive scatter로 바꾸고, hybrid/context/semantic SVD 좌표를 선택할 수 있게 했다.
+
 ## Sparse/Dense 기준
 
 - `dense`: 여러 리뷰와 여러 장소에 반복 등장하고 유사 이웃이 충분한 표현.
@@ -54,6 +64,9 @@ Notebook은 Colab에서 바로 실행되도록 다음 패키지를 설치한다.
 - `networkx`
 - `kiwipiepy`
 - `koreanize-matplotlib`
+- `sentence-transformers`
+- `ipywidgets`
+- `plotly`
 
 로컬 저장소에는 Python 패키지 매니페스트가 없으므로 notebook 내부 설치 셀로 의존성을 관리한다.
 
@@ -71,3 +84,6 @@ Cluster는 정답 label이 아니라 탐색 도구다. 최종 시각화에서는
 - 이전 500개 dataset 기준 density label은 `dense`, `middle`, `sparse_meaningful`, `sparse_noise`로 모두 채워지는 것을 확인했다.
 - TypeScript/eslint 설정 파일이나 `package.json`이 없어 TS/eslint 검증 대상은 없다.
 - 2026-05-13 `/tmp/hidden-bites-notebook-venv` 임시 환경에서 `nbclient`로 `notebooks/review-expression-analysis.ipynb` 전체를 재실행했고, 표현 cluster network 출력에서 한글 라벨이 정상 표시되며 `Glyph ... missing from font(s) DejaVu Sans` warning이 더 이상 발생하지 않는 것을 확인했다.
+- 2026-05-13 sparse explorer 수정 후 `/tmp/hidden-bites-notebook-venv`에서 노트북 code cell 소스를 직접 실행해 `expression_stats` 3,287개, `analysis_stats` 3,287개, `edge_df` 13,705개, `signature_df` 10개, `sparse_explorer_df` 2,960개, `coordinate_df` 3,321개 생성을 확인했다.
+- 같은 검증에서 `plot_sparse_signature_bar`, `plot_sparse_network`, `plot_sparse_scatter` 호출이 모두 성공했다.
+- 로컬 Python 3.14 `nbclient` 커널 실행은 `%pip` 제외 복사본에서도 idle 후 `DeadKernelError`로 중단되어, full notebook 저장 실행 대신 동일 셀 소스 직접 실행으로 검증했다. Colab/Jupyter 대상 notebook 코드는 유지했다.
