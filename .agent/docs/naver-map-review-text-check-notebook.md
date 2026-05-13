@@ -18,3 +18,8 @@
 ## 구현 기준
 
 Notebook은 별도 패키지 설치 없이 Python 표준 라이브러리와 Jupyter 기본 `IPython.display`만 사용한다. 실행 위치가 repo root이거나 `notebooks` 디렉터리여도 dataset을 찾을 수 있도록 상대 경로 fallback을 포함했다.
+
+## 2026-05-13 Colab 실행 링크
+
+- Notebook 첫 마크다운 셀 상단에 `Open In Colab` 배지를 추가했다.
+- Colab 링크는 `main` 브랜치의 `notebooks/naver-map-review-text-check.ipynb` 경로를 기준으로 연결한다.
