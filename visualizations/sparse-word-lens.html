@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hidden Bites Sparse Word Lens</title>
+    <link rel="icon" href="data:,">
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f4;
+        --surface: #ffffff;
+        --surface-soft: #eef1e8;
+        --ink: #191916;
+        --muted: #6b6f66;
+        --line: #d8ddd0;
+        --accent: #d9542b;
+        --accent-2: #157a6e;
+        --accent-3: #3d5a80;
+        --heat-0: #edf0e8;
+        --shadow: 0 16px 46px rgba(32, 36, 30, 0.12);
+        --radius: 8px;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .app-shell {
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        padding: 24px 28px 18px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 248, 244, 0.94);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: clamp(28px, 3vw, 48px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .summary-strip {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        align-items: end;
+        gap: 18px;
+      }
+
+      .metric {
+        min-width: 74px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 272px minmax(0, 1fr) 338px;
+        min-height: 0;
+      }
+
+      .controls,
+      .recommendations {
+        padding: 24px;
+        background: var(--surface);
+        min-width: 0;
+      }
+
+      .controls {
+        border-right: 1px solid var(--line);
+      }
+
+      .recommendations {
+        border-left: 1px solid var(--line);
+      }
+
+      .main-stage {
+        min-width: 0;
+        padding: 24px;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .section-kicker {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .control-group {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .control-group:first-child {
+        padding-top: 0;
+      }
+
+      .control-label {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .control-label span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .range {
+        width: 100%;
+        accent-color: var(--accent);
+      }
+
+      .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .segment {
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 8px 11px;
+        font-size: 12px;
+        transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .segment:hover {
+        transform: translateY(-1px);
+      }
+
+      .segment.is-active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #ffffff;
+      }
+
+      .selected-word {
+        display: grid;
+        gap: 14px;
+      }
+
+      .word-display {
+        font-size: clamp(30px, 5vw, 58px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .word-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        padding: 5px 9px;
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .chip.hot {
+        border-color: rgba(217, 84, 43, 0.34);
+        color: var(--accent);
+        background: #fff1e9;
+      }
+
+      .evidence {
+        margin: 0;
+        color: var(--ink);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .stage-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: end;
+      }
+
+      .stage-title h2 {
+        margin: 0;
+        font-size: clamp(22px, 2.4vw, 34px);
+        letter-spacing: 0;
+      }
+
+      .stage-title p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.5;
+        max-width: 760px;
+      }
+
+      .legend {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .legend-ramp {
+        width: 112px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--heat-0), #f7d8a6, #d9542b);
+        border: 1px solid rgba(25, 25, 22, 0.08);
+      }
+
+      .heatmap-shell {
+        min-height: 0;
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .heatmap {
+        min-width: 960px;
+      }
+
+      .heat-row {
+        display: grid;
+        grid-template-columns: 188px repeat(9, minmax(74px, 1fr));
+        min-height: 50px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .heat-row:last-child {
+        border-bottom: 0;
+      }
+
+      .heat-head {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        min-height: 62px;
+        background: #fbfcf7;
+      }
+
+      .heat-label,
+      .restaurant-label {
+        display: flex;
+        align-items: center;
+        padding: 11px 12px;
+        border-right: 1px solid var(--line);
+      }
+
+      .heat-label {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        background: #fbfcf7;
+        font-weight: 700;
+      }
+
+      .restaurant-label {
+        justify-content: center;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.2;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      .term-cell {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        padding: 10px 12px;
+        border-right: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .term-button {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        text-align: left;
+        color: var(--ink);
+        display: grid;
+        gap: 3px;
+      }
+
+      .term-button strong {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+
+      .term-button span {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .heat-row.is-active .term-cell {
+        background: #fff4eb;
+      }
+
+      .heat-row.is-active .term-button strong {
+        color: var(--accent);
+      }
+
+      .heat-cell {
+        min-height: 50px;
+        border: 0;
+        border-right: 1px solid var(--line);
+        background: var(--heat-0);
+        color: var(--ink);
+        display: grid;
+        place-items: center;
+        position: relative;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .heat-cell:last-child {
+        border-right: 0;
+      }
+
+      .heat-cell:hover,
+      .heat-cell.is-selected {
+        transform: scale(1.04);
+        z-index: 4;
+        box-shadow: 0 0 0 2px rgba(25, 25, 22, 0.82), 0 12px 28px rgba(25, 25, 22, 0.16);
+      }
+
+      .heat-value {
+        font-size: 11px;
+        font-weight: 800;
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+
+      .heat-cell:hover .heat-value,
+      .heat-cell.is-selected .heat-value {
+        opacity: 1;
+      }
+
+      .rec-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .rec-item {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 14px;
+        background: var(--surface);
+      }
+
+      .rec-top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .rec-top h3 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .rec-top span {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .bar {
+        height: 9px;
+        margin: 12px 0;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent-2), var(--accent));
+        transition: width 220ms ease;
+      }
+
+      .rec-snippet {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .fingerprint {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .fingerprint-row {
+        display: grid;
+        grid-template-columns: 90px minmax(0, 1fr) 42px;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .fingerprint-row span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .mini-bar {
+        height: 8px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        overflow: hidden;
+      }
+
+      .mini-bar i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--accent-3);
+      }
+
+      .empty {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .fade-in {
+        animation: fadeIn 260ms ease both;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1160px) {
+        .workspace {
+          grid-template-columns: 248px minmax(0, 1fr);
+        }
+
+        .recommendations {
+          grid-column: 1 / -1;
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 760px) {
+        .topbar {
+          position: static;
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+
+        .brand {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .summary-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .controls,
+        .recommendations,
+        .main-stage {
+          padding: 18px;
+        }
+
+        .controls,
+        .recommendations {
+          border: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .stage-header {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <h1>Hidden Bites</h1>
+          <span>Sparse Word Lens</span>
+        </div>
+        <div class="summary-strip" aria-label="Dataset summary">
+          <div class="metric"><strong>4,091</strong><span>reviews</span></div>
+          <div class="metric"><strong>10</strong><span>places</span></div>
+          <div class="metric"><strong>446</strong><span>sparse words</span></div>
+          <div class="metric"><strong>13.7k</strong><span>word links</span></div>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="controls">
+          <p class="section-kicker">Lens</p>
+          <div class="selected-word">
+            <div class="word-display" id="activeWord">손맛</div>
+            <div class="word-meta" id="activeMeta"></div>
+            <p class="evidence" id="activeEvidence"></p>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="wordSlider">
+              Selected expression
+              <span id="wordPosition">1 / 1</span>
+            </label>
+            <input class="range" id="wordSlider" type="range" min="0" value="0" step="1">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="thresholdSlider">
+              Sparse threshold
+              <span id="thresholdValue">100</span>
+            </label>
+            <input class="range" id="thresholdSlider" type="range" min="80" max="330" value="100" step="10">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">Visit context <span id="contextCount"></span></div>
+            <div class="segmented" id="contextButtons"></div>
+          </div>
+        </aside>
+
+        <section class="main-stage">
+          <div class="stage-header">
+            <div class="stage-title">
+              <h2>Restaurant signatures by sparse expression</h2>
+              <p id="stageSubtitle">Rare review language surfaces places for a specific need, not just places with more reviews.</p>
+            </div>
+            <div class="legend">
+              <span>low</span>
+              <span class="legend-ramp"></span>
+              <span>signature</span>
+            </div>
+          </div>
+          <div class="heatmap-shell" aria-label="Sparse expression heatmap">
+            <div class="heatmap" id="heatmap"></div>
+          </div>
+        </section>
+
+        <aside class="recommendations">
+          <p class="section-kicker">Recommendation</p>
+          <div class="rec-list" id="recommendationList"></div>
+          <div class="fingerprint" id="fingerprint"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      const restaurants = [
+        { id: "ttobagi", name: "또바기", type: "한식" },
+        { id: "tanghua", name: "탕화쿵푸마라탕", type: "마라탕" },
+        { id: "gwangyeon", name: "광어연어", type: "횟집" },
+        { id: "pallo", name: "팔로피자", type: "피자" },
+        { id: "urban", name: "어반플랜트 합정", type: "브런치" },
+        { id: "motherinlaw", name: "마더린러 베이글", type: "베이글" },
+        { id: "brotart", name: "브로트아트", type: "베이커리" },
+        { id: "gyukatsu", name: "규카츠정 성수점", type: "규카츠" },
+        { id: "dowon", name: "대진 도원참치", type: "참치" }
+      ];
+
+      const contexts = [
+        { id: "all", label: "전체" },
+        { id: "comfort", label: "집밥" },
+        { id: "solo", label: "혼밥" },
+        { id: "drink", label: "술" },
+        { id: "date", label: "데이트" },
+        { id: "plant", label: "힐링" },
+        { id: "bread", label: "빵" },
+        { id: "service", label: "서비스" }
+      ];
+
+      const terms = [
+        { id: "makgeolli", label: "막걸리식초", context: "comfort", count: 1, lift: 43.1, snippet: "아주 새콤하고 맛있는데 막걸리식초로 사장님이 직접 담궈서 하신다며 설명도 잘 해주시네요.", scores: { ttobagi: 248 } },
+        { id: "sonmat", label: "손맛", context: "comfort", count: 2, lift: 21.5, snippet: "요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.", scores: { ttobagi: 255, gyukatsu: 72 } },
+        { id: "pugun", label: "푸근", context: "comfort", count: 1, lift: 43.1, snippet: "이곳은 집밥처럼 푸근하고 맛있습니다.", scores: { ttobagi: 214 } },
+        { id: "no-msg", label: "조미료 없음", context: "comfort", count: 2, lift: 43.1, snippet: "반찬만으로도 밥 한공기 순삭 가능한 곳. 조미료 사용없는 맛집이에요.", scores: { ttobagi: 310 } },
+        { id: "mara-bibim", label: "마라비빔", context: "solo", count: 2, lift: 17.3, snippet: "마라비빔이 있는 가게를 찾아서 왔습니다. 사장님이 아주 친절하시고 음식이 아주 맛있어요.", scores: { tanghua: 331 } },
+        { id: "phone-stand", label: "핸드폰 거치대", context: "solo", count: 3, lift: 17.3, snippet: "혼밥 하기 좋은 곳. 핸드폰 거치대이 있다니 센스있다.", scores: { tanghua: 175 } },
+        { id: "dance", label: "댄스끝나면", context: "solo", count: 1, lift: 17.3, snippet: "아이들과 댄스끝나면 매번갑니다.", scores: { tanghua: 132 } },
+        { id: "one-shot", label: "원샷", context: "solo", count: 1, lift: 17.3, snippet: "너무 맛있어서 원샷했어요. 깨끗하고 청결해서 좋아요.", scores: { tanghua: 126 } },
+        { id: "maepjjiri", label: "맵찔이", context: "solo", count: 3, lift: 17.3, snippet: "마라탕 맵찔이도 맛있게 먹어요. 해물이 많아서 좋아요.", scores: { tanghua: 200, ttobagi: 64 } },
+        { id: "peanut", label: "땅콩소스 눅진", context: "solo", count: 3, lift: 17.3, snippet: "땅콩소스 눅진하니 맛나용. 마라 싫어하는 사람도 무난하게 먹기 좋은 곳 같아여.", scores: { tanghua: 238 } },
+        { id: "hoegam", label: "횟감 탱탱함", context: "drink", count: 2, lift: 15.7, snippet: "횟감 탱탱함. 매운탕 기가막힘. 찐리뷰입니다.", scores: { gwangyeon: 301 } },
+        { id: "sul-thief", label: "술도둑", context: "drink", count: 2, lift: 15.7, snippet: "샐러드가 은근 술도둑입니다.", scores: { gwangyeon: 201 } },
+        { id: "skidashi", label: "스키다시", context: "drink", count: 2, lift: 15.7, snippet: "회 양이 많은편은 아닌데 스키다시가 잘나오고 다 맛있어요.", scores: { gwangyeon: 215 } },
+        { id: "gamasal", label: "가마살", context: "drink", count: 2, lift: 9.4, snippet: "서비스로 주신 가마살. 꼬독아삭 지방풍미는 묵은지에 김이랑 같이 먹으면 천국.", scores: { gwangyeon: 150, dowon: 118 } },
+        { id: "jjolbasak", label: "쫄바삭", context: "date", count: 1, lift: 8.2, snippet: "화덕에서 구워서 그런지 담백하고 도우가 쫄바삭한 너낌.", scores: { pallo: 127 } },
+        { id: "champion", label: "피자 챔피언", context: "date", count: 2, lift: 8.2, snippet: "피자 챔피언 먹으셨다해서 궁금해서 가봤어요. 피자가 정말 맛있더라구요.", scores: { pallo: 134 } },
+        { id: "white-ragu", label: "화이트 라구", context: "date", count: 2, lift: 8.2, snippet: "피자가 화덕피자라 너무 맛있고 화이트 라구도 엄청 맛있네요.", scores: { pallo: 134, urban: 62 } },
+        { id: "urgent-training", label: "교육 시급", context: "service", count: 2, lift: 8.2, snippet: "피자는 정말 맛있어서 더 아쉽습니다. 사장님, 직원 교육이 시급해 보입니다.", scores: { pallo: 127 } },
+        { id: "arbor-day", label: "식목일", context: "plant", count: 2, lift: 8.2, snippet: "4/5일 식목일에 사귄지라 푸릇푸릇한 식물들 사이에서 식사하니 마음도 편안해지는 것 같아요.", scores: { urban: 104 } },
+        { id: "greenhouse", label: "작은 온실", context: "plant", count: 2, lift: 8.2, snippet: "화분부터 행잉 플랜트까지 자연스럽게 어우러진 인테리어 덕분에 마치 작은 온실에 온 느낌.", scores: { urban: 112 } },
+        { id: "sakmak", label: "삭막함 대조", context: "plant", count: 2, lift: 8.2, snippet: "도시인데 도시같지 않은 내부를 꽉채운 싱그러운 플랜트가 삭막함을 대조시키며 휴식을 줬네.", scores: { urban: 104 } },
+        { id: "slow-meal", label: "느긋하게", context: "plant", count: 2, lift: 8.2, snippet: "식물이 많아 향기롭고 느긋하게 식사하기에 좋은 곳이에요.", scores: { urban: 127 } },
+        { id: "sparrow", label: "참새방앗간", context: "bread", count: 1, lift: 8.2, snippet: "수시로 들르는 참새방앗간. 대체불가한 맛이에요.", scores: { motherinlaw: 171 } },
+        { id: "irreplaceable", label: "대체불가", context: "bread", count: 1, lift: 8.2, snippet: "수시로 들르는 참새방앗간. 대체불가한 맛이에요.", scores: { motherinlaw: 171 } },
+        { id: "ewha-days", label: "이대생시절", context: "bread", count: 2, lift: 8.2, snippet: "이대생시절 자주 사먹던 베이글집이라 추억에 잠겨 들렸어요.", scores: { motherinlaw: 127 } },
+        { id: "sun-dried", label: "썬드라이드", context: "bread", count: 2, lift: 8.2, snippet: "썬드라이드 토마토 크림치즈. 감칠맛과 치즈 풍미가 장난아닙니다.", scores: { motherinlaw: 127 } },
+        { id: "ciabatta", label: "치아바타샌드위치", context: "bread", count: 2, lift: 8.2, snippet: "치아바타의 기본기가 튼튼하단 생각이 들 정도로 반죽의 점성도나 완성도가 높은 것 같아요.", scores: { brotart: 149 } },
+        { id: "ppodeudeuk", label: "뽀드득", context: "bread", count: 1, lift: 8.2, snippet: "돌돌소세지빵은 뽀드득 식감이 나며 가격대비 만족도가 높아요.", scores: { brotart: 119 } },
+        { id: "break-crisp", label: "부서지다", context: "date", count: 2, lift: 8.2, snippet: "바삭한 옷이 입안에서 경쾌하게 부서지고 속은 촉촉하게 녹아드는 느낌이었습니다.", scores: { gyukatsu: 156 } },
+        { id: "juice-flow", label: "육즙 흘러나오다", context: "date", count: 2, lift: 8.2, snippet: "바삭한 옷 속에서 육즙이 가득 흘러나와 감동했어요.", scores: { gyukatsu: 156 } },
+        { id: "flip", label: "천천히 뒤집는", context: "date", count: 2, lift: 8.2, snippet: "불 위에 올려 타이밍을 보며 천천히 뒤집는 과정이 의외로 힐링이 되었어요.", scores: { gyukatsu: 119 } },
+        { id: "respect", label: "존경하는 선배님", context: "service", count: 2, lift: 8.2, snippet: "존경하는 선배님들 뵙는 반가운 회식 자리. 맛있는 음식과 친절한 서비스로 더욱더 좋았습니다.", scores: { dowon: 201 } },
+        { id: "praise", label: "칭찬일색", context: "service", count: 2, lift: 8.2, snippet: "신선하고 좋은부위 맛있다고 칭찬일색이예요. 그래서 어깨가 으쓱했답니다.", scores: { dowon: 142 } },
+        { id: "year-end", label: "송년회", context: "service", count: 3, lift: 8.2, snippet: "송년회하기 너무 좋은 곳입니다. 서비스도 좋고 참치도 너무 맛나요.", scores: { dowon: 142 } }
+      ];
+
+      const state = {
+        context: "all",
+        threshold: 100,
+        activeId: "sonmat"
+      };
+
+      const heatmap = document.getElementById("heatmap");
+      const wordSlider = document.getElementById("wordSlider");
+      const thresholdSlider = document.getElementById("thresholdSlider");
+      const thresholdValue = document.getElementById("thresholdValue");
+      const wordPosition = document.getElementById("wordPosition");
+      const activeWord = document.getElementById("activeWord");
+      const activeMeta = document.getElementById("activeMeta");
+      const activeEvidence = document.getElementById("activeEvidence");
+      const contextButtons = document.getElementById("contextButtons");
+      const contextCount = document.getElementById("contextCount");
+      const recommendationList = document.getElementById("recommendationList");
+      const fingerprint = document.getElementById("fingerprint");
+      const stageSubtitle = document.getElementById("stageSubtitle");
+
+      const maxScore = Math.max(...terms.flatMap((term) => Object.values(term.scores)));
+
+      function maxTermScore(term) {
+        return Math.max(...Object.values(term.scores));
+      }
+
+      function filteredTerms() {
+        return terms
+          .filter((term) => state.context === "all" || term.context === state.context)
+          .filter((term) => maxTermScore(term) >= state.threshold)
+          .sort((a, b) => maxTermScore(b) - maxTermScore(a));
+      }
+
+      function activeTerm() {
+        return terms.find((term) => term.id === state.activeId) || filteredTerms()[0] || terms[0];
+      }
+
+      function heatColor(score) {
+        if (!score) {
+          return "#edf0e8";
+        }
+        const value = Math.min(1, score / maxScore);
+        const hue = 42 - value * 28;
+        const sat = 55 + value * 24;
+        const light = 92 - value * 38;
+        return `hsl(${hue} ${sat}% ${light}%)`;
+      }
+
+      function readableScore(score) {
+        return score ? Math.round(score).toString() : "";
+      }
+
+      function contextLabel(id) {
+        return contexts.find((context) => context.id === id)?.label || id;
+      }
+
+      function restaurantName(id) {
+        return restaurants.find((restaurant) => restaurant.id === id)?.name || id;
+      }
+
+      function syncActiveTerm() {
+        const list = filteredTerms();
+        if (!list.length) {
+          const contextFallback = terms
+            .filter((term) => state.context === "all" || term.context === state.context)
+            .sort((a, b) => maxTermScore(b) - maxTermScore(a))[0];
+          state.activeId = (contextFallback || terms[0]).id;
+          return;
+        }
+        if (!list.some((term) => term.id === state.activeId)) {
+          state.activeId = list[0].id;
+        }
+      }
+
+      function renderContextButtons() {
+        contextButtons.innerHTML = "";
+        contexts.forEach((context) => {
+          const button = document.createElement("button");
+          button.className = `segment${state.context === context.id ? " is-active" : ""}`;
+          button.type = "button";
+          button.textContent = context.label;
+          button.addEventListener("click", () => {
+            state.context = context.id;
+            syncActiveTerm();
+            render();
+          });
+          contextButtons.appendChild(button);
+        });
+      }
+
+      function renderActiveTerm() {
+        const term = activeTerm();
+        const ranked = restaurants
+          .map((restaurant) => ({ restaurant, score: term.scores[restaurant.id] || 0 }))
+          .sort((a, b) => b.score - a.score);
+        const best = ranked[0];
+        activeWord.textContent = term.label;
+        activeMeta.innerHTML = "";
+        [
+          `${contextLabel(term.context)} context`,
+          `${term.count} mentions`,
+          `lift ${term.lift.toFixed(1)}x`,
+          `${restaurantName(best.restaurant.id)}`
+        ].forEach((label, index) => {
+          const chip = document.createElement("span");
+          chip.className = `chip${index === 3 ? " hot" : ""}`;
+          chip.textContent = label;
+          activeMeta.appendChild(chip);
+        });
+        activeEvidence.textContent = term.snippet;
+      }
+
+      function renderHeatmap() {
+        const list = filteredTerms();
+        const rows = list.slice(0, 24);
+        heatmap.innerHTML = "";
+        const header = document.createElement("div");
+        header.className = "heat-row heat-head";
+        const first = document.createElement("div");
+        first.className = "heat-label";
+        first.textContent = "Sparse word";
+        header.appendChild(first);
+        restaurants.forEach((restaurant) => {
+          const label = document.createElement("div");
+          label.className = "restaurant-label";
+          label.textContent = restaurant.name;
+          header.appendChild(label);
+        });
+        heatmap.appendChild(header);
+        rows.forEach((term) => {
+          const row = document.createElement("div");
+          row.className = `heat-row${term.id === state.activeId ? " is-active" : ""}`;
+          const labelCell = document.createElement("div");
+          labelCell.className = "term-cell";
+          const labelButton = document.createElement("button");
+          labelButton.type = "button";
+          labelButton.className = "term-button";
+          labelButton.innerHTML = `<strong>${term.label}</strong><span>${contextLabel(term.context)} · ${term.count} mentions</span>`;
+          labelButton.addEventListener("click", () => {
+            state.activeId = term.id;
+            render();
+          });
+          labelCell.appendChild(labelButton);
+          row.appendChild(labelCell);
+          restaurants.forEach((restaurant) => {
+            const score = term.scores[restaurant.id] || 0;
+            const cell = document.createElement("button");
+            cell.type = "button";
+            cell.className = `heat-cell${term.id === state.activeId && score > 0 ? " is-selected" : ""}`;
+            cell.style.background = heatColor(score);
+            cell.setAttribute("aria-label", `${term.label} at ${restaurant.name}: ${readableScore(score) || "none"}`);
+            cell.innerHTML = `<span class="heat-value">${readableScore(score)}</span>`;
+            cell.addEventListener("click", () => {
+              state.activeId = term.id;
+              render();
+            });
+            row.appendChild(cell);
+          });
+          heatmap.appendChild(row);
+        });
+        if (!rows.length) {
+          const empty = document.createElement("div");
+          empty.className = "empty";
+          empty.style.padding = "18px";
+          empty.textContent = "No sparse expressions match this threshold.";
+          heatmap.appendChild(empty);
+        }
+      }
+
+      function renderRecommendations() {
+        const term = activeTerm();
+        const ranked = restaurants
+          .map((restaurant) => ({ restaurant, score: term.scores[restaurant.id] || 0 }))
+          .filter((item) => item.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 3);
+        recommendationList.innerHTML = "";
+        ranked.forEach((item, index) => {
+          const confidence = Math.min(97, Math.round(58 + (item.score / maxScore) * 39));
+          const node = document.createElement("article");
+          node.className = "rec-item fade-in";
+          node.innerHTML = `
+            <div class="rec-top">
+              <h3>${index + 1}. ${item.restaurant.name}</h3>
+              <span>${confidence}% match</span>
+            </div>
+            <div class="bar"><div class="bar-fill" style="width: ${(item.score / maxScore) * 100}%"></div></div>
+            <p class="rec-snippet">${term.snippet}</p>
+          `;
+          recommendationList.appendChild(node);
+        });
+        if (!ranked.length) {
+          recommendationList.innerHTML = `<p class="empty">No restaurant clears the current sparse lens.</p>`;
+        }
+        renderFingerprint(ranked[0]?.restaurant.id);
+      }
+
+      function renderFingerprint(restaurantId) {
+        fingerprint.innerHTML = "";
+        if (!restaurantId) {
+          return;
+        }
+        const title = document.createElement("p");
+        title.className = "section-kicker";
+        title.textContent = `${restaurantName(restaurantId)} fingerprint`;
+        fingerprint.appendChild(title);
+        const rows = terms
+          .map((term) => ({ term, score: term.scores[restaurantId] || 0 }))
+          .filter((item) => item.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 5);
+        rows.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "fingerprint-row";
+          row.innerHTML = `
+            <span>${item.term.label}</span>
+            <span class="mini-bar"><i style="width: ${(item.score / maxScore) * 100}%"></i></span>
+            <span>${Math.round(item.score)}</span>
+          `;
+          fingerprint.appendChild(row);
+        });
+      }
+
+      function renderSliders() {
+        const list = filteredTerms();
+        const activeIndex = Math.max(0, list.findIndex((term) => term.id === state.activeId));
+        wordSlider.max = Math.max(0, list.length - 1).toString();
+        wordSlider.value = activeIndex.toString();
+        wordPosition.textContent = list.length ? `${activeIndex + 1} / ${list.length}` : "0 / 0";
+        thresholdSlider.value = state.threshold.toString();
+        thresholdValue.textContent = state.threshold.toString();
+        contextCount.textContent = `${list.length} words`;
+      }
+
+      function renderSubtitle() {
+        const term = activeTerm();
+        const topRestaurant = Object.entries(term.scores).sort((a, b) => b[1] - a[1])[0][0];
+        stageSubtitle.textContent = `${term.label} points to ${restaurantName(topRestaurant)} through a rare review phrase, then the heatmap shows whether that phrase travels to other places.`;
+      }
+
+      function render() {
+        syncActiveTerm();
+        renderContextButtons();
+        renderSliders();
+        renderActiveTerm();
+        renderSubtitle();
+        renderHeatmap();
+        renderRecommendations();
+      }
+
+      wordSlider.addEventListener("input", () => {
+        const list = filteredTerms();
+        const next = list[Number(wordSlider.value)];
+        if (next) {
+          state.activeId = next.id;
+          render();
+        }
+      });
+
+      thresholdSlider.addEventListener("input", () => {
+        state.threshold = Number(thresholdSlider.value);
+        syncActiveTerm();
+        render();
+      });
+
+      render();
+    </script>
+  </body>
+</html>
