@@ -44,6 +44,14 @@ Notebook은 표현이 등장한 리뷰, 장소, 카테고리, 네이버 키워�
 - 8번 시각화는 `ipywidgets`와 `networkx` 기반 sparse expression network explorer로 바꿨다.
 - 9번 시각화는 `plotly` 기반 interactive scatter로 바꾸고, hybrid/context/semantic SVD 좌표를 선택할 수 있게 했다.
 
+## 2026-05-15 Sparse Word 탐색 기록
+
+- `/tmp/hidden-bites-notebook-venv`에서 notebook 핵심 code cell을 순서대로 실행해 현재 로컬 dataset 기준 분석 결과를 재생성했다.
+- 현재 dataset 기준 결과는 `reviews_df` 4,091행, `expression_stats` 3,287개, `analysis_stats` 3,287개, `edge_df` 13,705개, `sparse_explorer_df` 2,960개다.
+- density label은 `sparse_noise` 1,533개, `middle` 936개, `sparse_meaningful` 446개, `dense` 372개로 생성됐다.
+- 흥미로운 sparse word 후보는 점수만 보지 않고 실제 리뷰 snippet을 함께 확인했다. 예시는 `손맛`, `막걸리식초`, `푸근`, `댄스끝나면`, `원샷`, `비빔`, `음료수`, `맵찔이`, `거치대`, `술도둑`, `스키다시`, `쫄바삭`, `챔피언`, `화이트 라구`, `식목일`, `온실`, `삭막`, `참새방앗간`, `대체불가`, `치아바타샌드위치`, `뽀드득`, `부서지다`, `흘러나오다`, `존경`, `칭찬일색`이다.
+- Notebook 첫 설명의 500개 리뷰 문구를 현재 4,091개 dataset 기준으로 수정했다.
+
 ## Sparse/Dense 기준
 
 - `dense`: 여러 리뷰와 여러 장소에 반복 등장하고 유사 이웃이 충분한 표현.
@@ -80,7 +88,7 @@ Cluster는 정답 label이 아니라 탐색 도구다. 최종 시각화에서는
 
 - JSON dataset 로드 기준 `locations_count == 10`, `reviews_count == 4091`, 작성 본문 리뷰 3961개를 확인했다.
 - 이전 500개 dataset 기준으로는 임시 venv에서 notebook code cell을 순서대로 실행해 `expression_stats` 1,128개, `cluster_df` 10개, `signature_df` 10개가 생성되는 것을 확인했다.
-- 장소별 최대 500개 dataset 반영 후 notebook 전체 재실행과 threshold 재조정은 별도 후속 작업으로 남아 있다.
+- 장소별 최대 500개 dataset 반영 후 2026-05-15에 notebook 핵심 code cell을 재실행해 현재 threshold에서 sparse explorer 결과가 정상 생성되는 것을 확인했다.
 - 이전 500개 dataset 기준 density label은 `dense`, `middle`, `sparse_meaningful`, `sparse_noise`로 모두 채워지는 것을 확인했다.
 - TypeScript/eslint 설정 파일이나 `package.json`이 없어 TS/eslint 검증 대상은 없다.
 - 2026-05-13 `/tmp/hidden-bites-notebook-venv` 임시 환경에서 `nbclient`로 `notebooks/review-expression-analysis.ipynb` 전체를 재실행했고, 표현 cluster network 출력에서 한글 라벨이 정상 표시되며 `Glyph ... missing from font(s) DejaVu Sans` warning이 더 이상 발생하지 않는 것을 확인했다.
