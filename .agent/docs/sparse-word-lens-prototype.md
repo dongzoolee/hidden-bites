@@ -10,10 +10,8 @@
 
 - `Hidden Bites` 프로젝트의 4,091개 리뷰 분석 결과를 바탕으로 선별한 sparse expression 후보를 HTML 내부 데이터로 포함했다.
 - heatmap은 sparse expression과 식당의 signature score 관계를 보여준다.
-- `Selected expression` slider는 sparse word를 바꾸며, 왼쪽 evidence와 오른쪽 추천 식당을 동시에 갱신한다.
-- `Sparse threshold` slider는 낮은 signature 후보를 숨겨 더 강한 sparse signal만 남긴다.
-- `Visit context` segmented control은 `집밥`, `일상`, `빵`, `서비스` 관점으로 후보를 필터링한다.
-- 추천 패널은 선택된 sparse word 기준으로 관련 식당, match score, 실제 리뷰 snippet, 해당 식당의 fingerprint를 보여준다.
+- 9개 keyword만 horizontal rail로 나열하고, keyword hover/focus/click 시 상단의 대표 음식점 이름을 크게 갱신한다.
+- hover된 keyword 기준으로 heatmap highlight, 추천 패널, 실제 리뷰 snippet, 해당 식당 fingerprint를 동시에 갱신한다.
 - `직원 교육 시급`처럼 부정적인 sparse signal은 긍정 추천이 아니라 `caution` label로 표시한다.
 
 ## 사용 데이터
@@ -33,6 +31,8 @@
 - 단일 HTML 파일이므로 별도 dev server 없이 `file://`로 열 수 있다.
 - TypeScript 및 eslint 설정 파일이 없는 저장소라 TS/eslint 실행 대상은 없다.
 - 2026-05-15 HTML parser 검증과 추출 JavaScript `node --check`를 통과했다.
-- Playwright CLI가 `file://` 접근을 막아 렌더링 검증에는 기존 지침의 8085 포트를 사용했다. `http://127.0.0.1:8085/visualizations/sparse-word-lens.html`에서 초기 렌더링, context 버튼, selected expression slider 갱신을 확인했다.
+- 초기 버전 렌더링 검증에는 기존 지침의 8085 포트를 사용했다. `http://127.0.0.1:8085/visualizations/sparse-word-lens.html`에서 초기 렌더링과 sparse expression 선택 갱신을 확인했다.
 - 2026-05-15 heatmap row를 사용자가 지정한 9개 표현으로 제한한 뒤 HTML parser, 추출 JavaScript `node --check`, Playwright 렌더링을 다시 확인했다.
-- 같은 검증에서 heatmap이 9개 lens word를 표시하고, selected expression slider의 `직원 교육 시급` 선택 시 추천 패널이 `77% caution`으로 갱신되는 것을 확인했다.
+- 같은 검증에서 heatmap이 9개 lens word를 표시하고, `직원 교육 시급` 선택 시 추천 패널이 `77% caution`으로 갱신되는 것을 확인했다.
+- 2026-05-15 slider UI를 제거하고 horizontal keyword rail hover 방식으로 변경했다. keyword hover 시 상단 음식점명, heatmap highlight, 추천 패널이 함께 바뀌도록 했다.
+- 2026-05-15 변경 후 로컬 JS 검증에서 keyword 9개, keyword-only rail, `대체불가` hover 시 `마더린러 베이글`, `직원 교육 시급` hover 시 `팔로피자`와 `caution signal` 갱신을 확인했다.
