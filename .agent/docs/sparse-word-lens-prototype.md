@@ -12,14 +12,15 @@
 - heatmap은 sparse expression과 식당의 signature score 관계를 보여준다.
 - `Selected expression` slider는 sparse word를 바꾸며, 왼쪽 evidence와 오른쪽 추천 식당을 동시에 갱신한다.
 - `Sparse threshold` slider는 낮은 signature 후보를 숨겨 더 강한 sparse signal만 남긴다.
-- `Visit context` segmented control은 `집밥`, `혼밥`, `술`, `데이트`, `힐링`, `빵`, `서비스` 관점으로 후보를 필터링한다.
+- `Visit context` segmented control은 `집밥`, `일상`, `빵`, `서비스` 관점으로 후보를 필터링한다.
 - 추천 패널은 선택된 sparse word 기준으로 관련 식당, match score, 실제 리뷰 snippet, 해당 식당의 fingerprint를 보여준다.
+- `직원 교육 시급`처럼 부정적인 sparse signal은 긍정 추천이 아니라 `caution` label로 표시한다.
 
 ## 사용 데이터
 
 - 전체 데이터셋 요약 수치: 리뷰 4,091개, 장소 10개, sparse meaningful 표현 446개, word link 13,705개
-- 프로토타입에는 전체 446개를 모두 넣지 않고, 이전 sparse word 탐색에서 사람이 선별한 대표 후보를 넣었다.
-- 포함 예시: `막걸리식초`, `손맛`, `푸근`, `마라비빔`, `핸드폰 거치대`, `원샷`, `횟감 탱탱함`, `술도둑`, `스키다시`, `쫄바삭`, `피자 챔피언`, `식목일`, `작은 온실`, `참새방앗간`, `치아바타샌드위치`, `부서지다`, `존경하는 선배님`, `칭찬일색`
+- 프로토타입에는 전체 446개를 모두 넣지 않고, 사용자가 지정한 sparse word lens 9개만 heatmap row로 사용했다.
+- 포함 표현: `주문제작을 잘해줘요`, `댄스끝나고 갑니다`, `원샷했어요`, `푸근하다`, `존맛X 손맛O`, `직원 교육 시급`, `대체불가`, `칭찬일색`, `원샷`
 
 ## 해석 주의사항
 
@@ -33,3 +34,5 @@
 - TypeScript 및 eslint 설정 파일이 없는 저장소라 TS/eslint 실행 대상은 없다.
 - 2026-05-15 HTML parser 검증과 추출 JavaScript `node --check`를 통과했다.
 - Playwright CLI가 `file://` 접근을 막아 렌더링 검증에는 기존 지침의 8085 포트를 사용했다. `http://127.0.0.1:8085/visualizations/sparse-word-lens.html`에서 초기 렌더링, context 버튼, selected expression slider 갱신을 확인했다.
+- 2026-05-15 heatmap row를 사용자가 지정한 9개 표현으로 제한한 뒤 HTML parser, 추출 JavaScript `node --check`, Playwright 렌더링을 다시 확인했다.
+- 같은 검증에서 heatmap이 9개 lens word를 표시하고, selected expression slider의 `직원 교육 시급` 선택 시 추천 패널이 `77% caution`으로 갱신되는 것을 확인했다.

@@ -210,6 +210,8 @@
         font-size: clamp(30px, 5vw, 58px);
         line-height: 0.98;
         letter-spacing: 0;
+        overflow-wrap: anywhere;
+        word-break: keep-all;
       }
 
       .word-meta {
@@ -294,8 +296,8 @@
 
       .heat-row {
         display: grid;
-        grid-template-columns: 188px repeat(9, minmax(74px, 1fr));
-        min-height: 50px;
+        grid-template-columns: 230px repeat(9, minmax(74px, 1fr));
+        min-height: 58px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -363,7 +365,8 @@
       .term-button strong {
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
+        line-height: 1.25;
         font-size: 14px;
       }
 
@@ -585,7 +588,7 @@
         <div class="summary-strip" aria-label="Dataset summary">
           <div class="metric"><strong>4,091</strong><span>reviews</span></div>
           <div class="metric"><strong>10</strong><span>places</span></div>
-          <div class="metric"><strong>446</strong><span>sparse words</span></div>
+          <div class="metric"><strong>9</strong><span>lens words</span></div>
           <div class="metric"><strong>13.7k</strong><span>word links</span></div>
         </div>
       </header>
@@ -594,7 +597,7 @@
         <aside class="controls">
           <p class="section-kicker">Lens</p>
           <div class="selected-word">
-            <div class="word-display" id="activeWord">손맛</div>
+            <div class="word-display" id="activeWord">주문제작을 잘해줘요</div>
             <div class="word-meta" id="activeMeta"></div>
             <p class="evidence" id="activeEvidence"></p>
           </div>
@@ -662,55 +665,27 @@
       const contexts = [
         { id: "all", label: "전체" },
         { id: "comfort", label: "집밥" },
-        { id: "solo", label: "혼밥" },
-        { id: "drink", label: "술" },
-        { id: "date", label: "데이트" },
-        { id: "plant", label: "힐링" },
+        { id: "daily", label: "일상" },
         { id: "bread", label: "빵" },
         { id: "service", label: "서비스" }
       ];
 
       const terms = [
-        { id: "makgeolli", label: "막걸리식초", context: "comfort", count: 1, lift: 43.1, snippet: "아주 새콤하고 맛있는데 막걸리식초로 사장님이 직접 담궈서 하신다며 설명도 잘 해주시네요.", scores: { ttobagi: 248 } },
-        { id: "sonmat", label: "손맛", context: "comfort", count: 2, lift: 21.5, snippet: "요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.", scores: { ttobagi: 255, gyukatsu: 72 } },
-        { id: "pugun", label: "푸근", context: "comfort", count: 1, lift: 43.1, snippet: "이곳은 집밥처럼 푸근하고 맛있습니다.", scores: { ttobagi: 214 } },
-        { id: "no-msg", label: "조미료 없음", context: "comfort", count: 2, lift: 43.1, snippet: "반찬만으로도 밥 한공기 순삭 가능한 곳. 조미료 사용없는 맛집이에요.", scores: { ttobagi: 310 } },
-        { id: "mara-bibim", label: "마라비빔", context: "solo", count: 2, lift: 17.3, snippet: "마라비빔이 있는 가게를 찾아서 왔습니다. 사장님이 아주 친절하시고 음식이 아주 맛있어요.", scores: { tanghua: 331 } },
-        { id: "phone-stand", label: "핸드폰 거치대", context: "solo", count: 3, lift: 17.3, snippet: "혼밥 하기 좋은 곳. 핸드폰 거치대이 있다니 센스있다.", scores: { tanghua: 175 } },
-        { id: "dance", label: "댄스끝나면", context: "solo", count: 1, lift: 17.3, snippet: "아이들과 댄스끝나면 매번갑니다.", scores: { tanghua: 132 } },
-        { id: "one-shot", label: "원샷", context: "solo", count: 1, lift: 17.3, snippet: "너무 맛있어서 원샷했어요. 깨끗하고 청결해서 좋아요.", scores: { tanghua: 126 } },
-        { id: "maepjjiri", label: "맵찔이", context: "solo", count: 3, lift: 17.3, snippet: "마라탕 맵찔이도 맛있게 먹어요. 해물이 많아서 좋아요.", scores: { tanghua: 200, ttobagi: 64 } },
-        { id: "peanut", label: "땅콩소스 눅진", context: "solo", count: 3, lift: 17.3, snippet: "땅콩소스 눅진하니 맛나용. 마라 싫어하는 사람도 무난하게 먹기 좋은 곳 같아여.", scores: { tanghua: 238 } },
-        { id: "hoegam", label: "횟감 탱탱함", context: "drink", count: 2, lift: 15.7, snippet: "횟감 탱탱함. 매운탕 기가막힘. 찐리뷰입니다.", scores: { gwangyeon: 301 } },
-        { id: "sul-thief", label: "술도둑", context: "drink", count: 2, lift: 15.7, snippet: "샐러드가 은근 술도둑입니다.", scores: { gwangyeon: 201 } },
-        { id: "skidashi", label: "스키다시", context: "drink", count: 2, lift: 15.7, snippet: "회 양이 많은편은 아닌데 스키다시가 잘나오고 다 맛있어요.", scores: { gwangyeon: 215 } },
-        { id: "gamasal", label: "가마살", context: "drink", count: 2, lift: 9.4, snippet: "서비스로 주신 가마살. 꼬독아삭 지방풍미는 묵은지에 김이랑 같이 먹으면 천국.", scores: { gwangyeon: 150, dowon: 118 } },
-        { id: "jjolbasak", label: "쫄바삭", context: "date", count: 1, lift: 8.2, snippet: "화덕에서 구워서 그런지 담백하고 도우가 쫄바삭한 너낌.", scores: { pallo: 127 } },
-        { id: "champion", label: "피자 챔피언", context: "date", count: 2, lift: 8.2, snippet: "피자 챔피언 먹으셨다해서 궁금해서 가봤어요. 피자가 정말 맛있더라구요.", scores: { pallo: 134 } },
-        { id: "white-ragu", label: "화이트 라구", context: "date", count: 2, lift: 8.2, snippet: "피자가 화덕피자라 너무 맛있고 화이트 라구도 엄청 맛있네요.", scores: { pallo: 134, urban: 62 } },
-        { id: "urgent-training", label: "교육 시급", context: "service", count: 2, lift: 8.2, snippet: "피자는 정말 맛있어서 더 아쉽습니다. 사장님, 직원 교육이 시급해 보입니다.", scores: { pallo: 127 } },
-        { id: "arbor-day", label: "식목일", context: "plant", count: 2, lift: 8.2, snippet: "4/5일 식목일에 사귄지라 푸릇푸릇한 식물들 사이에서 식사하니 마음도 편안해지는 것 같아요.", scores: { urban: 104 } },
-        { id: "greenhouse", label: "작은 온실", context: "plant", count: 2, lift: 8.2, snippet: "화분부터 행잉 플랜트까지 자연스럽게 어우러진 인테리어 덕분에 마치 작은 온실에 온 느낌.", scores: { urban: 112 } },
-        { id: "sakmak", label: "삭막함 대조", context: "plant", count: 2, lift: 8.2, snippet: "도시인데 도시같지 않은 내부를 꽉채운 싱그러운 플랜트가 삭막함을 대조시키며 휴식을 줬네.", scores: { urban: 104 } },
-        { id: "slow-meal", label: "느긋하게", context: "plant", count: 2, lift: 8.2, snippet: "식물이 많아 향기롭고 느긋하게 식사하기에 좋은 곳이에요.", scores: { urban: 127 } },
-        { id: "sparrow", label: "참새방앗간", context: "bread", count: 1, lift: 8.2, snippet: "수시로 들르는 참새방앗간. 대체불가한 맛이에요.", scores: { motherinlaw: 171 } },
-        { id: "irreplaceable", label: "대체불가", context: "bread", count: 1, lift: 8.2, snippet: "수시로 들르는 참새방앗간. 대체불가한 맛이에요.", scores: { motherinlaw: 171 } },
-        { id: "ewha-days", label: "이대생시절", context: "bread", count: 2, lift: 8.2, snippet: "이대생시절 자주 사먹던 베이글집이라 추억에 잠겨 들렸어요.", scores: { motherinlaw: 127 } },
-        { id: "sun-dried", label: "썬드라이드", context: "bread", count: 2, lift: 8.2, snippet: "썬드라이드 토마토 크림치즈. 감칠맛과 치즈 풍미가 장난아닙니다.", scores: { motherinlaw: 127 } },
-        { id: "ciabatta", label: "치아바타샌드위치", context: "bread", count: 2, lift: 8.2, snippet: "치아바타의 기본기가 튼튼하단 생각이 들 정도로 반죽의 점성도나 완성도가 높은 것 같아요.", scores: { brotart: 149 } },
-        { id: "ppodeudeuk", label: "뽀드득", context: "bread", count: 1, lift: 8.2, snippet: "돌돌소세지빵은 뽀드득 식감이 나며 가격대비 만족도가 높아요.", scores: { brotart: 119 } },
-        { id: "break-crisp", label: "부서지다", context: "date", count: 2, lift: 8.2, snippet: "바삭한 옷이 입안에서 경쾌하게 부서지고 속은 촉촉하게 녹아드는 느낌이었습니다.", scores: { gyukatsu: 156 } },
-        { id: "juice-flow", label: "육즙 흘러나오다", context: "date", count: 2, lift: 8.2, snippet: "바삭한 옷 속에서 육즙이 가득 흘러나와 감동했어요.", scores: { gyukatsu: 156 } },
-        { id: "flip", label: "천천히 뒤집는", context: "date", count: 2, lift: 8.2, snippet: "불 위에 올려 타이밍을 보며 천천히 뒤집는 과정이 의외로 힐링이 되었어요.", scores: { gyukatsu: 119 } },
-        { id: "respect", label: "존경하는 선배님", context: "service", count: 2, lift: 8.2, snippet: "존경하는 선배님들 뵙는 반가운 회식 자리. 맛있는 음식과 친절한 서비스로 더욱더 좋았습니다.", scores: { dowon: 201 } },
-        { id: "praise", label: "칭찬일색", context: "service", count: 2, lift: 8.2, snippet: "신선하고 좋은부위 맛있다고 칭찬일색이예요. 그래서 어깨가 으쓱했답니다.", scores: { dowon: 142 } },
-        { id: "year-end", label: "송년회", context: "service", count: 3, lift: 8.2, snippet: "송년회하기 너무 좋은 곳입니다. 서비스도 좋고 참치도 너무 맛나요.", scores: { dowon: 142 } }
+        { id: "custom-order", label: "주문제작을 잘해줘요", context: "service", count: 1, lift: 8.2, tone: "positive", snippet: "사장님도 친절하시고 음식도 맛있고 인테리어도 예뻐요. 네이버 키워드: 주문제작을 잘해줘요.", scores: { urban: 153 } },
+        { id: "dance-after", label: "댄스끝나고 갑니다", context: "daily", count: 1, lift: 17.3, tone: "positive", snippet: "아이들과 댄스끝나면 매번갑니다.", scores: { tanghua: 132 } },
+        { id: "one-shot-done", label: "원샷했어요", context: "daily", count: 1, lift: 17.3, tone: "positive", snippet: "너무 맛있어서 원샷했어요. 깨끗하고 청결해서 좋아요.", scores: { tanghua: 126 } },
+        { id: "pugun", label: "푸근하다", context: "comfort", count: 1, lift: 43.1, tone: "positive", snippet: "이곳은 집밥처럼 푸근하고 맛있습니다.", scores: { ttobagi: 214 } },
+        { id: "sonmat-not-jonmat", label: "존맛X 손맛O", context: "comfort", count: 2, lift: 21.5, tone: "positive", snippet: "요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.", scores: { ttobagi: 255, gyukatsu: 72 } },
+        { id: "urgent-training", label: "직원 교육 시급", context: "service", count: 2, lift: 8.2, tone: "caution", snippet: "피자는 정말 맛있어서 더 아쉽습니다. 사장님, 직원 교육이 시급해 보입니다.", scores: { pallo: 127 } },
+        { id: "irreplaceable", label: "대체불가", context: "bread", count: 1, lift: 8.2, tone: "positive", snippet: "수시로 들르는 참새방앗간. 대체불가한 맛이에요.", scores: { motherinlaw: 171 } },
+        { id: "praise", label: "칭찬일색", context: "service", count: 2, lift: 8.2, tone: "positive", snippet: "신선하고 좋은 부위 맛있다고 칭찬일색이예요. 그래서 어깨가 으쓱했답니다.", scores: { dowon: 142 } },
+        { id: "one-shot-token", label: "원샷", context: "daily", count: 1, lift: 17.3, tone: "positive", snippet: "너무 맛있어서 원샷했어요. 깨끗하고 청결해서 좋아요.", scores: { tanghua: 118 } }
       ];
 
       const state = {
         context: "all",
         threshold: 100,
-        activeId: "sonmat"
+        activeId: "custom-order"
       };
 
       const heatmap = document.getElementById("heatmap");
@@ -736,8 +711,7 @@
       function filteredTerms() {
         return terms
           .filter((term) => state.context === "all" || term.context === state.context)
-          .filter((term) => maxTermScore(term) >= state.threshold)
-          .sort((a, b) => maxTermScore(b) - maxTermScore(a));
+          .filter((term) => maxTermScore(term) >= state.threshold);
       }
 
       function activeTerm() {
@@ -805,14 +779,16 @@
         const best = ranked[0];
         activeWord.textContent = term.label;
         activeMeta.innerHTML = "";
+        const toneChip = term.tone === "caution" ? "caution signal" : "positive signal";
         [
           `${contextLabel(term.context)} context`,
           `${term.count} mentions`,
           `lift ${term.lift.toFixed(1)}x`,
+          toneChip,
           `${restaurantName(best.restaurant.id)}`
         ].forEach((label, index) => {
           const chip = document.createElement("span");
-          chip.className = `chip${index === 3 ? " hot" : ""}`;
+          chip.className = `chip${index >= 3 ? " hot" : ""}`;
           chip.textContent = label;
           activeMeta.appendChild(chip);
         });
@@ -886,12 +862,13 @@
         recommendationList.innerHTML = "";
         ranked.forEach((item, index) => {
           const confidence = Math.min(97, Math.round(58 + (item.score / maxScore) * 39));
+          const scoreLabel = term.tone === "caution" ? "caution" : "match";
           const node = document.createElement("article");
           node.className = "rec-item fade-in";
           node.innerHTML = `
             <div class="rec-top">
               <h3>${index + 1}. ${item.restaurant.name}</h3>
-              <span>${confidence}% match</span>
+              <span>${confidence}% ${scoreLabel}</span>
             </div>
             <div class="bar"><div class="bar-fill" style="width: ${(item.score / maxScore) * 100}%"></div></div>
             <p class="rec-snippet">${term.snippet}</p>
@@ -944,6 +921,10 @@
       function renderSubtitle() {
         const term = activeTerm();
         const topRestaurant = Object.entries(term.scores).sort((a, b) => b[1] - a[1])[0][0];
+        if (term.tone === "caution") {
+          stageSubtitle.textContent = `${term.label} flags ${restaurantName(topRestaurant)} as a rare caution phrase, while the heatmap keeps it comparable with positive signals.`;
+          return;
+        }
         stageSubtitle.textContent = `${term.label} points to ${restaurantName(topRestaurant)} through a rare review phrase, then the heatmap shows whether that phrase travels to other places.`;
       }
 
