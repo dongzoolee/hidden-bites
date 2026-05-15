@@ -1,0 +1,1257 @@
+{
+  "metadata": {
+    "source": "google_places_text_search_new",
+    "collected_at": "2026-05-15T16:45:19+09:00",
+    "request_strategy": "seoul_25_gu_four_queries_plus_ten_wide_queries_first_page_only",
+    "actual_text_search_requests": 30,
+    "max_text_search_requests": 30,
+    "place_details_requests": 0,
+    "estimated_text_search_enterprise_cost_usd": 1.05,
+    "estimated_total_cost_usd": 1.05,
+    "budget_usd": 5.0,
+    "candidate_count": 427,
+    "eligible_count": 427,
+    "top_count": 50,
+    "partial": false,
+    "filters": {
+      "rating_min": 4.5,
+      "user_rating_count_min": 1,
+      "business_status": "OPERATIONAL",
+      "address_contains": [
+        "서울",
+        "Seoul"
+      ],
+      "included_type": "restaurant",
+      "strict_type_filtering": true
+    }
+  },
+  "places": [
+    {
+      "place_id": "ChIJT0grpESjfDURjERxH-P8Yyw",
+      "name": "서울맛집 지강한식당 압구정본점 | restaurants | 韓国ナッコプセレストラン | 餐馆",
+      "formatted_address": "서울특별시 강남구 압구정로30길 17 111호, 112호, 104-1호",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 2919,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3198678212778476684&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJKWfajwGdfDUR0zSZC4bayyk",
+      "name": "솥내음 마곡 발산역점",
+      "formatted_address": "서울특별시 강서구 마곡중앙6로 66",
+      "business_status": "OPERATIONAL",
+      "rating": 5.0,
+      "user_rating_count": 2401,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3011741045082371283&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJu_NuywekfDURvC4ZwgSawaw",
+      "name": "별양집",
+      "formatted_address": "서울특별시 강남구 테헤란로43길 17",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 2371,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12448400190255738556&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집",
+        "서울 강남구 식당",
+        "서울 강남구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJjxNXJYSffDUReYRP76rkI78",
+      "name": "월화고기 보라매점",
+      "formatted_address": "서울특별시 관악구 보라매로3길 16",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 2339,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13773103508239647865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 관악구 고기집",
+        "서울 관악구 맛집",
+        "서울 관악구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:관악구"
+      ]
+    },
+    {
+      "place_id": "ChIJueQnbSWffDURoCYxUpm765E",
+      "name": "신림춘천집 구로디지털직영점",
+      "formatted_address": "서울특별시 구로구 디지털로32나길 17-23",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 2106,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10514704022209898144&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 구로구 맛집",
+        "서울 구로구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:구로구"
+      ]
+    },
+    {
+      "place_id": "ChIJObIZ6sehfDUR_umyNvHFjZM",
+      "name": "농민백암순대",
+      "formatted_address": "서울특별시 강남구 역삼로3길 20-4",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 1473,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10632371935087094270&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJLa2wIcijfDUR0oCbGSc9kxE",
+      "name": "아베크 청담 Avecque Cheongdam Korean Italian K-Fusion",
+      "formatted_address": "서울특별시 강남구 823 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 1449,
+      "types": [
+        "italian_restaurant",
+        "fine_dining_restaurant",
+        "cocktail_bar",
+        "cafeteria",
+        "dessert_shop",
+        "confectionery",
+        "fusion_restaurant",
+        "bar",
+        "cafe",
+        "restaurant",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "italian_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1266423158363881682&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJ32V8iv6hfDUR-UMjO61PeWE",
+      "name": "다몽집 | damongzip",
+      "formatted_address": "2층, 13 강남대로100길 역삼동 강남구 서울특별시",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 1430,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=7023732699301102585&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 맛집",
+        "서울 강남구 식당",
+        "서울 강남구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJo0uyftK6fDURNa4XRAgKDs4",
+      "name": "원조할아버지손두부",
+      "formatted_address": "서울특별시 광진구 자양로 324",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 1379,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=14847816052105522741&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 맛집",
+        "서울 광진구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJlVFiAxWhfDURi9K9EWAnGxU",
+      "name": "전설의우대갈비 강남 ( Legendary Ribs Gangnam )",
+      "formatted_address": "서울특별시 강남구 역삼동 819",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 1350,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1520852592735670923&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 맛집",
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJE3rSelihfDUR9CwRy4REKik",
+      "name": "고기꾼김춘배 강남점",
+      "formatted_address": "서울특별시 강남구 강남대로100길 13",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 1319,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2966258641710165236&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJL5dGRwCdfDURJ3TvyER5dzQ",
+      "name": "정희 롯데몰김포공항점",
+      "formatted_address": "서울특별시 강서구 하늘길 38",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 1299,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3780623748536693799&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJBT_Xa7-ffDURthf-dhArSi8",
+      "name": "신림춘천집 본점",
+      "formatted_address": "서울특별시 관악구 신림동 1640-28",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 1277,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3407583417775036342&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 관악구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:관악구"
+      ]
+    },
+    {
+      "place_id": "ChIJD-eZy-OjfDURH4FGazoDOMA",
+      "name": "삼육가 본점",
+      "formatted_address": "서울특별시 강남구 강남대로114길 8",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 1216,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13850824203420729631&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJa1IkjI2ffDURpShAnpbb8js",
+      "name": "헤비스테이크 구로디지털점",
+      "formatted_address": "서울특별시 구로구 구로동 디지털로26길",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 1142,
+      "types": [
+        "steak_house",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "steak_house",
+      "google_maps_uri": "https://maps.google.com/?cid=4319756432548309157&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 구로구 맛집",
+        "서울 구로구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:구로구"
+      ]
+    },
+    {
+      "place_id": "ChIJXx6UwJ2jfDURRCN4Fn3-13M",
+      "name": "정돈 강남점",
+      "formatted_address": "서울특별시 강남구 강남대로110길 19-1",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 1090,
+      "types": [
+        "tonkatsu_restaurant",
+        "japanese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "tonkatsu_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8347420247555842884&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집",
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJCVAzHwCjfDURq_3XcW4fBEs",
+      "name": "육미안 강남점 | yookmian gangnam",
+      "formatted_address": "서울특별시 강남구 강남대로106길 9 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 998,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=5405480011968282027&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJbwhJ6TqhfDURjX4_YfPT1Ys",
+      "name": "남소관 우육도삭면",
+      "formatted_address": "서울특별시 강남구 테헤란로1길 19",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 985,
+      "types": [
+        "chinese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "chinese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10076192783573417613&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJ9y7Ti_-lfDUR9g--bnVW-og",
+      "name": "멕시칼리",
+      "formatted_address": "서울특별시 광진구 천호대로 634",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 961,
+      "types": [
+        "mexican_restaurant",
+        "taco_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "mexican_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=9870296595704975350&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 맛집",
+        "서울 광진구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJn9Q_8RShfDURIrHH9LmtMRU",
+      "name": "오레노라멘 강남",
+      "formatted_address": "서울특별시 강남구 테헤란로1길 28-9 2층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 873,
+      "types": [
+        "ramen_restaurant",
+        "japanese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "ramen_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1527192762842591522&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJ6QhkLeikfDUReVOZPyMp9Rs",
+      "name": "화기애애 본점",
+      "formatted_address": "서울특별시 광진구 화양동 8-37",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 862,
+      "types": [
+        "restaurant",
+        "korean_restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2014561639685772153&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 고기집",
+        "서울 광진구 맛집",
+        "서울 광진구 식당",
+        "서울 광진구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJScMZK86ffDUR2qmEWbMNmx8",
+      "name": "모돌",
+      "formatted_address": "서울특별시 구로구 경인로67길 23 KR 서울특별시 구로구 경인로67길23 신도림 2차 푸르지오 1층 118호",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 790,
+      "types": [
+        "restaurant",
+        "korean_restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2277429100518091226&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 구로구 고기집",
+        "서울 구로구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:구로구"
+      ]
+    },
+    {
+      "place_id": "ChIJqz1yFc6ffDURtIUaeLkqRlw",
+      "name": "육풍 구로디지털단지점",
+      "formatted_address": "서울특별시 구로구 디지털로32나길 20 육풍 구로디지털단지점",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 769,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=6649048875931436468&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 구로구 고기집",
+        "서울 구로구 맛집",
+        "서울 구로구 식당",
+        "서울 구로구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:구로구"
+      ]
+    },
+    {
+      "place_id": "ChIJGy8Iav-vfDURQhlPopGhi_A",
+      "name": "풍년상회쪽갈비",
+      "formatted_address": "서울특별시 강동구 성내동 12-39",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 765,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=17333125237730908482&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강동구 고기집",
+        "서울 강동구 맛집",
+        "서울 강동구 식당",
+        "서울 강동구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강동구"
+      ]
+    },
+    {
+      "place_id": "ChIJ21ChNymcfDURmPofuq-pJvw",
+      "name": "조연탄",
+      "formatted_address": "서울특별시 강서구 곰달래로60길 29",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 752,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=18169396318879873688&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 고기집",
+        "서울 강서구 맛집",
+        "서울 강서구 식당",
+        "서울 강서구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJ6cSIL52cfDURi28dpJJE7Hs",
+      "name": "방화동 교동짬뽕",
+      "formatted_address": "서울특별시 강서구 금낭화로24나길 21 이루미팰리스 1층 101호",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 713,
+      "types": [
+        "chinese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "chinese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8929587557778157451&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJcSdEHJSffDURX3UFt4ZETng",
+      "name": "중화요리 팔공",
+      "formatted_address": "서울특별시 관악구 남부순환로 1680",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 667,
+      "types": [
+        "chinese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "chinese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8668941678121678175&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 관악구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:관악구"
+      ]
+    },
+    {
+      "place_id": "ChIJWTZRpv6hfDURt8qqFZtQE9g",
+      "name": "을지다락 강남역 레스토랑 | Gangnam restaurants | 강남역 맛집 | レストラン | 江南美食",
+      "formatted_address": "서울특별시 강남구 강남대로96길 22 2층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 654,
+      "types": [
+        "restaurant",
+        "western_restaurant",
+        "japanese_restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=15569876963763604151&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집",
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJO84q_lGhfDURLm2-r9kBSeo",
+      "name": "1992덮밥&짜글이 강남점ㅣGangnam Korean restaurantㅣグルメㅣ韓国料理",
+      "formatted_address": "서울특별시 강남구 역삼동 826-3",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 616,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16882026712643038510&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집",
+        "서울 강남구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJz9jiFcuhfDUR_Fc5LoJOcbs",
+      "name": "데일리픽스 강남본점",
+      "formatted_address": "서울특별시 강남구 논현로85길 70",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 577,
+      "types": [
+        "hamburger_restaurant",
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "hamburger_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13506663078489053180&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집",
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJeS2ZISegfDUR7HHYw4A_sps",
+      "name": "고기굽는사람들 샤로수길본점",
+      "formatted_address": "서울특별시 관악구 관악로14길 70 효림빌딩 1층 106호",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 568,
+      "types": [
+        "barbecue_restaurant",
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=11219099444007432684&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 관악구 고기집",
+        "서울 관악구 맛집",
+        "서울 관악구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:관악구"
+      ]
+    },
+    {
+      "place_id": "ChIJ8W0oWV-jfDURuChzCzCSdVQ",
+      "name": "산솔 신논현점 Sansol Korean BBQ Restaurant [신논현 맛집,강남 맛집],",
+      "formatted_address": "서울특별시 강남구 지상 강남대로112길 15 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 548,
+      "types": [
+        "korean_barbecue_restaurant",
+        "barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=6085931206509275320&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJ4U3vLzWcfDURKpeX2bhc5qs",
+      "name": "해바라기정육식당 화곡점",
+      "formatted_address": "서울특별시 강서구 곰달래로 141",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 519,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12386689774123456298&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJwwZuF8OlfDURHgbso6mBrm8",
+      "name": "육일관 본점",
+      "formatted_address": "서울특별시 광진구 아차산로31길 10 1층, 2층",
+      "business_status": "OPERATIONAL",
+      "rating": 5.0,
+      "user_rating_count": 509,
+      "types": [
+        "korean_barbecue_restaurant",
+        "barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8047512149757265438&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 고기집",
+        "서울 광진구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJF5FjuABhezURL8mU8HHiJbA",
+      "name": "진영면옥",
+      "formatted_address": "서울특별시 금천구 가산로 22-5",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 458,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12692800103809075503&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 금천구 맛집",
+        "서울 금천구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:금천구"
+      ]
+    },
+    {
+      "place_id": "ChIJHw3Z8w-cfDURXKaze0VOsro",
+      "name": "띠아낭",
+      "formatted_address": "서울특별시 강서구 화곡로64길 72",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 432,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13452901097244173916&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJsYrGBwm8fDURS8ji0_4p7n8",
+      "name": "벼랑순대국",
+      "formatted_address": "서울특별시 강북구 번동 428-90",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 428,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=9218351661727270987&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강북구 맛집",
+        "서울 강북구 식당",
+        "서울 강북구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강북구"
+      ]
+    },
+    {
+      "place_id": "ChIJp5O-ZP-vfDURf9F-2vipVI8",
+      "name": "쭉삼이",
+      "formatted_address": "서울특별시 강동구 성내동 50-21",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 391,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10328066731750117759&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강동구 맛집",
+        "서울 강동구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강동구"
+      ]
+    },
+    {
+      "place_id": "ChIJVfop1dijfDURaaOuD6HgVig",
+      "name": "신사화로 신사본점",
+      "formatted_address": "서울특별시 강남구 강남대로152길 44 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 5.0,
+      "user_rating_count": 389,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2906757591871693673&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJLycQyQuhfDUR-vHKtzAtDVU",
+      "name": "신복면관 | 新禧面馆 | Dim Sum&Beef Noodle Soup | 点心 & 牛肉面 | ディムサム & 牛肉麺",
+      "formatted_address": "서울특별시 강남구 테헤란로4길 6 B126호",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 375,
+      "types": [
+        "chinese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "chinese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=6128604355186323962&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJtTPvaPijfDURCgdcsQU5zKI",
+      "name": "브리비트 강남역 | Gangnam restaurants | 강남역 맛집 | レストラン | 江南美食 | ブリビート江南駅",
+      "formatted_address": "서울특별시 강남구 강남대로102길 31 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 373,
+      "types": [
+        "restaurant",
+        "western_restaurant",
+        "steak_house",
+        "italian_restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=11730813826006517514&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJLT_13cudfDUR9CfzEjh-HAg",
+      "name": "산청숯불가든 마곡",
+      "formatted_address": "서울특별시 강서구 마곡중앙8로 85",
+      "business_status": "OPERATIONAL",
+      "rating": 4.6,
+      "user_rating_count": 345,
+      "types": [
+        "barbecue_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=584480830952515572&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강서구 고기집",
+        "서울 강서구 맛집",
+        "서울 강서구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강서구"
+      ]
+    },
+    {
+      "place_id": "ChIJFV7uyumkfDURgtbcAcQQiuI",
+      "name": "고기굽는놈(Korean BBQ Restaurant) / The Guy Grilling Meat (Korean BBQ Restaurant) / 烤肉的家伙 (韩式烤肉店) / 肉を焼く奴 (韓国式焼肉店)",
+      "formatted_address": "서울특별시 광진구 화양동 8-29",
+      "business_status": "OPERATIONAL",
+      "rating": 4.7,
+      "user_rating_count": 344,
+      "types": [
+        "barbecue_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16323878233388668546&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 고기집"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJNTKWO_KjfDURA5fxhYmBdiE",
+      "name": "더바른 정육식당 신논현본점",
+      "formatted_address": "서울특별시 강남구 지상 강남대로 482 1층",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 342,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2411257078161184515&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 맛집",
+        "서울 강남구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJPUDrqgevfDUR3pFDavClLK4",
+      "name": "꿀꿀진순대 강동본점",
+      "formatted_address": "서울특별시 강동구 성내동 199-17",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 340,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12550588713568276958&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강동구 맛집",
+        "서울 강동구 식당",
+        "서울 강동구 한식"
+      ],
+      "matched_query_groups": [
+        "gu:강동구"
+      ]
+    },
+    {
+      "place_id": "ChIJ2TePdU2ffDUR1Ue_75fN-NE",
+      "name": "마장동김씨 구로디지털점",
+      "formatted_address": "서울특별시 구로구 디지털로32나길 17-23 1층 103호",
+      "business_status": "OPERATIONAL",
+      "rating": 5.0,
+      "user_rating_count": 336,
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=15130069000597227477&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 구로구 고기집",
+        "서울 구로구 맛집",
+        "서울 구로구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:구로구"
+      ]
+    },
+    {
+      "place_id": "ChIJ_WS1tVmhfDURR_ziPZBsCLo",
+      "name": "강남 맛집 일편등심 강남점 | Gangnam Korean BBQ | Beef | グルメ | 美食 | 烤肉 餐廳 | 江南美食 | 江南烤肉 | 烤肉 | 韓牛",
+      "formatted_address": "서울특별시 강남구 테헤란로1길 20",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 329,
+      "types": [
+        "korean_barbecue_restaurant",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13405083657637657671&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집",
+        "서울 강남구 맛집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    },
+    {
+      "place_id": "ChIJEffJphO8fDURl7JO21x4PR8",
+      "name": "금돈돈갈비",
+      "formatted_address": "서울특별시 강북구 덕릉로 108",
+      "business_status": "OPERATIONAL",
+      "rating": 4.9,
+      "user_rating_count": 328,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2251087728966808215&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강북구 고기집"
+      ],
+      "matched_query_groups": [
+        "gu:강북구"
+      ]
+    },
+    {
+      "place_id": "ChIJGy3O2dqkfDURXBQP_5OVtqM",
+      "name": "미식일가",
+      "formatted_address": "서울특별시 광진구 군자동 373-9",
+      "business_status": "OPERATIONAL",
+      "rating": 4.5,
+      "user_rating_count": 328,
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=11796780736815502428&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 광진구 맛집",
+        "서울 광진구 식당"
+      ],
+      "matched_query_groups": [
+        "gu:광진구"
+      ]
+    },
+    {
+      "place_id": "ChIJzfA-0lijfDURWli7b25n6HI",
+      "name": "압구정제주집",
+      "formatted_address": "서울특별시 강남구 논현로152길 36",
+      "business_status": "OPERATIONAL",
+      "rating": 4.8,
+      "user_rating_count": 307,
+      "types": [
+        "korean_barbecue_restaurant",
+        "bar_and_grill",
+        "barbecue_restaurant",
+        "bar",
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8279981638939269210&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "matched_queries": [
+        "서울 강남구 고기집"
+      ],
+      "matched_query_groups": [
+        "gu:강남구"
+      ]
+    }
+  ]
+}

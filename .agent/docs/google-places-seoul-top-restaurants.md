@@ -115,3 +115,18 @@ Live run은 다음 파일을 생성한다.
 - live run은 Google API 응답 `API key expired. Please renew the API key.`로 중단됐다.
 - 데이터 파일은 아직 생성되지 않았다.
 - 이후 중간 실패 시 partial JSON을 저장하도록 스크립트를 보강했다.
+
+## 2026-05-15 재실행 기록
+
+- 1 request smoke live run이 정상 통과했다.
+- 이전 full run이 일부 성공 request를 만들었을 가능성이 있어 `$5` 상한을 지키기 위해 최종 수집은 `--max-text-search-requests 30`으로 제한했다.
+- 최종 live run 결과:
+  - `actual_text_search_requests=30`
+  - `estimated_total_cost_usd=$1.05`
+  - `candidate_count=427`
+  - `eligible_count=427`
+  - `top_count=50`
+- 생성 파일:
+  - `datasets/google-places-seoul-restaurant-candidates-2026-05-15.json`
+  - `datasets/google-places-seoul-top-restaurants-2026-05-15.json`
+- JSON 유효성, Top 50 중복 Place ID 없음, `rating >= 4.5`, `userRatingCount > 0` 조건을 확인했다.
