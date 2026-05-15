@@ -38,6 +38,8 @@ The initial dataset was collected from Naver Map place pages.
 - Sort order: latest
 - Unit of storage: one JSON object per location
 
+Google Places candidate collection is prepared as a low-budget companion data source for finding Seoul restaurants with rating 4.5+ and high review counts. See `.agent/docs/google-places-seoul-top-restaurants.md` for the request cap, cost guard, and execution command.
+
 The raw review text must be preserved. Any derived labels must remain separate from the original text so that extraction rules or models can be reviewed and rerun later.
 
 ## Canonical Review Schema
