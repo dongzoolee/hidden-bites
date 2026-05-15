@@ -130,3 +130,32 @@ Live run은 다음 파일을 생성한다.
   - `datasets/google-places-seoul-restaurant-candidates-2026-05-15.json`
   - `datasets/google-places-seoul-top-restaurants-2026-05-15.json`
 - JSON 유효성, Top 50 중복 Place ID 없음, `rating >= 4.5`, `userRatingCount > 0` 조건을 확인했다.
+
+## 2026-05-15 전체 25구 실행 기록
+
+- 사용자가 `$10` 이하 한도에서 서울 25구 query set 전체 실행을 요청했다.
+- 실행 명령:
+
+```bash
+python3 scripts/collect_google_places_seoul_top_restaurants.py --execute --max-text-search-requests 110 --budget-usd 10
+```
+
+- 최종 live run 결과:
+  - `actual_text_search_requests=110`
+  - `estimated_total_cost_usd=$3.85`
+  - `candidate_count=1542`
+  - `eligible_count=1542`
+  - `top_count=50`
+- 기존 30 request 결과 파일을 같은 날짜의 110 request 전체 결과로 덮어썼다.
+- 이번 성공 run의 비용 추정은 `$3.85`다.
+- 이전 성공 요청 32회와 합산해도 성공 요청 기준 추정 비용은 약 `$4.97`이다.
+- 생성 파일:
+  - `datasets/google-places-seoul-restaurant-candidates-2026-05-15.json`
+  - `datasets/google-places-seoul-top-restaurants-2026-05-15.json`
+- 검증:
+  - JSON 유효성 통과
+  - Top 50 개수 `50`
+  - Top 50 중복 Place ID 없음
+  - Top 50 전부 `rating >= 4.5`
+  - Top 50 전부 `userRatingCount > 0`
+  - Top 50 정렬이 `userRatingCount` 내림차순임을 확인
