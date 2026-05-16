@@ -26,6 +26,7 @@
 - 기존 notebook과 동일하게 `https://raw.githubusercontent.com/dongzoolee/hidden-bites/refs/heads/main/...` 형태의 raw GitHub URL을 사용한다.
 - 한 번에 여러 장소 파일을 로드하지 않고, `DATASET_URL` 한 줄만 활성화된 상태로 둔다.
 - 주석 처리된 URL은 최종 `.json` 파일을 우선 사용하고, 최종 파일이 없는 rank는 `.partial.json`을 사용한다.
+- 각 raw URL 바로 위에 `# {rank}위 - {레스토랑명}` 형식의 주석을 넣어 URL을 바꿀 때 어떤 장소 파일인지 확인할 수 있게 했다.
 
 ## 검증
 
