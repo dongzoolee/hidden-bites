@@ -1,11 +1,11 @@
 {
   "source_top_path": "datasets/google-places-seoul-top-restaurants-2026-05-15.json",
   "output_dir": "datasets/google-maps-reviews-2026-05-16",
-  "started_at": "2026-05-16T04:59:41.449Z",
+  "started_at": "2026-05-17T23:32:11.939Z",
   "args": {
     "topPath": "datasets/google-places-seoul-top-restaurants-2026-05-15.json",
     "outputDir": "datasets/google-maps-reviews-2026-05-16",
-    "startIndex": 50,
+    "startIndex": 49,
     "limitPlaces": 1,
     "maxReviewsPerPlace": null,
     "maxMinutes": null,
@@ -14,7 +14,7 @@
     "idleScrolls": 220,
     "headful": true,
     "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    "userDataDir": "/tmp/hidden-bites-profile-r50-age5",
+    "userDataDir": "/tmp/hidden-bites-profile-r49-age5",
     "profileDirectory": null,
     "prewarmRanks": [
       1,
@@ -23,11 +23,11 @@
   },
   "places": [
     {
-      "rank": 50,
-      "place_id": "ChIJo0uyftK6fDURNa4XRAgKDs4",
-      "name": "원조할아버지손두부",
-      "user_rating_count": 1379,
-      "google_maps_uri": "https://maps.google.com/?cid=14847816052105522741&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+      "rank": 49,
+      "place_id": "ChIJzRPTUuaifDURY-MJpPzA33k",
+      "name": "뚝배기집",
+      "user_rating_count": 1401,
+      "google_maps_uri": "https://maps.google.com/?cid=8781949989712159587&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     }
   ]
 }
