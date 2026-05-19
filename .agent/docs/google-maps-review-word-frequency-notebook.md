@@ -34,8 +34,15 @@
 - 활성 URL은 1위 장소 1개만 유지하고, rank 2-50은 레스토랑 이름 주석 아래 주석 처리된 raw GitHub URL로 남겼다.
 - 기존 `.partial.json` raw URL 주석은 모두 final `.json` raw URL로 교체했다.
 
+## 2026-05-20 업데이트
+
+- `DATASET_URL` 50개가 macOS 로컬 파일명의 분해형 한글 경로를 percent-encoding해서 GitHub raw에서 404가 나던 문제를 수정했다.
+- URL 경로를 Git tree의 조합형 한글 파일명 기준으로 다시 생성했고, 기존처럼 `refs/heads/main` raw GitHub URL 형식을 유지했다.
+- `scripts/check_google_maps_review_word_frequency_urls.py`를 추가해 노트북 URL 50개가 Git tree의 final JSON 경로와 일치하고 HTTP 200을 반환하는지 검증할 수 있게 했다.
+
 ## 검증
 
 - Notebook JSON 파싱 검증
 - Notebook code cell Python 문법 검증
 - `nbclient`로 전체 실행 smoke test
+- `python3 scripts/check_google_maps_review_word_frequency_urls.py`
