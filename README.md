@@ -10,6 +10,44 @@ Rather than treating review count or rating-like signals as direct proof of qual
 
 This repository currently contains the project goal, canonical review schema, pilot locations, collected Naver Map review dataset, and a lightweight notebook for checking review text. Processed datasets and visualizations will be added as the analysis progresses.
 
+## Web Desktop Wireframe Prompt
+
+The current Figma direction is a 1440px web-desktop editorial wireframe for the Hidden Bites page, inspired by The Pudding's data-story style: off-white paper tone, strong display typography, hand-drawn annotations, compact controls, playful chart marks, and scrollytelling section rhythm.
+
+- Figma target: `Projects` file, `Hidden Bites` page
+- Frame: `Hidden Bites / Web Desktop Wireframe`
+- Title: `Hidden Bites`
+- Class: `26-1 Data Visualization @ Sogang A&T`
+- Advisor: `professor`
+- Members: `dongzoolee`, `Eunhong`, `Madina`, `Emilia`
+- Core description: Google top 50 restaurants in Seoul, selected by top star points and most reviews
+- Main question: What are the factors for Matjip in Seoul?
+
+The wireframe sections are:
+
+1. QnA accordion
+   - `Why we chose GMap?`: Naver Map has many advertising-like reviews and no star points, while Kakao Map has fewer reviews.
+   - `How we chose top 50 restaurants?`: recent five-year Seoul review availability, high review volume, and high star points.
+2. HB Scores
+   - Recalculates star points by selected matjip factors.
+   - Y-axis: review-factor appearance frequency.
+   - X-axis: user-selected factors via dropdown and factor sliders.
+   - Factors: `Taste`, `Service`, `Value`, `Atmosphere`, `Accessibility`, `Wait/Queue`.
+   - The selected restaurant report updates when the score factor changes.
+3. Report for the selected restaurant
+   - `The Review Adjectives`: macro emotional stack chart from extracted review adjectives.
+   - `The Unique Keywords`: keyword chips and original review snippets containing the selected keyword.
+4. Where are they located?
+   - Seoul map dot distribution of the top-50 restaurants.
+   - Current dataset-derived district callouts: `중구 12`, `마포구 9`, `강남구 8`.
+   - Analysis: many top restaurants cluster around tourism, shopping, office, and nightlife areas such as Hongdae, Euljiro/Myeongdong, Gangnam/COEX, Seongsu, Itaewon, and Daehakro.
+5. Limitations
+   - We could not research all restaurants in Seoul.
+   - Google Maps reviewers are not a neutral sample of all visitors.
+   - Review volume favors tourist places and places that already get searched often.
+   - NLP adjective and keyword extraction can miss slang, sarcasm, and multilingual reviews.
+   - HB Score is exploratory, not a final quality ranking.
+
 ## Team
 
 - Madina
