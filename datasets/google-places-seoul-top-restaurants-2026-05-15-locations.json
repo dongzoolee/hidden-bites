@@ -1,0 +1,761 @@
+{
+  "metadata": {
+    "source": "google_places_details_new_location_enrichment",
+    "source_dataset": "datasets/google-places-seoul-top-restaurants-2026-05-15.json",
+    "generated_at": "2026-05-22T04:40:12.972926+00:00",
+    "place_count": 50,
+    "location_field_mask": "id,location"
+  },
+  "places": [
+    {
+      "rank": 1,
+      "place_id": "ChIJlQqAYNelfDURg2zfveD4eW4",
+      "name": "무탄 코엑스점 MUTAN COEX Store(coex mall food restaurants)ㅣ美食ㅣコエックスモール レストラン",
+      "formatted_address": "서울특별시 강남구 영동대로 513 B1층 H121호 코엑스몰",
+      "district": "강남구",
+      "rating": 4.9,
+      "user_rating_count": 8507,
+      "primary_type": "chinese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=7960667460495961219&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5113197,
+        "longitude": 127.05836129999999
+      }
+    },
+    {
+      "rank": 2,
+      "place_id": "ChIJ9Ye9LyyjfDURgYB4uqsmohw",
+      "name": "핏제리아오 대학로본점",
+      "formatted_address": "서울특별시 종로구 동숭길 86",
+      "district": "종로구",
+      "rating": 4.8,
+      "user_rating_count": 6955,
+      "primary_type": "pizza_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2063254098298830977&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.582043299999995,
+        "longitude": 127.00427739999999
+      }
+    },
+    {
+      "rank": 3,
+      "place_id": "ChIJNbhaHPGifDURDCGKakYKwXw",
+      "name": "오다리집 간장게장",
+      "formatted_address": "2F, 28 명동8나길 중구 서울특별시",
+      "district": "중구",
+      "rating": 4.7,
+      "user_rating_count": 6325,
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8989477628759646476&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.561379599999995,
+        "longitude": 126.9834141
+      }
+    },
+    {
+      "rank": 4,
+      "place_id": "ChIJJ2fhXx6ZfDURAS3i9i8Wvho",
+      "name": "홍대 맛집 깃뜰 | Hongdae Korean BBQ git teul | サムギョプサル | 美食 | 烤肉",
+      "formatted_address": "서울특별시 마포구 서교동 395-20",
+      "district": "마포구",
+      "rating": 5.0,
+      "user_rating_count": 5763,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1927002085822442753&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5503953,
+        "longitude": 126.91980029999999
+      }
+    },
+    {
+      "rank": 5,
+      "place_id": "ChIJZ-YgONuYfDUR2w8zpfOvpvE",
+      "name": "강남 돼지상회 무한리필 홍대점 | Hongdae Korean bbq restaurant All you can eat | サムギョプサル | 焼肉 | 烤肉",
+      "formatted_address": "서울특별시 마포구 서교동 홍익로5안길 28",
+      "district": "마포구",
+      "rating": 4.9,
+      "user_rating_count": 4744,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=17412798470258102235&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.553538499999995,
+        "longitude": 126.921178
+      }
+    },
+    {
+      "rank": 6,
+      "place_id": "ChIJgcs2nlujfDURZe-3Vni6FcE",
+      "name": "Mongvely Myeongdong Korean BBQ Beef All You Can Eat | 焼き肉 焼肉 | 烤肉 l 무한리필 몽블리 명동점",
+      "formatted_address": "서울특별시 중구 명동8나길 9 3층",
+      "district": "중구",
+      "rating": 4.9,
+      "user_rating_count": 4506,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13913231649844752229&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.561357,
+        "longitude": 126.98441619999998
+      }
+    },
+    {
+      "rank": 7,
+      "place_id": "ChIJhwklg_qifDURQDLm0Ant2yQ",
+      "name": "왕비집 명동본점",
+      "formatted_address": "서울특별시 중구 명동8가길 26",
+      "district": "중구",
+      "rating": 4.5,
+      "user_rating_count": 4237,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2655977031680275008&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5617081,
+        "longitude": 126.98644589999998
+      }
+    },
+    {
+      "rank": 8,
+      "place_id": "ChIJPVESye2ifDURbOaGAstuwyM",
+      "name": "무교동북어국집",
+      "formatted_address": "서울특별시 중구 을지로1길 38",
+      "district": "중구",
+      "rating": 4.5,
+      "user_rating_count": 3869,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2577025229985867372&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.567747499999996,
+        "longitude": 126.9798528
+      }
+    },
+    {
+      "rank": 9,
+      "place_id": "ChIJGwQdpuiifDUR9gGkmMWhtQ0",
+      "name": "미도갈비",
+      "formatted_address": "서울특별시 종로구 삼일대로15길 25",
+      "district": "종로구",
+      "rating": 4.8,
+      "user_rating_count": 3789,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=987873563319206390&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5688257,
+        "longitude": 126.98611029999999
+      }
+    },
+    {
+      "rank": 10,
+      "place_id": "ChIJFcMUhCaZfDURB2O4cNXyD4g",
+      "name": "육지 홍대",
+      "formatted_address": "서울특별시 마포구 독막로3길 34",
+      "district": "마포구",
+      "rating": 4.9,
+      "user_rating_count": 3270,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=9804321912341947143&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5496875,
+        "longitude": 126.91745579999998
+      }
+    },
+    {
+      "rank": 11,
+      "place_id": "ChIJnbqVZSSjfDURXy6xhCsHEN8",
+      "name": "보광정 이태원점",
+      "formatted_address": "1 floor, 118 보광로 용산구 서울특별시",
+      "district": "용산구",
+      "rating": 4.9,
+      "user_rating_count": 2987,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16073354953576492639&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.533318099999995,
+        "longitude": 126.99455150000001
+      }
+    },
+    {
+      "rank": 12,
+      "place_id": "ChIJZ0HZItuYfDUR_abSmRXxgA8",
+      "name": "육몽 홍대본점",
+      "formatted_address": "서울특별시 마포구 양화로16길 19",
+      "district": "마포구",
+      "rating": 4.8,
+      "user_rating_count": 2933,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1117157782665209597&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5532162,
+        "longitude": 126.92069420000001
+      }
+    },
+    {
+      "rank": 13,
+      "place_id": "ChIJ_QcUXgClfDURTyXwTmxo8-A",
+      "name": "이태리국시 성수(ITALYGUKSI SEONGSU)",
+      "formatted_address": "서울특별시 성동구 왕십리로8길 18-1 3 층",
+      "district": "성동구",
+      "rating": 4.9,
+      "user_rating_count": 2924,
+      "primary_type": "italian_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16209414298226664783&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.546047099999996,
+        "longitude": 127.0467101
+      }
+    },
+    {
+      "rank": 14,
+      "place_id": "ChIJT0grpESjfDURjERxH-P8Yyw",
+      "name": "서울맛집 지강한식당 압구정본점 | restaurants | 韓国ナッコプセレストラン | 餐馆",
+      "formatted_address": "서울특별시 강남구 압구정로30길 17 111호, 112호, 104-1호",
+      "district": "강남구",
+      "rating": 4.8,
+      "user_rating_count": 2919,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3198678212778476684&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5263485,
+        "longitude": 127.02935129999999
+      }
+    },
+    {
+      "rank": 15,
+      "place_id": "ChIJW9rwD6SjfDURIsz0swBZILw",
+      "name": "쌤쌤쌤",
+      "formatted_address": "서울특별시 용산구 한강대로50길 25",
+      "district": "용산구",
+      "rating": 4.8,
+      "user_rating_count": 2862,
+      "primary_type": "western_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13555932737939229730&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5315562,
+        "longitude": 126.97213130000002
+      }
+    },
+    {
+      "rank": 16,
+      "place_id": "ChIJ3yUZyjWjfDURTpUVNSxW-fk",
+      "name": "이국도산 EEGUK",
+      "formatted_address": "서울특별시 강남구 언주로164길 17 지하 1층",
+      "district": "강남구",
+      "rating": 4.9,
+      "user_rating_count": 2842,
+      "primary_type": "italian_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=18012522932514166094&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5255584,
+        "longitude": 127.0349401
+      }
+    },
+    {
+      "rank": 17,
+      "place_id": "ChIJQfqPWxCkfDURHQmXHTZRA0E",
+      "name": "농민백암순대 본점",
+      "formatted_address": "서울특별시 강남구 선릉로86길 40-4",
+      "district": "강남구",
+      "rating": 4.5,
+      "user_rating_count": 2818,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=4684677330261969181&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5037065,
+        "longitude": 127.0530366
+      }
+    },
+    {
+      "rank": 18,
+      "place_id": "ChIJy9F0pPqZfDURhOPTCrhJQz0",
+      "name": "새마을식당 홍대서교점",
+      "formatted_address": "서울특별시 마포구 어울마당로 144",
+      "district": "마포구",
+      "rating": 4.7,
+      "user_rating_count": 2744,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=4414453114557686660&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5561608,
+        "longitude": 126.9258254
+      }
+    },
+    {
+      "rank": 19,
+      "place_id": "ChIJa5S93O2jfDURwEVYqIpHXkg",
+      "name": "명동역 닭갈비 맛집 | 장인닭갈비 명동점 | Myeongdong JangIn Dakgalbi Restaurants | 匠人铁板鸡 明洞店 | 職人タッカルビ 明洞",
+      "formatted_address": "서울특별시 중구 명동9길 15",
+      "district": "중구",
+      "rating": 4.9,
+      "user_rating_count": 2722,
+      "primary_type": "chicken_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=5214684079397029312&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5645345,
+        "longitude": 126.9847085
+      }
+    },
+    {
+      "rank": 20,
+      "place_id": "ChIJbS0WnoulfDUROvcR0nVjN18",
+      "name": "성수다락 | 성수 레스토랑 | Seongsu Restaurants | 성수 맛집 | レストラン | 聖水洞美食",
+      "formatted_address": "서울특별시 성동구 뚝섬로9길 20 2층",
+      "district": "성동구",
+      "rating": 4.8,
+      "user_rating_count": 2669,
+      "primary_type": "fusion_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=6861061915008956218&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5398972,
+        "longitude": 127.05621919999999
+      }
+    },
+    {
+      "rank": 21,
+      "place_id": "ChIJqwYQP7GlfDURUf45ubqmupE",
+      "name": "탐광",
+      "formatted_address": "서울특별시 성동구 연무장5가길 26",
+      "district": "성동구",
+      "rating": 4.8,
+      "user_rating_count": 2639,
+      "primary_type": "japanese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10500888802069446225&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.543174799999996,
+        "longitude": 127.0554194
+      }
+    },
+    {
+      "rank": 22,
+      "place_id": "ChIJYfuPafGifDUR2nysgCIUSh0",
+      "name": "왕비집 명동중앙점",
+      "formatted_address": "서울특별시 중구 명동8나길 45",
+      "district": "중구",
+      "rating": 4.7,
+      "user_rating_count": 2604,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2110521513796730074&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5610364,
+        "longitude": 126.98238710000001
+      }
+    },
+    {
+      "rank": 23,
+      "place_id": "ChIJD502OU6lfDURetD_VMLkRnA",
+      "name": "스케줄",
+      "formatted_address": "서울특별시 성동구 아차산로 104 2층",
+      "district": "성동구",
+      "rating": 4.8,
+      "user_rating_count": 2541,
+      "primary_type": "italian_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8090405303918514298&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.54446170000001,
+        "longitude": 127.0554135
+      }
+    },
+    {
+      "rank": 24,
+      "place_id": "ChIJuUKJVACjfDURnW1f6CkorhQ",
+      "name": "한식왕비집 을지로점",
+      "formatted_address": "서울특별시 지하1층 B101 KR 서울특별시 중구 명동7길 21",
+      "district": "중구",
+      "rating": 5.0,
+      "user_rating_count": 2408,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1490172687163551133&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5646777,
+        "longitude": 126.98381939999999
+      }
+    },
+    {
+      "rank": 25,
+      "place_id": "ChIJKWfajwGdfDUR0zSZC4bayyk",
+      "name": "솥내음 마곡 발산역점",
+      "formatted_address": "서울특별시 강서구 마곡중앙6로 66",
+      "district": "강서구",
+      "rating": 5.0,
+      "user_rating_count": 2401,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3011741045082371283&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.559925,
+        "longitude": 126.83433280000001
+      }
+    },
+    {
+      "rank": 26,
+      "place_id": "ChIJu_NuywekfDURvC4ZwgSawaw",
+      "name": "별양집",
+      "formatted_address": "서울특별시 강남구 테헤란로43길 17",
+      "district": "강남구",
+      "rating": 4.7,
+      "user_rating_count": 2371,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12448400190255738556&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5044415,
+        "longitude": 127.04368690000001
+      }
+    },
+    {
+      "rank": 27,
+      "place_id": "ChIJjxNXJYSffDUReYRP76rkI78",
+      "name": "월화고기 보라매점",
+      "formatted_address": "서울특별시 관악구 보라매로3길 16",
+      "district": "관악구",
+      "rating": 4.6,
+      "user_rating_count": 2339,
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13773103508239647865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.4915849,
+        "longitude": 126.9262895
+      }
+    },
+    {
+      "rank": 28,
+      "place_id": "ChIJD5fTAuiYfDUR7Xeq6NCKbp0",
+      "name": "마포곱창타운",
+      "formatted_address": "서울특별시 마포구 동교로27길 20",
+      "district": "마포구",
+      "rating": 4.7,
+      "user_rating_count": 2275,
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=11344157141254174701&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5590714,
+        "longitude": 126.9225299
+      }
+    },
+    {
+      "rank": 29,
+      "place_id": "ChIJvaFDDaaYfDURFqfz9lWTpPA",
+      "name": "곱 마포직영점 공덕맛집ㅣmapo gopchang restaurantㅣ コプチャン | ホルモン | 孔德站 美食|대창|막창|회식|모임",
+      "formatted_address": "서울특별시 마포구 도화길 31-1",
+      "district": "마포구",
+      "rating": 4.6,
+      "user_rating_count": 2170,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=17340146462707918614&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.541027799999995,
+        "longitude": 126.94937650000001
+      }
+    },
+    {
+      "rank": 30,
+      "place_id": "ChIJueQnbSWffDURoCYxUpm765E",
+      "name": "신림춘천집 구로디지털직영점",
+      "formatted_address": "서울특별시 구로구 디지털로32나길 17-23",
+      "district": "구로구",
+      "rating": 4.8,
+      "user_rating_count": 2106,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10514704022209898144&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.4839264,
+        "longitude": 126.8997536
+      }
+    },
+    {
+      "rank": 31,
+      "place_id": "ChIJqYTmWtGYfDURryq7AaODZoc",
+      "name": "오레노라멘 본점",
+      "formatted_address": "서울특별시 마포구 독막로8길 16",
+      "district": "마포구",
+      "rating": 4.6,
+      "user_rating_count": 2103,
+      "primary_type": "ramen_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=9756630378876709551&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5472593,
+        "longitude": 126.91781089999999
+      }
+    },
+    {
+      "rank": 32,
+      "place_id": "ChIJNZhE3O-ifDURwwrc0qTrMek",
+      "name": "왕비집 종로점",
+      "formatted_address": "서울특별시 종로구 삼일대로15길 24 2층",
+      "district": "종로구",
+      "rating": 4.7,
+      "user_rating_count": 2029,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16803470777840831171&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.568923,
+        "longitude": 126.98616899999998
+      }
+    },
+    {
+      "rank": 33,
+      "place_id": "ChIJ2Y5EC06jfDURrnWbW7A--ic",
+      "name": "돼지래스토랑 둘째",
+      "formatted_address": "서울특별시 용산구 보광로59길 14 1층",
+      "district": "용산구",
+      "rating": 4.9,
+      "user_rating_count": 1977,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=2880683838828934574&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.53402,
+        "longitude": 126.99326560000002
+      }
+    },
+    {
+      "rank": 34,
+      "place_id": "ChIJ55AmZ6ajfDURjzmQUSRRke4",
+      "name": "멘쇼쿠",
+      "formatted_address": "서울특별시 서초구 잠원동 강남대로99길 10 2F",
+      "district": "서초구",
+      "rating": 4.9,
+      "user_rating_count": 1942,
+      "primary_type": "japanese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=17190610469078972815&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.515295,
+        "longitude": 127.01881750000001
+      }
+    },
+    {
+      "rank": 35,
+      "place_id": "ChIJE89GzuqlfDUR0wdBchnDVA4",
+      "name": "송파구맛집 지강한식당 잠실점 | restaurants | ナッコプセ | チキンカルビ レストラン | 鸡排",
+      "formatted_address": "서울특별시 송파구 잠실로 209 지하 1층 104호",
+      "district": "송파구",
+      "rating": 4.9,
+      "user_rating_count": 1809,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1032664728633149395&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5138825,
+        "longitude": 127.1064002
+      }
+    },
+    {
+      "rank": 36,
+      "place_id": "ChIJG2XObfCifDURwcxOBbGdLkU",
+      "name": "명동맛집 더식당 Myeongdong Korea bbq Restaurants THE SIC DDANG | Kfood | kbbq | 明洞 グルメ 韓国焼肉レストラン | 明洞必食",
+      "formatted_address": "서울특별시 중구 10길 36 2층",
+      "district": "중구",
+      "rating": 4.6,
+      "user_rating_count": 1800,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=4985095221169540289&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.56228,
+        "longitude": 126.98556479999999
+      }
+    },
+    {
+      "rank": 37,
+      "place_id": "ChIJ0zY0YgCjfDURMdCFTOOcO8A",
+      "name": "혼고집 명동직영점",
+      "formatted_address": "서울특별시 중구 명동3길 40",
+      "district": "중구",
+      "rating": 4.9,
+      "user_rating_count": 1736,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=13851837578963439665&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.565532499999996,
+        "longitude": 126.98366809999999
+      }
+    },
+    {
+      "rank": 38,
+      "place_id": "ChIJFXNtQO-ifDURlzpZnlPhxPE",
+      "name": "빠리가옥",
+      "formatted_address": "서울특별시 종로구 수표로28길 33-4",
+      "district": "종로구",
+      "rating": 4.5,
+      "user_rating_count": 1698,
+      "primary_type": "french_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=17421297007831104151&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5732578,
+        "longitude": 126.990229
+      }
+    },
+    {
+      "rank": 39,
+      "place_id": "ChIJKeMm9s2jfDURck7uJeHBIYg",
+      "name": "Myeongdong Korean BBQ 태초갈비 명동점 | Taecho Premium Beef 1++ | 明洞烤肉 | 明洞美食 烤肉 | ユッケビビンバ",
+      "formatted_address": "서울특별시 중구 명동10길 18 6층",
+      "district": "중구",
+      "rating": 4.9,
+      "user_rating_count": 1643,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=9809334636137827954&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5628682,
+        "longitude": 126.9853106
+      }
+    },
+    {
+      "rank": 40,
+      "place_id": "ChIJu-_AflmZfDURzCCXRlp0ZKg",
+      "name": "오시 망원본점",
+      "formatted_address": "서울특별시 지 1층 48 KR 서울특별시 마포구 서울 마포구 월드컵로 17길",
+      "district": "마포구",
+      "rating": 4.9,
+      "user_rating_count": 1576,
+      "primary_type": "japanese_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=12133951227123146956&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.555228400000004,
+        "longitude": 126.9077222
+      }
+    },
+    {
+      "rank": 41,
+      "place_id": "ChIJNyNawWmffDURFZO3KAMpcZI",
+      "name": "하이웨이 서울 기사식당 영등포 타임스퀘어점 HIGHWAY SEOUL Restaurant タイムズスクエアのレストラン 海威餐厅 (永登浦店）",
+      "formatted_address": "서울특별시 영등포구 영중로 15 타임스퀘어 4층 409호",
+      "district": "영등포구",
+      "rating": 4.9,
+      "user_rating_count": 1474,
+      "primary_type": "family_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10552260495450542869&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.517293099999996,
+        "longitude": 126.9041319
+      }
+    },
+    {
+      "rank": 42,
+      "place_id": "ChIJObIZ6sehfDUR_umyNvHFjZM",
+      "name": "농민백암순대",
+      "formatted_address": "서울특별시 강남구 역삼로3길 20-4",
+      "district": "강남구",
+      "rating": 4.6,
+      "user_rating_count": 1473,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=10632371935087094270&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.494920799999996,
+        "longitude": 127.0314964
+      }
+    },
+    {
+      "rank": 43,
+      "place_id": "ChIJXwWcmmOifDURiFLaPgCbx-k",
+      "name": "유즈라멘 본점",
+      "formatted_address": "서울특별시 중구 만리재로 217",
+      "district": "중구",
+      "rating": 4.5,
+      "user_rating_count": 1467,
+      "primary_type": "ramen_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=16845603356559430280&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.556809799999996,
+        "longitude": 126.96824690000001
+      }
+    },
+    {
+      "rank": 44,
+      "place_id": "ChIJcRNN1OajfDURnspHFeT2jck",
+      "name": "칠프로칠백식당 신논현점",
+      "formatted_address": "서울특별시 서초구 반포동 747-12",
+      "district": "서초구",
+      "rating": 4.9,
+      "user_rating_count": 1465,
+      "primary_type": "restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=14523535832809720478&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5042459,
+        "longitude": 127.0228221
+      }
+    },
+    {
+      "rank": 45,
+      "place_id": "ChIJ749NGfCifDURVRam9mS9tyk",
+      "name": "빤닭빤닭(bbandak)닭갈비 Dakgalbi 닭한마리 명동맛집 / 明洞 グルメ / 明洞 タッカンマリ/ best restaurant /good restaurant",
+      "formatted_address": "서울특별시 중구 명동4길 46 2층",
+      "district": "중구",
+      "rating": 4.8,
+      "user_rating_count": 1462,
+      "primary_type": "chicken_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=3006079517625554517&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.561731,
+        "longitude": 126.98390859999998
+      }
+    },
+    {
+      "rank": 46,
+      "place_id": "ChIJA6cTc_uefDURzxlr4vNlQkE",
+      "name": "아비꼬 타임스퀘어점",
+      "formatted_address": "서울특별시 영등포구 영중로 15 B1층",
+      "district": "영등포구",
+      "rating": 4.8,
+      "user_rating_count": 1453,
+      "primary_type": "japanese_curry_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=4702433059078347215&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5170155,
+        "longitude": 126.9039488
+      }
+    },
+    {
+      "rank": 47,
+      "place_id": "ChIJLa2wIcijfDUR0oCbGSc9kxE",
+      "name": "아베크 청담 Avecque Cheongdam Korean Italian K-Fusion",
+      "formatted_address": "서울특별시 강남구 823 1층",
+      "district": "강남구",
+      "rating": 4.9,
+      "user_rating_count": 1449,
+      "primary_type": "italian_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=1266423158363881682&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5258286,
+        "longitude": 127.03915219999999
+      }
+    },
+    {
+      "rank": 48,
+      "place_id": "ChIJ32V8iv6hfDUR-UMjO61PeWE",
+      "name": "다몽집 | damongzip",
+      "formatted_address": "2층, 13 강남대로100길 역삼동 강남구 서울특별시",
+      "district": "강남구",
+      "rating": 4.9,
+      "user_rating_count": 1430,
+      "primary_type": "korean_barbecue_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=7023732699301102585&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5018151,
+        "longitude": 127.0271581
+      }
+    },
+    {
+      "rank": 49,
+      "place_id": "ChIJzRPTUuaifDURY-MJpPzA33k",
+      "name": "뚝배기집",
+      "formatted_address": "서울특별시 종로구 종로16길 12",
+      "district": "종로구",
+      "rating": 4.5,
+      "user_rating_count": 1401,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=8781949989712159587&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5695341,
+        "longitude": 126.9884726
+      }
+    },
+    {
+      "rank": 50,
+      "place_id": "ChIJo0uyftK6fDURNa4XRAgKDs4",
+      "name": "원조할아버지손두부",
+      "formatted_address": "서울특별시 광진구 자양로 324",
+      "district": "광진구",
+      "rating": 4.5,
+      "user_rating_count": 1379,
+      "primary_type": "korean_restaurant",
+      "google_maps_uri": "https://maps.google.com/?cid=14847816052105522741&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "location": {
+        "latitude": 37.5540757,
+        "longitude": 127.094143
+      }
+    }
+  ]
+}
