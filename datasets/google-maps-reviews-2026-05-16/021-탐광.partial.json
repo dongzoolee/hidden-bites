@@ -28,11 +28,17 @@
       ]
     },
     "target_reviews": 2639,
-    "collected_reviews": 2640,
+    "collected_reviews": 2639,
     "scroll_count": 1722,
     "idle_count": 0,
     "status": "target_reached",
-    "updated_at": "2026-05-15T22:29:20.867Z"
+    "updated_at": "2026-05-15T22:29:20.867Z",
+    "max_review_age_years": 5,
+    "age_pruned_reviews": 1,
+    "age_pruned_at": "2026-05-22T23:18:11.377Z",
+    "age_pruned_relative_times": {
+      "6년 전": 1
+    }
   },
   "reviews": [
     {
@@ -68692,25 +68698,6 @@
       "meal_type_text": [],
       "photo_count_visible": 0,
       "raw_text": "윤화평지역 가이드 · 리뷰 244개 · 사진 6장수정일: 5년 전",
-      "place_id": "ChIJqwYQP7GlfDURUf45ubqmupE",
-      "place_name": "탐광",
-      "place_rank": 21,
-      "google_maps_uri": "https://maps.google.com/?cid=10500888802069446225&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
-      "collected_at": "2026-05-15T22:29:19.707Z",
-      "source": "google_maps_ui",
-      "sort": "newest"
-    },
-    {
-      "source_review_id": "ChZDSUhNMG9nS0VJQ0FnSURjb05hZ0xnEAE",
-      "author": "JMPARKA",
-      "author_stats": "리뷰 645개",
-      "rating": 4,
-      "rating_label": "별표 4개",
-      "relative_time": "6년 전",
-      "text": "대창이 들어간 독특한 느낌의 카레와 쯔께면 그리고 비주얼 갑인 뉴 에비카츠동이 있다.\n맛은 에비카츠동이 가장 좋았으며 키오스크를 통해 주문한다. 1인용으로 각각 서빙된다.",
-      "meal_type_text": [],
-      "photo_count_visible": 0,
-      "raw_text": "JMPARKA리뷰 645개6년 전 대창이 들어간 독특한 느낌의 카레와 쯔께면 그리고 비주얼 갑인 뉴 에비카츠동이 있다.\n맛은 에비카츠동이 가장 좋았으며 키오스크를 통해 주문한다. 1인용으로 각각 서빙된다.좋아요 공유",
       "place_id": "ChIJqwYQP7GlfDURUf45ubqmupE",
       "place_name": "탐광",
       "place_rank": 21,

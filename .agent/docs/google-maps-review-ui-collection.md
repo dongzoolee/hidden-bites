@@ -1,5 +1,29 @@
 # Google Maps Review UI Collection
 
+## 2026-05-23 5년 컷오프 데이터 정리 및 전체 재수집 시작 준비
+
+- `scripts/prune_google_maps_review_age_cutoff.mjs`를 추가해 Google Maps review JSON의 `relative_time` 기준 5년 초과 리뷰를 final/partial 파일에서 동일하게 제거할 수 있게 했다.
+- dry-run 후 `--execute`로 `datasets/google-maps-reviews-2026-05-16/` 전체 100개 review JSON을 처리했다.
+- 제거 대상은 final 9개와 partial 9개, 총 18개 파일이었다.
+- 제거된 5년 초과 리뷰는 final 기준 1,761개, final/partial 합산 3,522개다.
+- 영향을 받은 rank는 2, 21, 22, 38, 42, 43, 44, 45, 46이다.
+- final 리뷰 총량은 86,342개에서 84,581개로 정리됐고, 텍스트가 있는 final 리뷰는 76,664개다.
+- `node scripts/prune_google_maps_review_age_cutoff.mjs --max-review-age-years 5 --check`에서 5년 초과 잔여 리뷰 0개를 확인했다.
+- 전체 재수집은 기존 수집 스크립트를 아래처럼 5년 컷오프로 실행한다. 현재 `/tmp/hidden-bites-playwright` 런타임은 없어, 로컬에 남아 있는 `/Users/dongzoolee/Projects/cspoon/node_modules/playwright-core/index.js`를 `PLAYWRIGHT_CORE_PATH`로 지정해야 한다.
+
+```bash
+PLAYWRIGHT_CORE_PATH=/Users/dongzoolee/Projects/cspoon/node_modules/playwright-core/index.js \
+node scripts/collect_google_maps_reviews_ui.mjs \
+  --headful \
+  --start-index 1 \
+  --limit-places 50 \
+  --scroll-delay-ms 250 \
+  --idle-scrolls 220 \
+  --max-review-age-years 5 \
+  --user-data-dir /tmp/hidden-bites-profile-age5-all-20260523 \
+  --prewarm-ranks 1,2
+```
+
 ## 2026-05-18 작업 내용
 
 - `/tmp/hidden-bites-playwright` Playwright runtime을 사용해 Google Maps UI review crawl을 이어서 실행했다.
