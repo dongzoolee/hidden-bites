@@ -24,6 +24,21 @@ node scripts/collect_google_maps_reviews_ui.mjs \
   --prewarm-ranks 1,2
 ```
 
+## 2026-05-23 5년 컷오프 전체 재수집 완료
+
+- 위 실행 명령을 Terminal 세션에서 끝까지 추적해 rank 1-50 전체 수집을 완료했다.
+- 데이터셋 디렉터리: `datasets/google-maps-reviews-2026-05-16/`
+- final JSON 50개와 partial JSON 50개가 모두 존재하며, partial-only 상태는 없다.
+- final 리뷰 총량은 90,331개, 텍스트가 있는 final 리뷰는 81,836개다.
+- partial 리뷰 총량도 final과 동일하게 90,331개이며, 텍스트가 있는 partial 리뷰는 81,836개다.
+- 5년 초과 리뷰 정리 직후 84,581개였던 final 리뷰 총량이 전체 재수집 후 5,750개 증가했다.
+- 상태별 장소 수는 `target_reached` 8개, `age_cutoff_reached` 4개, `idle_limit_reached` 38개다.
+- 이번 전체 재수집에서 `age_cutoff_reached`로 닫힌 장소는 rank 36 더식당 명동 1,553개, rank 42 농민백암순대 1,001개, rank 43 유즈라멘 본점 1,024개, rank 50 원조할아버지손두부 928개다.
+- 목표치에 도달한 장소는 rank 13 이태리국시 성수 2,936개, rank 21 탐광 2,649개, rank 34 멘쇼쿠 1,959개, rank 35 지강한식당 잠실점 1,820개, rank 37 혼고집 명동직영점 1,740개, rank 39 태초갈비 명동점 1,658개, rank 41 하이웨이 서울 기사식당 1,481개, rank 47 아베크 청담 1,458개다.
+- 1,000개 미만으로 닫힌 장소는 rank 5 강남 돼지상회 443개, rank 15 쌤쌤쌤 546개, rank 25 솥내음 마곡 발산역점 570개, rank 40 오시 망원본점 510개, rank 49 뚝배기집 765개, rank 50 원조할아버지손두부 928개다.
+- 전체 재수집 종료 후 `node scripts/prune_google_maps_review_age_cutoff.mjs --max-review-age-years 5 --check`로 5년 초과 잔여 리뷰 0개를 다시 확인했다.
+- `node --check`, `PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile`, 전체 JSON 101개 파싱, `git diff --check` 검증을 통과했다.
+
 ## 2026-05-18 작업 내용
 
 - `/tmp/hidden-bites-playwright` Playwright runtime을 사용해 Google Maps UI review crawl을 이어서 실행했다.
