@@ -25,6 +25,8 @@ function parseArgs(argv) {
     userDataDir: null,
     profileDirectory: null,
     prewarmRanks: [],
+    onlyRanks: [],
+    resumeIdleFromZero: false,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -69,6 +71,11 @@ function parseArgs(argv) {
     } else if (arg === "--prewarm-ranks") {
       args.prewarmRanks = next.split(",").map((value) => Number(value.trim())).filter((value) => Number.isInteger(value) && value > 0);
       index += 1;
+    } else if (arg === "--only-ranks") {
+      args.onlyRanks = next.split(",").map((value) => Number(value.trim())).filter((value) => Number.isInteger(value) && value > 0);
+      index += 1;
+    } else if (arg === "--resume-idle-from-zero") {
+      args.resumeIdleFromZero = true;
     } else if (arg === "--headful") {
       args.headful = true;
     }
@@ -262,7 +269,7 @@ async function collectPlace(page, place, rank, args, startedAt) {
   }
 
   const targetReviews = args.maxReviewsPerPlace || place.user_rating_count || null;
-  let idleCount = reviews.size > 0 ? -reviews.size : 0;
+  let idleCount = reviews.size > 0 && !args.resumeIdleFromZero ? -reviews.size : 0;
   let lastCount = reviews.size;
   let scrollCount = 0;
   let status = "running";
@@ -397,10 +404,10 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const startedAt = Date.now();
   const topData = await readJson(args.topPath);
-  const places = topData.places
-    .map((place, index) => ({ place, rank: index + 1 }))
-    .filter((item) => item.rank >= args.startIndex)
-    .slice(0, args.limitPlaces || undefined);
+  const allPlaces = topData.places.map((place, index) => ({ place, rank: index + 1 }));
+  const places = args.onlyRanks.length > 0
+    ? allPlaces.filter((item) => args.onlyRanks.includes(item.rank))
+    : allPlaces.filter((item) => item.rank >= args.startIndex).slice(0, args.limitPlaces || undefined);
 
   await fs.mkdir(args.outputDir, { recursive: true });
   await writeJsonAtomic(path.join(args.outputDir, "run-metadata.json"), {

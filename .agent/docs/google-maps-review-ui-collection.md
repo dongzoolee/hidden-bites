@@ -39,6 +39,39 @@ node scripts/collect_google_maps_reviews_ui.mjs \
 - 전체 재수집 종료 후 `node scripts/prune_google_maps_review_age_cutoff.mjs --max-review-age-years 5 --check`로 5년 초과 잔여 리뷰 0개를 다시 확인했다.
 - `node --check`, `PYTHONDONTWRITEBYTECODE=1 python3 -m py_compile`, 전체 JSON 101개 파싱, `git diff --check` 검증을 통과했다.
 
+## 2026-05-23 idle 38개 장소 재시도 시작
+
+- `scripts/collect_google_maps_reviews_ui.mjs`에 `--only-ranks` 옵션을 추가해 비연속 rank 목록만 재수집할 수 있게 했다.
+- 재시도 전용으로 `--resume-idle-from-zero` 옵션을 추가해 기존 리뷰 수가 많은 장소도 idle 확인을 0부터 시작할 수 있게 했다.
+- 전체 재수집 후 `idle_limit_reached`로 남은 38개 장소만 다시 시도한다.
+- 대상 rank는 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 38, 40, 44, 45, 46, 48, 49다.
+- 이번 재시도는 기존보다 느린 `--scroll-delay-ms 500`과 더 긴 `--idle-scrolls 500`을 사용해 Google Maps UI의 추가 lazy-load 여지를 더 길게 확인한다.
+
+```bash
+PLAYWRIGHT_CORE_PATH=/Users/dongzoolee/Projects/cspoon/node_modules/playwright-core/index.js \
+node scripts/collect_google_maps_reviews_ui.mjs \
+  --headful \
+  --only-ranks 1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,38,40,44,45,46,48,49 \
+  --scroll-delay-ms 500 \
+  --idle-scrolls 500 \
+  --resume-idle-from-zero \
+  --max-review-age-years 5 \
+  --user-data-dir /tmp/hidden-bites-profile-age5-idle-retry-20260523 \
+  --prewarm-ranks 1,2
+```
+
+## 2026-05-23 idle 38개 장소 재시도 완료
+
+- 위 재시도 명령을 끝까지 추적해 대상 38개 rank가 모두 종료된 것을 확인했다.
+- 재시도 로그 기준 상태는 `target_reached` 4개, `age_cutoff_reached` 1개, `idle_limit_reached` 33개이며 오류 이벤트는 없었다.
+- 전체 final JSON 50개와 partial JSON 50개가 모두 존재하며, partial-only 상태는 없다.
+- final 리뷰 총량은 90,331개에서 98,552개로 8,221개 증가했고, 텍스트가 있는 final 리뷰는 89,681개다.
+- partial 리뷰 총량도 final과 동일하게 98,552개이며, 텍스트가 있는 partial 리뷰는 89,681개다.
+- 재시도 후 전체 상태별 장소 수는 `target_reached` 12개, `age_cutoff_reached` 5개, `idle_limit_reached` 33개다.
+- 이번 재시도에서 목표치에 도달한 장소는 rank 15 쌤쌤쌤 2,870개, rank 20 성수다락 2,671개, rank 25 솥내음 마곡 발산역점 2,410개, rank 40 오시 망원본점 1,576개다.
+- rank 49 뚝배기집은 `6년 전` 컷오프를 만나 765개, `age_cutoff_reached`로 종료됐다.
+- 주요 증가량은 rank 5 강남 돼지상회 +2,827개, rank 15 쌤쌤쌤 +2,324개, rank 25 솥내음 마곡 발산역점 +1,840개, rank 40 오시 망원본점 +1,066개다.
+
 ## 2026-05-18 작업 내용
 
 - `/tmp/hidden-bites-playwright` Playwright runtime을 사용해 Google Maps UI review crawl을 이어서 실행했다.

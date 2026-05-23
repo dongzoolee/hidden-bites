@@ -1,25 +1,66 @@
 {
   "source_top_path": "datasets/google-places-seoul-top-restaurants-2026-05-15.json",
   "output_dir": "datasets/google-maps-reviews-2026-05-16",
-  "started_at": "2026-05-22T23:23:51.158Z",
+  "started_at": "2026-05-23T12:09:12.231Z",
   "args": {
     "topPath": "datasets/google-places-seoul-top-restaurants-2026-05-15.json",
     "outputDir": "datasets/google-maps-reviews-2026-05-16",
     "startIndex": 1,
-    "limitPlaces": 50,
+    "limitPlaces": null,
     "maxReviewsPerPlace": null,
     "maxMinutes": null,
     "maxReviewAgeYears": 5,
-    "scrollDelayMs": 250,
-    "idleScrolls": 220,
+    "scrollDelayMs": 500,
+    "idleScrolls": 500,
     "headful": true,
     "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    "userDataDir": "/tmp/hidden-bites-profile-age5-all-20260523",
+    "userDataDir": "/tmp/hidden-bites-profile-age5-idle-retry-20260523",
     "profileDirectory": null,
     "prewarmRanks": [
       1,
       2
-    ]
+    ],
+    "onlyRanks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      38,
+      40,
+      44,
+      45,
+      46,
+      48,
+      49
+    ],
+    "resumeIdleFromZero": true
   },
   "places": [
     {
@@ -107,13 +148,6 @@
       "google_maps_uri": "https://maps.google.com/?cid=1117157782665209597&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
-      "rank": 13,
-      "place_id": "ChIJ_QcUXgClfDURTyXwTmxo8-A",
-      "name": "이태리국시 성수(ITALYGUKSI SEONGSU)",
-      "user_rating_count": 2924,
-      "google_maps_uri": "https://maps.google.com/?cid=16209414298226664783&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
       "rank": 14,
       "place_id": "ChIJT0grpESjfDURjERxH-P8Yyw",
       "name": "서울맛집 지강한식당 압구정본점 | restaurants | 韓国ナッコプセレストラン | 餐馆",
@@ -161,13 +195,6 @@
       "name": "성수다락 | 성수 레스토랑 | Seongsu Restaurants | 성수 맛집 | レストラン | 聖水洞美食",
       "user_rating_count": 2669,
       "google_maps_uri": "https://maps.google.com/?cid=6861061915008956218&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 21,
-      "place_id": "ChIJqwYQP7GlfDURUf45ubqmupE",
-      "name": "탐광",
-      "user_rating_count": 2639,
-      "google_maps_uri": "https://maps.google.com/?cid=10500888802069446225&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
       "rank": 22,
@@ -254,34 +281,6 @@
       "google_maps_uri": "https://maps.google.com/?cid=2880683838828934574&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
-      "rank": 34,
-      "place_id": "ChIJ55AmZ6ajfDURjzmQUSRRke4",
-      "name": "멘쇼쿠",
-      "user_rating_count": 1942,
-      "google_maps_uri": "https://maps.google.com/?cid=17190610469078972815&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 35,
-      "place_id": "ChIJE89GzuqlfDUR0wdBchnDVA4",
-      "name": "송파구맛집 지강한식당 잠실점 | restaurants | ナッコプセ | チキンカルビ レストラン | 鸡排",
-      "user_rating_count": 1809,
-      "google_maps_uri": "https://maps.google.com/?cid=1032664728633149395&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 36,
-      "place_id": "ChIJG2XObfCifDURwcxOBbGdLkU",
-      "name": "명동맛집 더식당 Myeongdong Korea bbq Restaurants THE SIC DDANG | Kfood | kbbq | 明洞 グルメ 韓国焼肉レストラン | 明洞必食",
-      "user_rating_count": 1800,
-      "google_maps_uri": "https://maps.google.com/?cid=4985095221169540289&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 37,
-      "place_id": "ChIJ0zY0YgCjfDURMdCFTOOcO8A",
-      "name": "혼고집 명동직영점",
-      "user_rating_count": 1736,
-      "google_maps_uri": "https://maps.google.com/?cid=13851837578963439665&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
       "rank": 38,
       "place_id": "ChIJFXNtQO-ifDURlzpZnlPhxPE",
       "name": "빠리가옥",
@@ -289,39 +288,11 @@
       "google_maps_uri": "https://maps.google.com/?cid=17421297007831104151&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
-      "rank": 39,
-      "place_id": "ChIJKeMm9s2jfDURck7uJeHBIYg",
-      "name": "Myeongdong Korean BBQ 태초갈비 명동점 | Taecho Premium Beef 1++ | 明洞烤肉 | 明洞美食 烤肉 | ユッケビビンバ",
-      "user_rating_count": 1643,
-      "google_maps_uri": "https://maps.google.com/?cid=9809334636137827954&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
       "rank": 40,
       "place_id": "ChIJu-_AflmZfDURzCCXRlp0ZKg",
       "name": "오시 망원본점",
       "user_rating_count": 1576,
       "google_maps_uri": "https://maps.google.com/?cid=12133951227123146956&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 41,
-      "place_id": "ChIJNyNawWmffDURFZO3KAMpcZI",
-      "name": "하이웨이 서울 기사식당 영등포 타임스퀘어점 HIGHWAY SEOUL Restaurant タイムズスクエアのレストラン 海威餐厅 (永登浦店）",
-      "user_rating_count": 1474,
-      "google_maps_uri": "https://maps.google.com/?cid=10552260495450542869&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 42,
-      "place_id": "ChIJObIZ6sehfDUR_umyNvHFjZM",
-      "name": "농민백암순대",
-      "user_rating_count": 1473,
-      "google_maps_uri": "https://maps.google.com/?cid=10632371935087094270&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 43,
-      "place_id": "ChIJXwWcmmOifDURiFLaPgCbx-k",
-      "name": "유즈라멘 본점",
-      "user_rating_count": 1467,
-      "google_maps_uri": "https://maps.google.com/?cid=16845603356559430280&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
       "rank": 44,
@@ -345,13 +316,6 @@
       "google_maps_uri": "https://maps.google.com/?cid=4702433059078347215&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
-      "rank": 47,
-      "place_id": "ChIJLa2wIcijfDUR0oCbGSc9kxE",
-      "name": "아베크 청담 Avecque Cheongdam Korean Italian K-Fusion",
-      "user_rating_count": 1449,
-      "google_maps_uri": "https://maps.google.com/?cid=1266423158363881682&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
       "rank": 48,
       "place_id": "ChIJ32V8iv6hfDUR-UMjO61PeWE",
       "name": "다몽집 | damongzip",
@@ -364,13 +328,6 @@
       "name": "뚝배기집",
       "user_rating_count": 1401,
       "google_maps_uri": "https://maps.google.com/?cid=8781949989712159587&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
-    },
-    {
-      "rank": 50,
-      "place_id": "ChIJo0uyftK6fDURNa4XRAgKDs4",
-      "name": "원조할아버지손두부",
-      "user_rating_count": 1379,
-      "google_maps_uri": "https://maps.google.com/?cid=14847816052105522741&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     }
   ]
 }
