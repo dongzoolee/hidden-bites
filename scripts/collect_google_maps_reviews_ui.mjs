@@ -405,8 +405,9 @@ async function main() {
   const startedAt = Date.now();
   const topData = await readJson(args.topPath);
   const allPlaces = topData.places.map((place, index) => ({ place, rank: index + 1 }));
+  const placesByRank = new Map(allPlaces.map((item) => [item.rank, item]));
   const places = args.onlyRanks.length > 0
-    ? allPlaces.filter((item) => args.onlyRanks.includes(item.rank))
+    ? args.onlyRanks.map((rank) => placesByRank.get(rank)).filter(Boolean)
     : allPlaces.filter((item) => item.rank >= args.startIndex).slice(0, args.limitPlaces || undefined);
 
   await fs.mkdir(args.outputDir, { recursive: true });

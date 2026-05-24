@@ -72,6 +72,35 @@ node scripts/collect_google_maps_reviews_ui.mjs \
 - rank 49 뚝배기집은 `6년 전` 컷오프를 만나 765개, `age_cutoff_reached`로 종료됐다.
 - 주요 증가량은 rank 5 강남 돼지상회 +2,827개, rank 15 쌤쌤쌤 +2,324개, rank 25 솥내음 마곡 발산역점 +1,840개, rank 40 오시 망원본점 +1,066개다.
 
+## 2026-05-24 낮은 리뷰 수 idle 장소 우선 재시도 시작
+
+- `idle_limit_reached`로 남은 33개 장소를 현재 final 리뷰 수 오름차순으로 다시 재시도한다.
+- `scripts/collect_google_maps_reviews_ui.mjs`의 `--only-ranks` 실행 순서를 입력 순서 그대로 보존하도록 수정했다.
+- 대상 rank 순서는 26, 48, 45, 3, 46, 44, 38, 31, 28, 32, 17, 2, 27, 12, 23, 29, 33, 30, 24, 8, 6, 16, 22, 14, 19, 9, 18, 11, 7, 10, 1, 5, 4다.
+
+```bash
+PLAYWRIGHT_CORE_PATH=/Users/dongzoolee/Projects/cspoon/node_modules/playwright-core/index.js \
+node scripts/collect_google_maps_reviews_ui.mjs \
+  --headful \
+  --only-ranks 26,48,45,3,46,44,38,31,28,32,17,2,27,12,23,29,33,30,24,8,6,16,22,14,19,9,18,11,7,10,1,5,4 \
+  --scroll-delay-ms 500 \
+  --idle-scrolls 500 \
+  --resume-idle-from-zero \
+  --max-review-age-years 5 \
+  --user-data-dir /tmp/hidden-bites-profile-age5-idle-lowcount-20260524 \
+  --prewarm-ranks 1,2
+```
+
+## 2026-05-24 낮은 리뷰 수 idle 장소 우선 재시도 완료
+
+- 낮은 final 리뷰 수 순서로 `idle_limit_reached` 33개 장소를 모두 재시도했다.
+- Codex shell의 background child 정리 동작을 피하기 위해 `/tmp/hidden-bites-google-maps-age5-idle-lowcount-20260524.command`를 Terminal로 열어 실행했고, 로그는 `/tmp/hidden-bites-google-maps-age5-idle-lowcount-20260524.log`에 저장했다.
+- 로그 기준 `place_start` 33개, `place_done` 33개이며 오류 이벤트는 없었다.
+- 이번 재시도 결과 33개 모두 다시 `idle_limit_reached`로 종료됐다.
+- final 리뷰 총량은 98,552개에서 98,562개로 10개 증가했다.
+- 전체 상태별 장소 수는 `target_reached` 12개, `age_cutoff_reached` 5개, `idle_limit_reached` 33개로 유지됐다.
+- 실제 증가가 있었던 장소는 rank 3 오다리집 간장게장 1,348개에서 1,356개로 +8개, rank 4 홍대 맛집 깃뜰 3,752개에서 3,754개로 +2개다.
+
 ## 2026-05-18 작업 내용
 
 - `/tmp/hidden-bites-playwright` Playwright runtime을 사용해 Google Maps UI review crawl을 이어서 실행했다.
