@@ -102,3 +102,15 @@ Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 
 - 설치 셀을 Python 코드로 바꿔 누락 패키지만 확인하고, 일반 `pip install`이 PEP 668로 실패할 때만 `--user --break-system-packages`로 재시도하도록 했다.
 - Colab이나 venv처럼 외부 관리 환경이 아닌 커널에서는 기존처럼 일반 설치 경로를 먼저 사용한다.
 - 설치 후 `pandas`, `numpy`, `scipy`, `sentence_transformers`, `transformers`, `torch`, `tqdm` import까지 확인하도록 했다.
+
+## 2026-05-27 capstone full run
+
+- capstone 원격 작업 경로는 `/home/capstone/hidden-bites-hb-score-20260527`였다.
+- `ssh-mcp@1.5.0`은 OpenSSH `ProxyCommand`를 직접 읽지 않아, project-local `scripts/run_capstone_ssh_mcp.mjs` 래퍼로 `cloudflared access tcp` 터널을 열어 MCP `exec`를 사용했다.
+- 원격 Python은 `python3.12` venv를 사용했고, `torch==2.5.1+cu121`에서 `NVIDIA GeForce RTX 4080 SUPER` CUDA 실행을 확인했다.
+- 실행 환경변수는 `HB_SCORE_RUN_MODE=full`, `HB_SCORE_NLI_DEVICE=cuda`, `HB_SCORE_NLI_HALF_PRECISION=1`, `HB_SCORE_MODEL_BATCH_SIZE=128`, `HB_SCORE_REVIEW_BATCH_SIZE=960`, `HB_SCORE_MAX_CONTEXT_CHARS=900`였다.
+- 노트북이 `notebooks/`에서 실행될 때 repo root를 못 찾지 않도록 `Path.cwd().parent`를 포함한 dataset root 탐색을 추가했다.
+- 장시간 실행 추적을 위해 `HB_SCORE_PROGRESS_PATH` JSON progress writer를 추가했다. Regression fixture는 progress 파일을 덮어쓰지 않도록 `emit_progress=False`로 호출한다.
+- full run 결과는 `scored_restaurant_count=50`, `scored_review_count=98562`, `factor_count=10`, `audit_rows=985620`이다.
+- 산출물 크기는 `hb-score-restaurants.json` 227,618 bytes, `hb-score-review-factor-scores.csv.gz` 18,616,835 bytes였다.
+- 원격 실행 로그는 `NOTEBOOK_OK`로 종료됐고, 실행된 노트북과 derived 산출물을 `scp`로 로컬에 반영했다.
