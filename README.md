@@ -29,11 +29,12 @@ The wireframe sections are:
    - `Why we chose GMap?`: Naver Map has many advertising-like reviews and no star points, while Kakao Map has fewer reviews.
    - `How we chose top 50 restaurants?`: recent five-year Seoul review availability, high review volume, and high star points.
 2. HB Scores
-   - Recalculates star points by selected matjip factors.
-   - Y-axis: review-factor appearance frequency.
-   - X-axis: user-selected factors via dropdown and factor sliders.
-   - Factors: `Taste`, `Service`, `Value`, `Atmosphere`, `Accessibility`, `Wait/Queue`.
-   - The selected restaurant report updates when the score factor changes.
+   - Recalculates star points into HB Score by matjip factor.
+   - X-axis: factor.
+   - Y-axis: HB Score from `0.00` to `5.00`.
+   - Dots: restaurants.
+   - Factors: `Taste`, `Service`, `Value`, `Atmosphere`, `Accessibility`, `Wait/Queue`, `Visit Occasion`, `Portion`, `Cleanliness`, `Signature/Uniqueness`.
+   - The graph uses one restaurant dot per factor, so the current top-50 dataset produces 500 graph points.
 3. Report for the selected restaurant
    - `The Review Adjectives`: macro emotional stack chart from extracted review adjectives.
    - `The Unique Keywords`: keyword chips and original review snippets containing the selected keyword.

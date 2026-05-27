@@ -4,11 +4,12 @@
 
 - 파일: `notebooks/hb-score-calculation.ipynb`
 - full run 출력 경로: `datasets/derived/hb-score-restaurants.json`
+- full run graph 출력 경로: `datasets/derived/hb-score-factor-restaurant-points.json`
 - full run audit 출력 경로: `datasets/derived/hb-score-review-factor-scores.csv.gz`
 
 ## 목적
 
-Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 점수화한다. Web-app에서는 dropdown으로 factor를 선택하고, 식당별 `hb_score`를 y-axis 값으로 사용한다.
+Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 점수화한다. Web-app에서는 `x-axis = factor`, `y-axis = hb_score`, `dot = restaurant` 구조의 factor-by-score dot graph를 사용한다.
 
 ## 구현 내용
 
@@ -71,6 +72,29 @@ Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 
 
 `hb-score-review-factor-scores.csv.gz`는 review-factor 단위 audit table이다. Hypothesis별 상세 entailment list는 CSV에서 제외하고, notebook runtime object에만 남긴다.
 
+`hb-score-factor-restaurant-points.json`은 graph 전용 long-form 구조다.
+
+- `metadata.x_axis`: `factor_label`
+- `metadata.y_axis`: `hb_score`
+- `metadata.point_unit`: `restaurant`
+- `factors`: factor id, label, order
+- `points`: 식당-factor 조합 1개가 1행인 점 데이터
+
+`points[]`는 다음 값을 포함한다.
+
+- `factor_id`
+- `factor_label`
+- `factor_order`
+- `hb_score`
+- `raw_hb_score`
+- `count_bonus`
+- `place_rank`
+- `place_id`
+- `place_name`
+- `google_place_rating`
+- `popularity_count`
+- `collected_review_count`
+
 ## 검증 계획
 
 노트북 내부 regression fixture는 다음 조건을 확인한다.
@@ -78,6 +102,9 @@ Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 
 - 맛 리뷰는 `taste` relevance가 기준 이상이어야 한다.
 - 웨이팅 리뷰는 `wait_queue` relevance가 기준 이상이어야 한다.
 - review-level score와 restaurant-level `hb_score`는 모두 `0.00~5.00` 범위여야 한다.
+- graph point row 수는 `restaurant_count * factor_count`와 같아야 한다.
+- 각 식당은 모든 factor에 정확히 1개 point를 가져야 한다.
+- `factor_order`는 notebook의 `FACTORS` 순서와 같아야 한다.
 
 로컬 검증은 `/tmp/hidden-bites-hb-score-venv` 임시 venv에서 수행한다.
 
@@ -114,3 +141,13 @@ Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 
 - full run 결과는 `scored_restaurant_count=50`, `scored_review_count=98562`, `factor_count=10`, `audit_rows=985620`이다.
 - 산출물 크기는 `hb-score-restaurants.json` 227,618 bytes, `hb-score-review-factor-scores.csv.gz` 18,616,835 bytes였다.
 - 원격 실행 로그는 `NOTEBOOK_OK`로 종료됐고, 실행된 노트북과 derived 산출물을 `scp`로 로컬에 반영했다.
+
+## 2026-05-27 factor dot graph 변경
+
+- HB score 시각화 기준을 `x-axis = factor`, `y-axis = hb_score`, `dot = restaurant` 구조로 변경했다.
+- `notebooks/hb-score-calculation.ipynb`에 `graph_points_df` 생성 셀과 Plotly 기반 factor dot graph preview를 추가했다.
+- `datasets/derived/hb-score-factor-restaurant-points.json`를 추가했다.
+- 기존 `hb-score-restaurants.json` nested structure는 식당 상세/호환용으로 유지한다.
+- 기존 full-run `hb-score-restaurants.json`을 재사용해 graph points JSON을 생성했고, full graph output은 50개 식당 x 10개 factor = 500 points다.
+- smoke mode는 `HB_SCORE_SMOKE_RESTAURANT_LIMIT=1`, `HB_SCORE_SMOKE_REVIEWS_PER_RESTAURANT=1`, `HB_SCORE_NLI_DEVICE=mps`, batch size 1로 실행해 새 graph output 생성과 regression checks를 통과했다.
+- graph output schema 검증에서 `x_axis=factor_label`, `y_axis=hb_score`, `point_unit=restaurant`, `points=500`, `restaurants=50`, `factors=10`을 확인했다.
