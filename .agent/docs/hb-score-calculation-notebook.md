@@ -95,3 +95,10 @@ Google Maps top 50 restaurant 리뷰를 Hidden Bites factor 기준으로 다시 
 - 노트북을 수정해 local 기본 device를 `cpu`로 설정하고, local 기본 NLI batch/context 크기를 줄였다.
 - 이 변경은 Colab full run의 GPU 사용을 막지 않는다. Colab에서는 device 자동 선택을 유지한다.
 - Regression fixture에서 wait factor가 낮게 잡히던 원인은 추상적인 `review is about ...` hypothesis였다. `The reviewer waited in line...`, `The reviewer mentions a reservation...`처럼 entailment가 잘 잡히는 구체 문장형으로 10개 factor hypothesis를 정리했다.
+
+## 2026-05-27 IDE 커널 설치 셀 수정
+
+- Homebrew Python 3.14 커널에서 `%pip install ...` 셀이 PEP 668 `externally-managed-environment` 오류로 실패하는 문제를 수정했다.
+- 설치 셀을 Python 코드로 바꿔 누락 패키지만 확인하고, 일반 `pip install`이 PEP 668로 실패할 때만 `--user --break-system-packages`로 재시도하도록 했다.
+- Colab이나 venv처럼 외부 관리 환경이 아닌 커널에서는 기존처럼 일반 설치 경로를 먼저 사용한다.
+- 설치 후 `pandas`, `numpy`, `scipy`, `sentence_transformers`, `transformers`, `torch`, `tqdm` import까지 확인하도록 했다.
