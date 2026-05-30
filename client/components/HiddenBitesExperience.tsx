@@ -117,7 +117,6 @@ export function HiddenBitesExperience() {
       <main className="app-shell app-shell--centered">
         <section className="loading-state">
           <Loader2 aria-hidden="true" className="loading-state__icon" size={28} />
-          <p>Loading Hidden Bites data story</p>
         </section>
       </main>
     );

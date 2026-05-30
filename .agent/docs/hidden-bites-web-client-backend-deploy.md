@@ -176,3 +176,8 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - 선택 factor 안에서 `hbScore` 내림차순으로 정렬한 뒤 x-axis를 restaurant count만큼 균등 분할해 배치한다.
 - 높은 score restaurant는 left/top에, 낮은 score restaurant는 right/bottom에 오도록 `x=rank slot`, `y=hbScore` 구조를 사용한다.
 - 회귀 테스트 `client/test/score-plot-axis.test.mjs`를 추가해 dropdown factor 선택, HB score descending sort, rank x-axis scale, 기존 factor filter 제거를 고정했다.
+
+## 2026-05-30 Loading copy removal
+
+- 초기 data load fallback에서 `Loading Hidden Bites data story` 문구를 제거하고 spinner만 남겼다.
+- `client/test/client-contract.test.mjs`에 해당 loading copy가 재도입되지 않도록 회귀 검증을 추가했다.

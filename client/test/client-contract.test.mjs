@@ -18,5 +18,6 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /100svh/);
   assert.match(css, /--font-primary: "Airbnb Cereal"/);
   assert.doesNotMatch(css, /Georgia|"Courier New"/);
+  assert.doesNotMatch(experience, /Loading Hidden Bites data story/);
   assert.doesNotMatch(`${experience}\n${scorePlot}\n${reportPanel}`, /Alert\.alert|as any/);
 });
