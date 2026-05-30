@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-05-30T07:23:40.976Z",
+    "generatedAt": "2026-05-30T10:43:32.288Z",
     "sourceScorePath": "datasets/derived/hb-score-restaurants.json",
     "sourcePointsPath": "datasets/derived/hb-score-factor-restaurant-points.json",
     "sourceReviewDir": "datasets/google-maps-reviews-2026-05-16",
@@ -15,7 +15,7 @@
     "description": "Google top 50 restaurants in Seoul, recalculated by Hidden Bites factor scores.",
     "question": "What are the factors for Matjip in Seoul?",
     "className": "26-1 Data Visualization @ Sogang A&T",
-    "advisor": "professor",
+    "advisor": "Prof. Jee Won Kim",
     "members": [
       "dongzoolee",
       "Eunhong",

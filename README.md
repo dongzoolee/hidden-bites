@@ -18,7 +18,7 @@ The current Figma direction is a 1440px web-desktop editorial wireframe for the 
 - Frame: `Hidden Bites / Web Desktop Wireframe`
 - Title: `Hidden Bites`
 - Class: `26-1 Data Visualization @ Sogang A&T`
-- Advisor: `professor`
+- Advisor: `Prof. Jee Won Kim`
 - Members: `dongzoolee`, `Eunhong`, `Madina`, `Emilia`
 - Core description: Google top 50 restaurants in Seoul, selected by top star points and most reviews
 - Main question: What are the factors for Matjip in Seoul?

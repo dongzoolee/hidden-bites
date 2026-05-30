@@ -20,7 +20,7 @@ Style direction은 The Pudding 계열의 editorial data story로 잡았다. 배�
 
 - Title: `Hidden Bites`
 - Class: `26-1 Data Visualization @ Sogang A&T`
-- Advisor: `professor`
+- Advisor: `Prof. Jee Won Kim`
 - Members: `dongzoolee`, `Eunhong`, `Madina`, `Emilia`
 - Description: Google top 50 restaurants in Seoul, selected by top star points and most reviews
 - Main question: What are the factors for Matjip in Seoul?

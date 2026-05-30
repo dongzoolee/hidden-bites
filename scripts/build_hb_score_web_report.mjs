@@ -184,7 +184,7 @@ const output = {
     description: "Google top 50 restaurants in Seoul, recalculated by Hidden Bites factor scores.",
     question: "What are the factors for Matjip in Seoul?",
     className: "26-1 Data Visualization @ Sogang A&T",
-    advisor: "professor",
+    advisor: "Prof. Jee Won Kim",
     members: ["dongzoolee", "Eunhong", "Madina", "Emilia"],
     qna: [
       {

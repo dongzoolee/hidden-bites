@@ -14,6 +14,7 @@ test("HbDataService loads canonical score payloads", () => {
   assert.equal(summary.metadata.restaurantCount, 50);
   assert.equal(summary.metadata.factorCount, 10);
   assert.equal(summary.metadata.graphPointCount, 500);
+  assert.equal(summary.advisor, "Prof. Jee Won Kim");
   assert.equal(scores.factors.length, 10);
   assert.equal(scores.points.length, 500);
   assert.equal(restaurants.length, 50);

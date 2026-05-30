@@ -161,6 +161,13 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - Previous Georgia and Courier-specific UI overrides were removed so hero titles, QnA labels, score axis labels, report numerals, emotion labels, and snippet metadata inherit the same Cereal-first family.
 - Regression guard: `client/test/client-contract.test.mjs` asserts the Cereal font token is present and the removed Georgia/Courier declarations do not return.
 
+## 2026-05-30 Advisor Professor Update
+
+- Hidden Bites summary advisor 표기를 `Prof. Jee Won Kim`으로 변경했다.
+- `scripts/build_hb_score_web_report.mjs`의 canonical summary 값을 수정하고 `datasets/derived/hb-score-web-report.json`을 재생성했다.
+- `README.md`와 Figma wireframe 문서의 advisor metadata도 같은 값으로 맞췄다.
+- 회귀 테스트 `server/test/hb-data.service.test.mjs`에서 API summary advisor 값이 `Prof. Jee Won Kim`인지 검증한다.
+
 ## 2026-05-30 HB Scores single-factor rank axis
 
 - `client/components/ScorePlot.tsx`에서 HB Scores 그래프를 단일 factor 선택 구조로 변경했다.
