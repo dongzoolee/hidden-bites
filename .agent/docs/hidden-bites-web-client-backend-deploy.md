@@ -97,9 +97,50 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - Project-local `.codex/config.toml` already defines `aws_api`, but the current Codex tool session did not expose AWS MCP callables.
 - Homebrew `aws` CLI is available and authenticated to AWS account `889566267001`.
 - Read-only AWS checks on 2026-05-30:
-  - `hidden-bites.leed.at` CloudFront distribution was not found.
-  - ECR repository `hidden-bites-server` was not found.
-  - S3 bucket `hidden-bites-production` was not found or not accessible.
+  - before provisioning, `hidden-bites.leed.at` CloudFront distribution was not found.
+  - before provisioning, ECR repository `hidden-bites-server` was not found.
+  - before provisioning, S3 bucket `hidden-bites-production` was not found or not accessible.
 - Local Docker CLI is not installed in the current shell.
 - Biblabely server SSH config exists in `NLP-Biblabely/.codex/config.toml`, but `SSH_CERTIFICATE_PASSWORD` is not present in this shell.
-- Therefore actual ECR image push, S3 sync, CloudFront invalidation, and SSH container restart were not executed locally. The added GitHub Actions workflows perform those steps once required secrets and CloudFront distribution are present.
+- Therefore actual ECR image push and SSH container restart were not executed locally. The added GitHub Actions workflows perform those steps once required secrets are present.
+
+## 2026-05-30 CloudFront Provisioning
+
+- AWS profile: default credentials for account `889566267001`
+- AWS MCP note: project-local `aws_api` MCP config exists, but this Codex session did not expose AWS MCP callables, so provisioning was executed with the default AWS CLI credentials.
+- ACM certificate:
+  - region: `us-east-1`
+  - ARN: `arn:aws:acm:us-east-1:889566267001:certificate/b8dcd891-0598-49d6-b04e-0d7b25ff9cd6`
+  - domains: `leed.at`, `*.leed.at`
+  - status: `ISSUED`
+- S3:
+  - bucket: `hidden-bites-production`
+  - prefix: `client-build`
+  - server-side encryption: `AES256`
+  - public access block enabled
+  - bucket policy allows only CloudFront distribution `E1NJZVQR76TW2Z` to read objects.
+- CloudFront function:
+  - name: `HiddenBites-Routing`
+  - live ARN: `arn:aws:cloudfront::889566267001:function/HiddenBites-Routing`
+- CloudFront OAC:
+  - name: `HiddenBites-S3-OAC`
+  - id: `E2U7Z9DY0G4IWQ`
+- CloudFront distribution:
+  - id: `E1NJZVQR76TW2Z`
+  - domain: `d154z9o0s3agqw.cloudfront.net`
+  - alias configured: `hidden-bites.leed.at`
+  - status after wait: `Deployed`
+  - default origin: `hidden-bites-production.s3.ap-northeast-2.amazonaws.com`
+  - backend origin: `115.68.177.250.sslip.io` on HTTP port `8097`
+  - default behavior rewrites static app routes through `HiddenBites-Routing`
+  - ordered behaviors: `/api/*`, `/health` to backend origin with caching disabled and all viewer headers except Host forwarded.
+- Invalidation:
+  - id: `IVYCG70UUNFB684RLAOWMIH6T`
+  - status: `Completed`
+- GitHub Actions:
+  - repository secret `CLOUDFRONT_DISTRIBUTION_ID` was set to `E1NJZVQR76TW2Z` with `gh secret set`.
+- Verification:
+  - `https://d154z9o0s3agqw.cloudfront.net/` returned `HTTP/2 200`.
+  - `https://d154z9o0s3agqw.cloudfront.net/_next/static/chunks/057hb_t5k9.-s.css` returned `HTTP/2 200`.
+  - `https://d154z9o0s3agqw.cloudfront.net/api/summary` timed out because the backend container has not been deployed to `8097` yet.
+  - `hidden-bites.leed.at` does not resolve yet from local DNS. This AWS account has no `leed.at` Route53 hosted zone; only `flit.lt.` was listed. DNS must be configured outside this account, or in the authoritative hosted zone, to alias `hidden-bites.leed.at` to `d154z9o0s3agqw.cloudfront.net`.
