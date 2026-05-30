@@ -1,0 +1,210 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Hidden Bites" [level=1] [ref=e5]
+      - generic [ref=e6]: Sparse Word Lens
+    - generic "Dataset summary" [ref=e7]:
+      - generic [ref=e8]:
+        - strong [ref=e9]: 4,091
+        - generic [ref=e10]: reviews
+      - generic [ref=e11]:
+        - strong [ref=e12]: "10"
+        - generic [ref=e13]: places
+      - generic [ref=e14]:
+        - strong [ref=e15]: "9"
+        - generic [ref=e16]: lens words
+      - generic [ref=e17]:
+        - strong [ref=e18]: 13.7k
+        - generic [ref=e19]: word links
+  - main [ref=e20]:
+    - complementary [ref=e21]:
+      - paragraph [ref=e22]: Lens
+      - generic [ref=e23]:
+        - generic [ref=e24]: 주문제작을 잘해줘요
+        - generic [ref=e25]:
+          - generic [ref=e26]: 서비스 context
+          - generic [ref=e27]: 1 mentions
+          - generic [ref=e28]: lift 8.2x
+          - generic [ref=e29]: positive signal
+          - generic [ref=e30]: 어반플랜트 합정
+        - paragraph [ref=e31]: "사장님도 친절하시고 음식도 맛있고 인테리어도 예뻐요. 네이버 키워드: 주문제작을 잘해줘요."
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - text: Selected expression
+          - generic [ref=e34]: 1 / 9
+        - slider "Selected expression 1 / 9" [ref=e35]: "0"
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - text: Sparse threshold
+          - generic [ref=e38]: "100"
+        - slider "Sparse threshold 100" [ref=e39]: "100"
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - text: Visit context
+          - generic [ref=e42]: 9 words
+        - generic [ref=e43]:
+          - button "전체" [ref=e44] [cursor=pointer]
+          - button "집밥" [ref=e45] [cursor=pointer]
+          - button "일상" [ref=e46] [cursor=pointer]
+          - button "빵" [ref=e47] [cursor=pointer]
+          - button "서비스" [ref=e48] [cursor=pointer]
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - heading "Restaurant signatures by sparse expression" [level=2] [ref=e52]
+          - paragraph [ref=e53]: 주문제작을 잘해줘요 points to 어반플랜트 합정 through a rare review phrase, then the heatmap shows whether that phrase travels to other places.
+        - generic [ref=e54]:
+          - generic [ref=e55]: low
+          - generic [ref=e57]: signature
+      - generic "Sparse expression heatmap" [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]: Sparse word
+            - generic [ref=e62]: 또바기
+            - generic [ref=e63]: 탕화쿵푸마라탕
+            - generic [ref=e64]: 광어연어
+            - generic [ref=e65]: 팔로피자
+            - generic [ref=e66]: 어반플랜트 합정
+            - generic [ref=e67]: 마더린러 베이글
+            - generic [ref=e68]: 브로트아트
+            - generic [ref=e69]: 규카츠정 성수점
+            - generic [ref=e70]: 대진 도원참치
+          - generic [ref=e71]:
+            - button "주문제작을 잘해줘요 서비스 · 1 mentions" [ref=e73] [cursor=pointer]:
+              - strong [ref=e74]: 주문제작을 잘해줘요
+              - generic [ref=e75]: 서비스 · 1 mentions
+            - 'button "주문제작을 잘해줘요 at 또바기: none" [ref=e76] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 탕화쿵푸마라탕: none" [ref=e77] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 광어연어: none" [ref=e78] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 팔로피자: none" [ref=e79] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 어반플랜트 합정: 153" [ref=e80] [cursor=pointer]':
+              - generic [ref=e81]: "153"
+            - 'button "주문제작을 잘해줘요 at 마더린러 베이글: none" [ref=e82] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 브로트아트: none" [ref=e83] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 규카츠정 성수점: none" [ref=e84] [cursor=pointer]'
+            - 'button "주문제작을 잘해줘요 at 대진 도원참치: none" [ref=e85] [cursor=pointer]'
+          - generic [ref=e86]:
+            - button "댄스끝나고 갑니다 일상 · 1 mentions" [ref=e88] [cursor=pointer]:
+              - strong [ref=e89]: 댄스끝나고 갑니다
+              - generic [ref=e90]: 일상 · 1 mentions
+            - 'button "댄스끝나고 갑니다 at 또바기: none" [ref=e91] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 탕화쿵푸마라탕: 132" [ref=e92] [cursor=pointer]':
+              - generic [ref=e93]: "132"
+            - 'button "댄스끝나고 갑니다 at 광어연어: none" [ref=e94] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 팔로피자: none" [ref=e95] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 어반플랜트 합정: none" [ref=e96] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 마더린러 베이글: none" [ref=e97] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 브로트아트: none" [ref=e98] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 규카츠정 성수점: none" [ref=e99] [cursor=pointer]'
+            - 'button "댄스끝나고 갑니다 at 대진 도원참치: none" [ref=e100] [cursor=pointer]'
+          - generic [ref=e101]:
+            - button "원샷했어요 일상 · 1 mentions" [ref=e103] [cursor=pointer]:
+              - strong [ref=e104]: 원샷했어요
+              - generic [ref=e105]: 일상 · 1 mentions
+            - 'button "원샷했어요 at 또바기: none" [ref=e106] [cursor=pointer]'
+            - 'button "원샷했어요 at 탕화쿵푸마라탕: 126" [ref=e107] [cursor=pointer]':
+              - generic [ref=e108]: "126"
+            - 'button "원샷했어요 at 광어연어: none" [ref=e109] [cursor=pointer]'
+            - 'button "원샷했어요 at 팔로피자: none" [ref=e110] [cursor=pointer]'
+            - 'button "원샷했어요 at 어반플랜트 합정: none" [ref=e111] [cursor=pointer]'
+            - 'button "원샷했어요 at 마더린러 베이글: none" [ref=e112] [cursor=pointer]'
+            - 'button "원샷했어요 at 브로트아트: none" [ref=e113] [cursor=pointer]'
+            - 'button "원샷했어요 at 규카츠정 성수점: none" [ref=e114] [cursor=pointer]'
+            - 'button "원샷했어요 at 대진 도원참치: none" [ref=e115] [cursor=pointer]'
+          - generic [ref=e116]:
+            - button "푸근하다 집밥 · 1 mentions" [ref=e118] [cursor=pointer]:
+              - strong [ref=e119]: 푸근하다
+              - generic [ref=e120]: 집밥 · 1 mentions
+            - 'button "푸근하다 at 또바기: 214" [ref=e121] [cursor=pointer]':
+              - generic [ref=e122]: "214"
+            - 'button "푸근하다 at 탕화쿵푸마라탕: none" [ref=e123] [cursor=pointer]'
+            - 'button "푸근하다 at 광어연어: none" [ref=e124] [cursor=pointer]'
+            - 'button "푸근하다 at 팔로피자: none" [ref=e125] [cursor=pointer]'
+            - 'button "푸근하다 at 어반플랜트 합정: none" [ref=e126] [cursor=pointer]'
+            - 'button "푸근하다 at 마더린러 베이글: none" [ref=e127] [cursor=pointer]'
+            - 'button "푸근하다 at 브로트아트: none" [ref=e128] [cursor=pointer]'
+            - 'button "푸근하다 at 규카츠정 성수점: none" [ref=e129] [cursor=pointer]'
+            - 'button "푸근하다 at 대진 도원참치: none" [ref=e130] [cursor=pointer]'
+          - generic [ref=e131]:
+            - button "존맛X 손맛O 집밥 · 2 mentions" [ref=e133] [cursor=pointer]:
+              - strong [ref=e134]: 존맛X 손맛O
+              - generic [ref=e135]: 집밥 · 2 mentions
+            - 'button "존맛X 손맛O at 또바기: 255" [ref=e136] [cursor=pointer]':
+              - generic [ref=e137]: "255"
+            - 'button "존맛X 손맛O at 탕화쿵푸마라탕: none" [ref=e138] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 광어연어: none" [ref=e139] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 팔로피자: none" [ref=e140] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 어반플랜트 합정: none" [ref=e141] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 마더린러 베이글: none" [ref=e142] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 브로트아트: none" [ref=e143] [cursor=pointer]'
+            - 'button "존맛X 손맛O at 규카츠정 성수점: 72" [ref=e144] [cursor=pointer]':
+              - generic [ref=e145]: "72"
+            - 'button "존맛X 손맛O at 대진 도원참치: none" [ref=e146] [cursor=pointer]'
+          - generic [ref=e147]:
+            - button "직원 교육 시급 서비스 · 2 mentions" [ref=e149] [cursor=pointer]:
+              - strong [ref=e150]: 직원 교육 시급
+              - generic [ref=e151]: 서비스 · 2 mentions
+            - 'button "직원 교육 시급 at 또바기: none" [ref=e152] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 탕화쿵푸마라탕: none" [ref=e153] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 광어연어: none" [ref=e154] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 팔로피자: 127" [ref=e155] [cursor=pointer]':
+              - generic [ref=e156]: "127"
+            - 'button "직원 교육 시급 at 어반플랜트 합정: none" [ref=e157] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 마더린러 베이글: none" [ref=e158] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 브로트아트: none" [ref=e159] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 규카츠정 성수점: none" [ref=e160] [cursor=pointer]'
+            - 'button "직원 교육 시급 at 대진 도원참치: none" [ref=e161] [cursor=pointer]'
+          - generic [ref=e162]:
+            - button "대체불가 빵 · 1 mentions" [ref=e164] [cursor=pointer]:
+              - strong [ref=e165]: 대체불가
+              - generic [ref=e166]: 빵 · 1 mentions
+            - 'button "대체불가 at 또바기: none" [ref=e167] [cursor=pointer]'
+            - 'button "대체불가 at 탕화쿵푸마라탕: none" [ref=e168] [cursor=pointer]'
+            - 'button "대체불가 at 광어연어: none" [ref=e169] [cursor=pointer]'
+            - 'button "대체불가 at 팔로피자: none" [ref=e170] [cursor=pointer]'
+            - 'button "대체불가 at 어반플랜트 합정: none" [ref=e171] [cursor=pointer]'
+            - 'button "대체불가 at 마더린러 베이글: 171" [ref=e172] [cursor=pointer]':
+              - generic [ref=e173]: "171"
+            - 'button "대체불가 at 브로트아트: none" [ref=e174] [cursor=pointer]'
+            - 'button "대체불가 at 규카츠정 성수점: none" [ref=e175] [cursor=pointer]'
+            - 'button "대체불가 at 대진 도원참치: none" [ref=e176] [cursor=pointer]'
+          - generic [ref=e177]:
+            - button "칭찬일색 서비스 · 2 mentions" [ref=e179] [cursor=pointer]:
+              - strong [ref=e180]: 칭찬일색
+              - generic [ref=e181]: 서비스 · 2 mentions
+            - 'button "칭찬일색 at 또바기: none" [ref=e182] [cursor=pointer]'
+            - 'button "칭찬일색 at 탕화쿵푸마라탕: none" [ref=e183] [cursor=pointer]'
+            - 'button "칭찬일색 at 광어연어: none" [ref=e184] [cursor=pointer]'
+            - 'button "칭찬일색 at 팔로피자: none" [ref=e185] [cursor=pointer]'
+            - 'button "칭찬일색 at 어반플랜트 합정: none" [ref=e186] [cursor=pointer]'
+            - 'button "칭찬일색 at 마더린러 베이글: none" [ref=e187] [cursor=pointer]'
+            - 'button "칭찬일색 at 브로트아트: none" [ref=e188] [cursor=pointer]'
+            - 'button "칭찬일색 at 규카츠정 성수점: none" [ref=e189] [cursor=pointer]'
+            - 'button "칭찬일색 at 대진 도원참치: 142" [ref=e190] [cursor=pointer]':
+              - generic [ref=e191]: "142"
+          - generic [ref=e192]:
+            - button "원샷 일상 · 1 mentions" [ref=e194] [cursor=pointer]:
+              - strong [ref=e195]: 원샷
+              - generic [ref=e196]: 일상 · 1 mentions
+            - 'button "원샷 at 또바기: none" [ref=e197] [cursor=pointer]'
+            - 'button "원샷 at 탕화쿵푸마라탕: 118" [ref=e198] [cursor=pointer]':
+              - generic [ref=e199]: "118"
+            - 'button "원샷 at 광어연어: none" [ref=e200] [cursor=pointer]'
+            - 'button "원샷 at 팔로피자: none" [ref=e201] [cursor=pointer]'
+            - 'button "원샷 at 어반플랜트 합정: none" [ref=e202] [cursor=pointer]'
+            - 'button "원샷 at 마더린러 베이글: none" [ref=e203] [cursor=pointer]'
+            - 'button "원샷 at 브로트아트: none" [ref=e204] [cursor=pointer]'
+            - 'button "원샷 at 규카츠정 성수점: none" [ref=e205] [cursor=pointer]'
+            - 'button "원샷 at 대진 도원참치: none" [ref=e206] [cursor=pointer]'
+    - complementary [ref=e207]:
+      - paragraph [ref=e208]: Recommendation
+      - article [ref=e210]:
+        - generic [ref=e211]:
+          - heading "1. 어반플랜트 합정" [level=3] [ref=e212]
+          - generic [ref=e213]: 81% match
+        - paragraph [ref=e216]: "사장님도 친절하시고 음식도 맛있고 인테리어도 예뻐요. 네이버 키워드: 주문제작을 잘해줘요."
+      - generic [ref=e217]:
+        - paragraph [ref=e218]: 어반플랜트 합정 fingerprint
+        - generic [ref=e219]:
+          - generic [ref=e220]: 주문제작을 잘해줘요
+          - generic [ref=e223]: "153"

@@ -16,7 +16,8 @@
     "lucide-react": "^0.468.0",
     "next": "16.2.6",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "react-kakao-maps-sdk": "^1.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
+    "kakao.maps.d.ts": "^0.1.40",
     "serve": "^14.2.5",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.2"

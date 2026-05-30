@@ -37,6 +37,7 @@ jobs:
         working-directory: client
         env:
           NEXT_PUBLIC_API_BASE_URL: ""
+          NEXT_PUBLIC_KAKAO_MAP_API_KEY: ${{ secrets.KAKAO_MAP_API_KEY }}
 
       - name: Upload client artifact
         uses: actions/upload-artifact@v4

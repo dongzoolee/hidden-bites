@@ -1,0 +1,151 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Hidden Bites" [level=1] [ref=e5]
+      - generic [ref=e6]: Sparse Word Lens
+    - generic "Dataset summary" [ref=e7]:
+      - generic [ref=e8]:
+        - strong [ref=e9]: 4,091
+        - generic [ref=e10]: reviews
+      - generic [ref=e11]:
+        - strong [ref=e12]: "10"
+        - generic [ref=e13]: places
+      - generic [ref=e14]:
+        - strong [ref=e15]: "446"
+        - generic [ref=e16]: sparse words
+      - generic [ref=e17]:
+        - strong [ref=e18]: 13.7k
+        - generic [ref=e19]: word links
+  - main [ref=e20]:
+    - complementary [ref=e21]:
+      - paragraph [ref=e22]: Lens
+      - generic [ref=e23]:
+        - generic [ref=e24]: 횟감 탱탱함
+        - generic [ref=e25]:
+          - generic [ref=e481]: 술 context
+          - generic [ref=e482]: 2 mentions
+          - generic [ref=e483]: lift 15.7x
+          - generic [ref=e484]: 광어연어
+        - paragraph [ref=e30]: 횟감 탱탱함. 매운탕 기가막힘. 찐리뷰입니다.
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - text: Selected expression
+          - generic [ref=e33]: 1 / 4
+        - slider "Selected expression 1 / 4" [ref=e485]: "0"
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - text: Sparse threshold
+          - generic [ref=e37]: "100"
+        - slider "Sparse threshold 100" [ref=e38]: "100"
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - text: Visit context
+          - generic [ref=e41]: 4 words
+        - generic [ref=e42]:
+          - button "전체" [ref=e486] [cursor=pointer]
+          - button "집밥" [ref=e487] [cursor=pointer]
+          - button "혼밥" [ref=e488] [cursor=pointer]
+          - button "술" [ref=e489] [cursor=pointer]
+          - button "데이트" [ref=e490] [cursor=pointer]
+          - button "힐링" [ref=e491] [cursor=pointer]
+          - button "빵" [ref=e492] [cursor=pointer]
+          - button "서비스" [ref=e493] [cursor=pointer]
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - heading "Restaurant signatures by sparse expression" [level=2] [ref=e54]
+          - paragraph [ref=e55]: 횟감 탱탱함 points to 광어연어 through a rare review phrase, then the heatmap shows whether that phrase travels to other places.
+        - generic [ref=e56]:
+          - generic [ref=e57]: low
+          - generic [ref=e59]: signature
+      - generic "Sparse expression heatmap" [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e494]:
+            - generic [ref=e495]: Sparse word
+            - generic [ref=e496]: 또바기
+            - generic [ref=e497]: 탕화쿵푸마라탕
+            - generic [ref=e498]: 광어연어
+            - generic [ref=e499]: 팔로피자
+            - generic [ref=e500]: 어반플랜트 합정
+            - generic [ref=e501]: 마더린러 베이글
+            - generic [ref=e502]: 브로트아트
+            - generic [ref=e503]: 규카츠정 성수점
+            - generic [ref=e504]: 대진 도원참치
+          - generic [ref=e505]:
+            - button "횟감 탱탱함 술 · 2 mentions" [ref=e507] [cursor=pointer]:
+              - strong [ref=e508]: 횟감 탱탱함
+              - generic [ref=e509]: 술 · 2 mentions
+            - 'button "횟감 탱탱함 at 또바기: none" [ref=e510] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 탕화쿵푸마라탕: none" [ref=e511] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 광어연어: 301" [ref=e512] [cursor=pointer]':
+              - generic [ref=e513]: "301"
+            - 'button "횟감 탱탱함 at 팔로피자: none" [ref=e514] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 어반플랜트 합정: none" [ref=e515] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 마더린러 베이글: none" [ref=e516] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 브로트아트: none" [ref=e517] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 규카츠정 성수점: none" [ref=e518] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 대진 도원참치: none" [ref=e519] [cursor=pointer]'
+          - generic [ref=e520]:
+            - button "스키다시 술 · 2 mentions" [ref=e522] [cursor=pointer]:
+              - strong [ref=e523]: 스키다시
+              - generic [ref=e524]: 술 · 2 mentions
+            - 'button "스키다시 at 또바기: none" [ref=e525] [cursor=pointer]'
+            - 'button "스키다시 at 탕화쿵푸마라탕: none" [ref=e526] [cursor=pointer]'
+            - 'button "스키다시 at 광어연어: 215" [ref=e527] [cursor=pointer]':
+              - generic [ref=e528]: "215"
+            - 'button "스키다시 at 팔로피자: none" [ref=e529] [cursor=pointer]'
+            - 'button "스키다시 at 어반플랜트 합정: none" [ref=e530] [cursor=pointer]'
+            - 'button "스키다시 at 마더린러 베이글: none" [ref=e531] [cursor=pointer]'
+            - 'button "스키다시 at 브로트아트: none" [ref=e532] [cursor=pointer]'
+            - 'button "스키다시 at 규카츠정 성수점: none" [ref=e533] [cursor=pointer]'
+            - 'button "스키다시 at 대진 도원참치: none" [ref=e534] [cursor=pointer]'
+          - generic [ref=e535]:
+            - button "술도둑 술 · 2 mentions" [ref=e537] [cursor=pointer]:
+              - strong [ref=e538]: 술도둑
+              - generic [ref=e539]: 술 · 2 mentions
+            - 'button "술도둑 at 또바기: none" [ref=e540] [cursor=pointer]'
+            - 'button "술도둑 at 탕화쿵푸마라탕: none" [ref=e541] [cursor=pointer]'
+            - 'button "술도둑 at 광어연어: 201" [ref=e542] [cursor=pointer]':
+              - generic [ref=e543]: "201"
+            - 'button "술도둑 at 팔로피자: none" [ref=e544] [cursor=pointer]'
+            - 'button "술도둑 at 어반플랜트 합정: none" [ref=e545] [cursor=pointer]'
+            - 'button "술도둑 at 마더린러 베이글: none" [ref=e546] [cursor=pointer]'
+            - 'button "술도둑 at 브로트아트: none" [ref=e547] [cursor=pointer]'
+            - 'button "술도둑 at 규카츠정 성수점: none" [ref=e548] [cursor=pointer]'
+            - 'button "술도둑 at 대진 도원참치: none" [ref=e549] [cursor=pointer]'
+          - generic [ref=e550]:
+            - button "가마살 술 · 2 mentions" [ref=e552] [cursor=pointer]:
+              - strong [ref=e553]: 가마살
+              - generic [ref=e554]: 술 · 2 mentions
+            - 'button "가마살 at 또바기: none" [ref=e555] [cursor=pointer]'
+            - 'button "가마살 at 탕화쿵푸마라탕: none" [ref=e556] [cursor=pointer]'
+            - 'button "가마살 at 광어연어: 150" [ref=e557] [cursor=pointer]':
+              - generic [ref=e558]: "150"
+            - 'button "가마살 at 팔로피자: none" [ref=e559] [cursor=pointer]'
+            - 'button "가마살 at 어반플랜트 합정: none" [ref=e560] [cursor=pointer]'
+            - 'button "가마살 at 마더린러 베이글: none" [ref=e561] [cursor=pointer]'
+            - 'button "가마살 at 브로트아트: none" [ref=e562] [cursor=pointer]'
+            - 'button "가마살 at 규카츠정 성수점: none" [ref=e563] [cursor=pointer]'
+            - 'button "가마살 at 대진 도원참치: 118" [ref=e564] [cursor=pointer]':
+              - generic [ref=e565]: "118"
+    - complementary [ref=e437]:
+      - paragraph [ref=e438]: Recommendation
+      - article [ref=e566]:
+        - generic [ref=e567]:
+          - heading "1. 광어연어" [level=3] [ref=e568]
+          - generic [ref=e569]: 93% match
+        - paragraph [ref=e572]: 횟감 탱탱함. 매운탕 기가막힘. 찐리뷰입니다.
+      - generic [ref=e454]:
+        - paragraph [ref=e573]: 광어연어 fingerprint
+        - generic [ref=e574]:
+          - generic [ref=e575]: 횟감 탱탱함
+          - generic [ref=e578]: "301"
+        - generic [ref=e579]:
+          - generic [ref=e580]: 스키다시
+          - generic [ref=e583]: "215"
+        - generic [ref=e584]:
+          - generic [ref=e585]: 술도둑
+          - generic [ref=e588]: "201"
+        - generic [ref=e589]:
+          - generic [ref=e590]: 가마살
+          - generic [ref=e593]: "150"

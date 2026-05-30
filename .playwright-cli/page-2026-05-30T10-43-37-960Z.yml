@@ -1,0 +1,209 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - paragraph [ref=e6]: 26-1 Data Visualization @ Sogang A&T
+          - heading "Hidden Bites" [level=1] [ref=e7]
+          - paragraph [ref=e8]: What are the factors for Matjip in Seoul?
+          - paragraph [ref=e9]: Google top 50 restaurants in Seoul, recalculated by Hidden Bites factor scores.
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - term [ref=e12]: Advisor
+              - definition [ref=e13]: professor
+            - generic [ref=e14]:
+              - term [ref=e15]: Members
+              - definition [ref=e16]: dongzoolee, Eunhong, Madina, Emilia
+        - generic "Seoul top restaurant dot map preview" [ref=e17]:
+          - img "Seoul top restaurants dot map" [ref=e18]
+          - generic [ref=e19]:
+            - generic [ref=e20]: 50 restaurants
+            - generic [ref=e21]: 500 factor dots
+      - generic "Project Q and A" [ref=e22]:
+        - generic [ref=e23]:
+          - button "Why we chose GMap?" [expanded] [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+            - generic [ref=e27]: Why we chose GMap?
+          - generic [ref=e28]: Naver Map has many advertising-like reviews and no star points, while Kakao Map has fewer reviews. Google Maps gave us a comparable review volume and rating signal.
+        - button "How we chose top 50 restaurants?" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+          - generic [ref=e33]: How we chose top 50 restaurants?
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: HB Scores
+        - heading "Each dot is a restaurant, measured against one matjip factor." [level=2] [ref=e37]
+        - paragraph [ref=e38]: Select a dot to move the report. The y-axis keeps the HB score in the original 0.00 to 5.00 range.
+      - generic [ref=e40]:
+        - img "HB score rank scatter plot" [ref=e41]:
+          - generic [ref=e43]: "5.0"
+          - generic [ref=e45]: "4.0"
+          - generic [ref=e47]: "3.0"
+          - generic [ref=e49]: "2.0"
+          - generic [ref=e51]: "1.0"
+          - generic [ref=e53]: "0.0"
+          - generic [ref=e55]: "1"
+          - generic [ref=e57]: "6"
+          - generic [ref=e59]: "11"
+          - generic [ref=e61]: "16"
+          - generic [ref=e63]: "21"
+          - generic [ref=e65]: "26"
+          - generic [ref=e67]: "31"
+          - generic [ref=e69]: "36"
+          - generic [ref=e71]: "41"
+          - generic [ref=e73]: "46"
+          - generic [ref=e75]: "50"
+          - button "무탄 코엑스점 MUTAN COEX Store(coex mall food restaurants)ㅣ美食ㅣコエックスモール レストラン Taste rank 1 3.18" [ref=e76] [cursor=pointer]
+          - button "보광정 이태원점 Taste rank 2 3.14" [ref=e77] [cursor=pointer]
+          - button "오다리집 간장게장 Taste rank 3 3.07" [ref=e78] [cursor=pointer]
+          - button "강남 돼지상회 무한리필 홍대점 | Hongdae Korean bbq restaurant All you can eat | サムギョプサル | 焼肉 | 烤肉 Taste rank 4 3.03" [ref=e79] [cursor=pointer]
+          - button "솥내음 마곡 발산역점 Taste rank 5 3.02" [ref=e80] [cursor=pointer]
+          - button "Mongvely Myeongdong Korean BBQ Beef All You Can Eat | 焼き肉 焼肉 | 烤肉 l 무한리필 몽블리 명동점 Taste rank 6 3.00" [ref=e81] [cursor=pointer]
+          - button "돼지래스토랑 둘째 Taste rank 7 2.99" [ref=e82] [cursor=pointer]
+          - button "핏제리아오 대학로본점 Taste rank 8 2.99" [ref=e83] [cursor=pointer]
+          - button "미도갈비 Taste rank 9 2.97" [ref=e84] [cursor=pointer]
+          - button "쌤쌤쌤 Taste rank 10 2.96" [ref=e85] [cursor=pointer]
+          - button "송파구맛집 지강한식당 잠실점 | restaurants | ナッコプセ | チキンカルビ レストラン | 鸡排 Taste rank 11 2.93" [ref=e86] [cursor=pointer]
+          - button "오시 망원본점 Taste rank 12 2.91" [ref=e87] [cursor=pointer]
+          - button "이국도산 EEGUK Taste rank 13 2.91" [ref=e88] [cursor=pointer]
+          - button "Myeongdong Korean BBQ 태초갈비 명동점 | Taecho Premium Beef 1++ | 明洞烤肉 | 明洞美食 烤肉 | ユッケビビンバ Taste rank 14 2.90" [ref=e89] [cursor=pointer]
+          - button "육지 홍대 Taste rank 15 2.86" [ref=e90] [cursor=pointer]
+          - button "하이웨이 서울 기사식당 영등포 타임스퀘어점 HIGHWAY SEOUL Restaurant タイムズスクエアのレストラン 海威餐厅 (永登浦店） Taste rank 16 2.86" [ref=e91] [cursor=pointer]
+          - button "홍대 맛집 깃뜰 | Hongdae Korean BBQ git teul | サムギョプサル | 美食 | 烤肉 Taste rank 17 2.85" [ref=e92] [cursor=pointer]
+          - button "빤닭빤닭(bbandak)닭갈비 Dakgalbi 닭한마리 명동맛집 / 明洞 グルメ / 明洞 タッカンマリ/ best restaurant /good restaurant Taste rank 18 2.85" [ref=e93] [cursor=pointer]
+          - button "스케줄 Taste rank 19 2.84" [ref=e94] [cursor=pointer]
+          - button "멘쇼쿠 Taste rank 20 2.84" [ref=e95] [cursor=pointer]
+          - button "이태리국시 성수(ITALYGUKSI SEONGSU) Taste rank 21 2.84" [ref=e96] [cursor=pointer]
+          - button "다몽집 | damongzip Taste rank 22 2.80" [ref=e97] [cursor=pointer]
+          - button "명동역 닭갈비 맛집 | 장인닭갈비 명동점 | Myeongdong JangIn Dakgalbi Restaurants | 匠人铁板鸡 明洞店 | 職人タッカルビ 明洞 Taste rank 23 2.78" [ref=e98] [cursor=pointer]
+          - button "서울맛집 지강한식당 압구정본점 | restaurants | 韓国ナッコプセレストラン | 餐馆 Taste rank 24 2.77" [ref=e99] [cursor=pointer]
+          - button "신림춘천집 구로디지털직영점 Taste rank 25 2.77" [ref=e100] [cursor=pointer]
+          - button "칠프로칠백식당 신논현점 Taste rank 26 2.76" [ref=e101] [cursor=pointer]
+          - button "왕비집 종로점 Taste rank 27 2.74" [ref=e102] [cursor=pointer]
+          - button "성수다락 | 성수 레스토랑 | Seongsu Restaurants | 성수 맛집 | レストラン | 聖水洞美食 Taste rank 28 2.73" [ref=e103] [cursor=pointer]
+          - button "아베크 청담 Avecque Cheongdam Korean Italian K-Fusion Taste rank 29 2.72" [ref=e104] [cursor=pointer]
+          - button "곱 마포직영점 공덕맛집ㅣmapo gopchang restaurantㅣ コプチャン | ホルモン | 孔德站 美食|대창|막창|회식|모임 Taste rank 30 2.71" [ref=e105] [cursor=pointer]
+          - button "육몽 홍대본점 Taste rank 31 2.71" [ref=e106] [cursor=pointer]
+          - button "한식왕비집 을지로점 Taste rank 32 2.70" [ref=e107] [cursor=pointer]
+          - button "아비꼬 타임스퀘어점 Taste rank 33 2.60" [ref=e108] [cursor=pointer]
+          - button "월화고기 보라매점 Taste rank 34 2.53" [ref=e109] [cursor=pointer]
+          - button "왕비집 명동본점 Taste rank 35 2.53" [ref=e110] [cursor=pointer]
+          - button "혼고집 명동직영점 Taste rank 36 2.53" [ref=e111] [cursor=pointer]
+          - button "마포곱창타운 Taste rank 37 2.51" [ref=e112] [cursor=pointer]
+          - button "빠리가옥 Taste rank 38 2.50" [ref=e113] [cursor=pointer]
+          - button "탐광 Taste rank 39 2.46" [ref=e114] [cursor=pointer]
+          - button "왕비집 명동중앙점 Taste rank 40 2.43" [ref=e115] [cursor=pointer]
+          - button "명동맛집 더식당 Myeongdong Korea bbq Restaurants THE SIC DDANG | Kfood | kbbq | 明洞 グルメ 韓国焼肉レストラン | 明洞必食 Taste rank 41 2.35" [ref=e116] [cursor=pointer]
+          - button "새마을식당 홍대서교점 Taste rank 42 2.29" [ref=e117] [cursor=pointer]
+          - button "별양집 Taste rank 43 2.22" [ref=e118] [cursor=pointer]
+          - button "오레노라멘 본점 Taste rank 44 1.91" [ref=e119] [cursor=pointer]
+          - button "뚝배기집 Taste rank 45 1.82" [ref=e120] [cursor=pointer]
+          - button "무교동북어국집 Taste rank 46 1.74" [ref=e121] [cursor=pointer]
+          - button "유즈라멘 본점 Taste rank 47 1.69" [ref=e122] [cursor=pointer]
+          - button "농민백암순대 Taste rank 48 1.62" [ref=e123] [cursor=pointer]
+          - button "농민백암순대 본점 Taste rank 49 1.58" [ref=e124] [cursor=pointer]
+          - button "원조할아버지손두부 Taste rank 50 1.52" [ref=e125] [cursor=pointer]
+        - combobox "X-axis factor" [ref=e126] [cursor=pointer]:
+          - option "Taste" [selected]
+          - option "Service"
+          - option "Value"
+          - option "Atmosphere"
+          - option "Accessibility"
+          - option "Wait/Queue"
+          - option "Visit Occasion"
+          - option "Portion"
+          - option "Cleanliness"
+          - option "Signature/Uniqueness"
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - paragraph: Selected Restaurant Report
+        - heading "무탄 코엑스점 MUTAN COEX Store(coex mall food restaurants)ㅣ美食ㅣコエックスモール レストラン" [level=2] [ref=e129]
+        - link "Google Maps" [ref=e130] [cursor=pointer]:
+          - /url: https://maps.google.com/?cid=7960667460495961219&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA
+          - text: Google Maps
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: HB position
+          - generic [ref=e137]:
+            - generic [ref=e138]: "3.18"
+            - strong [ref=e139]: Taste
+          - paragraph [ref=e140]: Google 4.9 · 8,507 public reviews · 3,264 collected reviews
+          - paragraph [ref=e141]: 서울특별시 강남구 영동대로 513 B1층 H121호 코엑스몰
+        - generic [ref=e142]:
+          - paragraph [ref=e143]: Factor profile
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e146]: Taste
+              - strong [ref=e149]: "3.18"
+            - generic [ref=e150]:
+              - generic [ref=e151]: Service
+              - strong [ref=e154]: "0.81"
+            - generic [ref=e155]:
+              - generic [ref=e156]: Value
+              - strong [ref=e159]: "1.98"
+            - generic [ref=e160]:
+              - generic [ref=e161]: Atmosphere
+              - strong [ref=e164]: "0.84"
+            - generic [ref=e165]:
+              - generic [ref=e166]: Accessibility
+              - strong [ref=e169]: "0.36"
+            - generic [ref=e170]:
+              - generic [ref=e171]: Wait/Queue
+              - strong [ref=e174]: "0.89"
+            - generic [ref=e175]:
+              - generic [ref=e176]: Visit Occasion
+              - strong [ref=e179]: "0.94"
+            - generic [ref=e180]:
+              - generic [ref=e181]: Portion
+              - strong [ref=e184]: "1.64"
+            - generic [ref=e185]:
+              - generic [ref=e186]: Cleanliness
+              - strong [ref=e189]: "0.50"
+            - generic [ref=e190]:
+              - generic [ref=e191]: Signature/Uniqueness
+              - strong [ref=e194]: "1.51"
+        - generic [ref=e195]:
+          - paragraph [ref=e196]: The Review Adjectives
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - generic [ref=e200]: 😌
+              - strong [ref=e201]: Comfort
+              - generic [ref=e202]: 9%
+            - generic [ref=e203]:
+              - generic [ref=e205]: 😊
+              - strong [ref=e206]: Delight
+              - generic [ref=e207]: 60%
+            - generic [ref=e208]:
+              - generic [ref=e210]: ✨
+              - strong [ref=e211]: Surprise
+              - generic [ref=e212]: 23%
+            - generic [ref=e213]:
+              - generic [ref=e215]: ·
+              - strong [ref=e216]: Neutral
+              - generic [ref=e217]: 3%
+            - generic [ref=e218]:
+              - generic [ref=e220]: "!"
+              - strong [ref=e221]: Friction
+              - generic [ref=e222]: 5%
+        - generic [ref=e223]:
+          - paragraph [ref=e224]: The Unique Keywords
+          - generic "Keyword filter" [ref=e225]:
+            - button "짜장면" [ref=e226] [cursor=pointer]
+            - button "트러플 짜장면" [ref=e227] [cursor=pointer]
+            - button "트러플" [ref=e228] [cursor=pointer]
+            - button "스테이크 트러플" [ref=e229] [cursor=pointer]
+            - button "유린기" [ref=e230] [cursor=pointer]
+            - button "맛있어요" [ref=e231] [cursor=pointer]
+          - generic [ref=e232]:
+            - blockquote [ref=e233]:
+              - paragraph [ref=e234]: 으로 여자친구랑 데이트하러 방문했습니다! 파김치랑 먹는 스테이크 트러플 짜장면도 넘 맛있고 유린기도 고추랑 같이 먹는 맛이 최고였습니다😋 또 방문할게요!...
+              - generic [ref=e235]: JAEHO YOON · 5.0 · 1주 전
+            - blockquote [ref=e236]:
+              - paragraph [ref=e237]: 2인커플세트 먹었는데 양도 엄청 많고 짜장면이 진짜 너무 맛있어요.. 멘보샤 크기는 역대급이 유린기는 너무 느끼하지않게 맛있습니다. 재방문의사 있어욤ㅋ
+              - generic [ref=e238]: 심재민/기계·스마트·산업공학부(기계공학전공) · 5.0 · 1주 전
+            - blockquote [ref=e239]:
+              - paragraph [ref=e240]: 트러플 짜장면 맛집 찾는다면 무탄 코엑스점 추천! 시그니처인 트러플 짜장면 하프 먹었는데 향이 진하고 끝까지 맛있어서 역시 후회 없는 선택이었어요. 어니언 꿔바로우도 바삭하면서 달달해서 잘 어울렸고, 매장도 넓고 깔끔해서 식사하기 좋았습니다. (짜장면 비비다가 꿔바로우...
+              - generic [ref=e241]: 노지원 · 5.0 · 1주 전
+            - blockquote [ref=e242]:
+              - paragraph [ref=e243]: 다. 2. 무탄에 오면 꼭 먹어야 할 시그니처 메뉴 스테이크 트러플 짜장면 (★원픽 추천) 메뉴가 나오자마자 확 풍기는 진한 트러플 향이 예술입니다. 큼직하고 두툼한 스테이크가 면이 안 보일 정도로 듬뿍 올라가 있고, 계란후라이와 생 트러플까지 더해져 비주얼부터 압...
+              - generic [ref=e244]: 88 SEOUL · 5.0 · 1주 전
+  - alert [ref=e245]

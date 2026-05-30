@@ -1,0 +1,629 @@
+- generic [ref=e2]:
+  - img [ref=e3]
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - button "이전 페이지" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]
+        - generic [ref=e9]: 이전 페이지
+      - heading "탕화쿵푸마라탕 압구정역점" [level=1] [ref=e10]
+      - button "페이지 닫기" [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+        - generic [ref=e14]: 페이지 닫기
+    - main [ref=e16]:
+      - generic [ref=e18]:
+        - button "업체" [ref=e21] [cursor=pointer]:
+          - img "업체" [ref=e22]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - button "업체" [ref=e27] [cursor=pointer]:
+              - img "업체" [ref=e28]
+            - button "업체" [ref=e31] [cursor=pointer]:
+              - img "업체" [ref=e32]
+          - generic [ref=e33]:
+            - button "업체" [ref=e36] [cursor=pointer]:
+              - img "업체" [ref=e37]
+            - button "업체 이미지 갯수 +341" [ref=e40] [cursor=pointer]:
+              - img "업체" [ref=e41]
+              - generic [ref=e42]:
+                - img [ref=e43]
+                - generic [ref=e45]: 이미지 갯수
+                - text: "+341"
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - text: 탕화쿵푸마라탕 압구정역점
+              - generic [ref=e50]: 마라탕
+            - button "알림받기" [ref=e780] [cursor=pointer]:
+              - img [ref=e781]
+              - text: 알림받기
+          - generic [ref=e51]:
+            - button "방문자 리뷰 243" [ref=e53] [cursor=pointer]
+            - button "블로그 리뷰 1" [ref=e55] [cursor=pointer]
+        - generic [ref=e56]:
+          - button "출발" [ref=e57] [cursor=pointer]
+          - button "도착" [ref=e58] [cursor=pointer]
+        - generic [ref=e60]:
+          - button "저장" [ref=e62] [cursor=pointer]:
+            - img [ref=e63]
+            - text: 저장
+          - button "거리뷰" [ref=e66] [cursor=pointer]:
+            - img [ref=e67]
+            - generic [ref=e69]: 거리뷰
+          - link "공유" [ref=e71] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e72]
+            - text: 공유
+        - button "배달준비중" [disabled] [ref=e79]:
+          - img [ref=e80]
+          - text: 배달준비중
+      - tablist [ref=e83]:
+        - generic [ref=e86]:
+          - tab "홈" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: 홈
+          - tab "소식" [ref=e89] [cursor=pointer]:
+            - generic [ref=e90]: 소식
+          - tab "메뉴" [ref=e91] [cursor=pointer]:
+            - generic [ref=e92]: 메뉴
+          - tab "리뷰" [selected] [ref=e93] [cursor=pointer]:
+            - generic [ref=e94]: 리뷰
+          - tab "사진" [ref=e95] [cursor=pointer]:
+            - generic [ref=e96]: 사진
+          - tab "정보" [ref=e97] [cursor=pointer]:
+            - generic [ref=e98]: 정보
+      - generic [ref=e100]:
+        - tablist [ref=e102]:
+          - generic [ref=e103]:
+            - tab "방문자 리뷰" [selected] [ref=e104] [cursor=pointer]:
+              - img [ref=e105]
+              - text: 방문자 리뷰
+            - tab "블로그 리뷰" [ref=e107] [cursor=pointer]
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - heading "이런 점이 좋았어요 안내" [level=2] [ref=e110]:
+              - generic [ref=e111]:
+                - text: 이런 점이 좋았어요
+                - button "안내" [ref=e112] [cursor=pointer]:
+                  - img [ref=e113]
+                  - generic [ref=e115]: 안내
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - img [ref=e119]
+                - emphasis [ref=e121]: 239회
+                - text: 193명 참여
+              - generic [ref=e122]:
+                - list [ref=e123]:
+                  - listitem [ref=e124]:
+                    - generic [ref=e126]:
+                      - generic [ref=e127]: "\"음식이 맛있어요\""
+                      - generic [ref=e128]:
+                        - generic [ref=e129]: 이 키워드를 선택한 인원
+                        - text: "224"
+                  - listitem [ref=e130]:
+                    - generic [ref=e132]:
+                      - generic [ref=e133]: "\"재료가 신선해요\""
+                      - generic [ref=e134]:
+                        - generic [ref=e135]: 이 키워드를 선택한 인원
+                        - text: "191"
+                  - listitem [ref=e136]:
+                    - generic [ref=e138]:
+                      - generic [ref=e139]: "\"친절해요\""
+                      - generic [ref=e140]:
+                        - generic [ref=e141]: 이 키워드를 선택한 인원
+                        - text: "94"
+                  - listitem [ref=e142]:
+                    - generic [ref=e144]:
+                      - generic [ref=e145]: "\"매장이 청결해요\""
+                      - generic [ref=e146]:
+                        - generic [ref=e147]: 이 키워드를 선택한 인원
+                        - text: "69"
+                  - listitem [ref=e148]:
+                    - generic [ref=e150]:
+                      - generic [ref=e151]: "\"양이 많아요\""
+                      - generic [ref=e152]:
+                        - generic [ref=e153]: 이 키워드를 선택한 인원
+                        - text: "68"
+                - button "더보기" [ref=e155] [cursor=pointer]:
+                  - img [ref=e157]
+                  - generic [ref=e159]: 더보기
+          - generic [ref=e160]:
+            - heading "사진·영상 리뷰" [level=2] [ref=e161]:
+              - generic [ref=e162]: 사진·영상 리뷰
+            - generic [ref=e166]:
+              - list [ref=e167]:
+                - listitem [ref=e168]:
+                  - button "방문자리뷰사진 1" [ref=e169] [cursor=pointer]:
+                    - img "방문자리뷰사진 1" [ref=e170]
+                - listitem [ref=e171]:
+                  - button "방문자리뷰사진 2" [ref=e172] [cursor=pointer]:
+                    - img "방문자리뷰사진 2" [ref=e173]
+                - listitem [ref=e174]:
+                  - button "방문자리뷰사진 3" [ref=e175] [cursor=pointer]:
+                    - img "방문자리뷰사진 3" [ref=e176]
+                - listitem [ref=e177]:
+                  - button "방문자리뷰사진 4" [ref=e178] [cursor=pointer]:
+                    - img "방문자리뷰사진 4" [ref=e179]
+                - listitem [ref=e180]:
+                  - button "방문자리뷰사진 5" [ref=e181] [cursor=pointer]:
+                    - img "방문자리뷰사진 5" [ref=e182]
+                - listitem [ref=e183]:
+                  - button "방문자리뷰사진 6" [ref=e184] [cursor=pointer]:
+                    - img "방문자리뷰사진 6" [ref=e185]
+                - listitem [ref=e186]:
+                  - button "방문자리뷰사진 7" [ref=e187] [cursor=pointer]:
+                    - img "방문자리뷰사진 7" [ref=e188]
+                - listitem [ref=e189]:
+                  - button "방문자리뷰사진 8" [ref=e190] [cursor=pointer]:
+                    - img "방문자리뷰사진 8" [ref=e191]
+                - listitem [ref=e192]:
+                  - button "방문자리뷰사진 9" [ref=e193] [cursor=pointer]:
+                    - img "방문자리뷰사진 9" [ref=e194]
+                - listitem [ref=e195]:
+                  - button "방문자리뷰사진 10" [ref=e196] [cursor=pointer]:
+                    - img "방문자리뷰사진 10" [ref=e197]
+                - listitem [ref=e198]:
+                  - button "더보기" [ref=e199] [cursor=pointer]:
+                    - img [ref=e201]
+                    - text: 더보기
+              - button "다음":
+                - generic [ref=e203] [cursor=pointer]:
+                  - img [ref=e204]
+                  - generic [ref=e206]: 다음
+          - generic [ref=e207]:
+            - heading "리뷰236 안내 사진/영상 리뷰만" [level=2] [ref=e208]:
+              - generic [ref=e209]:
+                - text: 리뷰
+                - emphasis [ref=e210]: "236"
+                - button "안내" [ref=e211] [cursor=pointer]:
+                  - img [ref=e212]
+                  - generic [ref=e214]: 안내
+              - checkbox "사진/영상 리뷰만" [ref=e216] [cursor=pointer]:
+                - img [ref=e217]
+                - text: 사진/영상 리뷰만
+            - generic [ref=e219]:
+              - generic [ref=e221]:
+                - generic [ref=e226]:
+                  - generic [ref=e227]: 메뉴
+                  - button "꿔바로우12" [ref=e229] [cursor=pointer]
+                  - button "마라샹궈8" [ref=e231] [cursor=pointer]
+                  - button "고기2" [ref=e233] [cursor=pointer]
+                  - button "계란볶음밥1" [ref=e235] [cursor=pointer]
+                  - button "계란후라이1" [ref=e237] [cursor=pointer]
+                  - button "마라탕1" [ref=e239] [cursor=pointer]
+                  - button "볶음밥1" [ref=e241] [cursor=pointer]
+                  - button "불닭1" [ref=e243] [cursor=pointer]
+                  - button "소고기1" [ref=e245] [cursor=pointer]
+                  - button "안심1" [ref=e247] [cursor=pointer]
+                  - button "쭈꾸미1" [ref=e249] [cursor=pointer]
+                  - button "튀김1" [ref=e251] [cursor=pointer]
+                - generic [ref=e256]:
+                  - generic [ref=e257]: 특징
+                  - button "맛190" [ref=e259] [cursor=pointer]
+                  - button "만족도101" [ref=e261] [cursor=pointer]
+                  - button "서비스62" [ref=e263] [cursor=pointer]
+                  - button "청결도21" [ref=e265] [cursor=pointer]
+                  - button "분위기7" [ref=e267] [cursor=pointer]
+                  - button "음식량3" [ref=e269] [cursor=pointer]
+                  - button "메뉴3" [ref=e271] [cursor=pointer]
+                  - button "목적3" [ref=e273] [cursor=pointer]
+                  - button "대기시간2" [ref=e275] [cursor=pointer]
+                  - button "배달1" [ref=e277] [cursor=pointer]
+                  - button "위치1" [ref=e279] [cursor=pointer]
+                  - button "가격1" [ref=e281] [cursor=pointer]
+              - generic [ref=e282]:
+                - generic [ref=e283]:
+                  - button "추천순" [ref=e284] [cursor=pointer]
+                  - option "최신순" [selected] [ref=e285] [cursor=pointer]
+                - button "정렬 안내" [ref=e287] [cursor=pointer]:
+                  - img [ref=e288]
+                  - generic [ref=e290]: 정렬 안내
+              - button "리뷰 클렌징 시스템 작동중입니다" [ref=e292] [cursor=pointer]:
+                - emphasis [ref=e293]: 리뷰 클렌징 시스템
+                - text: 작동중입니다
+                - img [ref=e294]
+              - list [ref=e296]:
+                - listitem [ref=e297]:
+                  - generic [ref=e298]:
+                    - button "프로필" [ref=e299] [cursor=pointer]:
+                      - img "프로필" [ref=e301]
+                    - button "제제7 리뷰 95 사진 406" [ref=e302] [cursor=pointer]:
+                      - generic [ref=e305]: 제제7
+                      - generic [ref=e306]: 리뷰 95 사진 406
+                    - button "팔로우" [ref=e307] [cursor=pointer]
+                  - generic [ref=e788]:
+                    - button "방문자리뷰사진" [ref=e790] [cursor=pointer]:
+                      - img "방문자리뷰사진" [ref=e791]
+                    - button "방문자리뷰사진" [ref=e793] [cursor=pointer]:
+                      - img "방문자리뷰사진" [ref=e794]
+                  - button "저녁에 방문 예약 없이 이용 대기 시간 바로 입장 여행, 일상 혼자" [expanded] [ref=e795] [cursor=pointer]:
+                    - generic [ref=e310]:
+                      - img [ref=e311]
+                      - emphasis [ref=e313]: 저녁에 방문
+                    - emphasis [ref=e315]: 예약 없이 이용
+                    - generic [ref=e316]:
+                      - text: 대기 시간
+                      - emphasis [ref=e317]: 바로 입장
+                    - emphasis [ref=e319]: 여행, 일상
+                    - emphasis [ref=e321]: 혼자
+                  - button "믿고먹는 탕화쿵푸!! 역시 맛있는데 매장도 청결하고 재료도 잘관리돼는거같아요 맛있게먹었습니다❤️" [ref=e323] [cursor=pointer]:
+                    - text: 믿고먹는 탕화쿵푸!! 역시 맛있는데
+                    - text: 매장도 청결하고 재료도 잘관리돼는거같아요
+                    - text: 맛있게먹었습니다❤️
+                  - generic [ref=e324]:
+                    - generic [ref=e325]: 음식이 맛있어요
+                    - generic [ref=e796]: 재료가 신선해요
+                    - generic [ref=e797]: 양이 많아요
+                    - generic [ref=e798]: 가성비가 좋아요
+                    - generic [ref=e799]: 혼밥하기 좋아요
+                  - generic [ref=e329]:
+                    - button "반응 남기기" [ref=e332] [cursor=pointer]:
+                      - img [ref=e334]
+                      - text: 반응 남기기
+                    - generic [ref=e337]:
+                      - generic [ref=e338]:
+                        - generic [ref=e339]: 방문일
+                        - time [ref=e340]: 5.12.화
+                        - generic [ref=e341]: 2026년 5월 12일 화요일
+                      - text: 1번째 방문
+                      - generic [ref=e342]:
+                        - generic [ref=e343]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e344]:
+                  - generic [ref=e345]:
+                    - button "프로필" [ref=e346] [cursor=pointer]:
+                      - img "프로필" [ref=e348]
+                    - button "853709 리뷰 57 사진 75" [ref=e349] [cursor=pointer]:
+                      - generic [ref=e352]: "853709"
+                      - generic [ref=e353]: 리뷰 57 사진 75
+                    - button "팔로우" [ref=e354] [cursor=pointer]
+                  - button "방문자리뷰사진" [ref=e806] [cursor=pointer]:
+                    - img "방문자리뷰사진" [ref=e807]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 일상 혼자" [ref=e356] [cursor=pointer]:
+                    - generic [ref=e357]:
+                      - img [ref=e358]
+                      - emphasis [ref=e360]: 점심에 방문
+                    - emphasis [ref=e362]: 예약 없이 이용
+                    - generic [ref=e363]:
+                      - text: 대기 시간
+                      - emphasis [ref=e364]: 바로 입장
+                    - emphasis [ref=e366]: 일상
+                    - emphasis [ref=e368]: 혼자
+                  - button "오늘도 맛있게 먹고 갑니다!" [ref=e370] [cursor=pointer]
+                  - generic [ref=e371]:
+                    - generic [ref=e372]: 인테리어가 멋져요
+                    - button "+4 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e373] [cursor=pointer]:
+                      - text: "+4"
+                      - generic [ref=e374]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e375]: 펼쳐보기
+                  - generic [ref=e376]:
+                    - button "반응 남기기" [ref=e379] [cursor=pointer]:
+                      - img [ref=e381]
+                      - text: 반응 남기기
+                    - generic [ref=e384]:
+                      - generic [ref=e385]:
+                        - generic [ref=e386]: 방문일
+                        - time [ref=e387]: 5.12.화
+                        - generic [ref=e388]: 2026년 5월 12일 화요일
+                      - text: 2번째 방문
+                      - generic [ref=e389]:
+                        - generic [ref=e390]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e391]:
+                  - generic [ref=e392]:
+                    - button "프로필" [ref=e393] [cursor=pointer]:
+                      - img "프로필" [ref=e395]
+                    - button "jye**** 리뷰 21 사진 8" [ref=e396] [cursor=pointer]:
+                      - generic [ref=e399]: jye****
+                      - generic [ref=e400]: 리뷰 21 사진 8
+                    - button "팔로우" [ref=e401] [cursor=pointer]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 일상 혼자" [ref=e403] [cursor=pointer]:
+                    - generic [ref=e404]:
+                      - img [ref=e405]
+                      - emphasis [ref=e407]: 점심에 방문
+                    - emphasis [ref=e409]: 예약 없이 이용
+                    - generic [ref=e410]:
+                      - text: 대기 시간
+                      - emphasis [ref=e411]: 바로 입장
+                    - emphasis [ref=e413]: 일상
+                    - emphasis [ref=e415]: 혼자
+                  - button "저번에 왔을때도 맛있게 먹어서 또 왔습니다" [ref=e417] [cursor=pointer]
+                  - generic [ref=e418]:
+                    - generic [ref=e419]: 음식이 맛있어요
+                    - button "+2 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e420] [cursor=pointer]:
+                      - text: "+2"
+                      - generic [ref=e421]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e422]: 펼쳐보기
+                  - generic [ref=e423]:
+                    - button "반응 남기기" [ref=e426] [cursor=pointer]:
+                      - img [ref=e428]
+                      - text: 반응 남기기
+                    - generic [ref=e431]:
+                      - generic [ref=e432]:
+                        - generic [ref=e433]: 방문일
+                        - time [ref=e434]: 5.12.화
+                        - generic [ref=e435]: 2026년 5월 12일 화요일
+                      - text: 2번째 방문
+                      - generic [ref=e436]:
+                        - generic [ref=e437]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e438]:
+                  - generic [ref=e439]:
+                    - button "프로필" [ref=e440] [cursor=pointer]:
+                      - img "프로필" [ref=e442]
+                    - button "루이스5663 리뷰 12 사진 8" [ref=e443] [cursor=pointer]:
+                      - generic [ref=e446]: 루이스5663
+                      - generic [ref=e447]: 리뷰 12 사진 8
+                    - button "팔로우" [ref=e448] [cursor=pointer]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 일상 지인・동료" [ref=e450] [cursor=pointer]:
+                    - generic [ref=e451]:
+                      - img [ref=e452]
+                      - emphasis [ref=e454]: 점심에 방문
+                    - emphasis [ref=e456]: 예약 없이 이용
+                    - generic [ref=e457]:
+                      - text: 대기 시간
+                      - emphasis [ref=e458]: 바로 입장
+                    - emphasis [ref=e460]: 일상
+                    - emphasis [ref=e462]: 지인・동료
+                  - button "오늘은 마라상궈와 꿔바로우를 먹었는데 역시 맛있네요" [ref=e464] [cursor=pointer]
+                  - generic [ref=e465]:
+                    - generic [ref=e466]: 음식이 맛있어요
+                    - button "+2 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e467] [cursor=pointer]:
+                      - text: "+2"
+                      - generic [ref=e468]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e469]: 펼쳐보기
+                  - generic [ref=e470]:
+                    - button "반응 남기기" [ref=e473] [cursor=pointer]:
+                      - img [ref=e475]
+                      - text: 반응 남기기
+                    - generic [ref=e478]:
+                      - generic [ref=e479]:
+                        - generic [ref=e480]: 방문일
+                        - time [ref=e481]: 5.12.화
+                        - generic [ref=e482]: 2026년 5월 12일 화요일
+                      - text: 8번째 방문
+                      - generic [ref=e483]:
+                        - generic [ref=e484]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e485]:
+                  - generic [ref=e486]:
+                    - button "프로필" [ref=e487] [cursor=pointer]:
+                      - img "프로필" [ref=e489]
+                    - button "척추전문가 리뷰 5 사진 6" [ref=e490] [cursor=pointer]:
+                      - generic [ref=e493]: 척추전문가
+                      - generic [ref=e494]: 리뷰 5 사진 6
+                    - button "팔로우" [ref=e495] [cursor=pointer]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 일상 부모님" [ref=e497] [cursor=pointer]:
+                    - generic [ref=e498]:
+                      - img [ref=e499]
+                      - emphasis [ref=e501]: 점심에 방문
+                    - emphasis [ref=e503]: 예약 없이 이용
+                    - generic [ref=e504]:
+                      - text: 대기 시간
+                      - emphasis [ref=e505]: 바로 입장
+                    - emphasis [ref=e507]: 일상
+                    - emphasis [ref=e509]: 부모님
+                  - button "진찌진찌진짜맛있어요" [ref=e511] [cursor=pointer]
+                  - generic [ref=e513]: 음식이 맛있어요
+                  - generic [ref=e514]:
+                    - button "반응 남기기" [ref=e517] [cursor=pointer]:
+                      - img [ref=e519]
+                      - text: 반응 남기기
+                    - generic [ref=e522]:
+                      - generic [ref=e523]:
+                        - generic [ref=e524]: 방문일
+                        - time [ref=e525]: 5.10.일
+                        - generic [ref=e526]: 2026년 5월 10일 일요일
+                      - text: 1번째 방문
+                      - generic [ref=e527]:
+                        - generic [ref=e528]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e529]:
+                  - generic [ref=e530]:
+                    - button "프로필" [ref=e531] [cursor=pointer]:
+                      - img "프로필" [ref=e533]
+                    - button "june3944 리뷰 35 사진 31" [ref=e534] [cursor=pointer]:
+                      - generic [ref=e537]: june3944
+                      - generic [ref=e538]: 리뷰 35 사진 31
+                    - button "팔로우" [ref=e539] [cursor=pointer]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 가족모임 아이" [ref=e541] [cursor=pointer]:
+                    - generic [ref=e542]:
+                      - img [ref=e543]
+                      - emphasis [ref=e545]: 점심에 방문
+                    - emphasis [ref=e547]: 예약 없이 이용
+                    - generic [ref=e548]:
+                      - text: 대기 시간
+                      - emphasis [ref=e549]: 바로 입장
+                    - emphasis [ref=e551]: 가족모임
+                    - emphasis [ref=e553]: 아이
+                  - generic [ref=e554]:
+                    - button "아이가 제일 좋아하는 마라탕집이예요. 다른곳도 다녀봤지만 식재료도 깔끔하고 식기류도 깔끔 너무친절하셔서 아이와종종들려요~" [ref=e555] [cursor=pointer]:
+                      - text: 아이가 제일 좋아하는 마라탕집이예요.
+                      - text: 다른곳도
+                      - text: 다녀봤지만
+                      - text: 식재료도 깔끔하고
+                      - text: 식기류도 깔끔
+                      - text: 너무친절하셔서
+                      - text: 아이와종종들려요~
+                    - button "더보기" [ref=e557] [cursor=pointer]
+                  - generic [ref=e558]:
+                    - generic [ref=e559]: 음식이 맛있어요
+                    - button "+3 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e560] [cursor=pointer]:
+                      - text: "+3"
+                      - generic [ref=e561]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e562]: 펼쳐보기
+                  - generic [ref=e563]:
+                    - button "반응 남기기" [ref=e566] [cursor=pointer]:
+                      - img [ref=e568]
+                      - text: 반응 남기기
+                    - generic [ref=e571]:
+                      - generic [ref=e572]:
+                        - generic [ref=e573]: 방문일
+                        - time [ref=e574]: 5.9.토
+                        - generic [ref=e575]: 2026년 5월 9일 토요일
+                      - text: 1번째 방문
+                      - generic [ref=e576]:
+                        - generic [ref=e577]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e578]:
+                  - generic [ref=e579]:
+                    - button "프로필" [ref=e580] [cursor=pointer]:
+                      - img "프로필" [ref=e582]
+                    - button "밍기적밍 리뷰 31 사진 29" [ref=e583] [cursor=pointer]:
+                      - generic [ref=e586]: 밍기적밍
+                      - generic [ref=e587]: 리뷰 31 사진 29
+                    - button "팔로우" [ref=e588] [cursor=pointer]
+                  - button "저녁에 방문예약 없이 이용 대기 시간 바로 입장 가족모임 부모님" [ref=e590] [cursor=pointer]:
+                    - generic [ref=e591]:
+                      - img [ref=e592]
+                      - emphasis [ref=e594]: 저녁에 방문
+                    - emphasis [ref=e596]: 예약 없이 이용
+                    - generic [ref=e597]:
+                      - text: 대기 시간
+                      - emphasis [ref=e598]: 바로 입장
+                    - emphasis [ref=e600]: 가족모임
+                    - emphasis [ref=e602]: 부모님
+                  - button "매장이 깔끔하고 넓고 밝네요 정갈히 정리되고 위생적으로 보입니다" [ref=e604] [cursor=pointer]:
+                    - text: 매장이 깔끔하고 넓고 밝네요
+                    - text: 정갈히 정리되고 위생적으로 보입니다
+                  - generic [ref=e605]:
+                    - generic [ref=e606]: 음식이 맛있어요
+                    - button "+4 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e607] [cursor=pointer]:
+                      - text: "+4"
+                      - generic [ref=e608]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e609]: 펼쳐보기
+                  - generic [ref=e610]:
+                    - button "반응 남기기" [ref=e613] [cursor=pointer]:
+                      - img [ref=e615]
+                      - text: 반응 남기기
+                    - generic [ref=e618]:
+                      - generic [ref=e619]:
+                        - generic [ref=e620]: 방문일
+                        - time [ref=e621]: 5.7.목
+                        - generic [ref=e622]: 2026년 5월 7일 목요일
+                      - text: 1번째 방문
+                      - generic [ref=e623]:
+                        - generic [ref=e624]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e625]:
+                  - generic [ref=e626]:
+                    - button "프로필" [ref=e627] [cursor=pointer]:
+                      - img "프로필" [ref=e629]
+                    - button "bbyongejo 리뷰 15 사진 5" [ref=e630] [cursor=pointer]:
+                      - generic [ref=e633]: bbyongejo
+                      - generic [ref=e634]: 리뷰 15 사진 5
+                    - button "팔로우" [ref=e635] [cursor=pointer]
+                  - button "저녁에 방문예약 없이 이용 대기 시간 바로 입장 친목 친구" [ref=e637] [cursor=pointer]:
+                    - generic [ref=e638]:
+                      - img [ref=e639]
+                      - emphasis [ref=e641]: 저녁에 방문
+                    - emphasis [ref=e643]: 예약 없이 이용
+                    - generic [ref=e644]:
+                      - text: 대기 시간
+                      - emphasis [ref=e645]: 바로 입장
+                    - emphasis [ref=e647]: 친목
+                    - emphasis [ref=e649]: 친구
+                  - button "맛잇어여" [ref=e651] [cursor=pointer]
+                  - generic [ref=e653]: 음식이 맛있어요
+                  - generic [ref=e654]:
+                    - button "반응 남기기" [ref=e657] [cursor=pointer]:
+                      - img [ref=e659]
+                      - text: 반응 남기기
+                    - generic [ref=e662]:
+                      - generic [ref=e663]:
+                        - generic [ref=e664]: 방문일
+                        - time [ref=e665]: 5.5.화
+                        - generic [ref=e666]: 2026년 5월 5일 화요일
+                      - text: 1번째 방문
+                      - generic [ref=e667]:
+                        - generic [ref=e668]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e669]:
+                  - generic [ref=e670]:
+                    - button "프로필" [ref=e671] [cursor=pointer]:
+                      - img "프로필" [ref=e673]
+                    - button "vegant 리뷰 8 사진 10" [ref=e674] [cursor=pointer]:
+                      - generic [ref=e677]: vegant
+                      - generic [ref=e678]: 리뷰 8 사진 10
+                    - button "팔로우" [ref=e679] [cursor=pointer]
+                  - button "점심에 방문" [ref=e681] [cursor=pointer]:
+                    - generic [ref=e682]:
+                      - img [ref=e683]
+                      - emphasis [ref=e685]: 점심에 방문
+                  - button "너무 맛있어요!!" [ref=e687] [cursor=pointer]
+                  - generic [ref=e688]:
+                    - generic [ref=e689]: 음식이 맛있어요
+                    - button "+1 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e690] [cursor=pointer]:
+                      - text: "+1"
+                      - generic [ref=e691]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e692]: 펼쳐보기
+                  - generic [ref=e693]:
+                    - button "반응 남기기" [ref=e696] [cursor=pointer]:
+                      - img [ref=e698]
+                      - text: 반응 남기기
+                    - generic [ref=e701]:
+                      - generic [ref=e702]:
+                        - generic [ref=e703]: 방문일
+                        - time [ref=e704]: 5.4.월
+                        - generic [ref=e705]: 2026년 5월 4일 월요일
+                      - text: 1번째 방문
+                      - generic [ref=e706]:
+                        - generic [ref=e707]: 인증 수단
+                        - text: 영수증
+                - listitem [ref=e708]:
+                  - generic [ref=e709]:
+                    - button "프로필" [ref=e710] [cursor=pointer]:
+                      - img "프로필" [ref=e712]
+                    - button "루이스5663 리뷰 12 사진 8" [ref=e713] [cursor=pointer]:
+                      - generic [ref=e716]: 루이스5663
+                      - generic [ref=e717]: 리뷰 12 사진 8
+                    - button "팔로우" [ref=e718] [cursor=pointer]
+                  - button "점심에 방문예약 없이 이용 대기 시간 바로 입장 일상 지인・동료" [ref=e720] [cursor=pointer]:
+                    - generic [ref=e721]:
+                      - img [ref=e722]
+                      - emphasis [ref=e724]: 점심에 방문
+                    - emphasis [ref=e726]: 예약 없이 이용
+                    - generic [ref=e727]:
+                      - text: 대기 시간
+                      - emphasis [ref=e728]: 바로 입장
+                    - emphasis [ref=e730]: 일상
+                    - emphasis [ref=e732]: 지인・동료
+                  - button "항상 맛있게 먹고있습니다. 오늘도 맛있네요^^" [ref=e734] [cursor=pointer]
+                  - generic [ref=e735]:
+                    - generic [ref=e736]: 음식이 맛있어요
+                    - button "+4 개의 리뷰가 더 있습니다 펼쳐보기" [ref=e737] [cursor=pointer]:
+                      - text: "+4"
+                      - generic [ref=e738]: 개의 리뷰가 더 있습니다
+                      - generic [ref=e739]: 펼쳐보기
+                  - generic [ref=e740]:
+                    - button "반응 남기기" [ref=e743] [cursor=pointer]:
+                      - img [ref=e745]
+                      - text: 반응 남기기
+                    - generic [ref=e748]:
+                      - generic [ref=e749]:
+                        - generic [ref=e750]: 방문일
+                        - time [ref=e751]: 5.4.월
+                        - generic [ref=e752]: 2026년 5월 4일 월요일
+                      - text: 7번째 방문
+                      - generic [ref=e753]:
+                        - generic [ref=e754]: 인증 수단
+                        - text: 영수증
+            - button "펼쳐서 더보기" [ref=e757] [cursor=pointer]:
+              - generic [ref=e758]:
+                - text: 펼쳐서 더보기
+                - img [ref=e759]
+          - heading "키워드·별점 리뷰7 펼쳐보기" [level=2] [ref=e762]:
+            - generic [ref=e763]:
+              - text: 키워드·별점 리뷰
+              - emphasis [ref=e764]: "7"
+            - button "펼쳐보기" [ref=e766] [cursor=pointer]:
+              - text: 펼쳐보기
+              - img [ref=e767]
+    - contentinfo [ref=e769]:
+      - generic [ref=e770]:
+        - button "이용약관" [ref=e771] [cursor=pointer]
+        - button "고객센터" [ref=e772] [cursor=pointer]
+        - button "리뷰운영정책" [ref=e773] [cursor=pointer]
+        - button "신고센터" [ref=e774] [cursor=pointer]
+      - button "네이버" [ref=e776] [cursor=pointer]:
+        - generic [ref=e777]: 네이버
+        - img [ref=e778]

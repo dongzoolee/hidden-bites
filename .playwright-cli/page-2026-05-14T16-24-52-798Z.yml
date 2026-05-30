@@ -1,0 +1,443 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Hidden Bites" [level=1] [ref=e5]
+      - generic [ref=e6]: Sparse Word Lens
+    - generic "Dataset summary" [ref=e7]:
+      - generic [ref=e8]:
+        - strong [ref=e9]: 4,091
+        - generic [ref=e10]: reviews
+      - generic [ref=e11]:
+        - strong [ref=e12]: "10"
+        - generic [ref=e13]: places
+      - generic [ref=e14]:
+        - strong [ref=e15]: "446"
+        - generic [ref=e16]: sparse words
+      - generic [ref=e17]:
+        - strong [ref=e18]: 13.7k
+        - generic [ref=e19]: word links
+  - main [ref=e20]:
+    - complementary [ref=e21]:
+      - paragraph [ref=e22]: Lens
+      - generic [ref=e23]:
+        - generic [ref=e24]: 손맛
+        - generic [ref=e25]:
+          - generic [ref=e26]: 집밥 context
+          - generic [ref=e27]: 2 mentions
+          - generic [ref=e28]: lift 21.5x
+          - generic [ref=e29]: 또바기
+        - paragraph [ref=e30]: 요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - text: Selected expression
+          - generic [ref=e33]: 4 / 34
+        - slider "Selected expression 4 / 34" [ref=e34]: "3"
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - text: Sparse threshold
+          - generic [ref=e37]: "100"
+        - slider "Sparse threshold 100" [ref=e38]: "100"
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - text: Visit context
+          - generic [ref=e41]: 34 words
+        - generic [ref=e42]:
+          - button "전체" [ref=e43] [cursor=pointer]
+          - button "집밥" [ref=e44] [cursor=pointer]
+          - button "혼밥" [ref=e45] [cursor=pointer]
+          - button "술" [ref=e46] [cursor=pointer]
+          - button "데이트" [ref=e47] [cursor=pointer]
+          - button "힐링" [ref=e48] [cursor=pointer]
+          - button "빵" [ref=e49] [cursor=pointer]
+          - button "서비스" [ref=e50] [cursor=pointer]
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - heading "Restaurant signatures by sparse expression" [level=2] [ref=e54]
+          - paragraph [ref=e55]: 손맛 points to 또바기 through a rare review phrase, then the heatmap shows whether that phrase travels to other places.
+        - generic [ref=e56]:
+          - generic [ref=e57]: low
+          - generic [ref=e59]: signature
+      - generic "Sparse expression heatmap" [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: Sparse word
+            - generic [ref=e64]: 또바기
+            - generic [ref=e65]: 탕화쿵푸마라탕
+            - generic [ref=e66]: 광어연어
+            - generic [ref=e67]: 팔로피자
+            - generic [ref=e68]: 어반플랜트 합정
+            - generic [ref=e69]: 마더린러 베이글
+            - generic [ref=e70]: 브로트아트
+            - generic [ref=e71]: 규카츠정 성수점
+            - generic [ref=e72]: 대진 도원참치
+          - generic [ref=e73]:
+            - button "마라비빔 혼밥 · 2 mentions" [ref=e75] [cursor=pointer]:
+              - strong [ref=e76]: 마라비빔
+              - generic [ref=e77]: 혼밥 · 2 mentions
+            - 'button "마라비빔 at 또바기: none" [ref=e78] [cursor=pointer]'
+            - 'button "마라비빔 at 탕화쿵푸마라탕: 331" [ref=e79] [cursor=pointer]':
+              - generic [ref=e80]: "331"
+            - 'button "마라비빔 at 광어연어: none" [ref=e81] [cursor=pointer]'
+            - 'button "마라비빔 at 팔로피자: none" [ref=e82] [cursor=pointer]'
+            - 'button "마라비빔 at 어반플랜트 합정: none" [ref=e83] [cursor=pointer]'
+            - 'button "마라비빔 at 마더린러 베이글: none" [ref=e84] [cursor=pointer]'
+            - 'button "마라비빔 at 브로트아트: none" [ref=e85] [cursor=pointer]'
+            - 'button "마라비빔 at 규카츠정 성수점: none" [ref=e86] [cursor=pointer]'
+            - 'button "마라비빔 at 대진 도원참치: none" [ref=e87] [cursor=pointer]'
+          - generic [ref=e88]:
+            - button "조미료 없음 집밥 · 2 mentions" [ref=e90] [cursor=pointer]:
+              - strong [ref=e91]: 조미료 없음
+              - generic [ref=e92]: 집밥 · 2 mentions
+            - 'button "조미료 없음 at 또바기: 310" [ref=e93] [cursor=pointer]':
+              - generic [ref=e94]: "310"
+            - 'button "조미료 없음 at 탕화쿵푸마라탕: none" [ref=e95] [cursor=pointer]'
+            - 'button "조미료 없음 at 광어연어: none" [ref=e96] [cursor=pointer]'
+            - 'button "조미료 없음 at 팔로피자: none" [ref=e97] [cursor=pointer]'
+            - 'button "조미료 없음 at 어반플랜트 합정: none" [ref=e98] [cursor=pointer]'
+            - 'button "조미료 없음 at 마더린러 베이글: none" [ref=e99] [cursor=pointer]'
+            - 'button "조미료 없음 at 브로트아트: none" [ref=e100] [cursor=pointer]'
+            - 'button "조미료 없음 at 규카츠정 성수점: none" [ref=e101] [cursor=pointer]'
+            - 'button "조미료 없음 at 대진 도원참치: none" [ref=e102] [cursor=pointer]'
+          - generic [ref=e103]:
+            - button "횟감 탱탱함 술 · 2 mentions" [ref=e105] [cursor=pointer]:
+              - strong [ref=e106]: 횟감 탱탱함
+              - generic [ref=e107]: 술 · 2 mentions
+            - 'button "횟감 탱탱함 at 또바기: none" [ref=e108] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 탕화쿵푸마라탕: none" [ref=e109] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 광어연어: 301" [ref=e110] [cursor=pointer]':
+              - generic [ref=e111]: "301"
+            - 'button "횟감 탱탱함 at 팔로피자: none" [ref=e112] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 어반플랜트 합정: none" [ref=e113] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 마더린러 베이글: none" [ref=e114] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 브로트아트: none" [ref=e115] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 규카츠정 성수점: none" [ref=e116] [cursor=pointer]'
+            - 'button "횟감 탱탱함 at 대진 도원참치: none" [ref=e117] [cursor=pointer]'
+          - generic [ref=e118]:
+            - button "손맛 집밥 · 2 mentions" [ref=e120] [cursor=pointer]:
+              - strong [ref=e121]: 손맛
+              - generic [ref=e122]: 집밥 · 2 mentions
+            - 'button "손맛 at 또바기: 255" [ref=e123] [cursor=pointer]':
+              - generic [ref=e124]: "255"
+            - 'button "손맛 at 탕화쿵푸마라탕: none" [ref=e125] [cursor=pointer]'
+            - 'button "손맛 at 광어연어: none" [ref=e126] [cursor=pointer]'
+            - 'button "손맛 at 팔로피자: none" [ref=e127] [cursor=pointer]'
+            - 'button "손맛 at 어반플랜트 합정: none" [ref=e128] [cursor=pointer]'
+            - 'button "손맛 at 마더린러 베이글: none" [ref=e129] [cursor=pointer]'
+            - 'button "손맛 at 브로트아트: none" [ref=e130] [cursor=pointer]'
+            - 'button "손맛 at 규카츠정 성수점: 72" [ref=e131] [cursor=pointer]':
+              - generic [ref=e132]: "72"
+            - 'button "손맛 at 대진 도원참치: none" [ref=e133] [cursor=pointer]'
+          - generic [ref=e134]:
+            - button "막걸리식초 집밥 · 1 mentions" [ref=e136] [cursor=pointer]:
+              - strong [ref=e137]: 막걸리식초
+              - generic [ref=e138]: 집밥 · 1 mentions
+            - 'button "막걸리식초 at 또바기: 248" [ref=e139] [cursor=pointer]':
+              - generic [ref=e140]: "248"
+            - 'button "막걸리식초 at 탕화쿵푸마라탕: none" [ref=e141] [cursor=pointer]'
+            - 'button "막걸리식초 at 광어연어: none" [ref=e142] [cursor=pointer]'
+            - 'button "막걸리식초 at 팔로피자: none" [ref=e143] [cursor=pointer]'
+            - 'button "막걸리식초 at 어반플랜트 합정: none" [ref=e144] [cursor=pointer]'
+            - 'button "막걸리식초 at 마더린러 베이글: none" [ref=e145] [cursor=pointer]'
+            - 'button "막걸리식초 at 브로트아트: none" [ref=e146] [cursor=pointer]'
+            - 'button "막걸리식초 at 규카츠정 성수점: none" [ref=e147] [cursor=pointer]'
+            - 'button "막걸리식초 at 대진 도원참치: none" [ref=e148] [cursor=pointer]'
+          - generic [ref=e149]:
+            - button "땅콩소스 눅진 혼밥 · 3 mentions" [ref=e151] [cursor=pointer]:
+              - strong [ref=e152]: 땅콩소스 눅진
+              - generic [ref=e153]: 혼밥 · 3 mentions
+            - 'button "땅콩소스 눅진 at 또바기: none" [ref=e154] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 탕화쿵푸마라탕: 238" [ref=e155] [cursor=pointer]':
+              - generic [ref=e156]: "238"
+            - 'button "땅콩소스 눅진 at 광어연어: none" [ref=e157] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 팔로피자: none" [ref=e158] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 어반플랜트 합정: none" [ref=e159] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 마더린러 베이글: none" [ref=e160] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 브로트아트: none" [ref=e161] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 규카츠정 성수점: none" [ref=e162] [cursor=pointer]'
+            - 'button "땅콩소스 눅진 at 대진 도원참치: none" [ref=e163] [cursor=pointer]'
+          - generic [ref=e164]:
+            - button "스키다시 술 · 2 mentions" [ref=e166] [cursor=pointer]:
+              - strong [ref=e167]: 스키다시
+              - generic [ref=e168]: 술 · 2 mentions
+            - 'button "스키다시 at 또바기: none" [ref=e169] [cursor=pointer]'
+            - 'button "스키다시 at 탕화쿵푸마라탕: none" [ref=e170] [cursor=pointer]'
+            - 'button "스키다시 at 광어연어: 215" [ref=e171] [cursor=pointer]':
+              - generic [ref=e172]: "215"
+            - 'button "스키다시 at 팔로피자: none" [ref=e173] [cursor=pointer]'
+            - 'button "스키다시 at 어반플랜트 합정: none" [ref=e174] [cursor=pointer]'
+            - 'button "스키다시 at 마더린러 베이글: none" [ref=e175] [cursor=pointer]'
+            - 'button "스키다시 at 브로트아트: none" [ref=e176] [cursor=pointer]'
+            - 'button "스키다시 at 규카츠정 성수점: none" [ref=e177] [cursor=pointer]'
+            - 'button "스키다시 at 대진 도원참치: none" [ref=e178] [cursor=pointer]'
+          - generic [ref=e179]:
+            - button "푸근 집밥 · 1 mentions" [ref=e181] [cursor=pointer]:
+              - strong [ref=e182]: 푸근
+              - generic [ref=e183]: 집밥 · 1 mentions
+            - 'button "푸근 at 또바기: 214" [ref=e184] [cursor=pointer]':
+              - generic [ref=e185]: "214"
+            - 'button "푸근 at 탕화쿵푸마라탕: none" [ref=e186] [cursor=pointer]'
+            - 'button "푸근 at 광어연어: none" [ref=e187] [cursor=pointer]'
+            - 'button "푸근 at 팔로피자: none" [ref=e188] [cursor=pointer]'
+            - 'button "푸근 at 어반플랜트 합정: none" [ref=e189] [cursor=pointer]'
+            - 'button "푸근 at 마더린러 베이글: none" [ref=e190] [cursor=pointer]'
+            - 'button "푸근 at 브로트아트: none" [ref=e191] [cursor=pointer]'
+            - 'button "푸근 at 규카츠정 성수점: none" [ref=e192] [cursor=pointer]'
+            - 'button "푸근 at 대진 도원참치: none" [ref=e193] [cursor=pointer]'
+          - generic [ref=e194]:
+            - button "술도둑 술 · 2 mentions" [ref=e196] [cursor=pointer]:
+              - strong [ref=e197]: 술도둑
+              - generic [ref=e198]: 술 · 2 mentions
+            - 'button "술도둑 at 또바기: none" [ref=e199] [cursor=pointer]'
+            - 'button "술도둑 at 탕화쿵푸마라탕: none" [ref=e200] [cursor=pointer]'
+            - 'button "술도둑 at 광어연어: 201" [ref=e201] [cursor=pointer]':
+              - generic [ref=e202]: "201"
+            - 'button "술도둑 at 팔로피자: none" [ref=e203] [cursor=pointer]'
+            - 'button "술도둑 at 어반플랜트 합정: none" [ref=e204] [cursor=pointer]'
+            - 'button "술도둑 at 마더린러 베이글: none" [ref=e205] [cursor=pointer]'
+            - 'button "술도둑 at 브로트아트: none" [ref=e206] [cursor=pointer]'
+            - 'button "술도둑 at 규카츠정 성수점: none" [ref=e207] [cursor=pointer]'
+            - 'button "술도둑 at 대진 도원참치: none" [ref=e208] [cursor=pointer]'
+          - generic [ref=e209]:
+            - button "존경하는 선배님 서비스 · 2 mentions" [ref=e211] [cursor=pointer]:
+              - strong [ref=e212]: 존경하는 선배님
+              - generic [ref=e213]: 서비스 · 2 mentions
+            - 'button "존경하는 선배님 at 또바기: none" [ref=e214] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 탕화쿵푸마라탕: none" [ref=e215] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 광어연어: none" [ref=e216] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 팔로피자: none" [ref=e217] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 어반플랜트 합정: none" [ref=e218] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 마더린러 베이글: none" [ref=e219] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 브로트아트: none" [ref=e220] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 규카츠정 성수점: none" [ref=e221] [cursor=pointer]'
+            - 'button "존경하는 선배님 at 대진 도원참치: 201" [ref=e222] [cursor=pointer]':
+              - generic [ref=e223]: "201"
+          - generic [ref=e224]:
+            - button "맵찔이 혼밥 · 3 mentions" [ref=e226] [cursor=pointer]:
+              - strong [ref=e227]: 맵찔이
+              - generic [ref=e228]: 혼밥 · 3 mentions
+            - 'button "맵찔이 at 또바기: 64" [ref=e229] [cursor=pointer]':
+              - generic [ref=e230]: "64"
+            - 'button "맵찔이 at 탕화쿵푸마라탕: 200" [ref=e231] [cursor=pointer]':
+              - generic [ref=e232]: "200"
+            - 'button "맵찔이 at 광어연어: none" [ref=e233] [cursor=pointer]'
+            - 'button "맵찔이 at 팔로피자: none" [ref=e234] [cursor=pointer]'
+            - 'button "맵찔이 at 어반플랜트 합정: none" [ref=e235] [cursor=pointer]'
+            - 'button "맵찔이 at 마더린러 베이글: none" [ref=e236] [cursor=pointer]'
+            - 'button "맵찔이 at 브로트아트: none" [ref=e237] [cursor=pointer]'
+            - 'button "맵찔이 at 규카츠정 성수점: none" [ref=e238] [cursor=pointer]'
+            - 'button "맵찔이 at 대진 도원참치: none" [ref=e239] [cursor=pointer]'
+          - generic [ref=e240]:
+            - button "핸드폰 거치대 혼밥 · 3 mentions" [ref=e242] [cursor=pointer]:
+              - strong [ref=e243]: 핸드폰 거치대
+              - generic [ref=e244]: 혼밥 · 3 mentions
+            - 'button "핸드폰 거치대 at 또바기: none" [ref=e245] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 탕화쿵푸마라탕: 175" [ref=e246] [cursor=pointer]':
+              - generic [ref=e247]: "175"
+            - 'button "핸드폰 거치대 at 광어연어: none" [ref=e248] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 팔로피자: none" [ref=e249] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 어반플랜트 합정: none" [ref=e250] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 마더린러 베이글: none" [ref=e251] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 브로트아트: none" [ref=e252] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 규카츠정 성수점: none" [ref=e253] [cursor=pointer]'
+            - 'button "핸드폰 거치대 at 대진 도원참치: none" [ref=e254] [cursor=pointer]'
+          - generic [ref=e255]:
+            - button "참새방앗간 빵 · 1 mentions" [ref=e257] [cursor=pointer]:
+              - strong [ref=e258]: 참새방앗간
+              - generic [ref=e259]: 빵 · 1 mentions
+            - 'button "참새방앗간 at 또바기: none" [ref=e260] [cursor=pointer]'
+            - 'button "참새방앗간 at 탕화쿵푸마라탕: none" [ref=e261] [cursor=pointer]'
+            - 'button "참새방앗간 at 광어연어: none" [ref=e262] [cursor=pointer]'
+            - 'button "참새방앗간 at 팔로피자: none" [ref=e263] [cursor=pointer]'
+            - 'button "참새방앗간 at 어반플랜트 합정: none" [ref=e264] [cursor=pointer]'
+            - 'button "참새방앗간 at 마더린러 베이글: 171" [ref=e265] [cursor=pointer]':
+              - generic [ref=e266]: "171"
+            - 'button "참새방앗간 at 브로트아트: none" [ref=e267] [cursor=pointer]'
+            - 'button "참새방앗간 at 규카츠정 성수점: none" [ref=e268] [cursor=pointer]'
+            - 'button "참새방앗간 at 대진 도원참치: none" [ref=e269] [cursor=pointer]'
+          - generic [ref=e270]:
+            - button "대체불가 빵 · 1 mentions" [ref=e272] [cursor=pointer]:
+              - strong [ref=e273]: 대체불가
+              - generic [ref=e274]: 빵 · 1 mentions
+            - 'button "대체불가 at 또바기: none" [ref=e275] [cursor=pointer]'
+            - 'button "대체불가 at 탕화쿵푸마라탕: none" [ref=e276] [cursor=pointer]'
+            - 'button "대체불가 at 광어연어: none" [ref=e277] [cursor=pointer]'
+            - 'button "대체불가 at 팔로피자: none" [ref=e278] [cursor=pointer]'
+            - 'button "대체불가 at 어반플랜트 합정: none" [ref=e279] [cursor=pointer]'
+            - 'button "대체불가 at 마더린러 베이글: 171" [ref=e280] [cursor=pointer]':
+              - generic [ref=e281]: "171"
+            - 'button "대체불가 at 브로트아트: none" [ref=e282] [cursor=pointer]'
+            - 'button "대체불가 at 규카츠정 성수점: none" [ref=e283] [cursor=pointer]'
+            - 'button "대체불가 at 대진 도원참치: none" [ref=e284] [cursor=pointer]'
+          - generic [ref=e285]:
+            - button "부서지다 데이트 · 2 mentions" [ref=e287] [cursor=pointer]:
+              - strong [ref=e288]: 부서지다
+              - generic [ref=e289]: 데이트 · 2 mentions
+            - 'button "부서지다 at 또바기: none" [ref=e290] [cursor=pointer]'
+            - 'button "부서지다 at 탕화쿵푸마라탕: none" [ref=e291] [cursor=pointer]'
+            - 'button "부서지다 at 광어연어: none" [ref=e292] [cursor=pointer]'
+            - 'button "부서지다 at 팔로피자: none" [ref=e293] [cursor=pointer]'
+            - 'button "부서지다 at 어반플랜트 합정: none" [ref=e294] [cursor=pointer]'
+            - 'button "부서지다 at 마더린러 베이글: none" [ref=e295] [cursor=pointer]'
+            - 'button "부서지다 at 브로트아트: none" [ref=e296] [cursor=pointer]'
+            - 'button "부서지다 at 규카츠정 성수점: 156" [ref=e297] [cursor=pointer]':
+              - generic [ref=e298]: "156"
+            - 'button "부서지다 at 대진 도원참치: none" [ref=e299] [cursor=pointer]'
+          - generic [ref=e300]:
+            - button "육즙 흘러나오다 데이트 · 2 mentions" [ref=e302] [cursor=pointer]:
+              - strong [ref=e303]: 육즙 흘러나오다
+              - generic [ref=e304]: 데이트 · 2 mentions
+            - 'button "육즙 흘러나오다 at 또바기: none" [ref=e305] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 탕화쿵푸마라탕: none" [ref=e306] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 광어연어: none" [ref=e307] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 팔로피자: none" [ref=e308] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 어반플랜트 합정: none" [ref=e309] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 마더린러 베이글: none" [ref=e310] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 브로트아트: none" [ref=e311] [cursor=pointer]'
+            - 'button "육즙 흘러나오다 at 규카츠정 성수점: 156" [ref=e312] [cursor=pointer]':
+              - generic [ref=e313]: "156"
+            - 'button "육즙 흘러나오다 at 대진 도원참치: none" [ref=e314] [cursor=pointer]'
+          - generic [ref=e315]:
+            - button "가마살 술 · 2 mentions" [ref=e317] [cursor=pointer]:
+              - strong [ref=e318]: 가마살
+              - generic [ref=e319]: 술 · 2 mentions
+            - 'button "가마살 at 또바기: none" [ref=e320] [cursor=pointer]'
+            - 'button "가마살 at 탕화쿵푸마라탕: none" [ref=e321] [cursor=pointer]'
+            - 'button "가마살 at 광어연어: 150" [ref=e322] [cursor=pointer]':
+              - generic [ref=e323]: "150"
+            - 'button "가마살 at 팔로피자: none" [ref=e324] [cursor=pointer]'
+            - 'button "가마살 at 어반플랜트 합정: none" [ref=e325] [cursor=pointer]'
+            - 'button "가마살 at 마더린러 베이글: none" [ref=e326] [cursor=pointer]'
+            - 'button "가마살 at 브로트아트: none" [ref=e327] [cursor=pointer]'
+            - 'button "가마살 at 규카츠정 성수점: none" [ref=e328] [cursor=pointer]'
+            - 'button "가마살 at 대진 도원참치: 118" [ref=e329] [cursor=pointer]':
+              - generic [ref=e330]: "118"
+          - generic [ref=e331]:
+            - button "치아바타샌드위치 빵 · 2 mentions" [ref=e333] [cursor=pointer]:
+              - strong [ref=e334]: 치아바타샌드위치
+              - generic [ref=e335]: 빵 · 2 mentions
+            - 'button "치아바타샌드위치 at 또바기: none" [ref=e336] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 탕화쿵푸마라탕: none" [ref=e337] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 광어연어: none" [ref=e338] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 팔로피자: none" [ref=e339] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 어반플랜트 합정: none" [ref=e340] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 마더린러 베이글: none" [ref=e341] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 브로트아트: 149" [ref=e342] [cursor=pointer]':
+              - generic [ref=e343]: "149"
+            - 'button "치아바타샌드위치 at 규카츠정 성수점: none" [ref=e344] [cursor=pointer]'
+            - 'button "치아바타샌드위치 at 대진 도원참치: none" [ref=e345] [cursor=pointer]'
+          - generic [ref=e346]:
+            - button "칭찬일색 서비스 · 2 mentions" [ref=e348] [cursor=pointer]:
+              - strong [ref=e349]: 칭찬일색
+              - generic [ref=e350]: 서비스 · 2 mentions
+            - 'button "칭찬일색 at 또바기: none" [ref=e351] [cursor=pointer]'
+            - 'button "칭찬일색 at 탕화쿵푸마라탕: none" [ref=e352] [cursor=pointer]'
+            - 'button "칭찬일색 at 광어연어: none" [ref=e353] [cursor=pointer]'
+            - 'button "칭찬일색 at 팔로피자: none" [ref=e354] [cursor=pointer]'
+            - 'button "칭찬일색 at 어반플랜트 합정: none" [ref=e355] [cursor=pointer]'
+            - 'button "칭찬일색 at 마더린러 베이글: none" [ref=e356] [cursor=pointer]'
+            - 'button "칭찬일색 at 브로트아트: none" [ref=e357] [cursor=pointer]'
+            - 'button "칭찬일색 at 규카츠정 성수점: none" [ref=e358] [cursor=pointer]'
+            - 'button "칭찬일색 at 대진 도원참치: 142" [ref=e359] [cursor=pointer]':
+              - generic [ref=e360]: "142"
+          - generic [ref=e361]:
+            - button "송년회 서비스 · 3 mentions" [ref=e363] [cursor=pointer]:
+              - strong [ref=e364]: 송년회
+              - generic [ref=e365]: 서비스 · 3 mentions
+            - 'button "송년회 at 또바기: none" [ref=e366] [cursor=pointer]'
+            - 'button "송년회 at 탕화쿵푸마라탕: none" [ref=e367] [cursor=pointer]'
+            - 'button "송년회 at 광어연어: none" [ref=e368] [cursor=pointer]'
+            - 'button "송년회 at 팔로피자: none" [ref=e369] [cursor=pointer]'
+            - 'button "송년회 at 어반플랜트 합정: none" [ref=e370] [cursor=pointer]'
+            - 'button "송년회 at 마더린러 베이글: none" [ref=e371] [cursor=pointer]'
+            - 'button "송년회 at 브로트아트: none" [ref=e372] [cursor=pointer]'
+            - 'button "송년회 at 규카츠정 성수점: none" [ref=e373] [cursor=pointer]'
+            - 'button "송년회 at 대진 도원참치: 142" [ref=e374] [cursor=pointer]':
+              - generic [ref=e375]: "142"
+          - generic [ref=e376]:
+            - button "피자 챔피언 데이트 · 2 mentions" [ref=e378] [cursor=pointer]:
+              - strong [ref=e379]: 피자 챔피언
+              - generic [ref=e380]: 데이트 · 2 mentions
+            - 'button "피자 챔피언 at 또바기: none" [ref=e381] [cursor=pointer]'
+            - 'button "피자 챔피언 at 탕화쿵푸마라탕: none" [ref=e382] [cursor=pointer]'
+            - 'button "피자 챔피언 at 광어연어: none" [ref=e383] [cursor=pointer]'
+            - 'button "피자 챔피언 at 팔로피자: 134" [ref=e384] [cursor=pointer]':
+              - generic [ref=e385]: "134"
+            - 'button "피자 챔피언 at 어반플랜트 합정: none" [ref=e386] [cursor=pointer]'
+            - 'button "피자 챔피언 at 마더린러 베이글: none" [ref=e387] [cursor=pointer]'
+            - 'button "피자 챔피언 at 브로트아트: none" [ref=e388] [cursor=pointer]'
+            - 'button "피자 챔피언 at 규카츠정 성수점: none" [ref=e389] [cursor=pointer]'
+            - 'button "피자 챔피언 at 대진 도원참치: none" [ref=e390] [cursor=pointer]'
+          - generic [ref=e391]:
+            - button "화이트 라구 데이트 · 2 mentions" [ref=e393] [cursor=pointer]:
+              - strong [ref=e394]: 화이트 라구
+              - generic [ref=e395]: 데이트 · 2 mentions
+            - 'button "화이트 라구 at 또바기: none" [ref=e396] [cursor=pointer]'
+            - 'button "화이트 라구 at 탕화쿵푸마라탕: none" [ref=e397] [cursor=pointer]'
+            - 'button "화이트 라구 at 광어연어: none" [ref=e398] [cursor=pointer]'
+            - 'button "화이트 라구 at 팔로피자: 134" [ref=e399] [cursor=pointer]':
+              - generic [ref=e400]: "134"
+            - 'button "화이트 라구 at 어반플랜트 합정: 62" [ref=e401] [cursor=pointer]':
+              - generic [ref=e402]: "62"
+            - 'button "화이트 라구 at 마더린러 베이글: none" [ref=e403] [cursor=pointer]'
+            - 'button "화이트 라구 at 브로트아트: none" [ref=e404] [cursor=pointer]'
+            - 'button "화이트 라구 at 규카츠정 성수점: none" [ref=e405] [cursor=pointer]'
+            - 'button "화이트 라구 at 대진 도원참치: none" [ref=e406] [cursor=pointer]'
+          - generic [ref=e407]:
+            - button "댄스끝나면 혼밥 · 1 mentions" [ref=e409] [cursor=pointer]:
+              - strong [ref=e410]: 댄스끝나면
+              - generic [ref=e411]: 혼밥 · 1 mentions
+            - 'button "댄스끝나면 at 또바기: none" [ref=e412] [cursor=pointer]'
+            - 'button "댄스끝나면 at 탕화쿵푸마라탕: 132" [ref=e413] [cursor=pointer]':
+              - generic [ref=e414]: "132"
+            - 'button "댄스끝나면 at 광어연어: none" [ref=e415] [cursor=pointer]'
+            - 'button "댄스끝나면 at 팔로피자: none" [ref=e416] [cursor=pointer]'
+            - 'button "댄스끝나면 at 어반플랜트 합정: none" [ref=e417] [cursor=pointer]'
+            - 'button "댄스끝나면 at 마더린러 베이글: none" [ref=e418] [cursor=pointer]'
+            - 'button "댄스끝나면 at 브로트아트: none" [ref=e419] [cursor=pointer]'
+            - 'button "댄스끝나면 at 규카츠정 성수점: none" [ref=e420] [cursor=pointer]'
+            - 'button "댄스끝나면 at 대진 도원참치: none" [ref=e421] [cursor=pointer]'
+          - generic [ref=e422]:
+            - button "쫄바삭 데이트 · 1 mentions" [ref=e424] [cursor=pointer]:
+              - strong [ref=e425]: 쫄바삭
+              - generic [ref=e426]: 데이트 · 1 mentions
+            - 'button "쫄바삭 at 또바기: none" [ref=e427] [cursor=pointer]'
+            - 'button "쫄바삭 at 탕화쿵푸마라탕: none" [ref=e428] [cursor=pointer]'
+            - 'button "쫄바삭 at 광어연어: none" [ref=e429] [cursor=pointer]'
+            - 'button "쫄바삭 at 팔로피자: 127" [ref=e430] [cursor=pointer]':
+              - generic [ref=e431]: "127"
+            - 'button "쫄바삭 at 어반플랜트 합정: none" [ref=e432] [cursor=pointer]'
+            - 'button "쫄바삭 at 마더린러 베이글: none" [ref=e433] [cursor=pointer]'
+            - 'button "쫄바삭 at 브로트아트: none" [ref=e434] [cursor=pointer]'
+            - 'button "쫄바삭 at 규카츠정 성수점: none" [ref=e435] [cursor=pointer]'
+            - 'button "쫄바삭 at 대진 도원참치: none" [ref=e436] [cursor=pointer]'
+    - complementary [ref=e437]:
+      - paragraph [ref=e438]: Recommendation
+      - generic [ref=e439]:
+        - article [ref=e440]:
+          - generic [ref=e441]:
+            - heading "1. 또바기" [level=3] [ref=e442]
+            - generic [ref=e443]: 88% match
+          - paragraph [ref=e446]: 요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.
+        - article [ref=e447]:
+          - generic [ref=e448]:
+            - heading "2. 규카츠정 성수점" [level=3] [ref=e449]
+            - generic [ref=e450]: 66% match
+          - paragraph [ref=e453]: 요즘 보기 드문 당산의 백반 전문점. 시원 칼칼하게 잘 먹고 갑니다. 친절하시고 손맛 좋아요.
+      - generic [ref=e454]:
+        - paragraph [ref=e455]: 또바기 fingerprint
+        - generic [ref=e456]:
+          - generic [ref=e457]: 조미료 없음
+          - generic [ref=e460]: "310"
+        - generic [ref=e461]:
+          - generic [ref=e462]: 손맛
+          - generic [ref=e465]: "255"
+        - generic [ref=e466]:
+          - generic [ref=e467]: 막걸리식초
+          - generic [ref=e470]: "248"
+        - generic [ref=e471]:
+          - generic [ref=e472]: 푸근
+          - generic [ref=e475]: "214"
+        - generic [ref=e476]:
+          - generic [ref=e477]: 맵찔이
+          - generic [ref=e480]: "64"
