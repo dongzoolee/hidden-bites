@@ -6,3 +6,6 @@
 - 마커 클릭 시 식당의 상세 정보(이름, 평점, 리뷰 수, 구 등)가 표시됩니다.
 - CI/CD 파이프라인의 `build-client.yml`에 `NEXT_PUBLIC_KAKAO_MAP_API_KEY` 환경 변수를 추가했습니다.
 - Full Strict Typing 원칙에 따라 `RestaurantLocation` 등 명시적 타입을 선언하였으며 eslint/typecheck 검증을 통과했습니다.
+- 2026-05-30 GitHub Actions `build_client / Build client` 실패 대응으로 `/map` 페이지의 빌드 입력 데이터를 `client/data/top-restaurants-locations.json`에 포함시켰습니다.
+- `/map` 페이지가 루트 `datasets` sparse checkout 여부에 의존하지 않도록 `fs`/`path` 기반 로딩을 제거하고 JSON import 기반으로 전환했습니다.
+- `client/test/kakao-map-data.test.mjs` 회귀 테스트를 추가해 지도 데이터가 client 패키지 안에 있고 50개 식당 좌표를 포함하는지 검증합니다.

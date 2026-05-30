@@ -1,26 +1,20 @@
-import React from "react";
-import fs from "fs";
-import path from "path";
-import { KakaoMap, RestaurantLocation } from "@/components/KakaoMap";
-import { Metadata } from "next";
+import { KakaoMap, type RestaurantLocation } from "@/components/KakaoMap";
+import topRestaurantsData from "@/data/top-restaurants-locations.json";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Seoul Top 50 Restaurants",
   description: "Distribution of the top 50 restaurants in Seoul on Kakao Map",
 };
 
-// JSON 파일의 구조체 타입 정의
 interface TopRestaurantsData {
-  metadata: Record<string, unknown>;
+  metadata: Record<string, string | number>;
   places: RestaurantLocation[];
 }
 
-export default async function MapPage() {
-  // 서버 컴포넌트에서 파일 시스템을 통해 데이터를 로드합니다.
-  const dataPath = path.join(process.cwd(), "..", "datasets", "google-places-seoul-top-restaurants-2026-05-15-locations.json");
-  const fileContent = fs.readFileSync(dataPath, "utf-8");
-  const data: TopRestaurantsData = JSON.parse(fileContent);
+const data: TopRestaurantsData = topRestaurantsData;
 
+export default function MapPage() {
   return (
     <main className="w-full h-screen">
       <div className="absolute top-4 left-4 z-10 bg-white p-4 rounded-lg shadow-md max-w-sm">

@@ -24,8 +24,9 @@ interface KakaoMapProps {
 }
 
 export function KakaoMap({ restaurants }: KakaoMapProps) {
+  const kakaoMapAppKey = process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY ?? "";
   const [loading, error] = useKakaoLoader({
-    appkey: process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY as string,
+    appkey: kakaoMapAppKey,
   });
 
   const [activeMarkerId, setActiveMarkerId] = useState<string | null>(null);
@@ -36,7 +37,7 @@ export function KakaoMap({ restaurants }: KakaoMapProps) {
   return (
     <div className="w-full h-screen min-h-[600px]">
       <Map
-        center={{ lat: 37.5665, lng: 126.9780 }} // Center of Seoul
+        center={{ lat: 37.5665, lng: 126.9780 }}
         style={{ width: "100%", height: "100%" }}
         level={8}
       >
@@ -48,8 +49,8 @@ export function KakaoMap({ restaurants }: KakaoMapProps) {
               position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
               image={{
                 src: isTop10
-                  ? "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png" // Blue-ish marker for Top 10
-                  : "https://t1.daumcdn.net/mapjsapi/images/marker.png", // Default orange/red marker
+                  ? "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"
+                  : "https://t1.daumcdn.net/mapjsapi/images/marker.png",
                 size: {
                   width: 24,
                   height: 35
