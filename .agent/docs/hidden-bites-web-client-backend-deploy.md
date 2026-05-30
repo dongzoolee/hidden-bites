@@ -153,3 +153,10 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - Fix: `server/Dockerfile` now runs `npm run build` in the build stage.
 - Regression guard: `.github/scripts/validate-release-deploy-workflow.sh` now asserts that both package manifests use npm, the server Dockerfile contains `RUN npm run build`, and no `RUN yarn` command remains.
 - Local validation note: the current Codex shell has no system `npm`, `yarn`, `gh`, or `docker` commands. TypeScript build/type-check were verified directly through installed `server/node_modules` with the bundled Codex Node runtime; Docker image execution could not be reproduced locally in this shell.
+
+## 2026-05-30 Client Airbnb Cereal Font
+
+- Client global typography now uses `Airbnb Cereal` as the first font family through `client/app/globals.css`.
+- The font-face declarations rely on locally installed Airbnb Cereal names and keep the existing system sans-serif fallback stack because this repository does not include proprietary Cereal font files.
+- Previous Georgia and Courier-specific UI overrides were removed so hero titles, QnA labels, score axis labels, report numerals, emotion labels, and snippet metadata inherit the same Cereal-first family.
+- Regression guard: `client/test/client-contract.test.mjs` asserts the Cereal font token is present and the removed Georgia/Courier declarations do not return.
