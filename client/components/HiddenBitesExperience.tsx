@@ -7,6 +7,7 @@ import type { HbFactor, HbScorePoint, RestaurantReport, RestaurantSummary, Summa
 import { QnaAccordion } from "@/components/QnaAccordion";
 import { ScorePlot } from "@/components/ScorePlot";
 import { RestaurantReportPanel } from "@/components/RestaurantReportPanel";
+import { SeoulRestaurantMap } from "@/components/SeoulRestaurantMap";
 
 interface ExperienceData {
   summary: SummaryPayload;
@@ -142,13 +143,6 @@ export function HiddenBitesExperience() {
               </div>
             </dl>
           </div>
-          <div className="hero-visual" aria-label="Seoul top restaurant dot map preview">
-            <img src="/assets/seoul-top-restaurants.png" alt="Seoul top restaurants dot map" />
-            <div className="hero-visual__caption">
-              <span>{data.summary.metadata.restaurantCount} restaurants</span>
-              <span>{data.summary.metadata.graphPointCount} factor dots</span>
-            </div>
-          </div>
         </div>
         <QnaAccordion items={data.summary.qna} />
       </section>
@@ -167,6 +161,17 @@ export function HiddenBitesExperience() {
           selectedPlaceId={selectedPlaceId}
           onSelectPlace={handleSelectRestaurant}
         />
+      </section>
+
+      <section className="section section--map" id="map">
+        <div className="section-heading">
+          <p className="eyebrow">Seoul Distribution</p>
+          <h2>Google Top 50 restaurant dots on Seoul.</h2>
+          <p>
+            {data.summary.metadata.mapPointCount} restaurants are plotted by latitude and longitude across Seoul, with rank and district density kept in the graph.
+          </p>
+        </div>
+        <SeoulRestaurantMap restaurants={data.restaurants} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
       </section>
 
       <section className="section section--report" id="report">

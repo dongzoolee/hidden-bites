@@ -1,12 +1,14 @@
 {
   "metadata": {
-    "generatedAt": "2026-05-30T10:43:32.288Z",
+    "generatedAt": "2026-05-30T11:01:08.552Z",
     "sourceScorePath": "datasets/derived/hb-score-restaurants.json",
     "sourcePointsPath": "datasets/derived/hb-score-factor-restaurant-points.json",
+    "sourceLocationsPath": "datasets/google-places-seoul-top-restaurants-2026-05-15-locations.json",
     "sourceReviewDir": "datasets/google-maps-reviews-2026-05-16",
     "restaurantCount": 50,
     "factorCount": 10,
     "graphPointCount": 500,
+    "mapPointCount": 50,
     "reportCount": 50,
     "emotionBucketCount": 5
   },
@@ -156,6 +158,9 @@
       "popularityCount": 8507,
       "collectedReviewCount": 3264,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5113197,
+      "longitude": 127.0583613,
+      "district": "강남구",
       "topHbScore": 3.1844
     },
     {
@@ -168,6 +173,9 @@
       "popularityCount": 6955,
       "collectedReviewCount": 1635,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5820433,
+      "longitude": 127.0042774,
+      "district": "종로구",
       "topHbScore": 2.9859
     },
     {
@@ -180,6 +188,9 @@
       "popularityCount": 6325,
       "collectedReviewCount": 1356,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5613796,
+      "longitude": 126.9834141,
+      "district": "중구",
       "topHbScore": 3.0699
     },
     {
@@ -192,6 +203,9 @@
       "popularityCount": 5763,
       "collectedReviewCount": 3754,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5503953,
+      "longitude": 126.9198003,
+      "district": "마포구",
       "topHbScore": 2.8546
     },
     {
@@ -204,6 +218,9 @@
       "popularityCount": 4744,
       "collectedReviewCount": 3270,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5535385,
+      "longitude": 126.921178,
+      "district": "마포구",
       "topHbScore": 3.0268
     },
     {
@@ -216,6 +233,9 @@
       "popularityCount": 4506,
       "collectedReviewCount": 2107,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.561357,
+      "longitude": 126.9844162,
+      "district": "중구",
       "topHbScore": 3.0038
     },
     {
@@ -228,6 +248,9 @@
       "popularityCount": 4237,
       "collectedReviewCount": 2826,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5617081,
+      "longitude": 126.9864459,
+      "district": "중구",
       "topHbScore": 2.5325
     },
     {
@@ -240,6 +263,9 @@
       "popularityCount": 3869,
       "collectedReviewCount": 1978,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5677475,
+      "longitude": 126.9798528,
+      "district": "중구",
       "topHbScore": 1.7424
     },
     {
@@ -252,6 +278,9 @@
       "popularityCount": 3789,
       "collectedReviewCount": 2669,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5688257,
+      "longitude": 126.9861103,
+      "district": "종로구",
       "topHbScore": 2.9699
     },
     {
@@ -264,6 +293,9 @@
       "popularityCount": 3270,
       "collectedReviewCount": 3122,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5496875,
+      "longitude": 126.9174558,
+      "district": "마포구",
       "topHbScore": 2.8612
     },
     {
@@ -276,6 +308,9 @@
       "popularityCount": 2987,
       "collectedReviewCount": 2819,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5333181,
+      "longitude": 126.9945515,
+      "district": "용산구",
       "topHbScore": 3.1375
     },
     {
@@ -288,6 +323,9 @@
       "popularityCount": 2933,
       "collectedReviewCount": 1723,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5532162,
+      "longitude": 126.9206942,
+      "district": "마포구",
       "topHbScore": 2.7081
     },
     {
@@ -300,6 +338,9 @@
       "popularityCount": 2924,
       "collectedReviewCount": 2936,
       "collectionStatus": "target_reached",
+      "latitude": 37.5460471,
+      "longitude": 127.0467101,
+      "district": "성동구",
       "topHbScore": 2.8374
     },
     {
@@ -312,6 +353,9 @@
       "popularityCount": 2919,
       "collectedReviewCount": 2554,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5263485,
+      "longitude": 127.0293513,
+      "district": "강남구",
       "topHbScore": 2.773
     },
     {
@@ -324,6 +368,9 @@
       "popularityCount": 2862,
       "collectedReviewCount": 2870,
       "collectionStatus": "target_reached",
+      "latitude": 37.5315562,
+      "longitude": 126.9721313,
+      "district": "용산구",
       "topHbScore": 2.9635
     },
     {
@@ -336,6 +383,9 @@
       "popularityCount": 2842,
       "collectedReviewCount": 2144,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5255584,
+      "longitude": 127.0349401,
+      "district": "강남구",
       "topHbScore": 2.9069
     },
     {
@@ -348,6 +398,9 @@
       "popularityCount": 2818,
       "collectedReviewCount": 1599,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5037065,
+      "longitude": 127.0530366,
+      "district": "강남구",
       "topHbScore": 1.5799
     },
     {
@@ -360,6 +413,9 @@
       "popularityCount": 2744,
       "collectedReviewCount": 2673,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5561608,
+      "longitude": 126.9258254,
+      "district": "마포구",
       "topHbScore": 2.2899
     },
     {
@@ -372,6 +428,9 @@
       "popularityCount": 2722,
       "collectedReviewCount": 2556,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5645345,
+      "longitude": 126.9847085,
+      "district": "중구",
       "topHbScore": 2.7835
     },
     {
@@ -384,6 +443,9 @@
       "popularityCount": 2669,
       "collectedReviewCount": 2671,
       "collectionStatus": "target_reached",
+      "latitude": 37.5398972,
+      "longitude": 127.0562192,
+      "district": "성동구",
       "topHbScore": 2.7284
     },
     {
@@ -396,6 +458,9 @@
       "popularityCount": 2639,
       "collectedReviewCount": 2649,
       "collectionStatus": "target_reached",
+      "latitude": 37.5431748,
+      "longitude": 127.0554194,
+      "district": "성동구",
       "topHbScore": 2.4601
     },
     {
@@ -408,6 +473,9 @@
       "popularityCount": 2604,
       "collectedReviewCount": 2325,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5610364,
+      "longitude": 126.9823871,
+      "district": "중구",
       "topHbScore": 2.4286
     },
     {
@@ -420,6 +488,9 @@
       "popularityCount": 2541,
       "collectedReviewCount": 1731,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5444617,
+      "longitude": 127.0554135,
+      "district": "성동구",
       "topHbScore": 2.8409
     },
     {
@@ -432,6 +503,9 @@
       "popularityCount": 2408,
       "collectedReviewCount": 1969,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5646777,
+      "longitude": 126.9838194,
+      "district": "중구",
       "topHbScore": 2.6956
     },
     {
@@ -444,6 +518,9 @@
       "popularityCount": 2401,
       "collectedReviewCount": 2410,
       "collectionStatus": "target_reached",
+      "latitude": 37.559925,
+      "longitude": 126.8343328,
+      "district": "강서구",
       "topHbScore": 3.0153
     },
     {
@@ -456,6 +533,9 @@
       "popularityCount": 2371,
       "collectedReviewCount": 1193,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5044415,
+      "longitude": 127.0436869,
+      "district": "강남구",
       "topHbScore": 2.2222
     },
     {
@@ -468,6 +548,9 @@
       "popularityCount": 2339,
       "collectedReviewCount": 1717,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.4915849,
+      "longitude": 126.9262895,
+      "district": "관악구",
       "topHbScore": 2.5333
     },
     {
@@ -480,6 +563,9 @@
       "popularityCount": 2275,
       "collectedReviewCount": 1528,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5590714,
+      "longitude": 126.9225299,
+      "district": "마포구",
       "topHbScore": 2.5106
     },
     {
@@ -492,6 +578,9 @@
       "popularityCount": 2170,
       "collectedReviewCount": 1833,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5410278,
+      "longitude": 126.9493765,
+      "district": "마포구",
       "topHbScore": 2.713
     },
     {
@@ -504,6 +593,9 @@
       "popularityCount": 2106,
       "collectedReviewCount": 1878,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.4839264,
+      "longitude": 126.8997536,
+      "district": "구로구",
       "topHbScore": 2.7716
     },
     {
@@ -516,6 +608,9 @@
       "popularityCount": 2103,
       "collectedReviewCount": 1494,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5472593,
+      "longitude": 126.9178109,
+      "district": "마포구",
       "topHbScore": 1.9063
     },
     {
@@ -528,6 +623,9 @@
       "popularityCount": 2029,
       "collectedReviewCount": 1579,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.568923,
+      "longitude": 126.986169,
+      "district": "종로구",
       "topHbScore": 2.7434
     },
     {
@@ -540,6 +638,9 @@
       "popularityCount": 1977,
       "collectedReviewCount": 1849,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.53402,
+      "longitude": 126.9932656,
+      "district": "용산구",
       "topHbScore": 2.9941
     },
     {
@@ -552,6 +653,9 @@
       "popularityCount": 1942,
       "collectedReviewCount": 1959,
       "collectionStatus": "target_reached",
+      "latitude": 37.515295,
+      "longitude": 127.0188175,
+      "district": "서초구",
       "topHbScore": 2.8383
     },
     {
@@ -564,6 +668,9 @@
       "popularityCount": 1809,
       "collectedReviewCount": 1820,
       "collectionStatus": "target_reached",
+      "latitude": 37.5138825,
+      "longitude": 127.1064002,
+      "district": "송파구",
       "topHbScore": 2.9257
     },
     {
@@ -576,6 +683,9 @@
       "popularityCount": 1800,
       "collectedReviewCount": 1553,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.56228,
+      "longitude": 126.9855648,
+      "district": "중구",
       "topHbScore": 2.3488
     },
     {
@@ -588,6 +698,9 @@
       "popularityCount": 1736,
       "collectedReviewCount": 1740,
       "collectionStatus": "target_reached",
+      "latitude": 37.5655325,
+      "longitude": 126.9836681,
+      "district": "중구",
       "topHbScore": 2.5283
     },
     {
@@ -600,6 +713,9 @@
       "popularityCount": 1698,
       "collectedReviewCount": 1429,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5732578,
+      "longitude": 126.990229,
+      "district": "종로구",
       "topHbScore": 2.4952
     },
     {
@@ -612,6 +728,9 @@
       "popularityCount": 1643,
       "collectedReviewCount": 1658,
       "collectionStatus": "target_reached",
+      "latitude": 37.5628682,
+      "longitude": 126.9853106,
+      "district": "중구",
       "topHbScore": 2.8985
     },
     {
@@ -624,6 +743,9 @@
       "popularityCount": 1576,
       "collectedReviewCount": 1576,
       "collectionStatus": "target_reached",
+      "latitude": 37.5552284,
+      "longitude": 126.9077222,
+      "district": "마포구",
       "topHbScore": 2.9129
     },
     {
@@ -636,6 +758,9 @@
       "popularityCount": 1474,
       "collectedReviewCount": 1481,
       "collectionStatus": "target_reached",
+      "latitude": 37.5172931,
+      "longitude": 126.9041319,
+      "district": "영등포구",
       "topHbScore": 2.8577
     },
     {
@@ -648,6 +773,9 @@
       "popularityCount": 1473,
       "collectedReviewCount": 1001,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.4949208,
+      "longitude": 127.0314964,
+      "district": "강남구",
       "topHbScore": 1.6202
     },
     {
@@ -660,6 +788,9 @@
       "popularityCount": 1467,
       "collectedReviewCount": 1024,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5568098,
+      "longitude": 126.9682469,
+      "district": "중구",
       "topHbScore": 1.6924
     },
     {
@@ -672,6 +803,9 @@
       "popularityCount": 1465,
       "collectedReviewCount": 1421,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5042459,
+      "longitude": 127.0228221,
+      "district": "서초구",
       "topHbScore": 2.7558
     },
     {
@@ -684,6 +818,9 @@
       "popularityCount": 1462,
       "collectedReviewCount": 1348,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.561731,
+      "longitude": 126.9839086,
+      "district": "중구",
       "topHbScore": 2.8452
     },
     {
@@ -696,6 +833,9 @@
       "popularityCount": 1453,
       "collectedReviewCount": 1390,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5170155,
+      "longitude": 126.9039488,
+      "district": "영등포구",
       "topHbScore": 2.601
     },
     {
@@ -708,6 +848,9 @@
       "popularityCount": 1449,
       "collectedReviewCount": 1458,
       "collectionStatus": "target_reached",
+      "latitude": 37.5258286,
+      "longitude": 127.0391522,
+      "district": "강남구",
       "topHbScore": 2.7152
     },
     {
@@ -720,6 +863,9 @@
       "popularityCount": 1430,
       "collectedReviewCount": 1330,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5018151,
+      "longitude": 127.0271581,
+      "district": "강남구",
       "topHbScore": 2.8044
     },
     {
@@ -732,6 +878,9 @@
       "popularityCount": 1401,
       "collectedReviewCount": 765,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5695341,
+      "longitude": 126.9884726,
+      "district": "종로구",
       "topHbScore": 1.8213
     },
     {
@@ -744,6 +893,9 @@
       "popularityCount": 1379,
       "collectedReviewCount": 928,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5540757,
+      "longitude": 127.094143,
+      "district": "광진구",
       "topHbScore": 1.5192
     }
   ],
@@ -7760,6 +7912,9 @@
       "popularityCount": 8507,
       "collectedReviewCount": 3264,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5113197,
+      "longitude": 127.0583613,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -8186,6 +8341,9 @@
       "popularityCount": 6955,
       "collectedReviewCount": 1635,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5820433,
+      "longitude": 127.0042774,
+      "district": "종로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -8612,6 +8770,9 @@
       "popularityCount": 6325,
       "collectedReviewCount": 1356,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5613796,
+      "longitude": 126.9834141,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -9038,6 +9199,9 @@
       "popularityCount": 5763,
       "collectedReviewCount": 3754,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5503953,
+      "longitude": 126.9198003,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -9464,6 +9628,9 @@
       "popularityCount": 4744,
       "collectedReviewCount": 3270,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5535385,
+      "longitude": 126.921178,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -9890,6 +10057,9 @@
       "popularityCount": 4506,
       "collectedReviewCount": 2107,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.561357,
+      "longitude": 126.9844162,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -10316,6 +10486,9 @@
       "popularityCount": 4237,
       "collectedReviewCount": 2826,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5617081,
+      "longitude": 126.9864459,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -10742,6 +10915,9 @@
       "popularityCount": 3869,
       "collectedReviewCount": 1978,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5677475,
+      "longitude": 126.9798528,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -11168,6 +11344,9 @@
       "popularityCount": 3789,
       "collectedReviewCount": 2669,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5688257,
+      "longitude": 126.9861103,
+      "district": "종로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -11594,6 +11773,9 @@
       "popularityCount": 3270,
       "collectedReviewCount": 3122,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5496875,
+      "longitude": 126.9174558,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -12020,6 +12202,9 @@
       "popularityCount": 2987,
       "collectedReviewCount": 2819,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5333181,
+      "longitude": 126.9945515,
+      "district": "용산구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -12446,6 +12631,9 @@
       "popularityCount": 2933,
       "collectedReviewCount": 1723,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5532162,
+      "longitude": 126.9206942,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -12872,6 +13060,9 @@
       "popularityCount": 2924,
       "collectedReviewCount": 2936,
       "collectionStatus": "target_reached",
+      "latitude": 37.5460471,
+      "longitude": 127.0467101,
+      "district": "성동구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -13298,6 +13489,9 @@
       "popularityCount": 2919,
       "collectedReviewCount": 2554,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5263485,
+      "longitude": 127.0293513,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -13724,6 +13918,9 @@
       "popularityCount": 2862,
       "collectedReviewCount": 2870,
       "collectionStatus": "target_reached",
+      "latitude": 37.5315562,
+      "longitude": 126.9721313,
+      "district": "용산구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -14150,6 +14347,9 @@
       "popularityCount": 2842,
       "collectedReviewCount": 2144,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5255584,
+      "longitude": 127.0349401,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -14576,6 +14776,9 @@
       "popularityCount": 2818,
       "collectedReviewCount": 1599,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5037065,
+      "longitude": 127.0530366,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -15002,6 +15205,9 @@
       "popularityCount": 2744,
       "collectedReviewCount": 2673,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5561608,
+      "longitude": 126.9258254,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -15428,6 +15634,9 @@
       "popularityCount": 2722,
       "collectedReviewCount": 2556,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5645345,
+      "longitude": 126.9847085,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -15854,6 +16063,9 @@
       "popularityCount": 2669,
       "collectedReviewCount": 2671,
       "collectionStatus": "target_reached",
+      "latitude": 37.5398972,
+      "longitude": 127.0562192,
+      "district": "성동구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -16259,6 +16471,9 @@
       "popularityCount": 2639,
       "collectedReviewCount": 2649,
       "collectionStatus": "target_reached",
+      "latitude": 37.5431748,
+      "longitude": 127.0554194,
+      "district": "성동구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -16685,6 +16900,9 @@
       "popularityCount": 2604,
       "collectedReviewCount": 2325,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5610364,
+      "longitude": 126.9823871,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -17111,6 +17329,9 @@
       "popularityCount": 2541,
       "collectedReviewCount": 1731,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5444617,
+      "longitude": 127.0554135,
+      "district": "성동구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -17537,6 +17758,9 @@
       "popularityCount": 2408,
       "collectedReviewCount": 1969,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5646777,
+      "longitude": 126.9838194,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -17963,6 +18187,9 @@
       "popularityCount": 2401,
       "collectedReviewCount": 2410,
       "collectionStatus": "target_reached",
+      "latitude": 37.559925,
+      "longitude": 126.8343328,
+      "district": "강서구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -18389,6 +18616,9 @@
       "popularityCount": 2371,
       "collectedReviewCount": 1193,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5044415,
+      "longitude": 127.0436869,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -18815,6 +19045,9 @@
       "popularityCount": 2339,
       "collectedReviewCount": 1717,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.4915849,
+      "longitude": 126.9262895,
+      "district": "관악구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -19241,6 +19474,9 @@
       "popularityCount": 2275,
       "collectedReviewCount": 1528,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5590714,
+      "longitude": 126.9225299,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -19667,6 +19903,9 @@
       "popularityCount": 2170,
       "collectedReviewCount": 1833,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5410278,
+      "longitude": 126.9493765,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -20093,6 +20332,9 @@
       "popularityCount": 2106,
       "collectedReviewCount": 1878,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.4839264,
+      "longitude": 126.8997536,
+      "district": "구로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -20498,6 +20740,9 @@
       "popularityCount": 2103,
       "collectedReviewCount": 1494,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5472593,
+      "longitude": 126.9178109,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -20924,6 +21169,9 @@
       "popularityCount": 2029,
       "collectedReviewCount": 1579,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.568923,
+      "longitude": 126.986169,
+      "district": "종로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -21350,6 +21598,9 @@
       "popularityCount": 1977,
       "collectedReviewCount": 1849,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.53402,
+      "longitude": 126.9932656,
+      "district": "용산구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -21776,6 +22027,9 @@
       "popularityCount": 1942,
       "collectedReviewCount": 1959,
       "collectionStatus": "target_reached",
+      "latitude": 37.515295,
+      "longitude": 127.0188175,
+      "district": "서초구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -22202,6 +22456,9 @@
       "popularityCount": 1809,
       "collectedReviewCount": 1820,
       "collectionStatus": "target_reached",
+      "latitude": 37.5138825,
+      "longitude": 127.1064002,
+      "district": "송파구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -22628,6 +22885,9 @@
       "popularityCount": 1800,
       "collectedReviewCount": 1553,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.56228,
+      "longitude": 126.9855648,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -23054,6 +23314,9 @@
       "popularityCount": 1736,
       "collectedReviewCount": 1740,
       "collectionStatus": "target_reached",
+      "latitude": 37.5655325,
+      "longitude": 126.9836681,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -23480,6 +23743,9 @@
       "popularityCount": 1698,
       "collectedReviewCount": 1429,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5732578,
+      "longitude": 126.990229,
+      "district": "종로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -23906,6 +24172,9 @@
       "popularityCount": 1643,
       "collectedReviewCount": 1658,
       "collectionStatus": "target_reached",
+      "latitude": 37.5628682,
+      "longitude": 126.9853106,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -24332,6 +24601,9 @@
       "popularityCount": 1576,
       "collectedReviewCount": 1576,
       "collectionStatus": "target_reached",
+      "latitude": 37.5552284,
+      "longitude": 126.9077222,
+      "district": "마포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -24758,6 +25030,9 @@
       "popularityCount": 1474,
       "collectedReviewCount": 1481,
       "collectionStatus": "target_reached",
+      "latitude": 37.5172931,
+      "longitude": 126.9041319,
+      "district": "영등포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -25184,6 +25459,9 @@
       "popularityCount": 1473,
       "collectedReviewCount": 1001,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.4949208,
+      "longitude": 127.0314964,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -25610,6 +25888,9 @@
       "popularityCount": 1467,
       "collectedReviewCount": 1024,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5568098,
+      "longitude": 126.9682469,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -26036,6 +26317,9 @@
       "popularityCount": 1465,
       "collectedReviewCount": 1421,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5042459,
+      "longitude": 127.0228221,
+      "district": "서초구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -26462,6 +26746,9 @@
       "popularityCount": 1462,
       "collectedReviewCount": 1348,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.561731,
+      "longitude": 126.9839086,
+      "district": "중구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -26888,6 +27175,9 @@
       "popularityCount": 1453,
       "collectedReviewCount": 1390,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5170155,
+      "longitude": 126.9039488,
+      "district": "영등포구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -27314,6 +27604,9 @@
       "popularityCount": 1449,
       "collectedReviewCount": 1458,
       "collectionStatus": "target_reached",
+      "latitude": 37.5258286,
+      "longitude": 127.0391522,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -27740,6 +28033,9 @@
       "popularityCount": 1430,
       "collectedReviewCount": 1330,
       "collectionStatus": "idle_limit_reached",
+      "latitude": 37.5018151,
+      "longitude": 127.0271581,
+      "district": "강남구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -28166,6 +28462,9 @@
       "popularityCount": 1401,
       "collectedReviewCount": 765,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5695341,
+      "longitude": 126.9884726,
+      "district": "종로구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",
@@ -28592,6 +28891,9 @@
       "popularityCount": 1379,
       "collectedReviewCount": 928,
       "collectionStatus": "age_cutoff_reached",
+      "latitude": 37.5540757,
+      "longitude": 127.094143,
+      "district": "광진구",
       "topFactor": {
         "factorId": "taste",
         "factorLabel": "Taste",

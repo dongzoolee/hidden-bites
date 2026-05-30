@@ -38,6 +38,14 @@ test("serves selected report and 404 for missing report", async () => {
   const restaurants = await request(app.getHttpServer()).get("/api/restaurants").expect(200);
   const placeId = restaurants.body[0].placeId;
 
-  await request(app.getHttpServer()).get(`/api/restaurants/${encodeURIComponent(placeId)}/report`).expect(200);
+  assert.equal(typeof restaurants.body[0].latitude, "number");
+  assert.equal(typeof restaurants.body[0].longitude, "number");
+  assert.equal(typeof restaurants.body[0].district, "string");
+
+  await request(app.getHttpServer()).get(`/api/restaurants/${encodeURIComponent(placeId)}/report`).expect(200).expect((response) => {
+    assert.equal(response.body.latitude, restaurants.body[0].latitude);
+    assert.equal(response.body.longitude, restaurants.body[0].longitude);
+    assert.equal(response.body.district, restaurants.body[0].district);
+  });
   await request(app.getHttpServer()).get("/api/restaurants/missing-place/report").expect(404);
 });

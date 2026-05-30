@@ -182,6 +182,16 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - 초기 data load fallback에서 `Loading Hidden Bites data story` 문구를 제거하고 spinner만 남겼다.
 - `client/test/client-contract.test.mjs`에 해당 loading copy가 재도입되지 않도록 회귀 검증을 추가했다.
 
+## 2026-05-30 Seoul map graph section
+
+- Hero의 `google top 50 restaurants in seoul` PNG preview를 제거하고 tracked asset `client/public/assets/seoul-top-restaurants.png`도 삭제했다.
+- `scripts/build_hb_score_web_report.mjs`가 `datasets/google-places-seoul-top-restaurants-2026-05-15-locations.json` 좌표 캐시를 canonical web report payload에 병합한다.
+- `RestaurantSummary`와 `RestaurantReport`에 `latitude`, `longitude`, `district`를 추가했고 summary metadata에 `mapPointCount`를 추가했다.
+- Page3가 `Seoul Distribution` graph section이 되도록 `client/components/SeoulRestaurantMap.tsx`를 추가했다.
+- 지도는 이미지가 아니라 SVG로 서울 외곽선, 한강 polyline, Google Top 50 restaurant dot distribution, district count bars를 직접 렌더링한다.
+- Report section은 page4로 유지되고, 지도 dot 선택 시 기존 selected restaurant report state와 query param을 갱신한다.
+- 회귀 테스트가 직접 이미지 재도입, 좌표 payload 누락, 지도 그래프 surface 누락을 검증한다.
+
 ## 2026-05-30 Client Airbnb Cereal CDN
 
 - `client/app/globals.css`의 `Airbnb Cereal` font-face가 Airbnb `a0.muscache.com` CDN의 Cereal VF woff2 파일을 우선 로드한다.

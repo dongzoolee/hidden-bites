@@ -36,6 +36,7 @@ export class HbDataService {
         restaurantCount: this.payload.metadata.restaurantCount,
         factorCount: this.payload.metadata.factorCount,
         graphPointCount: this.payload.metadata.graphPointCount,
+        mapPointCount: this.payload.metadata.mapPointCount,
         reportCount: this.payload.metadata.reportCount
       }
     };

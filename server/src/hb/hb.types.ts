@@ -31,6 +31,9 @@ export interface RestaurantSummary {
   popularityCount: number;
   collectedReviewCount: number;
   collectionStatus: string;
+  latitude: number;
+  longitude: number;
+  district: string;
   topHbScore: number;
 }
 
@@ -78,6 +81,9 @@ export interface RestaurantReport {
   popularityCount: number;
   collectedReviewCount: number;
   collectionStatus: string;
+  latitude: number;
+  longitude: number;
+  district: string;
   topFactor: FactorScore;
   factorScores: FactorScore[];
   emotionBuckets: EmotionBucket[];
@@ -100,6 +106,7 @@ export interface SummaryPayload {
     restaurantCount: number;
     factorCount: number;
     graphPointCount: number;
+    mapPointCount: number;
     reportCount: number;
   };
 }
@@ -114,6 +121,7 @@ export interface WebReportPayload {
     generatedAt: string;
     sourceScorePath: string;
     sourcePointsPath: string;
+    sourceLocationsPath: string;
     sourceReviewDir: string;
     emotionBucketCount: number;
   };

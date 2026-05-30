@@ -3,6 +3,7 @@ import { basename, join } from "node:path";
 
 const scorePath = "datasets/derived/hb-score-restaurants.json";
 const pointsPath = "datasets/derived/hb-score-factor-restaurant-points.json";
+const locationsPath = "datasets/google-places-seoul-top-restaurants-2026-05-15-locations.json";
 const reviewsDir = "datasets/google-maps-reviews-2026-05-16";
 const outputPath = "datasets/derived/hb-score-web-report.json";
 
@@ -86,6 +87,7 @@ const stopwords = new Set([
 
 const scoreData = JSON.parse(await readFile(scorePath, "utf8"));
 const pointsData = JSON.parse(await readFile(pointsPath, "utf8"));
+const locationsData = JSON.parse(await readFile(locationsPath, "utf8"));
 const reviewFiles = (await readdir(reviewsDir))
   .filter((name) => name.endsWith(".json"))
   .filter((name) => !name.endsWith(".partial.json"))
@@ -93,6 +95,15 @@ const reviewFiles = (await readdir(reviewsDir))
   .sort();
 
 const reviewsByPlaceId = new Map();
+const locationByPlaceId = new Map();
+
+for (const place of locationsData.places ?? []) {
+  if (typeof place.place_id === "string") {
+    locationByPlaceId.set(place.place_id, place);
+  }
+}
+
+const restaurantLocationsByPlaceId = new Map(scoreData.restaurants.map((restaurant) => [restaurant.place_id, locationForPlace(restaurant.place_id)]));
 
 for (const fileName of reviewFiles) {
   const payload = JSON.parse(await readFile(join(reviewsDir, fileName), "utf8"));
@@ -132,6 +143,7 @@ for (const restaurant of scoreData.restaurants) {
 const reports = scoreData.restaurants.map((restaurant) => {
   const reviews = reviewsByPlaceId.get(restaurant.place_id) ?? [];
   const counts = restaurantTokenCounts.get(restaurant.place_id) ?? new Map();
+  const location = restaurantLocationsByPlaceId.get(restaurant.place_id);
   const keywords = buildKeywordEvidence(reviews, counts, scoreData.restaurants.length);
   const emotionBuckets = buildEmotionBuckets(reviews);
   const factorScores = scoreData.factors.map((factor) => {
@@ -159,6 +171,9 @@ const reports = scoreData.restaurants.map((restaurant) => {
     popularityCount: restaurant.popularity_count,
     collectedReviewCount: restaurant.collected_review_count,
     collectionStatus: restaurant.collection_status,
+    latitude: location.latitude,
+    longitude: location.longitude,
+    district: location.district,
     topFactor,
     factorScores,
     emotionBuckets,
@@ -172,10 +187,12 @@ const output = {
     generatedAt: new Date().toISOString(),
     sourceScorePath: scorePath,
     sourcePointsPath: pointsPath,
+    sourceLocationsPath: locationsPath,
     sourceReviewDir: reviewsDir,
     restaurantCount: scoreData.restaurants.length,
     factorCount: scoreData.factors.length,
     graphPointCount: pointsData.points.length,
+    mapPointCount: restaurantLocationsByPlaceId.size,
     reportCount: reports.length,
     emotionBucketCount: emotionDictionary.length
   },
@@ -214,6 +231,9 @@ const output = {
     popularityCount: restaurant.popularity_count,
     collectedReviewCount: restaurant.collected_review_count,
     collectionStatus: restaurant.collection_status,
+    latitude: restaurantLocationsByPlaceId.get(restaurant.place_id).latitude,
+    longitude: restaurantLocationsByPlaceId.get(restaurant.place_id).longitude,
+    district: restaurantLocationsByPlaceId.get(restaurant.place_id).district,
     topHbScore: round(Math.max(...Object.values(restaurant.scores).map((score) => score.hb_score)), 4)
   })),
   points: pointsData.points.map((point) => ({
@@ -236,6 +256,27 @@ const output = {
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);
 
 console.log(JSON.stringify(output.metadata, null, 2));
+
+function locationForPlace(placeId) {
+  const place = locationByPlaceId.get(placeId);
+
+  if (!place) {
+    throw new Error(`Missing Seoul map location for ${placeId}`);
+  }
+
+  const latitude = place.location?.latitude;
+  const longitude = place.location?.longitude;
+
+  if (typeof latitude !== "number" || typeof longitude !== "number") {
+    throw new Error(`Invalid Seoul map location for ${placeId}`);
+  }
+
+  return {
+    latitude: round(latitude, 7),
+    longitude: round(longitude, 7),
+    district: typeof place.district === "string" && place.district.length > 0 ? place.district : "미확인"
+  };
+}
 
 function buildKeywordEvidence(reviews, counts, restaurantCount) {
   const candidates = [...counts.entries()]

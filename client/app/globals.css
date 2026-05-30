@@ -97,6 +97,7 @@ img {
 }
 
 .section--scores,
+.section--map,
 .section--report {
   gap: 1.4rem;
   grid-template-rows: auto minmax(0, 1fr);
@@ -115,9 +116,11 @@ img {
 .hero-grid {
   align-items: center;
   display: grid;
-  gap: 4rem;
-  grid-template-columns: minmax(0, 0.9fr) minmax(26rem, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 58rem;
   min-height: 0;
+  width: 100%;
 }
 
 .hero-copy h1 {
@@ -167,36 +170,6 @@ img {
 
 .meta-list dd {
   margin: 0;
-}
-
-.hero-visual {
-  align-self: stretch;
-  border: 2px solid var(--line);
-  box-shadow: var(--shadow);
-  display: grid;
-  min-height: 24rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-visual img {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.hero-visual__caption {
-  align-items: center;
-  background: rgba(247, 241, 228, 0.86);
-  border-top: 2px solid var(--line);
-  bottom: 0;
-  display: flex;
-  gap: 1.2rem;
-  justify-content: space-between;
-  left: 0;
-  padding: 0.8rem 1rem;
-  position: absolute;
-  right: 0;
 }
 
 .qna {
@@ -425,6 +398,145 @@ img {
   font-size: 0.78rem;
 }
 
+.map-workspace {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) 16.5rem;
+  min-height: 0;
+}
+
+.map-chart {
+  background: rgba(255, 255, 255, 0.36);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+  min-height: 0;
+  position: relative;
+}
+
+.map-chart svg {
+  display: block;
+  height: min(49svh, 33rem);
+  width: 100%;
+}
+
+.seoul-outline {
+  fill: rgba(255, 250, 240, 0.78);
+  stroke: var(--line);
+  stroke-width: 2.2;
+}
+
+.han-river {
+  fill: none;
+  opacity: 0.74;
+  stroke: var(--blue);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.han-river--wide {
+  opacity: 0.32;
+  stroke: #9fc5e8;
+  stroke-width: 14;
+}
+
+.map-region-label {
+  fill: var(--muted);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: rgba(247, 241, 228, 0.86);
+  stroke-width: 4px;
+}
+
+.map-dot {
+  cursor: pointer;
+  fill: var(--accent-deep);
+  opacity: 0.76;
+  outline: none;
+  stroke: var(--paper);
+  stroke-width: 1.6;
+}
+
+.map-dot:hover,
+.map-dot:focus {
+  opacity: 1;
+  stroke: var(--line);
+}
+
+.map-dot--top {
+  fill: var(--blue);
+  opacity: 0.86;
+}
+
+.map-dot--selected {
+  fill: var(--accent);
+  opacity: 1;
+  stroke: var(--line);
+  stroke-width: 2.3;
+}
+
+.map-tooltip {
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  gap: 0.22rem;
+  left: 0;
+  max-width: 21rem;
+  padding: 0.8rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate(0.8rem, -50%);
+  z-index: 2;
+}
+
+.map-tooltip strong {
+  font-size: 0.9rem;
+}
+
+.map-tooltip span {
+  font-size: 0.78rem;
+}
+
+.map-districts {
+  background: rgba(255, 255, 255, 0.34);
+  border: 2px solid var(--line);
+  min-height: 0;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.map-district-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.map-district-row {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.map-district-row span,
+.map-district-row strong {
+  font-size: 0.9rem;
+}
+
+.map-district-track {
+  background: rgba(25, 23, 19, 0.12);
+  grid-column: 1 / -1;
+  height: 0.75rem;
+}
+
+.map-district-value {
+  background: var(--leaf);
+  height: 100%;
+}
+
 .report-grid {
   display: grid;
   gap: 1.2rem;
@@ -599,6 +711,7 @@ img {
   }
 
   .hero-grid,
+  .map-workspace,
   .section-heading,
   .section-heading--compact,
   .report-grid {
@@ -611,10 +724,6 @@ img {
 
   .hero-question {
     font-size: 1.7rem;
-  }
-
-  .hero-visual {
-    min-height: 18rem;
   }
 
   .qna {
@@ -631,6 +740,14 @@ img {
 
   .score-chart svg {
     height: 30rem;
+  }
+
+  .map-chart svg {
+    height: 30rem;
+  }
+
+  .map-districts {
+    max-height: 13rem;
   }
 
   .report-pane--factors,
@@ -660,6 +777,15 @@ img {
 
   .score-chart svg {
     min-width: 48rem;
+  }
+
+  .map-chart {
+    overflow: hidden;
+  }
+
+  .map-chart svg {
+    height: 26rem;
+    min-width: 0;
   }
 
   .factor-select {

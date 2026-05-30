@@ -16,12 +16,19 @@ assert.equal(reportData.restaurants.length, 50);
 assert.equal(reportData.factors.length, 10);
 assert.equal(reportData.points.length, 500);
 assert.equal(reportData.reports.length, 50);
+assert.equal(reportData.metadata.mapPointCount, 50);
 
 const restaurantIds = new Set(reportData.restaurants.map((restaurant) => restaurant.placeId));
 const reportIds = new Set(reportData.reports.map((report) => report.placeId));
 
 assert.equal(restaurantIds.size, 50);
 assert.deepEqual(restaurantIds, reportIds);
+
+for (const restaurant of reportData.restaurants) {
+  assert.equal(typeof restaurant.latitude, "number");
+  assert.equal(typeof restaurant.longitude, "number");
+  assert.equal(typeof restaurant.district, "string");
+}
 
 for (const point of reportData.points) {
   assert.equal(typeof point.factorId, "string");
@@ -34,6 +41,9 @@ for (const report of reportData.reports) {
   assert.ok(report.emotionBuckets.length >= 5);
   assert.ok(report.keywords.length > 0);
   assert.ok(report.reviewSample.length > 0);
+  assert.equal(typeof report.latitude, "number");
+  assert.equal(typeof report.longitude, "number");
+  assert.equal(typeof report.district, "string");
 
   for (const keyword of report.keywords) {
     assert.ok(keyword.snippets.length > 0);
