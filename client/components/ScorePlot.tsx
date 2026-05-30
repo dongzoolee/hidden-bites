@@ -13,6 +13,7 @@ interface ScorePlotProps {
 interface TooltipState {
   x: number;
   y: number;
+  rank: number;
   point: HbScorePoint;
 }
 
@@ -26,33 +27,27 @@ const chart = {
 };
 
 export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: ScorePlotProps) {
-  const [activeFactorId, setActiveFactorId] = useState<string | null>(null);
+  const [selectedFactorId, setSelectedFactorId] = useState<string>(factors[0]?.id ?? "");
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const plotWidth = chart.width - chart.left - chart.right;
   const plotHeight = chart.height - chart.top - chart.bottom;
   const yTicks = [5, 4, 3, 2, 1, 0];
-  const visiblePoints = useMemo(() => points.filter((point) => !activeFactorId || point.factorId === activeFactorId), [activeFactorId, points]);
+  const selectedFactor = useMemo(() => factors.find((factor) => factor.id === selectedFactorId) ?? factors[0] ?? null, [factors, selectedFactorId]);
+  const selectedFactorPoints = useMemo(() => {
+    if (!selectedFactor) {
+      return [];
+    }
+
+    return points
+      .filter((point) => point.factorId === selectedFactor.id)
+      .sort((left, right) => right.hbScore - left.hbScore || left.placeRank - right.placeRank || left.placeName.localeCompare(right.placeName));
+  }, [points, selectedFactor]);
+  const rankGuides = useMemo(() => Array.from({ length: selectedFactorPoints.length }, (_, index) => index), [selectedFactorPoints.length]);
 
   return (
     <div className="score-workspace">
-      <div className="factor-filter" aria-label="Factor filter">
-        <button className={!activeFactorId ? "factor-filter__button factor-filter__button--active" : "factor-filter__button"} type="button" onClick={() => setActiveFactorId(null)}>
-          All
-        </button>
-        {factors.map((factor) => (
-          <button
-            className={activeFactorId === factor.id ? "factor-filter__button factor-filter__button--active" : "factor-filter__button"}
-            key={factor.id}
-            type="button"
-            onClick={() => setActiveFactorId(factor.id)}
-          >
-            {factor.label}
-          </button>
-        ))}
-      </div>
-
       <div className="score-chart" data-testid="score-chart">
-        <svg aria-label="HB score scatter plot" role="img" viewBox={`0 0 ${chart.width} ${chart.height}`}>
+        <svg aria-label="HB score rank scatter plot" role="img" viewBox={`0 0 ${chart.width} ${chart.height}`}>
           <line className="axis-line" x1={chart.left} x2={chart.left} y1={chart.top} y2={chart.top + plotHeight} />
           <line className="axis-line" x1={chart.left} x2={chart.left + plotWidth} y1={chart.top + plotHeight} y2={chart.top + plotHeight} />
 
@@ -69,27 +64,30 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
             );
           })}
 
-          {factors.map((factor) => {
-            const x = xScale(factor.order, factors.length, plotWidth);
+          {rankGuides.map((rankIndex) => {
+            const x = xScaleByRank(rankIndex, selectedFactorPoints.length, plotWidth);
+            const isMajorGuide = rankIndex % 5 === 0 || rankIndex === rankGuides.length - 1;
 
             return (
-              <g key={factor.id}>
-                <line className="factor-line" x1={x} x2={x} y1={chart.top} y2={chart.top + plotHeight} />
-                <text className="factor-label" x={x} y={chart.top + plotHeight + 34}>
-                  {factor.label}
-                </text>
+              <g key={rankIndex}>
+                <line className={isMajorGuide ? "rank-line rank-line--major" : "rank-line"} x1={x} x2={x} y1={chart.top} y2={chart.top + plotHeight} />
+                {isMajorGuide ? (
+                  <text className="rank-label" x={x} y={chart.top + plotHeight + 34}>
+                    {rankIndex + 1}
+                  </text>
+                ) : null}
               </g>
             );
           })}
 
-          {visiblePoints.map((point) => {
-            const x = xScale(point.factorOrder, factors.length, plotWidth) + jitter(point.placeId, 16);
+          {selectedFactorPoints.map((point, index) => {
+            const x = xScaleByRank(index, selectedFactorPoints.length, plotWidth);
             const y = yScale(point.hbScore, plotHeight);
             const isSelected = point.placeId === selectedPlaceId;
 
             return (
               <circle
-                aria-label={`${point.placeName} ${point.factorLabel} ${point.hbScore.toFixed(2)}`}
+                aria-label={`${point.placeName} ${point.factorLabel} rank ${index + 1} ${point.hbScore.toFixed(2)}`}
                 className={isSelected ? "score-dot score-dot--selected" : "score-dot"}
                 cx={x}
                 cy={y}
@@ -99,23 +97,42 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
                 tabIndex={0}
                 onBlur={() => setTooltip(null)}
                 onClick={() => onSelectPlace(point.placeId)}
-                onFocus={() => setTooltip({ x, y, point })}
+                onFocus={() => setTooltip({ x, y, rank: index + 1, point })}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
                     onSelectPlace(point.placeId);
                   }
                 }}
-                onMouseEnter={() => setTooltip({ x, y, point })}
+                onMouseEnter={() => setTooltip({ x, y, rank: index + 1, point })}
                 onMouseLeave={() => setTooltip(null)}
               />
             );
           })}
         </svg>
 
+        {selectedFactor ? (
+          <select
+            aria-label="X-axis factor"
+            className="factor-select"
+            value={selectedFactor.id}
+            onChange={(event) => {
+              setSelectedFactorId(event.target.value);
+              setTooltip(null);
+            }}
+          >
+            {factors.map((factor) => (
+              <option key={factor.id} value={factor.id}>
+                {factor.label}
+              </option>
+            ))}
+          </select>
+        ) : null}
+
         {tooltip ? (
           <div className="score-tooltip" style={{ left: `${(tooltip.x / chart.width) * 100}%`, top: `${(tooltip.y / chart.height) * 100}%` }}>
             <strong>{tooltip.point.placeName}</strong>
+            <span>Rank {tooltip.rank}</span>
             <span>
               {tooltip.point.factorLabel}: {tooltip.point.hbScore.toFixed(2)}
             </span>
@@ -127,20 +144,10 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
   );
 }
 
-function xScale(order: number, factorCount: number, plotWidth: number): number {
-  return chart.left + (order / Math.max(factorCount - 1, 1)) * plotWidth;
+function xScaleByRank(index: number, pointCount: number, plotWidth: number): number {
+  return chart.left + (index / Math.max(pointCount - 1, 1)) * plotWidth;
 }
 
 function yScale(score: number, plotHeight: number): number {
   return chart.top + ((5 - score) / 5) * plotHeight;
-}
-
-function jitter(value: string, magnitude: number): number {
-  let hash = 0;
-
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash * 31 + value.charCodeAt(index)) % 997;
-  }
-
-  return (hash / 997 - 0.5) * magnitude;
 }

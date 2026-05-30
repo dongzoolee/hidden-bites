@@ -160,3 +160,12 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - The font-face declarations rely on locally installed Airbnb Cereal names and keep the existing system sans-serif fallback stack because this repository does not include proprietary Cereal font files.
 - Previous Georgia and Courier-specific UI overrides were removed so hero titles, QnA labels, score axis labels, report numerals, emotion labels, and snippet metadata inherit the same Cereal-first family.
 - Regression guard: `client/test/client-contract.test.mjs` asserts the Cereal font token is present and the removed Georgia/Courier declarations do not return.
+
+## 2026-05-30 HB Scores single-factor rank axis
+
+- `client/components/ScorePlot.tsx`에서 HB Scores 그래프를 단일 factor 선택 구조로 변경했다.
+- factor 선택은 x-axis 오른쪽 끝의 native dropdown select로만 수행한다.
+- 기존 `All`/factor chip filter는 제거했고, 선택된 factor의 50개 restaurant point만 렌더링한다.
+- 선택 factor 안에서 `hbScore` 내림차순으로 정렬한 뒤 x-axis를 restaurant count만큼 균등 분할해 배치한다.
+- 높은 score restaurant는 left/top에, 낮은 score restaurant는 right/bottom에 오도록 `x=rank slot`, `y=hbScore` 구조를 사용한다.
+- 회귀 테스트 `client/test/score-plot-axis.test.mjs`를 추가해 dropdown factor 선택, HB score descending sort, rank x-axis scale, 기존 factor filter 제거를 고정했다.
