@@ -144,3 +144,12 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
   - `https://d154z9o0s3agqw.cloudfront.net/_next/static/chunks/057hb_t5k9.-s.css` returned `HTTP/2 200`.
   - `https://d154z9o0s3agqw.cloudfront.net/api/summary` timed out because the backend container has not been deployed to `8097` yet.
   - `hidden-bites.leed.at` does not resolve yet from local DNS. This AWS account has no `leed.at` Route53 hosted zone; only `flit.lt.` was listed. DNS must be configured outside this account, or in the authoritative hosted zone, to alias `hidden-bites.leed.at` to `d154z9o0s3agqw.cloudfront.net`.
+
+## 2026-05-30 Server Image Build CI Repair
+
+- Failed run: GitHub Actions `Release Deploy` run `26680007972`, job `78638681087`.
+- Failure point: `build_server / build_server` passed the npm-based server checks, then failed in Docker Buildx at `Build and push server image`.
+- Root cause: `server/Dockerfile` installed dependencies with `npm ci` from `server/package-lock.json`, but the image build stage ran `yarn build`. This repo declares `npm@11.6.2` in both client and server package metadata and does not use a Yarn lockfile.
+- Fix: `server/Dockerfile` now runs `npm run build` in the build stage.
+- Regression guard: `.github/scripts/validate-release-deploy-workflow.sh` now asserts that both package manifests use npm, the server Dockerfile contains `RUN npm run build`, and no `RUN yarn` command remains.
+- Local validation note: the current Codex shell has no system `npm`, `yarn`, `gh`, or `docker` commands. TypeScript build/type-check were verified directly through installed `server/node_modules` with the bundled Codex Node runtime; Docker image execution could not be reproduced locally in this shell.
