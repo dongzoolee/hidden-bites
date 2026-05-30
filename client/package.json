@@ -1,0 +1,35 @@
+{
+  "name": "@hidden-bites/client",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "scripts": {
+    "dev": "next dev -p 8096",
+    "build": "next build",
+    "build:web": "rm -rf out client-build && next build && mv out client-build",
+    "start": "serve client-build -l 8096",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "next": "16.2.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@next/swc-wasm-nodejs": "16.2.6",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "serve": "^14.2.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2"
+  }
+}

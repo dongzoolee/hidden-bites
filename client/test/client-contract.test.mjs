@@ -1,0 +1,20 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { test } from "node:test";
+
+test("client implements the required story surfaces", async () => {
+  const page = await readFile("app/page.tsx", "utf8");
+  const experience = await readFile("components/HiddenBitesExperience.tsx", "utf8");
+  const scorePlot = await readFile("components/ScorePlot.tsx", "utf8");
+  const reportPanel = await readFile("components/RestaurantReportPanel.tsx", "utf8");
+  const css = await readFile("app/globals.css", "utf8");
+
+  assert.match(page, /HiddenBitesExperience/);
+  assert.match(experience, /QnaAccordion/);
+  assert.match(experience, /ScorePlot/);
+  assert.match(experience, /RestaurantReportPanel/);
+  assert.match(scorePlot, /role="button"/);
+  assert.match(reportPanel, /keyword-chip/);
+  assert.match(css, /100svh/);
+  assert.doesNotMatch(`${experience}\n${scorePlot}\n${reportPanel}`, /Alert\.alert|as any/);
+});
