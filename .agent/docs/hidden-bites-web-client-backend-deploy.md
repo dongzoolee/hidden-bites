@@ -181,3 +181,11 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 
 - 초기 data load fallback에서 `Loading Hidden Bites data story` 문구를 제거하고 spinner만 남겼다.
 - `client/test/client-contract.test.mjs`에 해당 loading copy가 재도입되지 않도록 회귀 검증을 추가했다.
+
+## 2026-05-30 Client Airbnb Cereal CDN
+
+- `client/app/globals.css`의 `Airbnb Cereal` font-face가 Airbnb `a0.muscache.com` CDN의 Cereal VF woff2 파일을 우선 로드한다.
+- normal/italic variable font URL을 각각 등록했고, 기존 local font fallback과 system sans-serif fallback은 유지했다.
+- `client/app/layout.tsx`에 `https://a0.muscache.com` preconnect를 추가했다.
+- CDN font HEAD check에서 `HTTP/2 200`, `content-type: font/woff2`, `access-control-allow-origin: *`, `cache-control: public, max-age=31536000`을 확인했다.
+- 회귀 테스트 `client/test/client-contract.test.mjs`가 CDN URL과 preconnect가 유지되는지 검증한다.

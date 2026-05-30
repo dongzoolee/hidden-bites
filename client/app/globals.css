@@ -1,9 +1,10 @@
 @font-face {
   font-family: "Airbnb Cereal";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
   src:
+    url("https://a0.muscache.com/airbnb/static/airbnb-dls-web/build/fonts/cereal-variable/AirbnbCerealVF_W_Wght.8816d9e5c3b6a860636193e36b6ac4e4.woff2") format("woff2"),
     local("Airbnb Cereal App Book"),
     local("Airbnb Cereal Book"),
     local("AirbnbCereal_W_Bk"),
@@ -12,14 +13,14 @@
 
 @font-face {
   font-family: "Airbnb Cereal";
-  font-style: normal;
-  font-weight: 700;
+  font-style: italic;
+  font-weight: 100 900;
   font-display: swap;
   src:
-    local("Airbnb Cereal App Bold"),
-    local("Airbnb Cereal Bold"),
-    local("AirbnbCereal_W_Bd"),
-    local("AirbnbCereal-Bold");
+    url("https://a0.muscache.com/airbnb/static/airbnb-dls-web/build/fonts/cereal-variable/AirbnbCerealVF_Italics_W_Wght.bd5e0f97cea11e9264b40656a83357ec.woff2") format("woff2"),
+    local("Airbnb Cereal App Italic"),
+    local("Airbnb Cereal Italic"),
+    local("AirbnbCereal-Italic");
 }
 
 :root {
