@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { HbFactor, HbScorePoint } from "@/lib/api-types";
+import type { RestaurantSelectionOptions } from "@/lib/selection-types";
 
 export type ScoreMode = "scatter" | "list";
 
@@ -30,9 +31,7 @@ interface ScorePlotProps {
   onSelectPlace: (placeId: string, options?: ScorePlotSelectionOptions) => void;
 }
 
-export interface ScorePlotSelectionOptions {
-  scrollToReport?: boolean;
-}
+export type ScorePlotSelectionOptions = RestaurantSelectionOptions;
 
 interface TooltipState {
   x: number;
@@ -95,7 +94,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
   function handleReportSelection(placeId: string): void {
     setTooltip(null);
-    onSelectPlace(placeId, { scrollToReport: true });
+    onSelectPlace(placeId, { scrollToReport: true, targetHash: "report" });
   }
 
   function handleGoToReportClick(): void {

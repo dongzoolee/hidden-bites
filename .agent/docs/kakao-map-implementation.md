@@ -5,6 +5,8 @@
 - 공통 `KakaoMap`은 Kakao SDK loader, map type/zoom control, custom overlay rank dots, selected restaurant popup, API key missing/error state를 처리한다.
 - `client/components/SeoulRestaurantMap.tsx`는 SVG rough Seoul map을 제거하고 공통 `KakaoMap`을 렌더링하며, 기존 district count analysis panel은 유지한다.
 - `/map` 페이지는 기존 `client/data/top-restaurants-locations.json` snake_case payload를 `RestaurantSummary`로 normalize해 같은 공통 `KakaoMap`을 재사용한다.
+- 위치 dot 클릭 시 parent selected state 변경으로 `onCreate -> setBounds`가 다시 실행되어 zoom이 초기화되지 않도록 `KakaoMap`의 initial bounds fitting을 `useRef`로 최초 1회만 수행하게 했다.
+- map dot selection은 `{ targetHash: "map" }`을 전달해 score plot의 report 이동 선택과 분리한다.
 - `client/app/map/page.tsx`에 Kakao Map 구현을 추가했습니다.
 - `react-kakao-maps-sdk`를 활용하여 Top 50 식당 데이터를 지도에 렌더링합니다.
 - Top 10 식당은 노란 rank dot, 11-50위 식당은 주황 rank dot, selected 식당은 pink dot으로 구분합니다.

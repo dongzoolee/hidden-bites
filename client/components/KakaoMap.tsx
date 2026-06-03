@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { CustomOverlayMap, Map, MapTypeControl, ZoomControl, useKakaoLoader } from "react-kakao-maps-sdk";
 import type { RestaurantSummary } from "@/lib/api-types";
+import type { RestaurantSelectionOptions } from "@/lib/selection-types";
 
 interface KakaoMapProps {
   restaurants: RestaurantSummary[];
   selectedPlaceId?: string | null;
-  onSelectPlace?: (placeId: string) => void;
+  onSelectPlace?: (placeId: string, options?: RestaurantSelectionOptions) => void;
 }
 
 const seoulCenter = { lat: 37.5665, lng: 126.978 };
@@ -26,6 +27,7 @@ function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectP
   const [loading, error] = useKakaoLoader({
     appkey: appKey
   });
+  const didFitInitialBoundsRef = useRef(false);
   const [activePlaceId, setActivePlaceId] = useState<string | null>(selectedPlaceId);
   const sortedRestaurants = useMemo(() => [...restaurants].sort((left, right) => left.placeRank - right.placeRank), [restaurants]);
   const currentPlaceId = selectedPlaceId ?? activePlaceId;
@@ -34,7 +36,11 @@ function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectP
     [currentPlaceId, sortedRestaurants]
   );
 
-  function handleMapCreate(map: kakao.maps.Map): void {
+  const handleMapCreate = useCallback((map: kakao.maps.Map): void => {
+    if (didFitInitialBoundsRef.current) {
+      return;
+    }
+
     if (!sortedRestaurants.length) {
       return;
     }
@@ -46,11 +52,12 @@ function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectP
     }
 
     map.setBounds(bounds, 58, 58, 58, 58);
-  }
+    didFitInitialBoundsRef.current = true;
+  }, [sortedRestaurants]);
 
   function handleRestaurantSelect(placeId: string): void {
     setActivePlaceId(placeId);
-    onSelectPlace?.(placeId);
+    onSelectPlace?.(placeId, { targetHash: "map" });
   }
 
   if (loading) {

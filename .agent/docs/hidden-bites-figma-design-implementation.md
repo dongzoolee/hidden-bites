@@ -8,6 +8,12 @@
 - `/map` standalone page는 `client/data/top-restaurants-locations.json`의 snake_case 장소 데이터를 `RestaurantSummary` 형태로 normalize해 같은 `KakaoMap` 컴포넌트를 재사용한다.
 - Regression guard: `client/test/client-contract.test.mjs`와 `client/test/kakao-map-data.test.mjs`가 Kakao SDK 사용, custom overlay dots, coordinate mapping, SVG map 제거 계약을 검증한다.
 
+### 2026-06-03 Kakao map zoom preservation
+
+- Kakao 지도 위치 dot 클릭 후 selected restaurant state가 바뀔 때 `onCreate`의 `setBounds`가 다시 호출되어 zoom/center가 초기화될 수 있던 흐름을 차단했다.
+- `KakaoMap`은 `didFitInitialBoundsRef`로 initial bounds fitting을 최초 1회만 수행하고, 이후 사용자가 조작한 Kakao map zoom/center를 유지한다.
+- map dot selection은 `{ targetHash: "map" }`을 전달하고, score plot selection만 `{ scrollToReport: true, targetHash: "report" }`를 사용한다.
+
 ## 2026-06-03 Selected dropdown contrast fix
 
 - `Selected:` report heading dropdown이 공통 `.restaurant-select` 규칙에 의해 paper background와 paper text 조합이 되어 글자가 보이지 않던 문제를 수정했다.

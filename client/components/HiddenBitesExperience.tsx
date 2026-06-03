@@ -4,8 +4,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { fetchHbScores, fetchRestaurantReport, fetchRestaurants, fetchSummary } from "@/lib/api";
 import type { HbFactor, HbScorePoint, RestaurantReport, RestaurantSummary, SummaryPayload } from "@/lib/api-types";
+import type { RestaurantSelectionOptions } from "@/lib/selection-types";
 import { QnaAccordion, type QnaAccordionItem } from "@/components/QnaAccordion";
-import { ScorePlot, type ScorePlotSelectionOptions } from "@/components/ScorePlot";
+import { ScorePlot } from "@/components/ScorePlot";
 import { RestaurantReportPanel } from "@/components/RestaurantReportPanel";
 import { SeoulRestaurantMap } from "@/components/SeoulRestaurantMap";
 
@@ -145,13 +146,14 @@ export function HiddenBitesExperience() {
     return buildQnaItems(data.summary.qna);
   }, [data]);
 
-  const handleSelectRestaurant = useCallback((placeId: string, options: ScorePlotSelectionOptions = {}) => {
+  const handleSelectRestaurant = useCallback((placeId: string, options: RestaurantSelectionOptions = {}) => {
     setSelectedPlaceId(placeId);
     setReport(null);
 
     const url = new URL(window.location.href);
     url.searchParams.set("place", placeId);
-    window.history.replaceState(null, "", `${url.pathname}${url.search}#${reportSectionId}`);
+    const nextHash = options.targetHash ? `#${options.targetHash}` : url.hash;
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${nextHash}`);
 
     if (options.scrollToReport) {
       window.requestAnimationFrame(() => {

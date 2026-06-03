@@ -3,11 +3,12 @@
 import { useMemo } from "react";
 import { KakaoMap } from "@/components/KakaoMap";
 import type { RestaurantSummary } from "@/lib/api-types";
+import type { RestaurantSelectionOptions } from "@/lib/selection-types";
 
 interface SeoulRestaurantMapProps {
   restaurants: RestaurantSummary[];
   selectedPlaceId: string | null;
-  onSelectPlace: (placeId: string) => void;
+  onSelectPlace: (placeId: string, options?: RestaurantSelectionOptions) => void;
 }
 
 interface DistrictCount {

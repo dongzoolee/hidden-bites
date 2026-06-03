@@ -44,9 +44,15 @@ test("client implements the required story surfaces", async () => {
   assert.match(kakaoMap, /react-kakao-maps-sdk/);
   assert.match(kakaoMap, /CustomOverlayMap/);
   assert.match(kakaoMap, /useKakaoLoader/);
+  assert.match(kakaoMap, /useRef/);
+  assert.match(kakaoMap, /useCallback/);
+  assert.match(kakaoMap, /didFitInitialBoundsRef/);
+  assert.match(kakaoMap, /didFitInitialBoundsRef\.current = true/);
+  assert.match(kakaoMap, /targetHash: "map"/);
   assert.match(kakaoMap, /NEXT_PUBLIC_KAKAO_MAP_API_KEY/);
   assert.match(kakaoMap, /restaurant\.latitude/);
   assert.match(kakaoMap, /restaurant\.longitude/);
+  assert.match(experience, /const nextHash = options\.targetHash \? `#\$\{options\.targetHash\}` : url\.hash/);
   assert.doesNotMatch(seoulMap, /<svg|<circle|projectPoint|seoulOutline|hanRiver/);
   assert.match(reportPanel, /restaurant-select/);
   assert.match(reportPanel, /keyword-chip/);
