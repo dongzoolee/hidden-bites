@@ -617,6 +617,16 @@ img {
   border-width: 2px;
 }
 
+.score-mode-toggle .mini-pill {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.score-mode-toggle .mini-pill--active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .chart-axis-note {
   color: var(--paper);
 }

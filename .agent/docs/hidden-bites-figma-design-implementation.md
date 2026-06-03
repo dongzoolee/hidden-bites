@@ -1,5 +1,11 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Score mode toggle contrast fix
+
+- `HB Scores` 섹션의 `Scatter` / `Ranked list` toggle이 주황 section background 위에서 active state를 구분하기 어려운 문제를 수정했다.
+- `.score-mode-toggle .mini-pill` inactive state는 `var(--paper-soft)` background와 `var(--ink)` text를 쓰고, active state는 `var(--ink)` background와 `var(--paper)` text를 쓰도록 score toggle 범위에만 scoped override를 추가했다.
+- `client/test/score-plot-axis.test.mjs`에 score mode toggle inactive/active contrast CSS 계약을 추가했다.
+
 ## 2026-06-03 Keyword chip contrast fix
 
 - `The Unique & Fun Keywords`의 selected keyword chip이 `.keyword-chip` 하단 규칙에 의해 active background를 잃고 paper 계열 글자색만 남던 문제를 수정했다.

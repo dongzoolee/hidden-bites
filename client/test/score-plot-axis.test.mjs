@@ -17,6 +17,8 @@ test("score plot exposes weighted controls and ranks restaurants across the x-ax
   assert.match(css, /\.score-controls/);
   assert.match(css, /\.factor-weight-slider/);
   assert.match(css, /\.score-list/);
+  assert.match(css, /\.score-mode-toggle \.mini-pill\s*\{\s*background: var\(--paper-soft\);\s*color: var\(--ink\);/);
+  assert.match(css, /\.score-mode-toggle \.mini-pill--active\s*\{\s*background: var\(--ink\);\s*color: var\(--paper\);/);
   assert.doesNotMatch(scorePlot, /factor-filter__button/);
   assert.doesNotMatch(scorePlot, />\s*All\s*</);
 });
