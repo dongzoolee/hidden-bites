@@ -31,6 +31,7 @@ test("serves health and score API", async () => {
   await request(app.getHttpServer()).get("/api/hb-scores").expect(200).expect((response) => {
     assert.equal(response.body.factors.length, 10);
     assert.equal(response.body.points.length, 500);
+    assert.equal(typeof response.body.points[0].displayPlaceName, "string");
   });
 });
 
@@ -41,8 +42,10 @@ test("serves selected report and 404 for missing report", async () => {
   assert.equal(typeof restaurants.body[0].latitude, "number");
   assert.equal(typeof restaurants.body[0].longitude, "number");
   assert.equal(typeof restaurants.body[0].district, "string");
+  assert.equal(typeof restaurants.body[0].displayPlaceName, "string");
 
   await request(app.getHttpServer()).get(`/api/restaurants/${encodeURIComponent(placeId)}/report`).expect(200).expect((response) => {
+    assert.equal(response.body.displayPlaceName, restaurants.body[0].displayPlaceName);
     assert.equal(response.body.latitude, restaurants.body[0].latitude);
     assert.equal(response.body.longitude, restaurants.body[0].longitude);
     assert.equal(response.body.district, restaurants.body[0].district);

@@ -16,6 +16,7 @@ export interface HbScorePoint {
   placeRank: number;
   placeId: string;
   placeName: string;
+  displayPlaceName: string;
   googlePlaceRating: number;
   popularityCount: number;
   collectedReviewCount: number;
@@ -25,6 +26,7 @@ export interface RestaurantSummary {
   placeId: string;
   placeRank: number;
   placeName: string;
+  displayPlaceName: string;
   formattedAddress: string;
   googleMapsUri: string;
   googlePlaceRating: number;
@@ -75,6 +77,7 @@ export interface RestaurantReport {
   placeId: string;
   placeRank: number;
   placeName: string;
+  displayPlaceName: string;
   formattedAddress: string;
   googleMapsUri: string;
   googlePlaceRating: number;

@@ -19,6 +19,8 @@ test("HbDataService loads canonical score payloads", () => {
   assert.equal(scores.points.length, 500);
   assert.equal(restaurants.length, 50);
   assert.equal(summary.metadata.mapPointCount, 50);
+  assert.equal(typeof scores.points[0].displayPlaceName, "string");
+  assert.equal(typeof restaurants[0].displayPlaceName, "string");
   assert.equal(typeof restaurants[0].latitude, "number");
   assert.equal(typeof restaurants[0].longitude, "number");
   assert.equal(typeof restaurants[0].district, "string");
@@ -30,6 +32,7 @@ test("HbDataService returns reports and rejects missing ids", () => {
   const report = service.getRestaurantReport(restaurant.placeId);
 
   assert.equal(report.placeId, restaurant.placeId);
+  assert.equal(report.displayPlaceName, restaurant.displayPlaceName);
   assert.equal(report.latitude, restaurant.latitude);
   assert.equal(report.longitude, restaurant.longitude);
   assert.equal(report.district, restaurant.district);

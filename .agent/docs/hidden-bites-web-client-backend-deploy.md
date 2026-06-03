@@ -197,6 +197,15 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - CDN font HEAD check에서 `HTTP/2 200`, `content-type: font/woff2`, `access-control-allow-origin: *`, `cache-control: public, max-age=31536000`을 확인했다.
 - Regression guard: `client/test/client-contract.test.mjs`가 WAGURI font-face, woff2 URL, Hangul unicode range, primary font stack, jsDelivr preconnect를 검증한다.
 
+## 2026-06-03 Korean Restaurant Display Names
+
+- 원본 Google Places 식당명은 `placeName`으로 보존하고, 웹 노출용 짧은 한글 식당명은 `displayPlaceName`으로 추가했다.
+- `scripts/restaurant_display_names.mjs`가 `placeId` 기반 alias와 fallback 정규화 규칙을 관리한다. fallback은 구분자 `|`, `/`, `ㅣ`, 영문, 일본어, 중국어, 비한글 괄호 설명을 제거한 한글 후보를 고른다.
+- `scripts/build_hb_score_web_report.mjs`는 `restaurants`, `points`, `reports`에 `displayPlaceName`을 생성하고, `scripts/sync_top_restaurant_display_names.mjs`는 standalone `/map`용 `client/data/top-restaurants-locations.json`에 `display_name`을 동기화한다.
+- Client UI는 score dot aria-label, tooltip, ranked list, top pick, selected evaluation, report title, report dropdown, Google Maps link aria-label, Kakao map marker aria-label, Kakao map popup에서 `displayPlaceName`을 사용한다.
+- Regression guard: `scripts/validate_hb_score_web_report.mjs`가 all restaurant/point/report display names의 한글 포함과 외국어 문자 미포함을 검증하고, client/server tests가 API와 UI 표시명 계약을 고정한다.
+- Verification: `node scripts/validate_hb_score_web_report.mjs`, client `yarn typecheck && yarn lint && yarn test && yarn build:web`, server `yarn type-check && yarn lint && yarn test && yarn build`가 통과했고, Browser에서 `http://localhost:8096/?place=ChIJlQqAYNelfDURg2zfveD4eW4#scores` 렌더링 본문과 score/report label에 긴 원문 이름이 남지 않는 것을 확인했다.
+
 ## 2026-05-30 Client Airbnb Cereal Font
 
 - Client global typography now uses `Airbnb Cereal` as the first font family through `client/app/globals.css`.

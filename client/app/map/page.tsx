@@ -17,6 +17,7 @@ interface TopRestaurantLocation {
   rank: number;
   place_id: string;
   name: string;
+  display_name: string;
   formatted_address: string;
   district: string;
   rating: number;
@@ -57,6 +58,7 @@ function toRestaurantSummary(place: TopRestaurantLocation): RestaurantSummary {
     placeId: place.place_id,
     placeRank: place.rank,
     placeName: place.name,
+    displayPlaceName: place.display_name,
     formattedAddress: place.formatted_address,
     googleMapsUri: place.google_maps_uri,
     googlePlaceRating: place.rating,

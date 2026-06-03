@@ -1,5 +1,6 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { basename, join } from "node:path";
+import { buildDisplayPlaceName } from "./restaurant_display_names.mjs";
 
 const scorePath = "datasets/derived/hb-score-restaurants.json";
 const pointsPath = "datasets/derived/hb-score-factor-restaurant-points.json";
@@ -165,6 +166,7 @@ const reports = scoreData.restaurants.map((restaurant) => {
     placeId: restaurant.place_id,
     placeRank: restaurant.place_rank,
     placeName: restaurant.place_name,
+    displayPlaceName: buildDisplayPlaceName(restaurant.place_id, restaurant.place_name),
     formattedAddress: restaurant.formatted_address,
     googleMapsUri: restaurant.google_maps_uri,
     googlePlaceRating: restaurant.google_place_rating,
@@ -225,6 +227,7 @@ const output = {
     placeId: restaurant.place_id,
     placeRank: restaurant.place_rank,
     placeName: restaurant.place_name,
+    displayPlaceName: buildDisplayPlaceName(restaurant.place_id, restaurant.place_name),
     formattedAddress: restaurant.formatted_address,
     googleMapsUri: restaurant.google_maps_uri,
     googlePlaceRating: restaurant.google_place_rating,
@@ -246,6 +249,7 @@ const output = {
     placeRank: point.place_rank,
     placeId: point.place_id,
     placeName: point.place_name,
+    displayPlaceName: buildDisplayPlaceName(point.place_id, point.place_name),
     googlePlaceRating: point.google_place_rating,
     popularityCount: point.popularity_count,
     collectedReviewCount: point.collected_review_count

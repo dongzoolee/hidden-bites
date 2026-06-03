@@ -89,7 +89,7 @@ function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectP
               zIndex={isSelected ? 20 : restaurant.placeRank <= 10 ? 12 : 8}
             >
               <button
-                aria-label={`${restaurant.placeName} Kakao map rank ${restaurant.placeRank} ${restaurant.district}`}
+                aria-label={`${restaurant.displayPlaceName} Kakao map rank ${restaurant.placeRank} ${restaurant.district}`}
                 className={markerClassName}
                 type="button"
                 onClick={() => handleRestaurantSelect(restaurant.placeId)}
@@ -108,7 +108,7 @@ function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectP
             zIndex={30}
           >
             <article className="kakao-map-popup">
-              <strong>{activeRestaurant.placeName}</strong>
+              <strong>{activeRestaurant.displayPlaceName}</strong>
               <span>
                 Rank {activeRestaurant.placeRank} · {activeRestaurant.district}
               </span>

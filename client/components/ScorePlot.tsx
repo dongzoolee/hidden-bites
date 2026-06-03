@@ -15,6 +15,7 @@ export interface FactorWeight {
 interface WeightedRestaurantScore {
   placeId: string;
   placeName: string;
+  displayPlaceName: string;
   placeRank: number;
   googlePlaceRating: number;
   popularityCount: number;
@@ -145,7 +146,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
                 return (
                   <circle
-                    aria-label={`${score.placeName} weighted rank ${index + 1} ${score.selectedFactorScore.toFixed(2)}`}
+                    aria-label={`${score.displayPlaceName} weighted rank ${index + 1} ${score.selectedFactorScore.toFixed(2)}`}
                     className={buildScoreDotClassName(isSelected, isTopPick)}
                     cx={x}
                     cy={y}
@@ -171,7 +172,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
             {tooltip ? (
               <div className="score-tooltip" style={{ left: `${(tooltip.x / chart.width) * 100}%`, top: `${(tooltip.y / chart.height) * 100}%` }}>
-                <strong>{tooltip.score.placeName}</strong>
+                <strong>{tooltip.score.displayPlaceName}</strong>
                 <span>Weighted rank {tooltip.rank}</span>
                 <span>
                   {selectedFactor?.label ?? "Factor"}: {tooltip.score.selectedFactorScore.toFixed(2)}
@@ -186,7 +187,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
               <li className={score.placeId === selectedPlaceId ? "score-list__row score-list__row--active" : "score-list__row"} key={score.placeId}>
                 <button type="button" onClick={() => handleReportSelection(score.placeId)}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{score.placeName}</strong>
+                  <strong>{score.displayPlaceName}</strong>
                   <em>{(score.weightedScore * 20).toFixed(1)}</em>
                 </button>
               </li>
@@ -235,7 +236,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
         <div className="top-pick-card">
           <span>Top pick right now</span>
-          <strong>{topScore?.placeName ?? "No restaurant"}</strong>
+          <strong>{topScore?.displayPlaceName ?? "No restaurant"}</strong>
           <b>{topScore ? (topScore.weightedScore * 20).toFixed(1) : "0.0"}</b>
         </div>
       </aside>
@@ -243,7 +244,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
       <section className="evaluation-card" aria-label="Selected restaurant weighted evaluation">
         <div>
           <span>Individual evaluation</span>
-          <h3>{selectedScore?.placeName ?? "Select a restaurant"}</h3>
+          <h3>{selectedScore?.displayPlaceName ?? "Select a restaurant"}</h3>
           <p>
             {selectedScore
               ? `Rank #${selectedScore.placeRank} · Google ${selectedScore.googlePlaceRating.toFixed(1)} · ${selectedScore.popularityCount.toLocaleString()} reviews`
@@ -302,6 +303,7 @@ function buildWeightedScores(points: HbScorePoint[], factorWeights: FactorWeight
     const nextScore: WeightedRestaurantScore = current ?? {
       placeId: point.placeId,
       placeName: point.placeName,
+      displayPlaceName: point.displayPlaceName,
       placeRank: point.placeRank,
       googlePlaceRating: point.googlePlaceRating,
       popularityCount: point.popularityCount,
@@ -332,7 +334,7 @@ function buildWeightedScores(points: HbScorePoint[], factorWeights: FactorWeight
         selectedFactorScore: score.factorScores[selectedFactorId] ?? 0
       };
     })
-    .sort((left, right) => right.weightedScore - left.weightedScore || left.placeRank - right.placeRank || left.placeName.localeCompare(right.placeName));
+    .sort((left, right) => right.weightedScore - left.weightedScore || left.placeRank - right.placeRank || left.displayPlaceName.localeCompare(right.displayPlaceName));
 }
 
 function buildScoreDotClassName(isSelected: boolean, isTopPick: boolean): string {

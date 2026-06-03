@@ -285,7 +285,7 @@ export function HiddenBitesExperience() {
             >
               {data.restaurants.map((restaurant) => (
                 <option key={restaurant.placeId} value={restaurant.placeId}>
-                  {restaurant.placeName}
+                  {restaurant.displayPlaceName}
                 </option>
               ))}
             </select>

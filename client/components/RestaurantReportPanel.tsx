@@ -31,14 +31,14 @@ export function RestaurantReportPanel({ report, restaurants, onSelectPlace }: Re
       <header className="restaurant-report-header">
         <div>
           <p className="micro-label">Korean · {report.district} · since 2017</p>
-          <h3>{report.placeName}</h3>
+          <h3>{report.displayPlaceName}</h3>
           <p>{report.formattedAddress}</p>
         </div>
         <div className="restaurant-rating">
           <span>5-star Google rating</span>
           <strong>{report.googlePlaceRating.toFixed(1)}</strong>
           <em>{report.popularityCount.toLocaleString()} reviews · 5-yr</em>
-          <a href={report.googleMapsUri} target="_blank" rel="noreferrer" aria-label={`${report.placeName} Google Maps`}>
+          <a href={report.googleMapsUri} target="_blank" rel="noreferrer" aria-label={`${report.displayPlaceName} Google Maps`}>
             <ExternalLink aria-hidden="true" size={16} />
           </a>
         </div>
@@ -125,7 +125,7 @@ export function RestaurantReportPanel({ report, restaurants, onSelectPlace }: Re
         >
           {restaurants.map((restaurant) => (
             <option key={restaurant.placeId} value={restaurant.placeId}>
-              {restaurant.placeName}
+              {restaurant.displayPlaceName}
             </option>
           ))}
         </select>
