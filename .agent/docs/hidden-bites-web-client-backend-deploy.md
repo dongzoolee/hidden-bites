@@ -163,6 +163,15 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - 기존 npm lockfile 기반 문구는 historical note로만 남아 있으며, 현재 실행 기준은 Yarn이다.
 - `client`와 `server` 디렉터리에서 사용자가 실행하는 `yarn` 명령은 `Already up-to-date`로 통과한다.
 
+## 2026-06-03 Local API Proxy Repair
+
+- 확인 결과 local `8086`에는 listener가 없고, Hidden Bites client는 `8096`, server는 `8097`에서 실행된다.
+- 문제 원인: client는 `NEXT_PUBLIC_API_BASE_URL`이 비어 있으면 same-origin `/api/*`를 호출하지만, `client/next.config.ts`에는 dev server가 `/api/*`와 `/health`를 backend로 넘기는 rewrite가 없었다. 그래서 `8096/api/summary`는 Next trailing slash redirect 이후 404가 났고, `8097/api/summary`는 정상 200을 반환했다.
+- `client/next.config.ts`에 development 모드 한정 rewrite를 추가해 `/api/:path*`를 `http://127.0.0.1:8097/api/:path*`, `/health`를 `http://127.0.0.1:8097/health`로 proxy한다.
+- local backend port가 달라지는 경우 `HIDDEN_BITES_API_PROXY_TARGET`으로 target origin을 바꿀 수 있다.
+- static export production build는 CloudFront `/api/*`, `/health` behavior가 담당하므로 production config에는 rewrite를 넣지 않는다.
+- Regression guard: `client/test/dev-proxy-config.test.mjs`가 dev-only proxy, default backend target, trailing slash redirect skip, `/api`와 `/health` rewrite를 검증한다.
+
 ## 2026-05-30 Client Airbnb Cereal Font
 
 - Client global typography now uses `Airbnb Cereal` as the first font family through `client/app/globals.css`.
