@@ -88,7 +88,6 @@ img {
 .app-shell {
   background: var(--paper);
   margin: 0 auto;
-  max-width: 92rem;
   min-height: 100svh;
 }
 
@@ -1464,10 +1463,6 @@ img {
 }
 
 @media (max-width: 760px) {
-  .app-shell {
-    max-width: none;
-  }
-
   .story-section {
     padding: 3rem 1rem;
   }

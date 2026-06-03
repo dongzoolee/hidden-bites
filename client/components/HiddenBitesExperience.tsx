@@ -5,7 +5,7 @@ import { Loader2 } from "lucide-react";
 import { fetchHbScores, fetchRestaurantReport, fetchRestaurants, fetchSummary } from "@/lib/api";
 import type { HbFactor, HbScorePoint, RestaurantReport, RestaurantSummary, SummaryPayload } from "@/lib/api-types";
 import { QnaAccordion, type QnaAccordionItem } from "@/components/QnaAccordion";
-import { ScorePlot } from "@/components/ScorePlot";
+import { ScorePlot, type ScorePlotSelectionOptions } from "@/components/ScorePlot";
 import { RestaurantReportPanel } from "@/components/RestaurantReportPanel";
 import { SeoulRestaurantMap } from "@/components/SeoulRestaurantMap";
 
@@ -25,6 +25,8 @@ const navigationItems = [
   { label: "05 Dot Mapping", href: "#map" },
   { label: "06 Limitations", href: "#limitations" }
 ];
+
+const reportSectionId = "report";
 
 const limitationCards = [
   {
@@ -143,13 +145,19 @@ export function HiddenBitesExperience() {
     return buildQnaItems(data.summary.qna);
   }, [data]);
 
-  const handleSelectRestaurant = useCallback((placeId: string) => {
+  const handleSelectRestaurant = useCallback((placeId: string, options: ScorePlotSelectionOptions = {}) => {
     setSelectedPlaceId(placeId);
     setReport(null);
 
     const url = new URL(window.location.href);
     url.searchParams.set("place", placeId);
-    window.history.replaceState(null, "", `${url.pathname}${url.search}#report`);
+    window.history.replaceState(null, "", `${url.pathname}${url.search}#${reportSectionId}`);
+
+    if (options.scrollToReport) {
+      window.requestAnimationFrame(() => {
+        document.getElementById(reportSectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   }, []);
 
   if (errorMessage) {

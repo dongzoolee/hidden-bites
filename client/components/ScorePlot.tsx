@@ -27,7 +27,11 @@ interface ScorePlotProps {
   factors: HbFactor[];
   points: HbScorePoint[];
   selectedPlaceId: string | null;
-  onSelectPlace: (placeId: string) => void;
+  onSelectPlace: (placeId: string, options?: ScorePlotSelectionOptions) => void;
+}
+
+export interface ScorePlotSelectionOptions {
+  scrollToReport?: boolean;
 }
 
 interface TooltipState {
@@ -89,6 +93,17 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
     );
   }
 
+  function handleReportSelection(placeId: string): void {
+    setTooltip(null);
+    onSelectPlace(placeId, { scrollToReport: true });
+  }
+
+  function handleGoToReportClick(): void {
+    if (selectedScore) {
+      handleReportSelection(selectedScore.placeId);
+    }
+  }
+
   return (
     <div className="score-lab" data-testid="score-lab">
       <div className="score-stage">
@@ -140,12 +155,12 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
                     role="button"
                     tabIndex={0}
                     onBlur={() => setTooltip(null)}
-                    onClick={() => onSelectPlace(score.placeId)}
+                    onClick={() => handleReportSelection(score.placeId)}
                     onFocus={() => setTooltip({ x, y, rank: index + 1, score })}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
-                        onSelectPlace(score.placeId);
+                        handleReportSelection(score.placeId);
                       }
                     }}
                     onMouseEnter={() => setTooltip({ x, y, rank: index + 1, score })}
@@ -170,7 +185,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
           <ol className="score-list" aria-label="Weighted restaurant ranking">
             {weightedScores.slice(0, 12).map((score, index) => (
               <li className={score.placeId === selectedPlaceId ? "score-list__row score-list__row--active" : "score-list__row"} key={score.placeId}>
-                <button type="button" onClick={() => onSelectPlace(score.placeId)}>
+                <button type="button" onClick={() => handleReportSelection(score.placeId)}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{score.placeName}</strong>
                   <em>{(score.weightedScore * 20).toFixed(1)}</em>
@@ -252,7 +267,7 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
             );
           })}
         </div>
-        <button className="report-jump" type="button" onClick={() => selectedScore ? onSelectPlace(selectedScore.placeId) : undefined}>
+        <button className="report-jump" type="button" disabled={!selectedScore} onClick={handleGoToReportClick}>
           Go to Report
           <span aria-hidden="true">↓</span>
         </button>

@@ -172,6 +172,15 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - static export production build는 CloudFront `/api/*`, `/health` behavior가 담당하므로 production config에는 rewrite를 넣지 않는다.
 - Regression guard: `client/test/dev-proxy-config.test.mjs`가 dev-only proxy, default backend target, trailing slash redirect skip, `/api`와 `/health` rewrite를 검증한다.
 
+## 2026-06-03 HB Scores Node-to-Report Scroll
+
+- `client/components/ScorePlot.tsx`의 scatter graph node, keyboard node selection, ranked list row, `Go to Report` 버튼이 selected restaurant를 고른 뒤 report section으로 이동하도록 `scrollToReport` 선택 옵션을 보낸다.
+- `Go to Report` 버튼은 전용 `handleGoToReportClick` 핸들러를 통해 현재 selected score를 report selection으로 넘기고, selected score가 없으면 disabled 상태가 된다.
+- `client/components/HiddenBitesExperience.tsx`는 selected restaurant query param과 `#report` hash를 유지한 다음, HB Scores에서 온 선택에 한해 `scrollIntoView({ behavior: "smooth", block: "start" })`로 다음 section에 slide down한다.
+- Report section 내부 selector와 Seoul map selection은 기존 selected restaurant state/query 갱신 흐름을 유지하고, HB Scores node click만 다음 section 이동 UX를 명시한다.
+- `.app-shell`의 desktop `max-width` 제한을 제거해 Figma story page가 viewport 전체 폭을 사용한다.
+- Regression guard: `client/test/score-plot-report-scroll.test.mjs`가 score graph node click, keyboard selection, `Go to Report` button click, smooth report scroll contract, app shell full-width contract를 검증한다.
+
 ## 2026-05-30 Client Airbnb Cereal Font
 
 - Client global typography now uses `Airbnb Cereal` as the first font family through `client/app/globals.css`.
