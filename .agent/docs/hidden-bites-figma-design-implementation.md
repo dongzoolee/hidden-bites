@@ -29,6 +29,14 @@
 - Desktop에서는 `.story-section--hero .story-nav`를 숨기고, mobile에서만 기존 section nav를 유지하도록 했다.
 - `.hero-poster .micro-label`을 Figma header처럼 mono font, larger uppercase, flex row, wider gap으로 조정했다.
 
+### 2026-06-03 Global hero header implementation
+
+- User correction clarified that the missing header was the top global header, not the hero meta line.
+- Desktop `.story-nav` is visible again with the Figma-style orange `Hidden Bites.` logo and large rounded nav pills.
+- Nav labels now match the Figma header sequence: `00 INTRO`, `01 Preview`, `02 Q&A`, `03 HB SCORE`, `04 Emotion Mapping`, `05 REMAPping`, `06 Limitation`.
+- Hero meta now uses a black rounded `DATA VISUALIZATION PROJECT` pill followed by `Sogang University Art&Technology`.
+- Hero section desktop horizontal padding is fixed to `2rem`, and header links use `nowrap` plus left alignment so the full Figma header fits on one line starting next to the logo at the 1632px reference viewport.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.

@@ -18,13 +18,13 @@ interface ExperienceData {
 }
 
 const navigationItems = [
-  { label: "Go intro", href: "#intro" },
+  { label: "00 INTRO", href: "#intro" },
   { label: "01 Preview", href: "#question" },
   { label: "02 Q&A", href: "#data-source" },
-  { label: "03 HB Score", href: "#scores" },
+  { label: "03 HB SCORE", href: "#scores" },
   { label: "04 Emotion Mapping", href: "#report" },
-  { label: "05 Dot Mapping", href: "#map" },
-  { label: "06 Limitations", href: "#limitations" }
+  { label: "05 REMAPping", href: "#map" },
+  { label: "06 Limitation", href: "#limitations" }
 ];
 
 const reportSectionId = "report";
@@ -199,7 +199,8 @@ export function HiddenBitesExperience() {
         </nav>
         <div className="hero-poster">
           <p className="micro-label">
-            Data visualization project <span>{data.summary.className}</span>
+            <strong>Data visualization project</strong>
+            <span>Sogang University Art&Technology</span>
           </p>
           <h1 aria-label={data.summary.title}>
             <span>Hidden</span>
