@@ -1,5 +1,16 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Hero title and decoration parity fix
+
+- Hero title이 Figma 첨부 기준보다 절반 폭으로 작게 보이던 원인을 `hero-poster`의 `max-width: 64rem`과 `story-nav` flow margin으로 확인했다.
+- Desktop hero에서 `story-nav`를 absolute 배치로 분리해 Figma처럼 micro label이 첫 줄 상단에 오도록 했다.
+- `hero-poster`에 `--hero-title-size: clamp(6rem, 20.8vw, 27rem)`와 `--hero-title-line-height: 0.73`을 추가해 2048px viewport에서 title이 Figma crop처럼 화면 대부분을 차지하도록 맞췄다.
+- Yellow, green, pink, blue circle/dot mark를 title block 기준 absolute layer로 재배치하고, black square pseudo element도 Figma 비율에 맞춰 키웠다.
+- Font ascender가 micro label과 붙지 않도록 title text span만 desktop에서 `translateY`하고, dots와 black square 위치는 Figma crop 기준값에 고정했다.
+- Mobile에서는 title span transform을 끄고 black square를 title 안쪽에 배치해 오른쪽 clipping이 생기지 않게 했다.
+- Regression guard: `client/test/client-contract.test.mjs`가 hero nav flow 분리, title size variable, black square sizing, four dot coordinates를 검증한다.
+- Figma MCP `get_metadata`, `get_screenshot`, read-only `use_figma`는 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`에서 모두 120초 timeout이 나서, 사용자 첨부 Figma screenshot과 로컬 Playwright 2048x738 screenshot을 기준으로 대조했다.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.
