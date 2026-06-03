@@ -11,6 +11,12 @@
 - Regression guard: `client/test/client-contract.test.mjs`가 hero nav flow 분리, title size variable, black square sizing, four dot coordinates를 검증한다.
 - Figma MCP `get_metadata`, `get_screenshot`, read-only `use_figma`는 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`에서 모두 120초 timeout이 나서, 사용자 첨부 Figma screenshot과 로컬 Playwright 2048x738 screenshot을 기준으로 대조했다.
 
+### 2026-06-03 Hero title scale correction
+
+- `20.8vw` desktop hero title이 실제 웹 viewport에서 과하게 커져 description과 metric chips를 밀어내는 문제가 있었다.
+- `--hero-title-size`를 `clamp(5.5rem, 17.2vw, 22rem)`로 낮추고 title span translate, black square, four circle/dot mark size를 같은 비율로 줄였다.
+- Desktop poster look은 유지하되 2048x738 viewport에서 title이 화면 전체를 덮지 않고 hero supporting copy가 이어서 읽히도록 조정했다.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.

@@ -258,7 +258,7 @@ img {
 
 .hero-poster {
   --hero-title-line-height: 0.73;
-  --hero-title-size: clamp(6rem, 20.8vw, 27rem);
+  --hero-title-size: clamp(5.5rem, 17.2vw, 22rem);
   max-width: none;
   position: relative;
   width: 100%;
@@ -317,19 +317,19 @@ img {
 }
 
 .hero-poster h1 span {
-  transform: translateY(clamp(1.4rem, 1.35vw, 1.75rem));
+  transform: translateY(clamp(1rem, 1vw, 1.35rem));
 }
 
 .hero-poster h1::after {
   background: var(--ink);
   content: "";
   display: inline-block;
-  height: clamp(3.2rem, 3.8vw, 4.9rem);
+  height: clamp(2.4rem, 3vw, 3.8rem);
   margin-left: 0;
   position: absolute;
   right: clamp(1rem, 1.4vw, 1.8rem);
-  bottom: clamp(1.6rem, 3vw, 2.25rem);
-  width: clamp(3.2rem, 3.8vw, 4.9rem);
+  bottom: clamp(1.15rem, 2.2vw, 1.8rem);
+  width: clamp(2.4rem, 3vw, 3.8rem);
 }
 
 .hero-poster p:not(.micro-label) {
@@ -363,34 +363,34 @@ img {
 
 .hero-dots i:nth-child(1) {
   background: var(--yellow);
-  height: clamp(2.2rem, 2.45vw, 3.1rem);
+  height: clamp(1.8rem, 2vw, 2.5rem);
   left: 75%;
   top: 32%;
-  width: clamp(2.2rem, 2.45vw, 3.1rem);
+  width: clamp(1.8rem, 2vw, 2.5rem);
 }
 
 .hero-dots i:nth-child(2) {
   background: var(--green);
-  height: clamp(1.5rem, 1.52vw, 1.95rem);
+  height: clamp(1.25rem, 1.25vw, 1.55rem);
   left: 85.5%;
   top: 42%;
-  width: clamp(1.5rem, 1.52vw, 1.95rem);
+  width: clamp(1.25rem, 1.25vw, 1.55rem);
 }
 
 .hero-dots i:nth-child(3) {
   background: var(--pink);
-  height: clamp(2.6rem, 2.85vw, 3.65rem);
+  height: clamp(2.1rem, 2.35vw, 2.9rem);
   left: 68%;
   top: 63%;
-  width: clamp(2.6rem, 2.85vw, 3.65rem);
+  width: clamp(2.1rem, 2.35vw, 2.9rem);
 }
 
 .hero-dots i:nth-child(4) {
   background: var(--blue);
-  height: clamp(0.95rem, 0.95vw, 1.2rem);
+  height: clamp(0.75rem, 0.8vw, 1rem);
   left: 90.4%;
   top: 52%;
-  width: clamp(0.95rem, 0.95vw, 1.2rem);
+  width: clamp(0.75rem, 0.8vw, 1rem);
 }
 
 .story-section--question {
