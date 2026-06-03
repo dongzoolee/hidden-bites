@@ -37,6 +37,12 @@
 - Hero meta now uses a black rounded `DATA VISUALIZATION PROJECT` pill followed by `Sogang University Art&Technology`.
 - Hero section desktop horizontal padding is fixed to `2rem`, and header links use `nowrap` plus left alignment so the full Figma header fits on one line starting next to the logo at the 1632px reference viewport.
 
+### 2026-06-03 Hero black square removal
+
+- User screenshot showed the decorative black square still visible on the hero surface.
+- Removed the `.hero-poster h1::after` pseudo-element that generated the black square on desktop and the matching mobile override.
+- Regression guard: `client/test/client-contract.test.mjs` rejects reintroducing `.hero-poster h1::after` while keeping the four colored hero dots.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.
