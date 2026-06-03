@@ -23,6 +23,12 @@
 - `--hero-title-size`를 `clamp(4.8rem, 13.6vw, 17.5rem)`로 더 낮추고 `--hero-title-line-height`를 `0.88`로 올렸다.
 - Title span translate, black square, circle/dot mark size를 새 title scale에 맞춰 다시 줄였다.
 
+### 2026-06-03 Hero header parity correction
+
+- Figma node `313:9287` screenshot을 다시 받아 desktop hero 상단이 nav pill이 아니라 `DATA VISUALIZATION PROJECT`와 class meta 한 줄인 것을 확인했다.
+- Desktop에서는 `.story-section--hero .story-nav`를 숨기고, mobile에서만 기존 section nav를 유지하도록 했다.
+- `.hero-poster .micro-label`을 Figma header처럼 mono font, larger uppercase, flex row, wider gap으로 조정했다.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.

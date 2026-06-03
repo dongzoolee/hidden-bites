@@ -187,6 +187,7 @@ img {
 }
 
 .story-section--hero .story-nav {
+  display: none;
   left: clamp(2rem, 6vw, 5.5rem);
   margin-bottom: 0;
   position: absolute;
@@ -280,6 +281,17 @@ img {
   letter-spacing: 0.14em;
 }
 
+.hero-poster .micro-label {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 1vw, 1.28rem);
+  gap: clamp(0.85rem, 1.5vw, 1.9rem);
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
 .section-kicker,
 .control-label,
 .chart-axis-note {
@@ -291,6 +303,10 @@ img {
 .micro-label span {
   color: var(--ink);
   margin-left: 0.8rem;
+}
+
+.hero-poster .micro-label span {
+  margin-left: 0;
 }
 
 .hero-poster h1,
@@ -1884,6 +1900,7 @@ img {
 
 @media (max-width: 1100px) {
   .story-section--hero .story-nav {
+    display: flex;
     left: auto;
     margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
     position: relative;
@@ -1991,6 +2008,13 @@ img {
   .micro-label span {
     display: block;
     margin: 0.35rem 0 0;
+  }
+
+  .hero-poster .micro-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    line-height: 1.35;
   }
 
   .hero-dots {
