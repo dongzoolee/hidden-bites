@@ -7,7 +7,7 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 ## Client
 
 - 경로: `client/`
-- Stack: Next.js App Router, React 19, TypeScript strict, ESLint flat config, npm lockfile
+- Stack: Next.js App Router, React 19, TypeScript strict, ESLint flat config, Yarn lockfile
 - Static export output: `client/client-build`
 - API base:
   - production: same-origin `/api`
@@ -24,7 +24,7 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 ## Backend
 
 - 경로: `server/`
-- Stack: NestJS REST API, TypeScript strict, ESLint flat config, npm lockfile
+- Stack: NestJS REST API, TypeScript strict, ESLint flat config, Yarn lockfile
 - Port: `8097`
 - Endpoints:
   - `GET /health`
@@ -69,16 +69,16 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
   - `node scripts/validate_hb_score_web_report.mjs`
   - 확인: 50 restaurants, 10 factors, 500 points, 50 reports, score range `0..5`, keyword/snippet/emotion bucket payload
 - Backend:
-  - `npm run type-check`
-  - `npm run lint`
-  - `npm run test`
-  - `npm run build`
+  - `yarn type-check`
+  - `yarn lint`
+  - `yarn test`
+  - `yarn build`
   - 테스트 4개 통과: health, summary/scores/restaurants/report success, missing report 404
 - Client:
-  - `npm run typecheck`
-  - `npm run lint`
-  - `npm run test`
-  - `npm run build:web`
+  - `yarn typecheck`
+  - `yarn lint`
+  - `yarn test`
+  - `yarn build:web`
   - 테스트 1개 통과: QnA, HB Scores, selected report, keyword snippet surface contract
 - Deploy scripts:
   - `node .github/cloudfront/viewer-request.test.js`
@@ -148,11 +148,20 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 ## 2026-05-30 Server Image Build CI Repair
 
 - Failed run: GitHub Actions `Release Deploy` run `26680007972`, job `78638681087`.
-- Failure point: `build_server / build_server` passed the npm-based server checks, then failed in Docker Buildx at `Build and push server image`.
-- Root cause: `server/Dockerfile` installed dependencies with `npm ci` from `server/package-lock.json`, but the image build stage ran `yarn build`. This repo declares `npm@11.6.2` in both client and server package metadata and does not use a Yarn lockfile.
-- Fix: `server/Dockerfile` now runs `npm run build` in the build stage.
-- Regression guard: `.github/scripts/validate-release-deploy-workflow.sh` now asserts that both package manifests use npm, the server Dockerfile contains `RUN npm run build`, and no `RUN yarn` command remains.
-- Local validation note: the current Codex shell has no system `npm`, `yarn`, `gh`, or `docker` commands. TypeScript build/type-check were verified directly through installed `server/node_modules` with the bundled Codex Node runtime; Docker image execution could not be reproduced locally in this shell.
+- Failure point: `build_server / build_server` passed the package-manager-based server checks, then failed in Docker Buildx at `Build and push server image`.
+- Historical root cause: `server/Dockerfile` installed dependencies with the npm lockfile path while the image build stage ran `yarn build`.
+- Historical fix at the time: the Docker build command was aligned with the package manager then declared by the repo.
+- Superseded by 2026-06-03 Yarn Package Manager 전환 below.
+
+## 2026-06-03 Yarn Package Manager 전환
+
+- `client/package.json`과 `server/package.json`의 `packageManager`를 `yarn@1.22.22`로 변경했다.
+- `client/package-lock.json`과 `server/package-lock.json`을 제거하고 각각 `yarn.lock`을 생성했다.
+- GitHub Actions reusable build jobs는 `actions/setup-node` cache를 `yarn`으로 바꾸고, `yarn install --frozen-lockfile`, `yarn typecheck`, `yarn lint`, `yarn test`, `yarn build:web`, `yarn type-check`, `yarn build`를 사용하도록 변경했다.
+- `server/Dockerfile`은 `server/yarn.lock`을 복사하고 `corepack enable && yarn install --frozen-lockfile`, `corepack enable && yarn build`, production runner의 `yarn install --frozen-lockfile --production=true && yarn cache clean` 경로로 변경했다.
+- `.github/scripts/validate-release-deploy-workflow.sh`는 `client/yarn.lock`, `server/yarn.lock`, `packageManager: yarn@1.22.22`, `RUN corepack enable && yarn build`, Dockerfile 내 `RUN npm` 미사용을 검증한다.
+- 기존 npm lockfile 기반 문구는 historical note로만 남아 있으며, 현재 실행 기준은 Yarn이다.
+- `client`와 `server` 디렉터리에서 사용자가 실행하는 `yarn` 명령은 `Already up-to-date`로 통과한다.
 
 ## 2026-05-30 Client Airbnb Cereal Font
 

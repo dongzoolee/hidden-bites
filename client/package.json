@@ -2,7 +2,7 @@
   "name": "@hidden-bites/client",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "npm@11.6.2",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "next dev -p 8096",
     "build": "next build",
