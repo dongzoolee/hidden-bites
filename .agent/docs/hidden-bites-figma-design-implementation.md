@@ -17,6 +17,12 @@
 - `--hero-title-size`를 `clamp(5.5rem, 17.2vw, 22rem)`로 낮추고 title span translate, black square, four circle/dot mark size를 같은 비율로 줄였다.
 - Desktop poster look은 유지하되 2048x738 viewport에서 title이 화면 전체를 덮지 않고 hero supporting copy가 이어서 읽히도록 조정했다.
 
+### 2026-06-03 Hero title line-height correction
+
+- `17.2vw` title도 여전히 크게 보이고 `0.73` line-height가 두 줄을 과하게 압축해 poster crop처럼 답답하게 보였다.
+- `--hero-title-size`를 `clamp(4.8rem, 13.6vw, 17.5rem)`로 더 낮추고 `--hero-title-line-height`를 `0.88`로 올렸다.
+- Title span translate, black square, circle/dot mark size를 새 title scale에 맞춰 다시 줄였다.
+
 ## 2026-06-03 Figma font-family parity fix
 
 - Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.

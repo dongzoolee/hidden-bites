@@ -83,10 +83,10 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /\.hero-poster h1,[\s\S]*\.story-footer h2\s*\{[\s\S]*font-family: var\(--font-display\);/);
   assert.match(css, /\.story-section--hero \.story-nav\s*\{[\s\S]*position: absolute;[\s\S]*top: clamp\(2rem, 4vw, 3rem\);/);
   assert.match(css, /\.story-section--hero \.story-brand\s*\{\s*display: none;\s*\}/);
-  assert.match(css, /\.hero-poster\s*\{[\s\S]*--hero-title-line-height: 0\.73;[\s\S]*--hero-title-size: clamp\(5\.5rem, 17\.2vw, 22rem\);[\s\S]*max-width: none;[\s\S]*width: 100%;/);
+  assert.match(css, /\.hero-poster\s*\{[\s\S]*--hero-title-line-height: 0\.88;[\s\S]*--hero-title-size: clamp\(4\.8rem, 13\.6vw, 17\.5rem\);[\s\S]*max-width: none;[\s\S]*width: 100%;/);
   assert.match(css, /\.hero-poster h1\s*\{[\s\S]*font-size: var\(--hero-title-size\);[\s\S]*line-height: var\(--hero-title-line-height\);/);
-  assert.match(css, /\.hero-poster h1 span\s*\{\s*transform: translateY\(clamp\(1rem, 1vw, 1\.35rem\)\);\s*\}/);
-  assert.match(css, /\.hero-poster h1::after\s*\{[\s\S]*height: clamp\(2\.4rem, 3vw, 3\.8rem\);[\s\S]*right: clamp\(1rem, 1\.4vw, 1\.8rem\);[\s\S]*bottom: clamp\(1\.15rem, 2\.2vw, 1\.8rem\);/);
+  assert.match(css, /\.hero-poster h1 span\s*\{\s*transform: translateY\(clamp\(0\.7rem, 0\.72vw, 1rem\)\);\s*\}/);
+  assert.match(css, /\.hero-poster h1::after\s*\{[\s\S]*height: clamp\(1\.9rem, 2\.35vw, 3rem\);[\s\S]*right: clamp\(0\.8rem, 1\.1vw, 1\.4rem\);[\s\S]*bottom: clamp\(1rem, 1\.75vw, 1\.45rem\);/);
   assert.match(css, /\.hero-dots\s*\{[\s\S]*height: calc\(var\(--hero-title-size\) \* var\(--hero-title-line-height\) \* 2\);[\s\S]*pointer-events: none;[\s\S]*position: absolute;/);
   assert.match(css, /\.hero-dots i:nth-child\(1\)\s*\{[\s\S]*left: 75%;[\s\S]*top: 32%;/);
   assert.match(css, /\.hero-dots i:nth-child\(2\)\s*\{[\s\S]*left: 85\.5%;[\s\S]*top: 42%;/);
