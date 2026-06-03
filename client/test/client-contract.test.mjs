@@ -50,6 +50,10 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /U\+AC00-D7A3/);
   assert.match(css, /--font-primary: "WAGURI", "Airbnb Cereal"/);
   assert.match(css, /\.selected-heading__select/);
+  assert.ok(css.indexOf(".selected-heading__select.restaurant-select") > css.indexOf(".restaurant-select {\n  background: var(--paper);"));
+  assert.match(css, /\.selected-heading__control::after\s*\{[\s\S]*border-top: clamp\([^;]+ solid var\(--paper\);/);
+  assert.match(css, /\.selected-heading__select\.restaurant-select\s*\{[\s\S]*background: var\(--orange\);[\s\S]*color: var\(--paper\);/);
+  assert.match(css, /\.selected-heading__select\.restaurant-select\s*\{[\s\S]*appearance: none;/);
   assert.doesNotMatch(css, /\.selected-heading > span/);
   assert.match(css, /max-height: var\(--qna-answer-height\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);

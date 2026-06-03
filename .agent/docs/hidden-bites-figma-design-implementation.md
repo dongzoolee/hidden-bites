@@ -1,5 +1,11 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Selected dropdown contrast fix
+
+- `Selected:` report heading dropdown이 공통 `.restaurant-select` 규칙에 의해 paper background와 paper text 조합이 되어 글자가 보이지 않던 문제를 수정했다.
+- `.selected-heading__select.restaurant-select`를 공통 select 규칙 뒤에 배치해 Figma처럼 orange filled dropdown, paper text, large rounded surface, custom triangle indicator를 유지하도록 했다.
+- `client/test/client-contract.test.mjs`에 selected heading dropdown의 cascade order, orange/text contrast, native appearance 제거 계약을 추가했다.
+
 ## 2026-06-03 Score mode toggle contrast fix
 
 - `HB Scores` 섹션의 `Scatter` / `Ranked list` toggle이 주황 section background 위에서 active state를 구분하기 어려운 문제를 수정했다.

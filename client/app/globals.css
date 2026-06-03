@@ -944,6 +944,7 @@ img {
   display: block;
   margin: 0 0 1rem;
   max-width: min(100%, 64rem);
+  position: relative;
 }
 
 .selected-heading__select {
@@ -1190,6 +1191,49 @@ img {
   border-radius: 0.4rem;
   min-height: 2.65rem;
   padding: 0.6rem;
+}
+
+.selected-heading__control::after {
+  border-left: clamp(0.75rem, 1.5vw, 1.3rem) solid transparent;
+  border-right: clamp(0.75rem, 1.5vw, 1.3rem) solid transparent;
+  border-top: clamp(0.95rem, 1.9vw, 1.55rem) solid var(--paper);
+  content: "";
+  left: clamp(1.3rem, 2.4vw, 2.2rem);
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-38%);
+  z-index: 1;
+}
+
+.selected-heading__select.restaurant-select {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--orange);
+  border: 0;
+  border-radius: 1.35rem;
+  color: var(--paper);
+  display: block;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-weight: 1000;
+  line-height: 0.98;
+  min-height: clamp(5.2rem, 9vw, 8.2rem);
+  overflow: hidden;
+  padding: clamp(1rem, 2vw, 1.65rem) clamp(1rem, 2vw, 2rem) clamp(1rem, 2vw, 1.75rem) clamp(4.7rem, 7vw, 6.8rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.selected-heading__select.restaurant-select:focus-visible {
+  outline: 4px solid var(--line);
+  outline-offset: 4px;
+}
+
+.selected-heading__select.restaurant-select option {
+  background: var(--paper-soft);
+  color: var(--ink);
+  font-size: 1rem;
 }
 
 .story-section--map {
@@ -1667,6 +1711,20 @@ img {
 
   .selected-heading__select {
     font-size: clamp(1.9rem, 10vw, 3rem);
+  }
+
+  .selected-heading__control::after {
+    border-left-width: 0.65rem;
+    border-right-width: 0.65rem;
+    border-top-width: 0.85rem;
+    left: 1.1rem;
+  }
+
+  .selected-heading__select.restaurant-select {
+    border-radius: 1rem;
+    font-size: clamp(1.7rem, 8.5vw, 2.9rem);
+    min-height: 4.9rem;
+    padding-left: 3.6rem;
   }
 
   .map-chart {
