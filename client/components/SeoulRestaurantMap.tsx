@@ -26,12 +26,12 @@ interface DistrictCount {
 }
 
 const mapChart = {
-  width: 920,
+  width: 860,
   height: 520,
-  left: 52,
-  top: 34,
-  right: 42,
-  bottom: 42
+  left: 64,
+  top: 40,
+  right: 54,
+  bottom: 52
 };
 
 const seoulBounds = {
@@ -69,12 +69,15 @@ const hanRiver: Array<[number, number]> = [
 ];
 
 const placeLabels = [
-  { label: "Hongdae", longitude: 126.92, latitude: 37.555 },
-  { label: "Myeongdong", longitude: 126.985, latitude: 37.563 },
-  { label: "Gangnam", longitude: 127.048, latitude: 37.502 },
-  { label: "Seongsu", longitude: 127.044, latitude: 37.546 },
-  { label: "Itaewon", longitude: 126.994, latitude: 37.533 }
+  { label: "HONGDAE/MAPO", longitude: 126.92, latitude: 37.555 },
+  { label: "MYEONGDONG/EULJIRO", longitude: 126.987, latitude: 37.568 },
+  { label: "GANGNAM/COEX", longitude: 127.055, latitude: 37.505 },
+  { label: "SEONGSU", longitude: 127.044, latitude: 37.546 },
+  { label: "ITAEWON", longitude: 126.994, latitude: 37.533 },
+  { label: "DAEHAKRO/JONGNO", longitude: 127.002, latitude: 37.582 }
 ];
+
+const districtColors = ["#191713", "#ff5530", "#4c93d7", "#9d2b1f", "#3fa56e", "#f77da4", "#ffc83d"];
 
 export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace }: SeoulRestaurantMapProps) {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
@@ -99,6 +102,7 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
     <div className="map-workspace">
       <div className="map-chart" data-testid="seoul-map-chart">
         <svg aria-label="Seoul top restaurant dot distribution graph" role="img" viewBox={`0 0 ${mapChart.width} ${mapChart.height}`}>
+          <ellipse className="seoul-map-field" cx={mapChart.width / 2} cy={mapChart.height / 2} rx={plotWidth * 0.48} ry={plotHeight * 0.42} />
           <polygon className="seoul-outline" points={toSvgPoints(seoulOutline, plotWidth, plotHeight)} />
           <polyline className="han-river han-river--wide" points={toSvgPoints(hanRiver, plotWidth, plotHeight)} />
           <polyline className="han-river" points={toSvgPoints(hanRiver, plotWidth, plotHeight)} />
@@ -116,8 +120,7 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
           {sortedRestaurants.map((restaurant) => {
             const projected = projectPoint(restaurant.longitude, restaurant.latitude, plotWidth, plotHeight);
             const isSelected = restaurant.placeId === selectedPlaceId;
-            const isTopRank = restaurant.placeRank <= 10;
-            const className = ["map-dot", isTopRank ? "map-dot--top" : "", isSelected ? "map-dot--selected" : ""].filter(Boolean).join(" ");
+            const className = ["map-dot", restaurant.placeRank <= 10 ? "map-dot--top" : "", isSelected ? "map-dot--selected" : ""].filter(Boolean).join(" ");
 
             return (
               <circle
@@ -126,7 +129,7 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
                 cx={projected.x}
                 cy={projected.y}
                 key={restaurant.placeId}
-                r={isSelected ? 7.4 : isTopRank ? 5.9 : 4.5}
+                r={isSelected ? 7.8 : restaurant.placeRank <= 10 ? 5.8 : 4.4}
                 role="button"
                 tabIndex={0}
                 onBlur={() => setTooltip(null)}
@@ -145,6 +148,15 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
           })}
         </svg>
 
+        <div className="map-legend" aria-label="District cluster legend">
+          {districtCounts.slice(0, 5).map((row, index) => (
+            <span key={row.district}>
+              <i style={{ backgroundColor: districtColors[index % districtColors.length] }} />
+              {row.district} · {row.count}
+            </span>
+          ))}
+        </div>
+
         {tooltip ? (
           <div className="map-tooltip" style={{ left: `${(tooltip.x / mapChart.width) * 100}%`, top: `${(tooltip.y / mapChart.height) * 100}%` }}>
             <strong>{tooltip.restaurant.placeName}</strong>
@@ -159,18 +171,26 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
       </div>
 
       <aside className="map-districts" aria-label="Top restaurant district count">
-        <p className="pane-label">District count</p>
+        <h3>Dot distribution analysis</h3>
+        <p>The top-50 restaurants concentrate in places where visitors search, compare, and review most actively.</p>
         <div className="map-district-list">
-          {districtCounts.map((row) => (
+          {districtCounts.map((row, index) => (
             <div className="map-district-row" key={row.district}>
               <span>{row.district}</span>
-              <strong>{row.count}</strong>
               <div className="map-district-track">
-                <div className="map-district-value" style={{ width: `${Math.max(6, (row.count / maxDistrictCount) * 100)}%` }} />
+                <div
+                  className="map-district-value"
+                  style={{
+                    backgroundColor: districtColors[index % districtColors.length],
+                    width: `${Math.max(8, (row.count / maxDistrictCount) * 100)}%`
+                  }}
+                />
               </div>
+              <strong>{row.count}</strong>
             </div>
           ))}
         </div>
+        <p className="map-note">Dense review zones suggest where Top 50 visibility is produced, not only taste quality.</p>
       </aside>
     </div>
   );

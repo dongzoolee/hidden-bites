@@ -1,0 +1,51 @@
+# Hidden Bites Figma Design Implementation
+
+## 2026-06-03 구현 내용
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 긴 발표형 디자인을 메인 `/` 페이지에 반영했다.
+- `client/components/HiddenBitesExperience.tsx`를 Figma 흐름에 맞춰 hero, question preview, data-source Q&A, HB Scores, selected report, Seoul dot distribution, limitations, footer 순서의 story page로 재구성했다.
+- `client/components/ScorePlot.tsx`에 실제 동작하는 score controls를 추가했다.
+  - `ScoreMode`는 `scatter`와 `list`를 지원한다.
+  - `FactorWeight` slider 10개를 렌더링하고 factor weight 기반 weighted restaurant score를 client에서 계산한다.
+  - scatter mode는 선택 factor의 score 분포를 동적 y-axis로 렌더링하고, list mode는 weighted rank top 12를 표시한다.
+  - selected restaurant evaluation card와 top-pick card를 추가했다.
+- `client/components/RestaurantReportPanel.tsx`를 Figma의 단일 리포트 카드 구조로 변경했다.
+  - emotion chip row, adjective bar graph, keyword chip, review quote grid, restaurant selector를 포함한다.
+  - restaurant selector는 50개 restaurant를 전환하며 기존 report query sync를 유지한다.
+- `client/components/SeoulRestaurantMap.tsx`를 Figma형 cluster map과 dot distribution analysis panel로 리스킨했다.
+  - 기존 SVG projection, 서울 outline, 한강 polyline, 50개 dot, district count 계산은 유지했다.
+- `client/components/QnaAccordion.tsx`는 tone별 accordion row와 source comparison card를 지원하도록 확장했다.
+- `client/app/globals.css`는 Figma 팔레트와 poster typography, pill nav, thick border, score controls, report card, map/limitations/footer, responsive mobile layout으로 교체했다.
+
+## 회귀 테스트
+
+- `client/test/client-contract.test.mjs`
+  - Figma story section, score controls, factor sliders, score mode toggle, report selector, map surface가 유지되는지 검증한다.
+  - `Alert.alert`, `as any`, removed loading copy, direct image map 재도입을 막는다.
+- `client/test/score-plot-axis.test.mjs`
+  - weighted score 계산, `ScoreMode`, `FactorWeight`, slider, scatter/list mode, rank x-axis scale을 검증한다.
+
+## 검증 결과
+
+- `npm --prefix client run test -- --test-reporter=spec`
+- `npm --prefix client run typecheck`
+- `npm --prefix client run lint`
+- `npm --prefix client run build`
+- `npm --prefix server run test`
+- `npm --prefix server run type-check`
+- `npm --prefix server run lint`
+- local server `8097`, client `8096` 기동 후 Playwright MCP로 desktop 렌더링과 상호작용을 확인했다.
+  - story UI가 loading 없이 렌더링됐다.
+  - score section은 10개 slider, scatter/list toggle, top-pick/evaluation card를 렌더링했다.
+  - `Ranked list` 전환 후 12개 row가 렌더링됐다.
+  - 첫 factor slider 값 변경이 React state label에 반영됐다.
+  - selected report는 50개 restaurant selector를 렌더링하고 선택 변경 시 report heading이 갱신됐다.
+  - map section은 50개 dot, 7개 district row, selected dot state를 렌더링했다.
+- Chrome headless `390x844` screenshot으로 mobile 첫 viewport를 확인했고, nav/title/intro/question preview에서 오른쪽 clipping을 제거했다.
+
+## 운영 메모
+
+- 서버 HTTP API와 dataset schema는 변경하지 않았다.
+- GraphQL, Prisma, codegen 변경은 없다.
+- Figma MCP의 full design context와 full screenshot은 큰 node 크기 때문에 timeout이 났고, `contentsOnly` screenshot을 기준 시각 자료로 사용했다.
+- 첫 client build는 디스크 여유 공간 116MiB 상태에서 `.next` 생성 중 `ENOSPC`로 실패했다. ignored build artifacts와 오래된 `/tmp` EAS/build 임시 디렉터리를 정리한 뒤 동일 build가 통과했다.

@@ -12,15 +12,26 @@ test("client implements the required story surfaces", async () => {
   const css = await readFile("app/globals.css", "utf8");
 
   assert.match(page, /HiddenBitesExperience/);
+  assert.match(experience, /story-section--hero/);
+  assert.match(experience, /story-section--question/);
+  assert.match(experience, /story-section--qna/);
+  assert.match(experience, /story-section--scores/);
+  assert.match(experience, /story-section--report/);
+  assert.match(experience, /story-section--map/);
+  assert.match(experience, /story-section--limitations/);
   assert.match(experience, /QnaAccordion/);
   assert.match(experience, /ScorePlot/);
   assert.match(experience, /SeoulRestaurantMap/);
   assert.match(experience, /RestaurantReportPanel/);
+  assert.match(scorePlot, /score-controls/);
+  assert.match(scorePlot, /factor-weight-slider/);
+  assert.match(scorePlot, /score-mode-toggle/);
   assert.match(scorePlot, /role="button"/);
   assert.match(seoulMap, /data-testid="seoul-map-chart"/);
   assert.match(seoulMap, /Seoul top restaurant dot distribution graph/);
   assert.match(seoulMap, /latitude/);
   assert.match(seoulMap, /longitude/);
+  assert.match(reportPanel, /restaurant-select/);
   assert.match(reportPanel, /keyword-chip/);
   assert.match(css, /100svh/);
   assert.match(css, /--font-primary: "Airbnb Cereal"/);

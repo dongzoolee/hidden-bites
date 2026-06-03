@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ExternalLink, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { fetchHbScores, fetchRestaurantReport, fetchRestaurants, fetchSummary } from "@/lib/api";
 import type { HbFactor, HbScorePoint, RestaurantReport, RestaurantSummary, SummaryPayload } from "@/lib/api-types";
-import { QnaAccordion } from "@/components/QnaAccordion";
+import { QnaAccordion, type QnaAccordionItem } from "@/components/QnaAccordion";
 import { ScorePlot } from "@/components/ScorePlot";
 import { RestaurantReportPanel } from "@/components/RestaurantReportPanel";
 import { SeoulRestaurantMap } from "@/components/SeoulRestaurantMap";
@@ -15,6 +15,49 @@ interface ExperienceData {
   points: HbScorePoint[];
   restaurants: RestaurantSummary[];
 }
+
+const navigationItems = [
+  { label: "Go intro", href: "#intro" },
+  { label: "01 Preview", href: "#question" },
+  { label: "02 Q&A", href: "#data-source" },
+  { label: "03 HB Score", href: "#scores" },
+  { label: "04 Emotion Mapping", href: "#report" },
+  { label: "05 Dot Mapping", href: "#map" },
+  { label: "06 Limitations", href: "#limitations" }
+];
+
+const limitationCards = [
+  {
+    number: "01",
+    title: "Coverage",
+    body: "We analyzed top-50, high-review Seoul restaurants, not a full census of every local place.",
+    tone: "yellow"
+  },
+  {
+    number: "02",
+    title: "Sampling bias",
+    body: "Google Maps reviewers are not a neutral sample. Tourist-heavy locations are overrepresented.",
+    tone: "pink"
+  },
+  {
+    number: "03",
+    title: "Rating inflation",
+    body: "Review volume favors famous places and already visible neighborhoods.",
+    tone: "cream"
+  },
+  {
+    number: "04",
+    title: "NLP accuracy",
+    body: "Adjective and keyword extraction can miss slang, sarcasm, multilingual reviews, and context.",
+    tone: "green"
+  },
+  {
+    number: "05",
+    title: "Time sensitivity",
+    body: "Restaurant quality changes over time. A five-year review window still contains old signals.",
+    tone: "black"
+  }
+];
 
 export function HiddenBitesExperience() {
   const [data, setData] = useState<ExperienceData | null>(null);
@@ -92,6 +135,14 @@ export function HiddenBitesExperience() {
     return data.restaurants.find((restaurant) => restaurant.placeId === selectedPlaceId) ?? null;
   }, [data, selectedPlaceId]);
 
+  const qnaItems = useMemo<QnaAccordionItem[]>(() => {
+    if (!data) {
+      return [];
+    }
+
+    return buildQnaItems(data.summary.qna);
+  }, [data]);
+
   const handleSelectRestaurant = useCallback((placeId: string) => {
     setSelectedPlaceId(placeId);
     setReport(null);
@@ -124,69 +175,199 @@ export function HiddenBitesExperience() {
   }
 
   return (
-    <main className="app-shell">
-      <section className="section section--hero" id="intro">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">{data.summary.className}</p>
-            <h1>{data.summary.title}</h1>
-            <p className="hero-question">{data.summary.question}</p>
-            <p className="hero-description">{data.summary.description}</p>
-            <dl className="meta-list">
-              <div>
-                <dt>Advisor</dt>
-                <dd>{data.summary.advisor}</dd>
-              </div>
-              <div>
-                <dt>Members</dt>
-                <dd>{data.summary.members.join(", ")}</dd>
-              </div>
-            </dl>
+    <main className="app-shell figma-story">
+      <section className="story-section story-section--hero" id="intro">
+        <nav className="story-nav" aria-label="Story sections">
+          <a className="story-brand" href="#intro">Hidden Bites.</a>
+          <div className="story-nav__links">
+            {navigationItems.map((item, index) => (
+              <a className={index === 0 ? "nav-pill nav-pill--active" : "nav-pill"} href={item.href} key={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+        <div className="hero-poster">
+          <p className="micro-label">
+            Data visualization project <span>{data.summary.className}</span>
+          </p>
+          <h1 aria-label={data.summary.title}>
+            <span>Hidden</span>
+            <span>Bites.</span>
+          </h1>
+          <p>{data.summary.description}</p>
+          <div className="hero-metrics" aria-label="Hidden Bites metrics">
+            <span>{data.summary.metadata.restaurantCount} restaurants</span>
+            <span>5-yr review window</span>
+            <span>{data.summary.metadata.factorCount} factors</span>
+          </div>
+          <div className="hero-dots" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
           </div>
         </div>
-        <QnaAccordion items={data.summary.qna} />
       </section>
 
-      <section className="section section--scores" id="scores">
-        <div className="section-heading">
-          <p className="eyebrow">HB Scores</p>
-          <h2>Each dot is a restaurant, measured against one matjip factor.</h2>
+      <section className="story-section story-section--question" id="question">
+        <div className="question-card">
+          <p className="micro-label">The question</p>
+          <h2>What are the real factors behind a great 맛집?</h2>
           <p>
-            Select a dot to move the report. The y-axis keeps the HB score in the original 0.00 to 5.00 range.
+            Top star points and most reviews become the entry point. The story then asks whether reviews reveal different
+            reasons for being a matjip: taste, service, value, atmosphere, accessibility, and waiting friction.
           </p>
+          <div className="preview-collage" aria-label="Hidden Bites preview cards">
+            <div className="preview-card preview-card--dark">
+              <span>COEX Store</span>
+              <strong>4.93</strong>
+              <div className="preview-lines">
+                <i />
+                <i />
+                <i />
+              </div>
+            </div>
+            <div className="preview-card preview-card--chart">
+              <span>HB Score graph</span>
+              <b>{data.summary.metadata.graphPointCount}</b>
+            </div>
+            <div className="preview-card preview-card--map">
+              <span>Seoul dots</span>
+              <b>{data.summary.metadata.mapPointCount}</b>
+            </div>
+          </div>
         </div>
-        <ScorePlot
-          factors={data.factors}
-          points={data.points}
-          selectedPlaceId={selectedPlaceId}
-          onSelectPlace={handleSelectRestaurant}
-        />
       </section>
 
-      <section className="section section--map" id="map">
-        <div className="section-heading">
-          <p className="eyebrow">Seoul Distribution</p>
-          <h2>Google Top 50 restaurant dots on Seoul.</h2>
-          <p>
-            {data.summary.metadata.mapPointCount} restaurants are plotted by latitude and longitude across Seoul, with rank and district density kept in the graph.
-          </p>
+      <section className="story-section story-section--qna" id="data-source">
+        <div className="section-kicker">5 - 1 · Q&A</div>
+        <div className="split-heading">
+          <h2>
+            Why this
+            <span>data source?</span>
+          </h2>
+          <p>Before we re-score anything, the first doubt comes up first: why Google Maps, and how we narrowed the city down to fifty.</p>
+        </div>
+        <QnaAccordion items={qnaItems} />
+      </section>
+
+      <section className="story-section story-section--scores" id="scores">
+        <div className="section-kicker">5 - 2 · HB Scores</div>
+        <div className="score-heading">
+          <h2>HB Scores: re-scoring Hidden Bites</h2>
+          <p>Drag a slider. The chart recalculates Google star points using only the factor weights you care about.</p>
+        </div>
+        <ScorePlot factors={data.factors} points={data.points} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
+      </section>
+
+      <section className="story-section story-section--report" id="report">
+        <div className="section-kicker">5 - 3 · Report on the selected restaurant</div>
+        <div className="selected-heading">
+          <h2>Selected:</h2>
+          <span>{selectedRestaurant?.placeName ?? "Restaurant"}</span>
+          <p>The report links macro emotional adjective patterns with micro keyword evidence from original reviews.</p>
+        </div>
+        {report ? (
+          <RestaurantReportPanel report={report} restaurants={data.restaurants} onSelectPlace={handleSelectRestaurant} />
+        ) : (
+          <div className="report-loading">Loading report...</div>
+        )}
+      </section>
+
+      <section className="story-section story-section--map" id="map">
+        <div className="section-kicker">5 - 4 · Where are they located</div>
+        <div className="map-heading">
+          <h2>
+            The top-50 dots are not spread evenly across <span>Seoul.</span>
+          </h2>
+          <p>Most high-review, high-rating restaurants cluster around tourism, shopping, office, and nightlife places.</p>
         </div>
         <SeoulRestaurantMap restaurants={data.restaurants} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
       </section>
 
-      <section className="section section--report" id="report">
-        <div className="section-heading section-heading--compact">
-          <p className="eyebrow">Selected Restaurant Report</p>
-          <h2>{selectedRestaurant?.placeName ?? "Restaurant report"}</h2>
-          {selectedRestaurant ? (
-            <a className="external-link" href={selectedRestaurant.googleMapsUri} target="_blank" rel="noreferrer">
-              Google Maps
-              <ExternalLink aria-hidden="true" size={16} />
-            </a>
-          ) : null}
+      <section className="story-section story-section--limitations" id="limitations">
+        <div className="section-kicker">5 - 5 · Limitations</div>
+        <h2>
+          What this story <span>cannot claim yet.</span>
+        </h2>
+        <p>Five honest disclaimers. Every visualization above sits inside the boundaries described below.</p>
+        <div className="limitation-grid">
+          {limitationCards.map((card) => (
+            <article className={`limitation-card limitation-card--${card.tone}`} key={card.number}>
+              <span>{card.number}</span>
+              <strong>{card.title}</strong>
+              <p>{card.body}</p>
+            </article>
+          ))}
         </div>
-        {report ? <RestaurantReportPanel report={report} /> : <div className="report-loading">Loading report...</div>}
       </section>
+
+      <footer className="story-footer">
+        <h2>
+          <span>Hidden</span>
+          <span>Bites.</span>
+        </h2>
+        <div className="footer-meta">
+          <div>
+            <strong>The team</strong>
+            <span>{data.summary.members.join(" · ")}</span>
+          </div>
+          <div>
+            <strong>The class</strong>
+            <span>{data.summary.className}</span>
+            <span>advised by {data.summary.advisor}</span>
+          </div>
+          <div>
+            <strong>The story</strong>
+            <span>web-desktop edition · 2026.05</span>
+          </div>
+        </div>
+      </footer>
     </main>
   );
+}
+
+function buildQnaItems(items: SummaryPayload["qna"]): QnaAccordionItem[] {
+  const fallbackItems: SummaryPayload["qna"] = [
+    {
+      question: "Why we chose Google Maps -- not Naver or Kakao.",
+      answer: "Three Korean review platforms, three trade-offs. We compared review counts, star ratings, and how heavily each source moves toward promotional content."
+    },
+    {
+      question: "How we picked the top 50.",
+      answer: "Restaurants were sorted by a weighted mix of star quality and review count, then reviewed as a Seoul-only sample."
+    },
+    {
+      question: "What is the HB Score?",
+      answer: "HB Score re-weights restaurant reviews by factor-level evidence extracted from review text."
+    }
+  ];
+  const sourceItems = items.length >= 3 ? items : fallbackItems;
+
+  return [
+    {
+      ...sourceItems[0],
+      tone: "yellow",
+      cards: [
+        { title: "Google Maps", body: "Star ratings, review counts, and a blend of local and international user insights.", tone: "yellow" },
+        { title: "Naver Map", body: "High volume of promotional content. Lack of star ratings limits quantitative analysis.", tone: "yellow" },
+        { title: "Kakao Map", body: "Insufficient review volume hindered reliable selection of the top 50 list.", tone: "yellow" }
+      ]
+    },
+    {
+      ...sourceItems[1],
+      tone: "pink",
+      cards: [
+        { title: "Formula", body: "Score = star rating, review count, five-year review window, and Seoul-only location filter.", tone: "pink" }
+      ]
+    },
+    {
+      ...sourceItems[2],
+      tone: "green",
+      cards: [
+        { title: "HB factor", body: "Taste, service, value, atmosphere, accessibility, wait queue, occasion, portion, cleanliness, uniqueness.", tone: "green" }
+      ]
+    }
+  ];
 }
