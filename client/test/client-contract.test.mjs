@@ -34,9 +34,14 @@ test("client implements the required story surfaces", async () => {
   assert.match(reportPanel, /restaurant-select/);
   assert.match(reportPanel, /keyword-chip/);
   assert.match(css, /100svh/);
-  assert.match(css, /--font-primary: "Airbnb Cereal"/);
+  assert.match(css, /font-family: "WAGURI"/);
+  assert.match(css, /WAGURITTF\.woff2/);
+  assert.match(css, /unicode-range:/);
+  assert.match(css, /U\+AC00-D7A3/);
+  assert.match(css, /--font-primary: "WAGURI", "Airbnb Cereal"/);
   assert.match(css, /a0\.muscache\.com\/airbnb\/static\/airbnb-dls-web\/build\/fonts\/cereal-variable\/AirbnbCerealVF_W_Wght/);
   assert.match(layout, /rel="preconnect"/);
+  assert.match(layout, /https:\/\/cdn\.jsdelivr\.net/);
   assert.match(layout, /https:\/\/a0\.muscache\.com/);
   assert.doesNotMatch(css, /Georgia|"Courier New"/);
   assert.doesNotMatch(experience, /Loading Hidden Bites data story/);

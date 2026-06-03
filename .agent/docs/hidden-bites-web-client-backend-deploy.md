@@ -181,6 +181,15 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - `.app-shell`의 desktop `max-width` 제한을 제거해 Figma story page가 viewport 전체 폭을 사용한다.
 - Regression guard: `client/test/score-plot-report-scroll.test.mjs`가 score graph node click, keyboard selection, `Go to Report` button click, smooth report scroll contract, app shell full-width contract를 검증한다.
 
+## 2026-06-03 WAGURI Korean Font
+
+- Figma의 한글 display font에 맞춰 `client/app/globals.css`에 WAGURI webfont를 추가했다.
+- WAGURI는 `https://cdn.jsdelivr.net/gh/projectnoonnu/2403@1.0/WAGURITTF.woff2`를 로드하고, `unicode-range`를 Hangul 범위로 제한해 한글 glyph만 WAGURI를 우선 사용한다.
+- `--font-primary`는 `"WAGURI", "Airbnb Cereal", ...` 순서로 바꿔 한글은 WAGURI, 영문/숫자는 기존 Airbnb Cereal 경로를 유지한다.
+- `client/app/layout.tsx`에 `https://cdn.jsdelivr.net` preconnect를 추가했다.
+- CDN font HEAD check에서 `HTTP/2 200`, `content-type: font/woff2`, `access-control-allow-origin: *`, `cache-control: public, max-age=31536000`을 확인했다.
+- Regression guard: `client/test/client-contract.test.mjs`가 WAGURI font-face, woff2 URL, Hangul unicode range, primary font stack, jsDelivr preconnect를 검증한다.
+
 ## 2026-05-30 Client Airbnb Cereal Font
 
 - Client global typography now uses `Airbnb Cereal` as the first font family through `client/app/globals.css`.
