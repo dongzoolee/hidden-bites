@@ -1,5 +1,6 @@
-import { KakaoMap, type RestaurantLocation } from "@/components/KakaoMap";
+import { KakaoMap } from "@/components/KakaoMap";
 import topRestaurantsData from "@/data/top-restaurants-locations.json";
+import type { RestaurantSummary } from "@/lib/api-types";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,29 +10,62 @@ export const metadata: Metadata = {
 
 interface TopRestaurantsData {
   metadata: Record<string, string | number>;
-  places: RestaurantLocation[];
+  places: TopRestaurantLocation[];
+}
+
+interface TopRestaurantLocation {
+  rank: number;
+  place_id: string;
+  name: string;
+  formatted_address: string;
+  district: string;
+  rating: number;
+  user_rating_count: number;
+  primary_type: string;
+  google_maps_uri: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
 }
 
 const data: TopRestaurantsData = topRestaurantsData;
+const restaurants = data.places.map(toRestaurantSummary);
 
 export default function MapPage() {
   return (
-    <main className="w-full h-screen">
-      <div className="absolute top-4 left-4 z-10 bg-white p-4 rounded-lg shadow-md max-w-sm">
-        <h1 className="text-xl font-bold mb-2">Seoul Top 50 Restaurants</h1>
-        <p className="text-sm text-gray-600 mb-2">
-          Based on Google Places user ratings and reviews.
-        </p>
-        <div className="flex gap-2 text-xs">
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 bg-blue-500 rounded-full inline-block"></span> Top 10
+    <main className="standalone-map-page">
+      <div className="standalone-map-card">
+        <h1>Seoul Top 50 Restaurants</h1>
+        <p>Based on Google Places user ratings and reviews.</p>
+        <div className="standalone-map-legend">
+          <span>
+            <i className="map-legend__dot map-legend__dot--top" /> Top 10
           </span>
-          <span className="flex items-center gap-1">
-            <span className="w-3 h-3 bg-orange-500 rounded-full inline-block"></span> 11-50
+          <span>
+            <i className="map-legend__dot map-legend__dot--standard" /> 11-50
           </span>
         </div>
       </div>
-      <KakaoMap restaurants={data.places} />
+      <KakaoMap restaurants={restaurants} />
     </main>
   );
+}
+
+function toRestaurantSummary(place: TopRestaurantLocation): RestaurantSummary {
+  return {
+    placeId: place.place_id,
+    placeRank: place.rank,
+    placeName: place.name,
+    formattedAddress: place.formatted_address,
+    googleMapsUri: place.google_maps_uri,
+    googlePlaceRating: place.rating,
+    popularityCount: place.user_rating_count,
+    collectedReviewCount: 0,
+    collectionStatus: "location_only",
+    latitude: place.location.latitude,
+    longitude: place.location.longitude,
+    district: place.district,
+    topHbScore: 0
+  };
 }

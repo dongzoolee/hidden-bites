@@ -1,5 +1,13 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Kakao map story section
+
+- `The top-50 dots are not spread evenly across Seoul.` 섹션의 SVG projection dot map을 실제 Kakao 지도 기반 구현으로 교체했다.
+- `client/components/KakaoMap.tsx`는 `react-kakao-maps-sdk`의 `Map`, `CustomOverlayMap`, `MapTypeControl`, `ZoomControl`, `useKakaoLoader`를 사용해 Top 50 식당 좌표를 실제 Kakao map tile 위에 렌더링한다.
+- `client/components/SeoulRestaurantMap.tsx`는 district distribution analysis를 유지하면서 map surface를 `KakaoMap`으로 위임한다.
+- `/map` standalone page는 `client/data/top-restaurants-locations.json`의 snake_case 장소 데이터를 `RestaurantSummary` 형태로 normalize해 같은 `KakaoMap` 컴포넌트를 재사용한다.
+- Regression guard: `client/test/client-contract.test.mjs`와 `client/test/kakao-map-data.test.mjs`가 Kakao SDK 사용, custom overlay dots, coordinate mapping, SVG map 제거 계약을 검증한다.
+
 ## 2026-06-03 Selected dropdown contrast fix
 
 - `Selected:` report heading dropdown이 공통 `.restaurant-select` 규칙에 의해 paper background와 paper text 조합이 되어 글자가 보이지 않던 문제를 수정했다.

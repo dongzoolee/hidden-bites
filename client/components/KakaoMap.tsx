@@ -1,74 +1,126 @@
 "use client";
 
-import React, { useState } from "react";
-import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
-
-export interface RestaurantLocation {
-  rank: number;
-  place_id: string;
-  name: string;
-  formatted_address: string;
-  district: string;
-  rating: number;
-  user_rating_count: number;
-  primary_type: string;
-  google_maps_uri: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-}
+import { useMemo, useState } from "react";
+import { CustomOverlayMap, Map, MapTypeControl, ZoomControl, useKakaoLoader } from "react-kakao-maps-sdk";
+import type { RestaurantSummary } from "@/lib/api-types";
 
 interface KakaoMapProps {
-  restaurants: RestaurantLocation[];
+  restaurants: RestaurantSummary[];
+  selectedPlaceId?: string | null;
+  onSelectPlace?: (placeId: string) => void;
 }
 
-export function KakaoMap({ restaurants }: KakaoMapProps) {
+const seoulCenter = { lat: 37.5665, lng: 126.978 };
+
+export function KakaoMap({ restaurants, selectedPlaceId = null, onSelectPlace }: KakaoMapProps) {
   const kakaoMapAppKey = process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY ?? "";
+
+  if (!kakaoMapAppKey) {
+    return <MapState title="Kakao Map key is missing" body="Set NEXT_PUBLIC_KAKAO_MAP_API_KEY to render the live Seoul map." />;
+  }
+
+  return <KakaoMapCanvas appKey={kakaoMapAppKey} restaurants={restaurants} selectedPlaceId={selectedPlaceId} onSelectPlace={onSelectPlace} />;
+}
+
+function KakaoMapCanvas({ appKey, restaurants, selectedPlaceId = null, onSelectPlace }: KakaoMapProps & { appKey: string }) {
   const [loading, error] = useKakaoLoader({
-    appkey: kakaoMapAppKey,
+    appkey: appKey
   });
+  const [activePlaceId, setActivePlaceId] = useState<string | null>(selectedPlaceId);
+  const sortedRestaurants = useMemo(() => [...restaurants].sort((left, right) => left.placeRank - right.placeRank), [restaurants]);
+  const currentPlaceId = selectedPlaceId ?? activePlaceId;
+  const activeRestaurant = useMemo(
+    () => sortedRestaurants.find((restaurant) => restaurant.placeId === currentPlaceId) ?? sortedRestaurants[0] ?? null,
+    [currentPlaceId, sortedRestaurants]
+  );
 
-  const [activeMarkerId, setActiveMarkerId] = useState<string | null>(null);
+  function handleMapCreate(map: kakao.maps.Map): void {
+    if (!sortedRestaurants.length) {
+      return;
+    }
 
-  if (loading) return <div className="w-full h-[600px] flex items-center justify-center bg-gray-100">Loading Map...</div>;
-  if (error) return <div className="w-full h-[600px] flex items-center justify-center bg-red-100 text-red-500">Failed to load Kakao Map</div>;
+    const bounds = new kakao.maps.LatLngBounds();
+
+    for (const restaurant of sortedRestaurants) {
+      bounds.extend(new kakao.maps.LatLng(restaurant.latitude, restaurant.longitude));
+    }
+
+    map.setBounds(bounds, 58, 58, 58, 58);
+  }
+
+  function handleRestaurantSelect(placeId: string): void {
+    setActivePlaceId(placeId);
+    onSelectPlace?.(placeId);
+  }
+
+  if (loading) {
+    return <MapState title="Loading Kakao Map" body="Preparing Seoul tiles and restaurant coordinates." />;
+  }
+
+  if (error) {
+    return <MapState title="Failed to load Kakao Map" body="Check the Kakao JavaScript key and allowed domain settings." />;
+  }
 
   return (
-    <div className="w-full h-screen min-h-[600px]">
-      <Map
-        center={{ lat: 37.5665, lng: 126.9780 }}
-        style={{ width: "100%", height: "100%" }}
-        level={8}
-      >
-        {restaurants.map((restaurant) => {
-          const isTop10 = restaurant.rank <= 10;
+    <div className="kakao-map-shell" data-testid="kakao-map-shell">
+      <Map center={seoulCenter} className="kakao-map-canvas" level={8} onCreate={handleMapCreate}>
+        <MapTypeControl position="TOPRIGHT" />
+        <ZoomControl position="RIGHT" />
+        {sortedRestaurants.map((restaurant) => {
+          const isSelected = restaurant.placeId === currentPlaceId;
+          const markerClassName = ["kakao-map-marker", restaurant.placeRank <= 10 ? "kakao-map-marker--top" : "", isSelected ? "kakao-map-marker--selected" : ""]
+            .filter(Boolean)
+            .join(" ");
+
           return (
-            <MapMarker
-              key={restaurant.place_id}
-              position={{ lat: restaurant.location.latitude, lng: restaurant.location.longitude }}
-              image={{
-                src: isTop10
-                  ? "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"
-                  : "https://t1.daumcdn.net/mapjsapi/images/marker.png",
-                size: {
-                  width: 24,
-                  height: 35
-                }
-              }}
-              onClick={() => setActiveMarkerId(restaurant.place_id)}
+            <CustomOverlayMap
+              clickable
+              key={restaurant.placeId}
+              position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
+              xAnchor={0.5}
+              yAnchor={0.5}
+              zIndex={isSelected ? 20 : restaurant.placeRank <= 10 ? 12 : 8}
             >
-              {activeMarkerId === restaurant.place_id && (
-                <div style={{ padding: "5px", color: "#000", width: "max-content", fontSize: "12px" }}>
-                  <strong>{restaurant.rank}. {restaurant.name}</strong><br />
-                  <span>⭐ {restaurant.rating} ({restaurant.user_rating_count})</span><br />
-                  <span>{restaurant.district}</span>
-                </div>
-              )}
-            </MapMarker>
+              <button
+                aria-label={`${restaurant.placeName} Kakao map rank ${restaurant.placeRank} ${restaurant.district}`}
+                className={markerClassName}
+                type="button"
+                onClick={() => handleRestaurantSelect(restaurant.placeId)}
+              >
+                <span>{restaurant.placeRank}</span>
+              </button>
+            </CustomOverlayMap>
           );
         })}
+        {activeRestaurant ? (
+          <CustomOverlayMap
+            clickable
+            position={{ lat: activeRestaurant.latitude, lng: activeRestaurant.longitude }}
+            xAnchor={0.5}
+            yAnchor={1.18}
+            zIndex={30}
+          >
+            <article className="kakao-map-popup">
+              <strong>{activeRestaurant.placeName}</strong>
+              <span>
+                Rank {activeRestaurant.placeRank} · {activeRestaurant.district}
+              </span>
+              <span>
+                Google {activeRestaurant.googlePlaceRating.toFixed(1)} · {activeRestaurant.popularityCount.toLocaleString()} reviews
+              </span>
+            </article>
+          </CustomOverlayMap>
+        ) : null}
       </Map>
+    </div>
+  );
+}
+
+function MapState({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="kakao-map-state" data-testid="kakao-map-state">
+      <strong>{title}</strong>
+      <span>{body}</span>
     </div>
   );
 }

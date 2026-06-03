@@ -7,6 +7,7 @@ test("client implements the required story surfaces", async () => {
   const layout = await readFile("app/layout.tsx", "utf8");
   const experience = await readFile("components/HiddenBitesExperience.tsx", "utf8");
   const qnaAccordion = await readFile("components/QnaAccordion.tsx", "utf8");
+  const kakaoMap = await readFile("components/KakaoMap.tsx", "utf8");
   const scorePlot = await readFile("components/ScorePlot.tsx", "utf8");
   const seoulMap = await readFile("components/SeoulRestaurantMap.tsx", "utf8");
   const reportPanel = await readFile("components/RestaurantReportPanel.tsx", "utf8");
@@ -38,9 +39,15 @@ test("client implements the required story surfaces", async () => {
   assert.match(scorePlot, /score-mode-toggle/);
   assert.match(scorePlot, /role="button"/);
   assert.match(seoulMap, /data-testid="seoul-map-chart"/);
-  assert.match(seoulMap, /Seoul top restaurant dot distribution graph/);
-  assert.match(seoulMap, /latitude/);
-  assert.match(seoulMap, /longitude/);
+  assert.match(seoulMap, /KakaoMap/);
+  assert.match(seoulMap, /Seoul top restaurant Kakao map dot distribution/);
+  assert.match(kakaoMap, /react-kakao-maps-sdk/);
+  assert.match(kakaoMap, /CustomOverlayMap/);
+  assert.match(kakaoMap, /useKakaoLoader/);
+  assert.match(kakaoMap, /NEXT_PUBLIC_KAKAO_MAP_API_KEY/);
+  assert.match(kakaoMap, /restaurant\.latitude/);
+  assert.match(kakaoMap, /restaurant\.longitude/);
+  assert.doesNotMatch(seoulMap, /<svg|<circle|projectPoint|seoulOutline|hanRiver/);
   assert.match(reportPanel, /restaurant-select/);
   assert.match(reportPanel, /keyword-chip/);
   assert.match(css, /100svh/);
@@ -54,6 +61,10 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /\.selected-heading__control::after\s*\{[\s\S]*border-top: clamp\([^;]+ solid var\(--paper\);/);
   assert.match(css, /\.selected-heading__select\.restaurant-select\s*\{[\s\S]*background: var\(--orange\);[\s\S]*color: var\(--paper\);/);
   assert.match(css, /\.selected-heading__select\.restaurant-select\s*\{[\s\S]*appearance: none;/);
+  assert.match(css, /\.map-chart--kakao/);
+  assert.match(css, /\.kakao-map-canvas/);
+  assert.match(css, /\.kakao-map-marker--selected/);
+  assert.match(css, /\.kakao-map-popup/);
   assert.doesNotMatch(css, /\.selected-heading > span/);
   assert.match(css, /max-height: var\(--qna-answer-height\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);

@@ -8,6 +8,12 @@ test("kakao map route builds from client-owned restaurant data", async () => {
   const data = JSON.parse(rawData);
 
   assert.match(page, /@\/data\/top-restaurants-locations\.json/);
+  assert.match(page, /function toRestaurantSummary\(place: TopRestaurantLocation\): RestaurantSummary/);
+  assert.match(page, /const restaurants = data\.places\.map\(toRestaurantSummary\)/);
+  assert.match(page, /<KakaoMap restaurants=\{restaurants\} \/>/);
+  assert.match(page, /placeId: place\.place_id/);
+  assert.match(page, /latitude: place\.location\.latitude/);
+  assert.match(page, /longitude: place\.location\.longitude/);
   assert.doesNotMatch(page, /from "fs"|from "path"|process\.cwd|datasets\//);
   assert.equal(data.metadata.place_count, 50);
   assert.equal(data.places.length, 50);
