@@ -1,5 +1,11 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Keyword chip contrast fix
+
+- `The Unique & Fun Keywords`의 selected keyword chip이 `.keyword-chip` 하단 규칙에 의해 active background를 잃고 paper 계열 글자색만 남던 문제를 수정했다.
+- `client/app/globals.css`에서 `.keyword-chip.keyword-chip--active`를 keyword base rule 뒤에 배치해 selected chip이 `var(--orange)` background와 `var(--paper)` text color를 유지하도록 했다.
+- `client/test/client-contract.test.mjs`에 active keyword chip의 CSS rule order와 색상 계약 회귀 테스트를 추가했다.
+
 ## 2026-06-03 구현 내용
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 긴 발표형 디자인을 메인 `/` 페이지에 반영했다.
@@ -49,3 +55,11 @@
 - GraphQL, Prisma, codegen 변경은 없다.
 - Figma MCP의 full design context와 full screenshot은 큰 node 크기 때문에 timeout이 났고, `contentsOnly` screenshot을 기준 시각 자료로 사용했다.
 - 첫 client build는 디스크 여유 공간 116MiB 상태에서 `.next` 생성 중 `ENOSPC`로 실패했다. ignored build artifacts와 오래된 `/tmp` EAS/build 임시 디렉터리를 정리한 뒤 동일 build가 통과했다.
+
+## 2026-06-03 Q&A Accordion Transition
+
+- `client/components/QnaAccordion.tsx`는 각 answer panel의 `scrollHeight`를 측정해 `--qna-answer-height` CSS variable로 전달한다.
+- `client/app/globals.css`는 `display: none` 토글 대신 `max-height`, `opacity`, `padding`, `transform` transition으로 data-source Q&A accordion의 열림/닫힘 애니메이션을 처리한다.
+- `ResizeObserver`와 window resize listener를 함께 사용해 반응형 줄바꿈과 font load 이후에도 answer panel 높이를 다시 맞춘다.
+- `prefers-reduced-motion: reduce` 환경에서는 Q&A answer와 chevron transition을 끈다.
+- Regression guard: `client/test/client-contract.test.mjs`가 height variable, ResizeObserver, reduced-motion, `display: none` 미사용 계약을 검증한다.

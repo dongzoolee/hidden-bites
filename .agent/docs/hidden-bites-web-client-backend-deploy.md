@@ -181,6 +181,13 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - `.app-shell`의 desktop `max-width` 제한을 제거해 Figma story page가 viewport 전체 폭을 사용한다.
 - Regression guard: `client/test/score-plot-report-scroll.test.mjs`가 score graph node click, keyboard selection, `Go to Report` button click, smooth report scroll contract, app shell full-width contract를 검증한다.
 
+## 2026-06-03 Selected Report Restaurant Dropdown
+
+- Figma report section의 `Selected:` restaurant name surface를 plain text가 아니라 restaurant dropdown으로 맞췄다.
+- `client/components/HiddenBitesExperience.tsx`의 selected heading은 `selected-report-restaurant-select` select를 렌더링하고, 50개 restaurant option을 기존 selected restaurant state와 query sync handler로 연결한다.
+- dropdown은 `restaurant-select` 공통 스타일을 재사용하고, `selected-heading__select`로 report heading용 poster-scale visual만 덮어쓴다.
+- Regression guard: `client/test/client-contract.test.mjs`가 selected report heading dropdown, option 렌더링, plain text restaurant span 제거, CSS selector contract를 검증한다.
+
 ## 2026-06-03 WAGURI Korean Font
 
 - Figma의 한글 display font에 맞춰 `client/app/globals.css`에 WAGURI webfont를 추가했다.

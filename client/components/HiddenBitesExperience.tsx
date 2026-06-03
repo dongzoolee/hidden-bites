@@ -273,7 +273,21 @@ export function HiddenBitesExperience() {
         <div className="section-kicker">5 - 3 · Report on the selected restaurant</div>
         <div className="selected-heading">
           <h2>Selected:</h2>
-          <span>{selectedRestaurant?.placeName ?? "Restaurant"}</span>
+          <label className="selected-heading__control" htmlFor="selected-report-restaurant-select">
+            <span className="sr-only">Selected restaurant</span>
+            <select
+              className="selected-heading__select restaurant-select"
+              id="selected-report-restaurant-select"
+              value={selectedRestaurant?.placeId ?? selectedPlaceId ?? ""}
+              onChange={(event) => handleSelectRestaurant(event.target.value)}
+            >
+              {data.restaurants.map((restaurant) => (
+                <option key={restaurant.placeId} value={restaurant.placeId}>
+                  {restaurant.placeName}
+                </option>
+              ))}
+            </select>
+          </label>
           <p>The report links macro emotional adjective patterns with micro keyword evidence from original reviews.</p>
         </div>
         {report ? (
