@@ -1,5 +1,22 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-03 Figma font-family parity fix
+
+- Figma MCP `use_figma`로 file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 text node 478개 typography를 다시 조회했다.
+- Figma font family 분포는 `Sora`, `Bowlby One`, `JetBrains Mono`, `Inter`, `Noto Sans KR`, `WAGURI`, `LeeSeoyun`, `AirbnbCereal_W_Bd`, `AirbnbCereal_W_XBd`였다.
+- 기존 web client는 `--font-primary`가 `WAGURI` 우선이라 본문, heading, controls 대부분이 Figma의 family hierarchy를 respect하지 못했다.
+- `client/app/globals.css`에 Figma 기준 font token을 추가했다.
+  - body/default: `Sora`
+  - display headings: `Bowlby One` with `WAGURI`/`Noto Sans KR` fallback
+  - labels/kickers: `JetBrains Mono`
+  - chart/number labels: `Inter`
+  - report subheadings/actions: `AirbnbCereal_W_XBd`/`AirbnbCereal_W_Bd`
+  - Korean body/fallback: `Noto Sans KR`
+  - hand note fallback: `LeeSeoyun`
+- `client/app/layout.tsx`는 Google Fonts stylesheet와 `fonts.googleapis.com`/`fonts.gstatic.com` preconnect를 추가했다.
+- `LeeSeoyun`은 Noonnu 공식 webfont 경로인 `noonfonts_2202-2@1.0/LeeSeoyun.woff`를 사용한다.
+- Regression guard: `client/test/client-contract.test.mjs`가 Figma font token, exact family aliases, Google Fonts stylesheet, 대표 selector별 family mapping을 검증한다.
+
 ## 2026-06-03 Kakao map story section
 
 - `The top-50 dots are not spread evenly across Seoul.` 섹션의 SVG projection dot map을 실제 Kakao 지도 기반 구현으로 교체했다.
