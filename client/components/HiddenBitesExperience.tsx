@@ -237,10 +237,12 @@ export function HiddenBitesExperience() {
             reasons for being a matjip: taste, service, value, atmosphere, accessibility, and waiting friction.
           </p>
           <div className="preview-collage" aria-label="Hidden Bites preview collage from Figma">
-            <div
-              aria-label="Preview collage showing the evaluation card, score badge, score graph, score controls, and Seoul dot map"
+            <img
+              alt="Preview collage showing the evaluation card, score badge, score graph, score controls, and Seoul dot map"
               className="preview-collage__asset"
-              role="img"
+              height={340}
+              src="/figma/question-preview-collage.png"
+              width={1280}
             />
           </div>
         </div>
@@ -357,21 +359,18 @@ function buildQnaItems(): QnaAccordionItem[] {
       cards: [
         {
           title: "Google Maps",
-          meta: "stars: ✓ · mix: local + tourist",
-          body: "별점 + 리뷰 수 + 외국인·현지인이 혼재한 더 중립적인 데이터.",
+          body: "Star ratings, review counts, and a blend of local/international user insights",
           tone: "yellow",
           variant: "featured"
         },
         {
           title: "Naver Map",
-          meta: "stars: ✕ · ads: high",
-          body: "광고성 리뷰 과다. 별점이 없어 정량 비교가 어렵다.",
+          body: "\"High volume of promotional content. Lack of star ratings limits quantitative analysis.\"",
           tone: "yellow"
         },
         {
           title: "Kakao Map",
-          meta: "stars: ✓ · volume: low",
-          body: "리뷰 수가 부족해 상위 50개를 안정적으로 추리기 어려웠다.",
+          body: "\"Insufficient review volume hindered reliable selection of the top 50 list.\"",
           tone: "yellow"
         }
       ]
@@ -382,7 +381,7 @@ function buildQnaItems(): QnaAccordionItem[] {
       tone: "pink",
       formula: {
         label: "Formula",
-        expression: "score(r_k) = 0.55 · log(reviews_5y) + 0.45 · stars · sqrt(reviews_30d)"
+        expression: "score(rₖ) = 0.55 · log(reviews_5y) + 0.45 · stars · √reviews_30d"
       }
     },
     {

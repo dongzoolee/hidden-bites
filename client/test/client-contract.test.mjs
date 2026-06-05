@@ -135,6 +135,7 @@ test("client implements the required story surfaces", async () => {
   assert.doesNotMatch(css, /Georgia|"Courier New"/);
   assert.doesNotMatch(css, /\.qna__answer\s*\{[^}]*display:\s*none/s);
   assert.doesNotMatch(experience, /Loading Hidden Bites data story/);
-  assert.doesNotMatch(experience, /seoul-top-restaurants\.png|<img/);
+  assert.doesNotMatch(experience, /seoul-top-restaurants\.png/);
+  assert.match(experience, /src="\/figma\/question-preview-collage\.png"/);
   assert.doesNotMatch(`${experience}\n${scorePlot}\n${seoulMap}\n${reportPanel}`, /Alert\.alert|as any/);
 });

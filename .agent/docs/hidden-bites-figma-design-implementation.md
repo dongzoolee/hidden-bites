@@ -178,19 +178,55 @@
 
 - Question card title은 `What are the real factors behind a great 맛집?` sentence case를 유지하고 CSS uppercase transform을 제거했다.
 - Question card title은 desktop/mobile 모두 two-line composition 안에 끝나도록 question 전용 font, line-height, max-width, desktop/mobile font-size를 조정했다.
-- 하단 5개 preview component는 React/CSS 근사 구현을 제거하고 crisp vector SVG visual asset으로 교체했다.
-- `client/public/figma/question-preview-collage.svg`는 Figma composition을 따라 evaluation card, score badge, score graph, score controls, Seoul dot map을 vector shape/text로 구성한다.
+- 하단 5개 preview component는 React/CSS 근사 구현을 제거하고 Figma에서 추출한 PNG visual asset으로 교체했다.
+- `client/public/figma/question-preview-collage.png`는 Figma composition을 따라 evaluation card, score badge, score graph, score controls, Seoul dot map을 한 장의 1280x340 visual asset으로 제공한다.
 - Question card title의 Korean word `맛집`은 WAGURI span으로 분리해 Figma Korean display font를 적용했다.
-- Regression guard: `client/test/hero-preview-collage.test.mjs`가 sentence-case title, SVG asset surface, old five-component DOM/CSS 제거, raster image 미사용을 검증한다.
+- Regression guard: `client/test/hero-preview-collage.test.mjs`가 sentence-case title, PNG asset dimensions, old five-component DOM/CSS 제거를 검증한다.
 
 ## 2026-06-05 QnA section update
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 업데이트된 QnA 섹션을 반영했다.
 - Section copy를 `Before we re-score, the two doubts that come up first — why Google Maps, and how we narrowed the city down to fifty.`로 맞췄다.
 - `QnaAccordion`은 closed state에서 `Q1/Q2/Q3`, open state에서 `A1/A2/A3` prefix를 보여준다.
-- Google Maps, Naver Map, Kakao Map 비교 카드는 Figma의 platform meta와 한국어 설명 문구를 렌더링한다.
+- Google Maps, Naver Map, Kakao Map 비교 카드는 Figma의 concise English comparison copy를 렌더링한다.
 - Google Maps card는 dark featured variant로 구분하고, card meta row를 추가했다.
 - Top 50 설명은 별도 formula pill로 `score(r_k) = 0.55 · log(reviews_5y) + 0.45 · stars · sqrt(reviews_30d)`를 표시한다.
 - `What is the HB Score?` answer는 slider 조작에 따라 top-50 leaderboard가 재정렬되는 설명으로 교체했다.
 - QnA CSS는 Figma처럼 border 없는 large rounded accordion, larger prefix badge, metadata typography, mobile-safe formula wrapping으로 조정했다.
 - Regression guard: `client/test/qna-figma-accordion.test.mjs`가 Q/A prefix, exact Figma copy, platform meta, formula pill, old fallback copy 제거, mobile QnA CSS를 검증한다.
+
+### 2026-06-05 QnA platform card parity correction
+
+- User가 다시 제공한 Figma node `313:9287`의 전체 metadata/design context/screenshot과 read-only inspection은 120초 timeout이 발생했다.
+- 첨부된 Figma crop을 기준으로 Q1의 Google Maps / Naver Map / Kakao Map 비교 카드를 다시 맞췄다.
+- Platform card의 이전 meta row와 한국어 body copy를 제거하고, Figma crop의 영어 문구와 quoted Naver/Kakao 설명을 반영했다.
+- Card title 앞 원형 marker를 CSS pseudo-element로 추가하고, desktop에서 Figma 비율에 맞게 card radius, min-height, padding, title/body font-size, row gap을 clamp 값으로 조정했다.
+- QnA answer의 platform card row는 더 이상 prefix 영역만큼 왼쪽으로 밀리지 않도록 full answer width 기준으로 배치하고, answer paragraph만 desktop에서 들여쓰기한다.
+- Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄여 text clipping을 방지한다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 exact platform copy, old meta/Korean copy 제거, marker pseudo-element, Figma crop card sizing, mobile override를 검증한다.
+
+### 2026-06-05 Formula pill radius and typography correction
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `238:3325`를 `get_design_context`와 screenshot으로 재확인했다.
+- Formula pill은 Figma 기준 background `#fff1da`, radius `20px`, padding `18px 20px`, gap `6px`, max width `679px`로 조정했다.
+- `Formula` label은 JetBrains Mono regular 16px, tracking 0.44px, color `#949494`로 맞췄다.
+- 수식 본문은 JetBrains Mono bold 16px, tracking 0.44px, color `#8b2415`로 맞추고 Figma 표기인 `score(rₖ) ... √reviews_30d`를 사용한다.
+- Desktop에서는 수식을 한 줄로 유지해 Figma의 679px by 84px pill 비율을 보존하고, mobile media query에서만 wrapping을 허용한다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 formula pill의 exact radius, padding, typography, color, expression을 검증한다.
+
+### 2026-06-05 Question preview PNG export
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7782`를 `get_design_context`와 `get_screenshot`으로 확인했다.
+- 해당 노드는 evaluation card, score badge, score graph, score controls, Seoul dot map이 겹친 preview collage이며 직접 React/CSS로 재구현하지 않았다.
+- Figma MCP screenshot export 원본은 PNG `1280 x 340`으로 내려받아 `client/public/figma/question-preview-collage.png`에 배치했다.
+- `HiddenBitesExperience` preview 영역은 SVG/vector 구현 대신 `<img src="/figma/question-preview-collage.png">`를 렌더링한다.
+- `client/app/globals.css`의 preview asset 비율은 Figma export 크기에 맞춰 `1280 / 340`으로 조정했다.
+- Regression guard: `client/test/hero-preview-collage.test.mjs`가 PNG signature, width/height, PNG 경로, SVG 미참조 계약을 검증한다.
+
+### 2026-06-05 Score controls panel correction
+
+- `ScorePlot`의 기본 factor weight pattern을 Figma preview 기준 `70, 40, 50, 90, 50, 30, 30, 30, 30, 30`으로 조정했다.
+- Score controls와 Top pick card를 `score-control-stack`으로 묶어 Figma처럼 우측 세로 stack 레이아웃으로 분리했다.
+- Score controls panel은 dark `#1a1310`, radius `32px`, padding `32px`, Figma-sized label/chip/slider 스타일로 조정했다.
+- Top pick card는 yellow `#ffc842`, radius `32px`, min-height `204px`, `→ Top pick right now` label을 사용한다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 default weights, score-control-stack ordering, panel/card radius, slider thumb 스타일을 검증한다.

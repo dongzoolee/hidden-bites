@@ -50,7 +50,7 @@ const chart = {
   bottom: 70
 };
 
-const defaultWeightPattern = [90, 82, 74, 66, 58, 50, 44, 38, 34, 30];
+const defaultWeightPattern = [70, 40, 50, 90, 50, 30, 30, 30, 30, 30];
 
 export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: ScorePlotProps) {
   const [selectedFactorId, setSelectedFactorId] = useState<string>(factors[0]?.id ?? "");
@@ -196,49 +196,51 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
         )}
       </div>
 
-      <aside className="score-controls" aria-label="Score controls">
-        <h3>Score controls</h3>
-        <p className="control-label">X-axis factor</p>
-        <div className="factor-chip-grid">
-          {factors.map((factor) => (
-            <button
-              className={factor.id === selectedFactor?.id ? "factor-chip factor-chip--active" : "factor-chip"}
-              key={factor.id}
-              type="button"
-              onClick={() => {
-                setSelectedFactorId(factor.id);
-                setTooltip(null);
-              }}
-            >
-              {factor.label}
-            </button>
-          ))}
-        </div>
+      <aside className="score-control-stack" aria-label="Score controls and top pick">
+        <section className="score-controls" aria-label="Score controls">
+          <h3>Score controls</h3>
+          <p className="control-label">X-axis factor</p>
+          <div className="factor-chip-grid">
+            {factors.map((factor) => (
+              <button
+                className={factor.id === selectedFactor?.id ? "factor-chip factor-chip--active" : "factor-chip"}
+                key={factor.id}
+                type="button"
+                onClick={() => {
+                  setSelectedFactorId(factor.id);
+                  setTooltip(null);
+                }}
+              >
+                {factor.label}
+              </button>
+            ))}
+          </div>
 
-        <p className="control-label">Factor weights</p>
-        <div className="factor-weight-list">
-          {factorWeights.map((factorWeight) => (
-            <label className="factor-weight" key={factorWeight.factorId}>
-              <span>{factorWeight.label}</span>
-              <input
-                aria-label={`${factorWeight.label} weight`}
-                className="factor-weight-slider"
-                max={100}
-                min={0}
-                type="range"
-                value={factorWeight.weight}
-                onChange={(event) => handleWeightChange(factorWeight.factorId, Number(event.target.value))}
-              />
-              <strong>{factorWeight.weight}</strong>
-            </label>
-          ))}
-        </div>
+          <p className="control-label">Factor weights</p>
+          <div className="factor-weight-list">
+            {factorWeights.map((factorWeight) => (
+              <label className="factor-weight" key={factorWeight.factorId}>
+                <span>{factorWeight.label}</span>
+                <input
+                  aria-label={`${factorWeight.label} weight`}
+                  className="factor-weight-slider"
+                  max={100}
+                  min={0}
+                  type="range"
+                  value={factorWeight.weight}
+                  onChange={(event) => handleWeightChange(factorWeight.factorId, Number(event.target.value))}
+                />
+                <strong>{factorWeight.weight}</strong>
+              </label>
+            ))}
+          </div>
+        </section>
 
-        <div className="top-pick-card">
-          <span>Top pick right now</span>
+        <section className="top-pick-card" aria-label="Top pick right now">
+          <span>→ Top pick right now</span>
           <strong>{topScore?.displayPlaceName ?? "No restaurant"}</strong>
           <b>{topScore ? (topScore.weightedScore * 20).toFixed(1) : "0.0"}</b>
-        </div>
+        </section>
       </aside>
 
       <section className="evaluation-card" aria-label="Selected restaurant weighted evaluation">
