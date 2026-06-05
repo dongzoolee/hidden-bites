@@ -30,6 +30,7 @@ test("score plot exposes weighted controls and ranks restaurants across the x-ax
   assert.match(css, /\.score-controls\s*\{[\s\S]*background: #1a1310;[\s\S]*border-radius: 32px;[\s\S]*padding: 32px;/);
   assert.match(css, /\.factor-chip-grid\s*\{[\s\S]*grid-auto-rows: 40px;[\s\S]*max-height: 139px;/);
   assert.match(css, /\.score-controls \.factor-chip\s*\{[\s\S]*height: 40px;[\s\S]*padding: 0 16px;/);
+  assert.match(css, /@media \(max-width: 760px\)\s*\{[\s\S]*\.factor-chip-grid\s*\{[\s\S]*max-height: none;[\s\S]*\.factor-weight-list\s*\{[\s\S]*max-height: none;/);
   assert.match(css, /\.top-pick-card\s*\{[\s\S]*background: #ffc842;[\s\S]*border-radius: 32px;[\s\S]*min-height: 204px;/);
   assert.match(css, /\.factor-weight-slider/);
   assert.match(css, /\.factor-weight-slider::-webkit-slider-thumb\s*\{[\s\S]*background: #ff5a1f;[\s\S]*border: 3px solid var\(--paper\);[\s\S]*height: 22px;/);

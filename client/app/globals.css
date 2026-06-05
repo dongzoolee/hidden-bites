@@ -2307,6 +2307,13 @@ img {
 
   .factor-chip-grid {
     grid-template-columns: 1fr;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .factor-weight-list {
+    max-height: none;
+    overflow: visible;
   }
 
   .factor-weight {
