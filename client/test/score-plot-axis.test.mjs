@@ -36,7 +36,7 @@ test("score plot matches the Figma HB score graph contract", async () => {
   assert.doesNotMatch(scorePlot, />\s*All\s*</);
 
   assert.match(css, /\.score-lab\s*\{[\s\S]*display: grid;[\s\S]*grid-template-columns: minmax\(0, 856px\) 400px;[\s\S]*max-width: 1280px;/);
-  assert.match(css, /\.score-graph-card\s*\{[\s\S]*background: #fff7e9;[\s\S]*border-radius: 36px;[\s\S]*height: 717px;[\s\S]*padding: 36px;/);
+  assert.match(css, /\.score-graph-card\s*\{[\s\S]*background: #fff7e9;[\s\S]*border-radius: 36px;[\s\S]*height: 717px;[\s\S]*min-width: 0;[\s\S]*padding: 36px;/);
   assert.match(css, /\.score-toolbar\s*\{[\s\S]*gap: 8px;[\s\S]*margin-bottom: 32px;/);
   assert.match(css, /\.score-mode-button\s*\{[\s\S]*border: 2px solid #1a1310;[\s\S]*border-radius: 999px;[\s\S]*font-size: 13px;[\s\S]*min-height: 38px;/);
   assert.match(css, /\.score-mode-button--active\s*\{[\s\S]*background: #1a1310;[\s\S]*color: #fff1da;/);
@@ -56,7 +56,8 @@ test("score plot matches the Figma HB score graph contract", async () => {
   assert.match(css, /\.factor-weight-list\s*\{[\s\S]*max-height: 162px;/);
   assert.match(css, /\.factor-weight-slider::-webkit-slider-thumb\s*\{[\s\S]*background: #ff5a1f;[\s\S]*border: 3px solid #fff1da;[\s\S]*height: 22px;/);
   assert.match(css, /\.top-pick-card\s*\{[\s\S]*background: #ffc842;[\s\S]*border-radius: 32px;[\s\S]*min-height: 204px;/);
-  assert.match(css, /\.evaluation-card\s*\{[\s\S]*background: #1a1310;[\s\S]*border-radius: 36px;[\s\S]*grid-column: 1 \/ -1;/);
+  assert.match(css, /\.evaluation-card\s*\{[\s\S]*background: #1a1310;[\s\S]*border-radius: 36px;[\s\S]*grid-column: 1 \/ -1;[\s\S]*min-width: 0;/);
+  assert.match(css, /\.score-graph-content\s*\{[\s\S]*min-width: 0;/);
   assert.match(css, /\.evaluation-factor-grid\s*\{[\s\S]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/);
   assert.match(css, /\.report-jump\s*\{[\s\S]*background: #fff1da;[\s\S]*border-radius: 20px;[\s\S]*min-height: 61px;/);
 });

@@ -241,8 +241,9 @@
   - dot/list/report button 선택은 기존처럼 report section으로 smooth scroll한다.
 - Figma layout 기준으로 score area는 desktop에서 `856px graph + 24px gap + 400px controls` = `1280px` grid를 사용하고, evaluation card는 전체 폭을 차지한다.
 - 1380px 이하와 mobile에서는 graph, controls, top-pick, evaluation card가 세로 stack으로 내려가도록 responsive override를 추가했다.
+- Mobile에서는 graph SVG의 내부 scroll 때문에 grid item이 768px로 밀려나지 않도록 `score-graph-card`, `score-graph-content`, `evaluation-card`에 `min-width: 0` guard를 추가했다.
 - Score section과 QnA copy는 slider 기반 설명으로 되돌렸다.
-- Regression guard: `client/test/score-plot-axis.test.mjs`가 graph-only 회귀를 막기 위해 `score-controls`, `factor-weight-slider`, `top-pick-card`, `evaluation-card`, `report-jump` 존재와 Figma card dimensions를 검증한다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 graph-only 회귀를 막기 위해 `score-controls`, `factor-weight-slider`, `top-pick-card`, `evaluation-card`, `report-jump` 존재, Figma card dimensions, mobile width guard를 검증한다.
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7782`를 `get_design_context`와 `get_screenshot`으로 확인했다.
 - 해당 노드는 evaluation card, score badge, score graph, score controls, Seoul dot map이 겹친 preview collage이며 직접 React/CSS로 재구현하지 않았다.
@@ -254,12 +255,12 @@
 
 ### 2026-06-05 Score graph card correction
 
-- `ScorePlot`은 slider 기반 score controls가 아니라 Figma 본문 그래프 카드와 맞춘 `score-graph-card` surface를 렌더링한다.
+- `ScorePlot`은 Figma 본문 그래프 카드와 score controls/top-pick/evaluation cards를 함께 렌더링한다.
 - `ScoreMode`는 `scatter`와 `list`를 지원하며, scatter mode는 `4.83`부터 `4.96`까지 고정된 HB score y-axis와 선택 factor 기반 x-axis index를 사용한다.
 - `score-axis-selector`는 현재 x-axis factor label을 표시하고 클릭할 때 다음 factor로 순환한다.
 - `score-top-callout`은 현재 top score dot 위에 yellow callout을 배치하고, list mode는 같은 score rows를 `score-ranked-list`로 보여준다.
 - Score dot과 ranked-list row 선택은 `{ scrollToReport: true, targetHash: "report" }`로 selected report section에 연결된다.
-- Mobile에서는 graph SVG에 horizontal scroll을 허용하고 ranked-list의 보조 factor column을 숨겨 clipping을 막는다.
+- Mobile에서는 graph SVG에 horizontal scroll을 허용하되 card 자체는 viewport 안에 남기고, ranked-list의 보조 factor column을 숨겨 clipping을 막는다.
 - Regression guard: `client/test/score-plot-axis.test.mjs`, `client/test/score-plot-report-scroll.test.mjs`, `client/test/client-contract.test.mjs`가 graph-card, axis selector, fixed axis domain, ranked list, report scroll selection 계약을 검증한다.
 
 ### 2026-06-05 Map section Figma copy correction
