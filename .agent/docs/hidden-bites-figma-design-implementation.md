@@ -167,10 +167,12 @@
 
 ### 2026-06-05 Hero metric chip color correction
 
-- Hero metric chip `50 restaurants`, `5-yr review window`, `NLP adjectives + keywords`의 Figma text color를 exact `#FF5A1F`로 맞췄다.
-- Hero metric chip font weight를 Figma 기준 `800`으로 명시했다.
+- Hero metric chip `50 restaurants`, `5-yr review window`, `NLP adjectives + keywords`는 leading token만 exact `#FF5A1F`로 맞췄다.
+- Leading token `50`, `5-yr`, `NLP`의 font weight를 Figma 기준 `800`으로 명시했다.
+- 나머지 label text는 black text를 유지한다.
+- Chip label은 별도 inline label로 분리하고 각 chip에 readable `aria-label`을 둔다.
 - Hero metric chip background는 기존 shared pill surface를 유지한다.
-- Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero metric chip의 exact text color, weight, background override 미사용을 검증한다.
+- Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero metric chip의 `strong` token split, exact token color, weight, background override 미사용을 검증한다.
 
 ## 2026-06-05 QnA section update
 

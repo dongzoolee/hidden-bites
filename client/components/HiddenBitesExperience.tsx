@@ -243,9 +243,18 @@ export function HiddenBitesExperience() {
           </h1>
           <p>{heroDescription}</p>
           <div className="hero-metrics" aria-label="Hidden Bites metrics">
-            <span>{data.summary.metadata.restaurantCount} restaurants</span>
-            <span>5-yr review window</span>
-            <span>NLP adjectives + keywords</span>
+            <span aria-label={`${data.summary.metadata.restaurantCount} restaurants`}>
+              <strong>{data.summary.metadata.restaurantCount}</strong>
+              <span>restaurants</span>
+            </span>
+            <span aria-label="5-yr review window">
+              <strong>5-yr</strong>
+              <span>review window</span>
+            </span>
+            <span aria-label="NLP adjectives + keywords">
+              <strong>NLP</strong>
+              <span>adjectives + keywords</span>
+            </span>
           </div>
           <div className="hero-dots" aria-hidden="true">
             <i />

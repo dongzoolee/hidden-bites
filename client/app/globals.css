@@ -238,7 +238,7 @@ img {
 .mini-pill,
 .factor-chip,
 .keyword-chip,
-.hero-metrics span {
+.hero-metrics > span {
   align-items: center;
   background: var(--paper-soft);
   border: 2px solid var(--line);
@@ -378,7 +378,13 @@ img {
   margin-top: 1.35rem;
 }
 
-.hero-metrics span {
+.hero-metrics > span {
+  color: var(--ink);
+  gap: 0.55rem;
+  font-weight: 800;
+}
+
+.hero-metrics strong {
   color: #FF5A1F;
   font-weight: 800;
 }
