@@ -218,23 +218,93 @@
 
 ### 2026-06-05 Question preview PNG export
 
+## 2026-06-05 HB Score graph Figma reimplementation
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7952`를 `get_design_context`, `get_metadata`, `get_screenshot`으로 확인해 HB Score graph 컴포넌트를 다시 구현했다.
+- `client/components/ScorePlot.tsx`는 기존 slider/right-control/evaluation-card 구조를 제거하고 Figma의 856x717 rounded graph card 구조로 교체했다.
+- Scatter mode는 Figma 기준 SVG plot `784x500`, plot area `x=35..771`, `y=39..448`, x ticks `0/25/50/75/100`, y labels `4.96/4.93/4.90/4.87/4.83`를 사용한다.
+- x-axis selector는 Figma의 `x: Taste ->` label처럼 보이되 클릭하면 다음 factor로 순환한다.
+- dot은 선택 factor score를 35~100 index로 펼치고, 전체 HB score index를 4.83~4.96 범위에 정규화해 Figma처럼 restaurant dots가 plot 안에 넓게 분포하도록 했다.
+- Top pick pill, crown label, bottom instruction, Scatter/Ranked list segmented buttons를 Figma 색상과 typography에 맞췄다.
+- Ranked list mode는 같은 card 내부에서 50개 restaurant row를 scrollable list로 보여주며 기존 report 선택/scroll 동작은 유지한다.
+- Score section과 QnA의 이전 slider 설명을 hover/click/factor-axis interaction copy로 교체했다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 Figma chart dimensions, card radius/padding, tick labels, top callout, dot classes, old slider/control 제거를 검증한다.
+- Regression guard: `client/test/score-plot-report-scroll.test.mjs`가 dot/list selection의 report scroll 계약을 검증한다.
+- Browser verification: localhost `8096`에서 desktop card `856x717`, plot `784x500`, dots `50`개, Ranked list `50` rows, factor cycle, mobile card `358px` width와 plot horizontal scroll을 확인했다.
+
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7782`를 `get_design_context`와 `get_screenshot`으로 확인했다.
 - 해당 노드는 evaluation card, score badge, score graph, score controls, Seoul dot map이 겹친 preview collage이며 직접 React/CSS로 재구현하지 않았다.
 - Figma MCP screenshot export 원본은 PNG `1280 x 340`으로 내려받아 `client/public/figma/question-preview-collage.png`에 배치했다.
 - `HiddenBitesExperience` preview 영역은 SVG/vector 구현 대신 `<img src="/figma/question-preview-collage.png">`를 렌더링한다.
-- `client/app/globals.css`의 preview asset 비율은 Figma export 크기에 맞춰 `1280 / 340`으로 조정했다.
+- 2026-06-05 추가 보정으로 `/Users/dongzoolee/Downloads/localhost_8096__place=ChIJlQqAYNelfDURg2zfveD4eW4.png` fullsize screenshot에서 visible preview 영역을 `2730 x 727`으로 crop해 같은 PNG 자산을 교체했다.
+- `client/app/globals.css`의 preview asset 비율은 screenshot crop 크기에 맞춰 `2730 / 727`로 조정하고, 이미 visible 영역으로 잘린 crop이라 asset width는 `100%`로 배치한다.
 - Regression guard: `client/test/hero-preview-collage.test.mjs`가 PNG signature, width/height, PNG 경로, SVG 미참조 계약을 검증한다.
 
-### 2026-06-05 Score controls panel correction
+### 2026-06-05 Score graph card correction
 
-- `ScorePlot`의 기본 factor weight pattern을 Figma preview 기준 `70, 40, 50, 90, 50, 30, 30, 30, 30, 30`으로 조정했다.
-- Score controls와 Top pick card를 `score-control-stack`으로 묶어 Figma처럼 우측 세로 stack 레이아웃으로 분리했다.
-- Score controls panel은 dark `#1a1310`, radius `32px`, padding `32px`, Figma-sized label/chip/slider 스타일로 조정했다.
-- Top pick card는 yellow `#ffc842`, radius `32px`, min-height `204px`, `→ Top pick right now` label을 사용한다.
-- Desktop score lab은 Figma 상위 container 기준 gap `24px`, right column `400px`를 사용한다.
-- Desktop에서는 Figma height를 유지하기 위해 control list를 내부 scroll로 두고, mobile에서는 chip/weight list를 모두 펼쳐 10개 factor를 조작할 수 있게 했다.
-- Browser validation:
-  - Desktop `1440x900`: `score-controls`와 `top-pick-card`가 형제이고 `controls.contains(topPick) === false`, 카드 폭 400px, gap 20px로 측정됐다.
-  - Mobile `390x844`: chip 10개, weight 10개가 렌더링되고 horizontal overflow가 없었다.
-- Figma MCP `get_design_context`와 read-only `use_figma`로 node `309:7867` context와 ancestry를 확인했다. 별도 `get_screenshot`은 transport error가 발생해 `get_design_context`의 visual reference와 로컬 Playwright screenshot을 기준으로 대조했다.
-- Regression guard: `client/test/score-plot-axis.test.mjs`가 default weights, score-control-stack ordering, 400px right column, 20px section gap, panel/card radius, slider thumb, mobile list expansion을 검증한다.
+- `ScorePlot`은 slider 기반 score controls가 아니라 Figma 본문 그래프 카드와 맞춘 `score-graph-card` surface를 렌더링한다.
+- `ScoreMode`는 `scatter`와 `list`를 지원하며, scatter mode는 `4.83`부터 `4.96`까지 고정된 HB score y-axis와 선택 factor 기반 x-axis index를 사용한다.
+- `score-axis-selector`는 현재 x-axis factor label을 표시하고 클릭할 때 다음 factor로 순환한다.
+- `score-top-callout`은 현재 top score dot 위에 yellow callout을 배치하고, list mode는 같은 score rows를 `score-ranked-list`로 보여준다.
+- Score dot과 ranked-list row 선택은 `{ scrollToReport: true, targetHash: "report" }`로 selected report section에 연결된다.
+- Mobile에서는 graph SVG에 horizontal scroll을 허용하고 ranked-list의 보조 factor column을 숨겨 clipping을 막는다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`, `client/test/score-plot-report-scroll.test.mjs`, `client/test/client-contract.test.mjs`가 graph-card, axis selector, fixed axis domain, ranked list, report scroll selection 계약을 검증한다.
+
+### 2026-06-05 Fullsize crop and remaining section parity
+
+- `question-preview-collage.png`는 fullsize page screenshot crop 원본을 유지하며 browser 검증에서 `naturalWidth: 2730`, `naturalHeight: 727`, rendered `1278 x 340`, `aspect-ratio: 2730 / 727`, horizontal overflow 없음으로 확인했다.
+- Selected report heading은 native select 대신 keyboard-accessible custom dropdown을 사용하고, option active/selected state는 yellow highlight로 맞췄다.
+- Selected report panel은 Figma report card에 맞춰 emotion chip row, percent graph, keyword chips, snippet grid, explore-another action을 렌더링한다.
+- Map, limitations, footer 섹션은 Figma copy hierarchy와 line break rhythm을 맞추고 각각 전용 regression test를 추가했다.
+- Final validation:
+  - `yarn test`
+  - `yarn typecheck`
+  - `yarn lint`
+  - `yarn build`
+  - Browser MCP `http://localhost:8096/?place=ChIJlQqAYNelfDURg2zfveD4eW4` runtime check
+
+### 2026-06-05 Footer Figma parity correction
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:8559`의 footer frame을 `get_design_context`와 `get_screenshot`으로 확인했다.
+- Footer title `HIDDEN BITES.`는 Figma 기준 `300px / 262.4px` 비율에 맞춰 `.story-footer h2` 전용 `line-height: 0.875`로 분리했다.
+- Footer title font-size는 desktop Figma 기준 1440px viewport에서 300px까지 커지도록 `clamp(5.4rem, 20.83vw, 18.75rem)`로 조정했다.
+- Footer meta는 Figma의 `The team`, `The class`, `The story` 3컬럼 내용으로 교체했다.
+  - `dongzoolee (developer) / me@leed.at`
+  - `Eunhong Kim (designer) / its4hong@gmail.com`
+  - `Madina / abc@gmail.com`
+  - `Emilia / abc@gmail.com`
+  - `26-1 Data Visualization`, `Sogang University · Art & Technology`, `advised by Prof. JeeWon Kim`
+  - `web-desktop edition · 2026.05 · vol.01`
+- Footer meta typography는 Figma 기준 heading `11px`, body `14px / 22.4px`, column gap `32px`, top border padding `37px`로 조정했다.
+- Mobile에서는 team grid를 1컬럼 member stack으로 풀어 좁은 화면에서 email과 role이 clipping되지 않도록 했다.
+- Regression guard: `client/test/footer-figma-parity.test.mjs`가 footer title line-height, Figma meta copy, typography, mobile override를 검증한다.
+
+### 2026-06-05 Limitation cards Figma parity correction
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:8515`의 `Section - 5-5 Limitations`를 `get_design_context`, `get_metadata`, `get_screenshot`으로 확인했다.
+- Limitation description은 Figma처럼 `Five honest disclaimers.`와 `Every visualization above sits inside the boundaries described below.`를 별도 line span으로 분리했다.
+- `limitationCards`의 01~05 copy를 Figma 원문 line stack으로 교체했다.
+  - 01 Coverage: top-50 only와 sample 밖의 long tail 설명
+  - 02 Sampling bias: tourist language overrepresentation과 Korean local under-weighting 설명
+  - 03 Rating inflation: tourism zone novelty/rating inflation 설명
+  - 04 NLP accuracy: slang, sarcasm, multilingual review, model dependency 설명
+  - 05 Time sensitivity: single crawl point와 chef/price/line 변동 설명
+- Card layout은 Figma 기준 1280px container, 5-column grid, 18px gap, 303px min-height, 28px radius, 26px/25px/28px padding으로 조정했다.
+- Card typography는 number `Bowlby One 56px`, title `Bowlby One 22px`, body `Sora 14px / 21px`로 맞췄다.
+- Card colors는 Figma exact 값 `#ffc842`, `#ff8fb1`, `#fff1da`, `#3da06b`, `#1a1310`을 사용하고, 04/05 number accent는 각각 `#ffc842`, `#ff5a1f`로 맞췄다.
+- Mobile에서는 Figma line stack을 유지하되 nowrap을 해제해 text clipping을 방지했다.
+- Regression guard: `client/test/limitations-figma-layout.test.mjs`가 description line break, exact copy lines, card grid geometry, exact colors, typography, mobile nowrap override를 검증한다.
+
+### 2026-06-05 Selected report section Figma parity correction
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:8109`의 5-3 report section을 `get_design_context`, `get_metadata`, `get_screenshot`으로 다시 확인했다.
+- `Selected:` 바로 아래 native `<select>`를 제거하고 직접 구현한 `SelectedRestaurantDropdown` listbox로 교체했다.
+  - button surface는 Figma의 orange rounded dropdown처럼 유지한다.
+  - listbox option font-size는 16px로 고정해 browser native select option이 title font-size를 상속해 커지는 문제를 없앴다.
+- `Explore another restaurant`는 restaurant selector가 아니라 button으로 바꾸고, 클릭 시 `selected-restaurant-picker`로 smooth scroll 후 dropdown button에 focus한다.
+- `RestaurantReportPanel` header는 restaurant name title 아래에 restaurant info row를 배치하고, right-most rating block은 실제 `★★★★★`와 Figma에서 확인한 `Bowlby One` display rating을 사용한다.
+- `The Review Adjectives` subtitle은 Figma copy인 `Macro analysis: Categories were defined by selecting the top 10 most frequent adjectives for each emotion.`으로 맞췄고, `by selecting the top 10 most frequent adjective` 구간은 bold underline 처리했다.
+- Emotion graph는 현재 derived report schema가 제공하는 5개 emotion bucket을 보존하면서 Figma의 graph header, y-axis ticks, grid lines, rounded bars, diamond markers, emoji/English/Korean labels 구조로 재구성했다.
+- `The Unique & Fun Keywords` subtitle에서 `Click a keyword chip`을 bold underline 처리했다.
+- Review quote grid는 2x2 layout, 22px radius, Figma tone colors를 사용하고 footer는 author/rating metadata 대신 `KEYWORD: a · b · c` 형태로 렌더링한다.
+- Regression guard: `client/test/report-section-figma-parity.test.mjs`가 selected dropdown, explorer button scroll/focus, report header/rating typography, adjective subtitle, emotion graph structure, keyword subtitle, snippet footer/radius를 검증한다.

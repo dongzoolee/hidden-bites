@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import { Loader2 } from "lucide-react";
 import { fetchHbScores, fetchRestaurantReport, fetchRestaurants, fetchSummary } from "@/lib/api";
 import type { HbFactor, HbScorePoint, RestaurantReport, RestaurantSummary, SummaryPayload } from "@/lib/api-types";
@@ -17,6 +17,12 @@ interface ExperienceData {
   restaurants: RestaurantSummary[];
 }
 
+interface FooterTeamMember {
+  name: string;
+  role: string | null;
+  email: string;
+}
+
 const navigationItems = [
   { label: "00 INTRO", href: "#intro" },
   { label: "01 Preview", href: "#question" },
@@ -28,40 +34,49 @@ const navigationItems = [
 ];
 
 const reportSectionId = "report";
+const selectedRestaurantPickerId = "selected-restaurant-picker";
+const selectedRestaurantDropdownButtonId = "selected-restaurant-picker-button";
 
 const heroDescription = "Google's top-50 restaurants in Seoul, re-scored by the factors people actually mention in their reviews.";
 
 const limitationCards = [
   {
     number: "01",
-    title: "Coverage",
-    body: "We analyzed top-50, high-review Seoul restaurants, not a full census of every local place.",
+    titleLines: ["Coverage"],
+    bodyLines: ["We analyzed top-50 only.", "Seoul has thousands of", "restaurants — an entire", "long tail of small, beloved", "places sits outside our", "sample."],
     tone: "yellow"
   },
   {
     number: "02",
-    title: "Sampling bias",
-    body: "Google Maps reviewers are not a neutral sample. Tourist-heavy locations are overrepresented.",
+    titleLines: ["Sampling bias"],
+    bodyLines: ["Google Maps reviewers are", "not a neutral sample.", "Tourist languages are", "overrepresented; Korean", "local voices are under-", "weighted."],
     tone: "pink"
   },
   {
     number: "03",
-    title: "Rating inflation",
-    body: "Review volume favors famous places and already visible neighborhoods.",
+    titleLines: ["Rating", "inflation"],
+    bodyLines: ["Review volume favors", "tourist places already", "getting searched often.", "Novelty effect may inflate", "ratings in dense tourism", "zones."],
     tone: "cream"
   },
   {
     number: "04",
-    title: "NLP accuracy",
-    body: "Adjective and keyword extraction can miss slang, sarcasm, multilingual reviews, and context.",
+    titleLines: ["NLP accuracy"],
+    bodyLines: ["Adjective and keyword", "extraction can miss slang,", "sarcasm, and multilingual", "reviews. Emotion", "classification is model-", "dependent."],
     tone: "green"
   },
   {
     number: "05",
-    title: "Time sensitivity",
-    body: "Restaurant quality changes over time. A five-year review window still contains old signals.",
+    titleLines: ["Time", "sensitivity"],
+    bodyLines: ["Restaurant quality", "changes over time. Our", "dataset reflects a single", "crawl point — chefs leave,", "prices rise, lines move."],
     tone: "black"
   }
+];
+
+const footerTeamMembers: FooterTeamMember[] = [
+  { name: "dongzoolee", role: "developer", email: "me@leed.at" },
+  { name: "Eunhong Kim", role: "designer", email: "its4hong@gmail.com" },
+  { name: "Madina", role: null, email: "abc@gmail.com" },
+  { name: "Emilia", role: null, email: "abc@gmail.com" }
 ];
 
 export function HiddenBitesExperience() {
@@ -158,6 +173,15 @@ export function HiddenBitesExperience() {
     }
   }, []);
 
+  const handleExploreAnotherRestaurant = useCallback(() => {
+    window.requestAnimationFrame(() => {
+      document.getElementById(selectedRestaurantPickerId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.setTimeout(() => {
+        document.getElementById(selectedRestaurantDropdownButtonId)?.focus({ preventScroll: true });
+      }, 320);
+    });
+  }, []);
+
   if (errorMessage) {
     return (
       <main className="app-shell app-shell--centered">
@@ -240,9 +264,9 @@ export function HiddenBitesExperience() {
             <img
               alt="Preview collage showing the evaluation card, score badge, score graph, score controls, and Seoul dot map"
               className="preview-collage__asset"
-              height={340}
+              height={727}
               src="/figma/question-preview-collage.png"
-              width={1280}
+              width={2730}
             />
           </div>
         </div>
@@ -264,46 +288,38 @@ export function HiddenBitesExperience() {
         <div className="section-kicker">5 - 2 · HB Scores</div>
         <div className="score-heading">
           <h2>HB Scores: re-scoring Hidden Bites</h2>
-          <p>Drag a slider. The chart recalculates Google star points using only the factor weights you care about.</p>
+          <p>Hover for full restaurant names, switch the x-axis factor from the top right, and click a dot to inspect the selected report below.</p>
         </div>
         <ScorePlot factors={data.factors} points={data.points} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
       </section>
 
       <section className="story-section story-section--report" id="report">
         <div className="section-kicker">5 - 3 · Report on the selected restaurant</div>
-        <div className="selected-heading">
+        <div className="selected-heading" id={selectedRestaurantPickerId}>
           <h2>Selected:</h2>
-          <label className="selected-heading__control" htmlFor="selected-report-restaurant-select">
-            <span className="sr-only">Selected restaurant</span>
-            <select
-              className="selected-heading__select restaurant-select"
-              id="selected-report-restaurant-select"
-              value={selectedRestaurant?.placeId ?? selectedPlaceId ?? ""}
-              onChange={(event) => handleSelectRestaurant(event.target.value)}
-            >
-              {data.restaurants.map((restaurant) => (
-                <option key={restaurant.placeId} value={restaurant.placeId}>
-                  {restaurant.displayPlaceName}
-                </option>
-              ))}
-            </select>
-          </label>
+          <SelectedRestaurantDropdown restaurants={data.restaurants} selectedPlaceId={selectedRestaurant?.placeId ?? selectedPlaceId ?? ""} onSelectPlace={handleSelectRestaurant} />
           <p>The report links macro emotional adjective patterns with micro keyword evidence from original reviews.</p>
+          <p>Selecting another dot in HB Scores would refresh this panel.</p>
         </div>
         {report ? (
-          <RestaurantReportPanel report={report} restaurants={data.restaurants} onSelectPlace={handleSelectRestaurant} />
+          <RestaurantReportPanel report={report} onExploreAnotherRestaurant={handleExploreAnotherRestaurant} />
         ) : (
           <div className="report-loading">Loading report...</div>
         )}
       </section>
 
       <section className="story-section story-section--map" id="map">
-        <div className="section-kicker">5 - 4 · Where are they located</div>
+        <div className="section-kicker">5 — 4 · WHERE ARE THEY LOCATED</div>
         <div className="map-heading">
-          <h2>
-            The top-50 dots are not spread evenly across <span>Seoul.</span>
+          <h2 aria-label="THE TOP-50 DOTS ACROSS SEOUL.">
+            THE <span className="map-heading__accent">TOP-50 DOTS</span>
+            <br />
+            ACROSS SEOUL.
           </h2>
-          <p>Most high-review, high-rating restaurants cluster around tourism, shopping, office, and nightlife places.</p>
+          <p>
+            Most high-review, high-rating restaurants cluster around tourism, shopping, office, and nightlife places:
+            Myeongdong/Euljiro, Hongdae, Gangnam/COEX, Seongsu, Itaewon, and Daehakro.
+          </p>
         </div>
         <SeoulRestaurantMap restaurants={data.restaurants} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
       </section>
@@ -313,13 +329,28 @@ export function HiddenBitesExperience() {
         <h2>
           What this story <span>cannot claim yet.</span>
         </h2>
-        <p>Five honest disclaimers. Every visualization above sits inside the boundaries described below.</p>
+        <p className="limitations-copy">
+          <span>Five honest disclaimers.</span>
+          <span>Every visualization above sits inside the boundaries described below.</span>
+        </p>
         <div className="limitation-grid">
           {limitationCards.map((card) => (
             <article className={`limitation-card limitation-card--${card.tone}`} key={card.number}>
-              <span>{card.number}</span>
-              <strong>{card.title}</strong>
-              <p>{card.body}</p>
+              <span className="limitation-card__number">{card.number}</span>
+              <strong className="limitation-card__title">
+                {card.titleLines.map((line) => (
+                  <span className="limitation-card__title-line" key={line}>
+                    {line}
+                  </span>
+                ))}
+              </strong>
+              <p className="limitation-card__body">
+                {card.bodyLines.map((line) => (
+                  <span className="limitation-card__body-line" key={line}>
+                    {line}
+                  </span>
+                ))}
+              </p>
             </article>
           ))}
         </div>
@@ -333,20 +364,141 @@ export function HiddenBitesExperience() {
         <div className="footer-meta">
           <div>
             <strong>The team</strong>
-            <span>{data.summary.members.join(" · ")}</span>
+            <div className="footer-team-grid">
+              {footerTeamMembers.map((member) => (
+                <span className="footer-team-member" key={member.name}>
+                  <span className="footer-team-name">
+                    {member.name}
+                    {member.role ? <span className="footer-team-role"> ({member.role})</span> : null}
+                  </span>
+                  <span className="footer-team-email">{member.email}</span>
+                </span>
+              ))}
+            </div>
           </div>
           <div>
             <strong>The class</strong>
-            <span>{data.summary.className}</span>
-            <span>advised by {data.summary.advisor}</span>
+            <div className="footer-copy">
+              <span>26-1 Data Visualization</span>
+              <span>Sogang University · Art & Technology</span>
+              <span>advised by Prof. JeeWon Kim</span>
+            </div>
           </div>
           <div>
             <strong>The story</strong>
-            <span>web-desktop edition · 2026.05</span>
+            <div className="footer-copy footer-copy--mono">
+              <span>web-desktop edition · 2026.05 · vol.01</span>
+            </div>
           </div>
         </div>
       </footer>
     </main>
+  );
+}
+
+interface SelectedRestaurantDropdownProps {
+  restaurants: RestaurantSummary[];
+  selectedPlaceId: string;
+  onSelectPlace: (placeId: string) => void;
+}
+
+function SelectedRestaurantDropdown({ restaurants, selectedPlaceId, onSelectPlace }: SelectedRestaurantDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectedIndex = Math.max(
+    0,
+    restaurants.findIndex((restaurant) => restaurant.placeId === selectedPlaceId)
+  );
+  const [activeIndex, setActiveIndex] = useState(selectedIndex);
+  const selectedRestaurant = restaurants[selectedIndex] ?? restaurants[0] ?? null;
+  const listboxId = "selected-restaurant-listbox";
+  const activeOptionId = isOpen ? `selected-restaurant-option-${activeIndex}` : undefined;
+
+  useEffect(() => {
+    setActiveIndex(selectedIndex);
+  }, [selectedIndex]);
+
+  function handleSelect(placeId: string): void {
+    onSelectPlace(placeId);
+    setIsOpen(false);
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>): void {
+    if (restaurants.length === 0) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      setIsOpen(false);
+      return;
+    }
+
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      setIsOpen(true);
+      setActiveIndex((currentIndex) => {
+        const direction = event.key === "ArrowDown" ? 1 : -1;
+        return (currentIndex + direction + restaurants.length) % restaurants.length;
+      });
+      return;
+    }
+
+    if ((event.key === "Enter" || event.key === " ") && isOpen) {
+      event.preventDefault();
+      const activeRestaurant = restaurants[activeIndex];
+
+      if (activeRestaurant) {
+        handleSelect(activeRestaurant.placeId);
+      }
+    }
+  }
+
+  return (
+    <div
+      className="selected-restaurant-dropdown"
+      onBlur={(event) => {
+        const nextFocusTarget = event.relatedTarget;
+
+        if (!(nextFocusTarget instanceof Node) || !event.currentTarget.contains(nextFocusTarget)) {
+          setIsOpen(false);
+        }
+      }}
+      onKeyDown={handleKeyDown}
+    >
+      <button
+        aria-activedescendant={activeOptionId}
+        aria-controls={listboxId}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        className="selected-restaurant-dropdown__button"
+        id={selectedRestaurantDropdownButtonId}
+        type="button"
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <span>{selectedRestaurant?.displayPlaceName ?? "Restaurant"}</span>
+      </button>
+      {isOpen ? (
+        <div className="selected-restaurant-dropdown__menu" id={listboxId} role="listbox" aria-label="Selected restaurant">
+          {restaurants.map((restaurant, index) => (
+            <button
+              aria-selected={restaurant.placeId === selectedPlaceId}
+              className={index === activeIndex ? "selected-restaurant-dropdown__option selected-restaurant-dropdown__option--active" : "selected-restaurant-dropdown__option"}
+              id={`selected-restaurant-option-${index}`}
+              key={restaurant.placeId}
+              role="option"
+              tabIndex={-1}
+              type="button"
+              onClick={() => handleSelect(restaurant.placeId)}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
+              <strong>{restaurant.displayPlaceName}</strong>
+              <span>
+                #{restaurant.placeRank} · {restaurant.district}
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -389,7 +541,7 @@ function buildQnaItems(): QnaAccordionItem[] {
     },
     {
       question: "What is the HB Score?",
-      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. You decide which factors matter, set their weights, and the page re-scores all 50 against your preferences. Move a slider — the leaderboard rearranges.",
+      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. Pick an x-axis factor, compare the top-50 dots by HB score, and click into the report when a restaurant stands out.",
       tone: "green"
     }
   ];

@@ -31,20 +31,20 @@ test("hero and preview match the updated Figma poster collage", async () => {
   assert.match(experience, /aria-label="Hidden Bites preview collage from Figma"/);
   assert.match(experience, /className="preview-collage__asset"/);
   assert.match(experience, /src="\/figma\/question-preview-collage\.png"/);
-  assert.match(experience, /height=\{340\}/);
-  assert.match(experience, /width=\{1280\}/);
+  assert.match(experience, /height=\{727\}/);
+  assert.match(experience, /width=\{2730\}/);
   assert.match(experience, /alt="Preview collage showing the evaluation card, score badge, score graph, score controls, and Seoul dot map"/);
   assert.doesNotMatch(experience, /preview-report-card|preview-chart-card|preview-controls-card|preview-map-card|preview-score-badge/);
   assert.doesNotMatch(experience, /previewFactors|previewChartDots|previewMapDots/);
   assert.equal(previewAsset.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
-  assert.equal(previewAsset.readUInt32BE(16), 1280);
-  assert.equal(previewAsset.readUInt32BE(20), 340);
+  assert.equal(previewAsset.readUInt32BE(16), 2730);
+  assert.equal(previewAsset.readUInt32BE(20), 727);
   assert.doesNotMatch(experience, /question-preview-collage\.svg/);
 
   assert.match(css, /\.question-card h2\s*\{[\s\S]*font-family: var\(--font-airbnb-extra-bold\);[\s\S]*font-size: clamp\(3rem, 5\.15vw, 5\.15rem\);[\s\S]*max-width: 68rem;[\s\S]*text-transform: none;/);
   assert.match(css, /\.question-card__korean\s*\{[\s\S]*font-family: "WAGURI", "Noto Sans KR", var\(--font-body\);[\s\S]*font-weight: 800;/);
   assert.match(css, /\.preview-collage\s*\{[\s\S]*margin: clamp\(2\.4rem, 4\.5vw, 4\.2rem\) calc\(var\(--question-card-pad\) \* -1\) calc\(var\(--question-card-pad\) \* -1\);/);
-  assert.match(css, /\.preview-collage__asset\s*\{[\s\S]*aspect-ratio: 1280 \/ 340;[\s\S]*display: block;[\s\S]*height: auto;[\s\S]*max-width: none;[\s\S]*width: 110%;/);
+  assert.match(css, /\.preview-collage__asset\s*\{[\s\S]*aspect-ratio: 2730 \/ 727;[\s\S]*display: block;[\s\S]*height: auto;[\s\S]*max-width: none;[\s\S]*width: 100%;/);
   assert.doesNotMatch(css, /question-preview-collage\.svg/);
   assert.doesNotMatch(css, /\.preview-report-card|\.preview-chart-card|\.preview-controls-card|\.preview-map-card|\.preview-score-badge/);
 });

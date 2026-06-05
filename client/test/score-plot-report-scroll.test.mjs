@@ -10,10 +10,11 @@ test("score plot node selection slides down to the selected report section", asy
   assert.match(scorePlot, /export type ScorePlotSelectionOptions = RestaurantSelectionOptions/);
   assert.match(scorePlot, /targetHash: "report"/);
   assert.match(scorePlot, /onSelectPlace\(placeId, \{ scrollToReport: true, targetHash: "report" \}\)/);
-  assert.match(scorePlot, /function handleGoToReportClick\(\): void/);
-  assert.match(scorePlot, /<button className="report-jump" type="button" disabled=\{!selectedScore\} onClick=\{handleGoToReportClick\}>/);
   assert.match(scorePlot, /<circle[\s\S]*onClick=\{\(\) => handleReportSelection\(score\.placeId\)\}/);
   assert.match(scorePlot, /onKeyDown=\{\(event\) => \{[\s\S]*handleReportSelection\(score\.placeId\)/);
+  assert.match(scorePlot, /hover for the full name · click a dot to inspect it below/);
+  assert.match(scorePlot, /aria-label="HB score ranked list"/);
+  assert.match(scorePlot, /onClick=\{\(\) => handleReportSelection\(score\.placeId\)\}/);
   assert.match(experience, /const reportSectionId = "report"/);
   assert.match(experience, /window\.requestAnimationFrame/);
   assert.match(experience, /scrollIntoView\(\{ behavior: "smooth", block: "start" \}\)/);

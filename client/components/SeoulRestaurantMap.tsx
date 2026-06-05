@@ -36,6 +36,7 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
   return (
     <div className="map-workspace">
       <div className="map-chart map-chart--kakao" aria-label="Seoul top restaurant Kakao map dot distribution" data-testid="seoul-map-chart">
+        <h3 className="map-chart-title">Top 50 Restaurant in Seoul</h3>
         <KakaoMap restaurants={restaurants} selectedPlaceId={selectedPlaceId} onSelectPlace={onSelectPlace} />
         <div className="map-legend" aria-label="Kakao map dot legend">
           <span>
@@ -54,8 +55,11 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
       </div>
 
       <aside className="map-districts" aria-label="Top restaurant district count">
-        <h3>Dot distribution analysis</h3>
-        <p>The Kakao map shows the top-50 restaurants as real Seoul coordinates, revealing tight clusters around search-heavy districts.</p>
+        <h3 aria-label="Dot Distribution Analysis">
+          <span>Dot Distribution</span>
+          <span>Analysis</span>
+        </h3>
+        <p className="map-districts__intro">The top-50 restaurants concentrate in places where visitors search, compare, and review most actively.</p>
         <div className="map-district-list">
           {districtCounts.map((row, index) => (
             <div className="map-district-row" key={row.district}>
@@ -73,7 +77,11 @@ export function SeoulRestaurantMap({ restaurants, selectedPlaceId, onSelectPlace
             </div>
           ))}
         </div>
-        <p className="map-note">Dense review zones suggest where Top 50 visibility is produced, not only taste quality.</p>
+        <p className="map-note">
+          Dense areas — Myeongdong/Euljiro, Hongdae, Gangnam/COEX, Seongsu, Itaewon, Daehakro — suggest the "top" list is partly
+          a map of tourism + discovery behavior, not only taste quality.
+        </p>
+        <p className="map-source-note">n = Google top-50 · ranked by review count × stars · 5-yr window</p>
       </aside>
     </div>
   );
