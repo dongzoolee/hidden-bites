@@ -1626,6 +1626,7 @@ img {
   font-size: 16px;
   line-height: 24px;
   max-width: 820px;
+  white-space: normal;
 }
 
 .map-workspace {

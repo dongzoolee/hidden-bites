@@ -28,7 +28,7 @@ test("map story section matches the Figma copy hierarchy", async () => {
 
   assert.match(css, /\.story-section--map \.section-kicker\s*\{[\s\S]*color: var\(--yellow\);[\s\S]*margin-bottom: 16px;/);
   assert.match(css, /\.map-heading__accent\s*\{[\s\S]*color: var\(--yellow\);[\s\S]*display: inline;/);
-  assert.match(css, /\.map-heading p\s*\{[\s\S]*font-size: 16px;[\s\S]*line-height: 24px;[\s\S]*max-width: 820px;/);
+  assert.match(css, /\.map-heading p\s*\{[\s\S]*font-size: 16px;[\s\S]*line-height: 24px;[\s\S]*max-width: 820px;[\s\S]*white-space: normal;/);
   assert.match(css, /\.map-workspace\s*\{[\s\S]*gap: 28px;[\s\S]*grid-template-columns: minmax\(0, 1\.5fr\) minmax\(20rem, 1fr\);/);
   assert.match(css, /\.map-districts\s*\{[\s\S]*border-radius: 40px;[\s\S]*display: flex;[\s\S]*flex-direction: column;[\s\S]*padding: 40px;/);
   assert.match(css, /\.map-districts h3\s*\{[\s\S]*font-size: 36px;[\s\S]*line-height: 38\.4px;/);

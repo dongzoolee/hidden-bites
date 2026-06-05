@@ -250,6 +250,24 @@
 - Mobile에서는 graph SVG에 horizontal scroll을 허용하고 ranked-list의 보조 factor column을 숨겨 clipping을 막는다.
 - Regression guard: `client/test/score-plot-axis.test.mjs`, `client/test/score-plot-report-scroll.test.mjs`, `client/test/client-contract.test.mjs`가 graph-card, axis selector, fixed axis domain, ranked list, report scroll selection 계약을 검증한다.
 
+### 2026-06-05 Map section Figma copy correction
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:8357`의 Section `5 — 4 · WHERE ARE THEY LOCATED`를 `get_design_context`와 `get_screenshot`으로 확인했다.
+- Map section kicker가 background와 같은 red 계열이라 보이지 않던 문제를 `var(--yellow)`로 보정했다.
+- Section title을 Figma copy `THE TOP-50 DOTS / ACROSS SEOUL.`로 교체하고 `TOP-50 DOTS`만 yellow accent로 처리했다.
+- Section description을 Figma 문구인 tourism, shopping, office, nightlife cluster 설명과 Myeongdong/Euljiro, Hongdae, Gangnam/COEX, Seongsu, Itaewon, Daehakro 나열로 맞췄다.
+- Kakao map 구현은 유지하면서 map card 상단에 `Top 50 Restaurant in Seoul` title overlay를 추가했다.
+- Analysis card title은 `Dot Distribution`과 `Analysis` 두 줄 span으로 고정했다.
+- Analysis card body, dense-area note, `n = Google top-50 · ranked by review count × stars · 5-yr window` source note를 Figma copy로 교체했고 source note는 card 하단으로 밀리도록 flex column과 `margin-top: auto`를 사용했다.
+- `map-heading p`는 공통 `white-space: nowrap` 영향을 받지 않도록 `white-space: normal`을 명시했다.
+- Regression guard: `client/test/map-section-figma-copy.test.mjs`가 section kicker, title accent, description, analysis card copy, two-line title, source note placement, CSS grid/radius/typography contract를 검증한다.
+- Verification:
+  - `yarn --cwd client test -- --test-reporter=spec`
+  - `yarn --cwd client typecheck`
+  - `yarn --cwd client lint`
+  - `yarn --cwd client build`
+- Browser plugin validation은 `8096` client와 `8097` backend가 실행 중인 상태에서 시도했으나 in-app browser가 React client hydration 전에 loading state에 머물러 실제 visual 확인까지 진행하지 못했다. API proxy와 backend 응답은 `curl http://127.0.0.1:8096/api/summary`, `curl http://127.0.0.1:8097/api/summary`로 정상 확인했다.
+
 ### 2026-06-05 Fullsize crop and remaining section parity
 
 - `question-preview-collage.png`는 fullsize page screenshot crop 원본을 유지하며 browser 검증에서 `naturalWidth: 2730`, `naturalHeight: 727`, rendered `1278 x 340`, `aspect-ratio: 2730 / 727`, horizontal overflow 없음으로 확인했다.
