@@ -379,8 +379,7 @@ img {
 }
 
 .hero-metrics span {
-  background: #FF5A1F;
-  color: var(--ink);
+  color: #FF5A1F;
   font-weight: 800;
 }
 
