@@ -288,7 +288,10 @@ export function HiddenBitesExperience() {
         <div className="section-kicker">5 - 2 · HB Scores</div>
         <div className="score-heading">
           <h2>HB Scores: re-scoring Hidden Bites</h2>
-          <p>Hover for full restaurant names, switch the x-axis factor from the top right, and click a dot to inspect the selected report below.</p>
+          <p>
+            <strong>Drag a slider.</strong> The chart recalculates Google&apos;s star points using only the factor weights you care about; the highlighted dot is the
+            top pick under your current preference.
+          </p>
         </div>
         <ScorePlot factors={data.factors} points={data.points} selectedPlaceId={selectedPlaceId} onSelectPlace={handleSelectRestaurant} />
       </section>
@@ -541,7 +544,7 @@ function buildQnaItems(): QnaAccordionItem[] {
     },
     {
       question: "What is the HB Score?",
-      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. Pick an x-axis factor, compare the top-50 dots by HB score, and click into the report when a restaurant stands out.",
+      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. You decide which factors matter, set their weights, and the page re-scores all 50 against your preferences. Move a slider — the leaderboard rearranges.",
       tone: "green"
     }
   ];

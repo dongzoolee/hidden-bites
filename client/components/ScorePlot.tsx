@@ -7,6 +7,12 @@ import type { RestaurantSelectionOptions } from "@/lib/selection-types";
 
 export type ScoreMode = "scatter" | "list";
 
+export interface FactorWeight {
+  factorId: string;
+  label: string;
+  weight: number;
+}
+
 interface ScorePlotProps {
   factors: HbFactor[];
   points: HbScorePoint[];
@@ -26,6 +32,7 @@ interface PlotRestaurantScore {
   collectedReviewCount: number;
   factorScore: number;
   factorIndex: number;
+  weightedScore: number;
   chartScore: number;
   x: number;
   y: number;
@@ -79,17 +86,29 @@ const chartScoreDomain: NumericDomain = {
 
 const xTickValues = [0, 25, 50, 75, 100];
 const yTickLabels = ["4.96", "4.93", "4.90", "4.87", "4.83"];
+const defaultWeightPattern = [70, 40, 50, 90, 50, 30, 30, 30, 30, 30];
+const evaluationColors = ["#ff5a1f", "#3da06b", "#ffc842", "#b87fd9", "#4d8ccf", "#ff8fb1"];
 
 export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: ScorePlotProps) {
   const [selectedFactorId, setSelectedFactorId] = useState<string>(factors[0]?.id ?? "");
   const [scoreMode, setScoreMode] = useState<ScoreMode>("scatter");
+  const [factorWeights, setFactorWeights] = useState<FactorWeight[]>(() => buildDefaultWeights(factors));
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const selectedFactor = useMemo(() => factors.find((factor) => factor.id === selectedFactorId) ?? factors[0] ?? null, [factors, selectedFactorId]);
   const activeFactorId = selectedFactor?.id ?? factors[0]?.id ?? "";
-  const plotScores = useMemo(() => buildPlotScores(points, activeFactorId), [activeFactorId, points]);
+  const factorMaxScores = useMemo(() => buildFactorMaxScores(points), [points]);
+  const plotScores = useMemo(() => buildPlotScores(points, activeFactorId, factorWeights), [activeFactorId, factorWeights, points]);
   const dotScores = useMemo(() => [...plotScores].sort((left, right) => left.chartScore - right.chartScore), [plotScores]);
   const topScore = plotScores[0] ?? null;
+  const selectedScore = useMemo(
+    () => plotScores.find((score) => score.placeId === selectedPlaceId) ?? topScore,
+    [plotScores, selectedPlaceId, topScore]
+  );
   const topCalloutPosition = topScore ? buildCalloutPosition(topScore) : null;
+
+  useEffect(() => {
+    setFactorWeights((currentWeights) => syncFactorWeights(currentWeights, factors));
+  }, [factors]);
 
   useEffect(() => {
     if (!selectedFactorId && factors[0]) {
@@ -102,9 +121,21 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
     }
   }, [factors, selectedFactorId]);
 
+  function handleWeightChange(factorId: string, weight: number): void {
+    setFactorWeights((currentWeights) =>
+      currentWeights.map((factorWeight) => (factorWeight.factorId === factorId ? { ...factorWeight, weight } : factorWeight))
+    );
+  }
+
   function handleReportSelection(placeId: string): void {
     setTooltip(null);
     onSelectPlace(placeId, { scrollToReport: true, targetHash: "report" });
+  }
+
+  function handleGoToReportClick(): void {
+    if (selectedScore) {
+      handleReportSelection(selectedScore.placeId);
+    }
   }
 
   function handleFactorCycle(): void {
@@ -247,14 +278,123 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
         <p className="score-graph-instructions">hover for the full name · click a dot to inspect it below</p>
       </section>
+
+      <aside className="score-control-stack" aria-label="Score controls and top pick">
+        <section className="score-controls" aria-label="Score controls">
+          <h3>Score controls</h3>
+          <p className="control-label">X-axis factor</p>
+          <div className="factor-chip-grid">
+            {factors.map((factor) => (
+              <button
+                className={factor.id === selectedFactor?.id ? "factor-chip factor-chip--active" : "factor-chip"}
+                key={factor.id}
+                type="button"
+                onClick={() => {
+                  setSelectedFactorId(factor.id);
+                  setTooltip(null);
+                }}
+              >
+                {factor.label}
+              </button>
+            ))}
+          </div>
+
+          <p className="control-label">Factor weights</p>
+          <div className="factor-weight-list">
+            {factorWeights.map((factorWeight) => (
+              <label className="factor-weight" key={factorWeight.factorId}>
+                <span>{factorWeight.label}</span>
+                <input
+                  aria-label={`${factorWeight.label} weight`}
+                  className="factor-weight-slider"
+                  max={100}
+                  min={0}
+                  type="range"
+                  value={factorWeight.weight}
+                  onChange={(event) => handleWeightChange(factorWeight.factorId, Number(event.target.value))}
+                />
+                <strong>{factorWeight.weight}</strong>
+              </label>
+            ))}
+          </div>
+        </section>
+
+        <section className="top-pick-card" aria-label="Top pick right now">
+          <span>→ Top pick right now</span>
+          <strong>{topScore?.displayPlaceName ?? "No restaurant"}</strong>
+          <b>{topScore ? formatDisplayScore(topScore.chartScore) : "0.0"}</b>
+        </section>
+      </aside>
+
+      <section className="evaluation-card" aria-label="Selected restaurant weighted evaluation">
+        <div className="evaluation-card__header">
+          <div>
+            <span>Individual evaluation</span>
+            <h3>{selectedScore?.displayPlaceName ?? "Select a restaurant"}</h3>
+            <p>
+              {selectedScore
+                ? `Rank #${selectedScore.placeRank} of 50 · Google baseline ${selectedScore.googlePlaceRating.toFixed(1)}★`
+                : "Pick a dot or list row to inspect its factor profile."}
+            </p>
+          </div>
+          <strong className="evaluation-card__score">
+            ★{selectedScore?.chartScore.toFixed(2) ?? "0.00"}
+            <small>HB re-score</small>
+          </strong>
+        </div>
+
+        <div className="evaluation-factor-grid">
+          {factorWeights.slice(0, 6).map((factorWeight, index) => {
+            const factorScore = selectedScore?.factorScores[factorWeight.factorId] ?? 0;
+            const maxFactorScore = factorMaxScores.get(factorWeight.factorId) ?? Math.max(factorScore, 1);
+            const factorPercent = maxFactorScore > 0 ? clamp((factorScore / maxFactorScore) * 100, 0, 100) : 0;
+
+            return (
+              <div className="evaluation-factor" key={factorWeight.factorId} style={buildFactorColorStyle(evaluationColors[index] ?? "#ff5a1f")}>
+                <span>{factorWeight.label}</span>
+                <div className="evaluation-factor__track">
+                  <div className="evaluation-factor__value" style={{ width: `${Math.max(4, factorPercent)}%` }} />
+                </div>
+                <em>
+                  factor {factorPercent.toFixed(0)} / 100 · your weight {factorWeight.weight}
+                </em>
+              </div>
+            );
+          })}
+        </div>
+
+        <button className="report-jump" type="button" disabled={!selectedScore} onClick={handleGoToReportClick}>
+          Go to Report
+          <span aria-hidden="true">↓</span>
+        </button>
+      </section>
     </div>
   );
 }
 
-function buildPlotScores(points: HbScorePoint[], selectedFactorId: string): PlotRestaurantScore[] {
+function buildDefaultWeights(factors: HbFactor[]): FactorWeight[] {
+  return factors.map((factor, index) => ({
+    factorId: factor.id,
+    label: factor.label,
+    weight: defaultWeightPattern[index] ?? 30
+  }));
+}
+
+function syncFactorWeights(currentWeights: FactorWeight[], factors: HbFactor[]): FactorWeight[] {
+  const currentById = new Map(currentWeights.map((factorWeight) => [factorWeight.factorId, factorWeight.weight]));
+
+  return factors.map((factor, index) => ({
+    factorId: factor.id,
+    label: factor.label,
+    weight: currentById.get(factor.id) ?? defaultWeightPattern[index] ?? 30
+  }));
+}
+
+function buildPlotScores(points: HbScorePoint[], selectedFactorId: string, factorWeights: FactorWeight[]): PlotRestaurantScore[] {
   const scoreRows = new Map<string, ScoreAccumulator>();
   const selectedFactorScores = points.filter((point) => point.factorId === selectedFactorId).map((point) => point.hbScore);
   const selectedFactorScoreDomain = buildFactorScoreDomain(selectedFactorScores);
+  const weightsByFactorId = new Map(factorWeights.map((factorWeight) => [factorWeight.factorId, factorWeight.weight]));
 
   for (const point of points) {
     const current = scoreRows.get(point.placeId);
@@ -283,14 +423,18 @@ function buildPlotScores(points: HbScorePoint[], selectedFactorId: string): Plot
     scoreRows.set(point.placeId, nextScore);
   }
 
-  const rows = [...scoreRows.values()].filter((score) => selectedFactorId === "" || score.factorScores[selectedFactorId] !== undefined);
-  const sourceDomain = buildChartScoreSourceDomain(rows);
+  const weightedRows = [...scoreRows.values()]
+    .filter((score) => selectedFactorId === "" || score.factorScores[selectedFactorId] !== undefined)
+    .map((score) => ({
+      score,
+      weightedScore: buildWeightedScore(score, weightsByFactorId)
+    }));
+  const sourceDomain = buildChartScoreSourceDomain(weightedRows.map((row) => row.weightedScore));
 
-  return rows
-    .map((score) => {
-      const averageScore = score.factorCount > 0 ? score.totalScore / score.factorCount : 0;
+  return weightedRows
+    .map(({ score, weightedScore }) => {
       const factorIndex = buildFactorIndex(score.factorScore, selectedFactorScoreDomain);
-      const chartScore = scaleToDomain(averageScore, sourceDomain, chartScoreDomain);
+      const chartScore = scaleToDomain(weightedScore, sourceDomain, chartScoreDomain);
 
       return {
         placeId: score.placeId,
@@ -302,6 +446,7 @@ function buildPlotScores(points: HbScorePoint[], selectedFactorId: string): Plot
         collectedReviewCount: score.collectedReviewCount,
         factorScore: score.factorScore,
         factorIndex,
+        weightedScore,
         chartScore,
         x: xScale(factorIndex),
         y: yScale(chartScore),
@@ -311,18 +456,44 @@ function buildPlotScores(points: HbScorePoint[], selectedFactorId: string): Plot
     .sort((left, right) => right.chartScore - left.chartScore || right.factorIndex - left.factorIndex || left.placeRank - right.placeRank || left.displayPlaceName.localeCompare(right.displayPlaceName));
 }
 
-function buildChartScoreSourceDomain(rows: ScoreAccumulator[]): NumericDomain {
-  const averages = rows.map((score) => (score.factorCount > 0 ? score.totalScore / score.factorCount : 0));
+function buildWeightedScore(score: ScoreAccumulator, weightsByFactorId: Map<string, number>): number {
+  let weightedTotal = 0;
+  let weightTotal = 0;
 
-  if (averages.length === 0) {
+  for (const [factorId, factorScore] of Object.entries(score.factorScores)) {
+    const weight = weightsByFactorId.get(factorId) ?? 0;
+    weightedTotal += factorScore * weight;
+    weightTotal += weight;
+  }
+
+  if (weightTotal > 0) {
+    return weightedTotal / weightTotal;
+  }
+
+  return score.factorCount > 0 ? score.totalScore / score.factorCount : 0;
+}
+
+function buildFactorMaxScores(points: HbScorePoint[]): Map<string, number> {
+  const maxScores = new Map<string, number>();
+
+  for (const point of points) {
+    const currentMax = maxScores.get(point.factorId) ?? 0;
+    maxScores.set(point.factorId, Math.max(currentMax, point.hbScore));
+  }
+
+  return maxScores;
+}
+
+function buildChartScoreSourceDomain(scores: number[]): NumericDomain {
+  if (scores.length === 0) {
     return {
       min: 0,
       max: 1
     };
   }
 
-  const min = Math.min(...averages);
-  const max = Math.max(...averages);
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
 
   if (max - min < 0.0001) {
     return {
@@ -383,6 +554,16 @@ function buildPositionStyle(position: CalloutPosition): CSSProperties {
     left: `${position.left}%`,
     top: `${position.top}%`
   };
+}
+
+function buildFactorColorStyle(color: string): CSSProperties & { "--factor-color": string } {
+  return {
+    "--factor-color": color
+  };
+}
+
+function formatDisplayScore(chartScore: number): string {
+  return (chartScore * 15).toFixed(1);
 }
 
 function xScale(value: number): number {

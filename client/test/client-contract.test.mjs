@@ -50,6 +50,9 @@ test("client implements the required story surfaces", async () => {
   assert.doesNotMatch(scorePlot, /tooltip\.score\.placeName|score\.placeName\}<\/strong>|topScore\?\.placeName|selectedScore\?\.placeName/);
   assert.match(scorePlot, /score-axis-selector/);
   assert.match(scorePlot, /score-ranked-list/);
+  assert.match(scorePlot, /score-controls/);
+  assert.match(scorePlot, /factor-weight-slider/);
+  assert.match(scorePlot, /evaluation-card/);
   assert.match(scorePlot, /score-mode-toggle/);
   assert.match(scorePlot, /role="button"/);
   assert.match(seoulMap, /data-testid="seoul-map-chart"/);

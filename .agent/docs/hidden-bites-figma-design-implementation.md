@@ -221,16 +221,28 @@
 ## 2026-06-05 HB Score graph Figma reimplementation
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7952`를 `get_design_context`, `get_metadata`, `get_screenshot`으로 확인해 HB Score graph 컴포넌트를 다시 구현했다.
-- `client/components/ScorePlot.tsx`는 기존 slider/right-control/evaluation-card 구조를 제거하고 Figma의 856x717 rounded graph card 구조로 교체했다.
+- `client/components/ScorePlot.tsx`는 Figma의 856x717 rounded graph card 구조로 교체했다.
 - Scatter mode는 Figma 기준 SVG plot `784x500`, plot area `x=35..771`, `y=39..448`, x ticks `0/25/50/75/100`, y labels `4.96/4.93/4.90/4.87/4.83`를 사용한다.
 - x-axis selector는 Figma의 `x: Taste ->` label처럼 보이되 클릭하면 다음 factor로 순환한다.
 - dot은 선택 factor score를 35~100 index로 펼치고, 전체 HB score index를 4.83~4.96 범위에 정규화해 Figma처럼 restaurant dots가 plot 안에 넓게 분포하도록 했다.
 - Top pick pill, crown label, bottom instruction, Scatter/Ranked list segmented buttons를 Figma 색상과 typography에 맞췄다.
 - Ranked list mode는 같은 card 내부에서 50개 restaurant row를 scrollable list로 보여주며 기존 report 선택/scroll 동작은 유지한다.
-- Score section과 QnA의 이전 slider 설명을 hover/click/factor-axis interaction copy로 교체했다.
-- Regression guard: `client/test/score-plot-axis.test.mjs`가 Figma chart dimensions, card radius/padding, tick labels, top callout, dot classes, old slider/control 제거를 검증한다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 Figma chart dimensions, card radius/padding, tick labels, top callout, dot classes를 검증한다.
 - Regression guard: `client/test/score-plot-report-scroll.test.mjs`가 dot/list selection의 report scroll 계약을 검증한다.
 - Browser verification: localhost `8096`에서 desktop card `856x717`, plot `784x500`, dots `50`개, Ranked list `50` rows, factor cycle, mobile card `358px` width와 plot horizontal scroll을 확인했다.
+
+### 2026-06-05 HB Score surrounding cards restoration
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7856`을 다시 확인해 graph가 포함된 전체 `Section - 5-2 HB Scores` 구조를 기준으로 복구했다.
+- `ScorePlot`에 사라졌던 오른쪽 `Score controls` card, `Top pick right now` card, 하단 `Individual evaluation` card, `Go to Report` button을 다시 추가했다.
+- Slider와 factor chip은 실제 state에 다시 연결했다.
+  - x-axis factor chip을 누르면 graph x-axis가 변경된다.
+  - factor weight slider를 움직이면 weighted top pick, ranked list, highlighted top dot이 다시 계산된다.
+  - dot/list/report button 선택은 기존처럼 report section으로 smooth scroll한다.
+- Figma layout 기준으로 score area는 desktop에서 `856px graph + 24px gap + 400px controls` = `1280px` grid를 사용하고, evaluation card는 전체 폭을 차지한다.
+- 1380px 이하와 mobile에서는 graph, controls, top-pick, evaluation card가 세로 stack으로 내려가도록 responsive override를 추가했다.
+- Score section과 QnA copy는 slider 기반 설명으로 되돌렸다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 graph-only 회귀를 막기 위해 `score-controls`, `factor-weight-slider`, `top-pick-card`, `evaluation-card`, `report-jump` 존재와 Figma card dimensions를 검증한다.
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `309:7782`를 `get_design_context`와 `get_screenshot`으로 확인했다.
 - 해당 노드는 evaluation card, score badge, score graph, score controls, Seoul dot map이 겹친 preview collage이며 직접 React/CSS로 재구현하지 않았다.
@@ -295,6 +307,7 @@
   - `web-desktop edition · 2026.05 · vol.01`
 - Footer meta typography는 Figma 기준 heading `11px`, body `14px / 22.4px`, column gap `32px`, top border padding `37px`로 조정했다.
 - Mobile에서는 team grid를 1컬럼 member stack으로 풀어 좁은 화면에서 email과 role이 clipping되지 않도록 했다.
+- Browser validation: `localhost:8096`에서 Playwright Chromium `1440x900` screenshot을 캡처해 footer title 줄 간격과 3컬럼 team/class/story copy가 렌더링되는 것을 확인했다.
 - Regression guard: `client/test/footer-figma-parity.test.mjs`가 footer title line-height, Figma meta copy, typography, mobile override를 검증한다.
 
 ### 2026-06-05 Limitation cards Figma parity correction
