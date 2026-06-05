@@ -200,7 +200,8 @@
 - User가 다시 제공한 Figma node `313:9287`의 전체 metadata/design context/screenshot과 read-only inspection은 120초 timeout이 발생했다.
 - 첨부된 Figma crop을 기준으로 Q1의 Google Maps / Naver Map / Kakao Map 비교 카드를 다시 맞췄다.
 - Platform card의 이전 meta row와 한국어 body copy를 제거하고, Figma crop의 영어 문구와 quoted Naver/Kakao 설명을 반영했다.
-- Platform card body는 원문 `body`를 유지하면서 Figma crop과 같은 두 줄 구성을 위해 `bodyLines`를 추가했다.
+- Platform card body는 원문 `body`를 유지하면서 Figma crop과 같은 두 줄 구성을 위해 `bodyLines`를 추가하고, line span을 nowrap으로 렌더링한다.
+- Platform card body font는 Figma crop의 line width에 맞도록 기존 `Airbnb Cereal` webfont를 사용한다.
 - Card title 앞 원형 marker를 CSS pseudo-element로 추가하고, desktop에서 Figma 비율에 맞게 card radius, min-height, padding, title/body font-size, row gap을 clamp 값으로 조정했다.
 - QnA answer의 platform card row는 더 이상 prefix 영역이나 section padding 안쪽에 갇히지 않도록 desktop에서 viewport full-bleed로 배치하고, answer paragraph만 desktop에서 들여쓰기한다.
 - Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄여 text clipping을 방지한다.

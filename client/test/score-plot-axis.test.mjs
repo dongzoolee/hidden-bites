@@ -24,9 +24,12 @@ test("score plot exposes weighted controls and ranks restaurants across the x-ax
   assert.ok(scoreControlsEnd > scoreControlsStart);
   assert.ok(topPickStart > scoreControlsEnd);
 
+  assert.match(css, /\.score-lab\s*\{[\s\S]*gap: 24px;[\s\S]*grid-template-columns: minmax\(0, 1fr\) 400px;/);
   assert.match(css, /\.score-control-stack\s*\{[\s\S]*gap: 20px;[\s\S]*max-width: 400px;/);
   assert.match(css, /\.score-controls/);
   assert.match(css, /\.score-controls\s*\{[\s\S]*background: #1a1310;[\s\S]*border-radius: 32px;[\s\S]*padding: 32px;/);
+  assert.match(css, /\.factor-chip-grid\s*\{[\s\S]*grid-auto-rows: 40px;[\s\S]*max-height: 139px;/);
+  assert.match(css, /\.score-controls \.factor-chip\s*\{[\s\S]*height: 40px;[\s\S]*padding: 0 16px;/);
   assert.match(css, /\.top-pick-card\s*\{[\s\S]*background: #ffc842;[\s\S]*border-radius: 32px;[\s\S]*min-height: 204px;/);
   assert.match(css, /\.factor-weight-slider/);
   assert.match(css, /\.factor-weight-slider::-webkit-slider-thumb\s*\{[\s\S]*background: #ff5a1f;[\s\S]*border: 3px solid var\(--paper\);[\s\S]*height: 22px;/);

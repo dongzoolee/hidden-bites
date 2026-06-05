@@ -702,14 +702,16 @@ img {
 
 .qna-card p {
   color: #7d642d;
-  font-size: clamp(1.02rem, 1.23vw, 1.55rem);
+  font-family: "Airbnb Cereal", var(--font-body);
+  font-size: clamp(1rem, 1.125vw, 1.4375rem);
   font-weight: 500;
-  line-height: 1.36;
+  line-height: 1.46;
   margin: 0;
 }
 
 .qna-card__line {
   display: block;
+  white-space: nowrap;
 }
 
 .qna-card--featured p {
@@ -777,8 +779,8 @@ img {
 
 .score-lab {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 400px;
 }
 
 .score-stage {
@@ -999,6 +1001,7 @@ img {
 .factor-chip-grid {
   display: grid;
   gap: 8px;
+  grid-auto-rows: 40px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   max-height: 139px;
   overflow: auto;
@@ -1009,8 +1012,9 @@ img {
   border-color: var(--paper);
   color: var(--paper);
   font-size: 13px;
-  min-height: 40px;
-  padding: 12px 16px;
+  height: 40px;
+  min-height: 0;
+  padding: 0 16px;
 }
 
 .score-controls .factor-chip--active {

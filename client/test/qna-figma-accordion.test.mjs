@@ -50,8 +50,8 @@ test("QnA section matches the updated Figma accordion copy and states", async ()
   assert.match(css, /\.qna-card\s*\{[\s\S]*background: #ffe4a3;[\s\S]*border-radius: clamp\(1\.4rem, 1\.56vw, 2rem\);[\s\S]*gap: clamp\(1\.2rem, 1\.25vw, 1\.6rem\);[\s\S]*min-height: clamp\(9\.25rem, 10\.3vw, 13\.15rem\);/);
   assert.match(css, /\.qna-card strong\s*\{[\s\S]*font-size: clamp\(1\.75rem, 2\.05vw, 2\.6rem\);[\s\S]*font-weight: 800;/);
   assert.match(css, /\.qna-card strong::before\s*\{[\s\S]*background: var\(--yellow\);[\s\S]*border-radius: 50%;[\s\S]*content: "";/);
-  assert.match(css, /\.qna-card p\s*\{[\s\S]*font-size: clamp\(1\.02rem, 1\.23vw, 1\.55rem\);[\s\S]*line-height: 1\.36;/);
-  assert.match(css, /\.qna-card__line\s*\{[\s\S]*display: block;/);
+  assert.match(css, /\.qna-card p\s*\{[\s\S]*font-family: "Airbnb Cereal", var\(--font-body\);[\s\S]*font-size: clamp\(1rem, 1\.125vw, 1\.4375rem\);[\s\S]*line-height: 1\.46;/);
+  assert.match(css, /\.qna-card__line\s*\{[\s\S]*display: block;[\s\S]*white-space: nowrap;/);
   assert.match(css, /\.qna-card--featured p\s*\{[\s\S]*color: #e9dcc8;/);
   assert.match(css, /\.qna-card__meta\s*\{[\s\S]*font-family: var\(--font-mono\);/);
   assert.match(css, /\.qna-formula\s*\{[\s\S]*background: #fff1da;[\s\S]*border-radius: 20px;[\s\S]*gap: 6px;[\s\S]*max-width: min\(100%, 42\.4375rem\);[\s\S]*padding: 18px 20px;[\s\S]*width: fit-content;/);
