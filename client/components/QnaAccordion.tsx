@@ -4,11 +4,19 @@ import { ChevronDown } from "lucide-react";
 import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
 
 export type QnaTone = "yellow" | "pink" | "green";
+export type QnaCardVariant = "default" | "featured";
 
 export interface QnaCard {
   title: string;
   body: string;
+  meta?: string;
   tone?: QnaTone;
+  variant?: QnaCardVariant;
+}
+
+export interface QnaFormula {
+  label: string;
+  expression: string;
 }
 
 export interface QnaAccordionItem {
@@ -16,6 +24,7 @@ export interface QnaAccordionItem {
   answer: string;
   tone?: QnaTone;
   cards?: QnaCard[];
+  formula?: QnaFormula;
 }
 
 interface QnaAccordionProps {
@@ -70,7 +79,7 @@ export function QnaAccordion({ items }: QnaAccordionProps) {
               type="button"
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
             >
-              <span className="qna__number">{String(index + 1).padStart(2, "0")}</span>
+              <span className="qna__number">{`${isOpen ? "A" : "Q"}${index + 1}`}</span>
               <span>{item.question}</span>
               <ChevronDown aria-hidden="true" className={isOpen ? "qna__chevron qna__chevron--open" : "qna__chevron"} size={22} />
             </button>
@@ -87,11 +96,18 @@ export function QnaAccordion({ items }: QnaAccordionProps) {
               {item.cards?.length ? (
                 <div className="qna-card-row">
                   {item.cards.map((card) => (
-                    <article className={`qna-card qna-card--${card.tone ?? tone}`} key={card.title}>
+                    <article className={buildQnaCardClassName(card, tone)} key={card.title}>
                       <strong>{card.title}</strong>
+                      {card.meta ? <span className="qna-card__meta">{card.meta}</span> : null}
                       <p>{card.body}</p>
                     </article>
                   ))}
+                </div>
+              ) : null}
+              {item.formula ? (
+                <div className="qna-formula">
+                  <span>{item.formula.label}</span>
+                  <code>{item.formula.expression}</code>
                 </div>
               ) : null}
             </div>
@@ -112,4 +128,10 @@ function toneByIndex(index: number): QnaTone {
   }
 
   return "yellow";
+}
+
+function buildQnaCardClassName(card: QnaCard, tone: QnaTone): string {
+  return ["qna-card", `qna-card--${card.tone ?? tone}`, card.variant === "featured" ? "qna-card--featured" : ""]
+    .filter(Boolean)
+    .join(" ");
 }

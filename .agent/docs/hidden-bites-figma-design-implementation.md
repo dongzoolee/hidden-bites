@@ -164,3 +164,15 @@
 - 실제 map section은 사용자 확인에 따라 Kakao 지도 구현을 유지했다. Preview collage 안의 map은 Figma poster 미리보기용 장식 surface로만 사용한다.
 - Mobile에서는 collage 요소를 static stack으로 전환해 카드 겹침과 text clipping을 방지했다.
 - Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero copy, metric chip, collage class, old 3-card placeholder 제거, mobile stack CSS를 검증한다.
+
+## 2026-06-05 QnA section update
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 업데이트된 QnA 섹션을 반영했다.
+- Section copy를 `Before we re-score, the two doubts that come up first — why Google Maps, and how we narrowed the city down to fifty.`로 맞췄다.
+- `QnaAccordion`은 closed state에서 `Q1/Q2/Q3`, open state에서 `A1/A2/A3` prefix를 보여준다.
+- Google Maps, Naver Map, Kakao Map 비교 카드는 Figma의 platform meta와 한국어 설명 문구를 렌더링한다.
+- Google Maps card는 dark featured variant로 구분하고, card meta row를 추가했다.
+- Top 50 설명은 별도 formula pill로 `score(r_k) = 0.55 · log(reviews_5y) + 0.45 · stars · sqrt(reviews_30d)`를 표시한다.
+- `What is the HB Score?` answer는 slider 조작에 따라 top-50 leaderboard가 재정렬되는 설명으로 교체했다.
+- QnA CSS는 Figma처럼 border 없는 large rounded accordion, larger prefix badge, metadata typography, mobile-safe formula wrapping으로 조정했다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 Q/A prefix, exact Figma copy, platform meta, formula pill, old fallback copy 제거, mobile QnA CSS를 검증한다.

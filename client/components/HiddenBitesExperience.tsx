@@ -179,13 +179,7 @@ export function HiddenBitesExperience() {
     return data.restaurants.find((restaurant) => restaurant.placeId === selectedPlaceId) ?? null;
   }, [data, selectedPlaceId]);
 
-  const qnaItems = useMemo<QnaAccordionItem[]>(() => {
-    if (!data) {
-      return [];
-    }
-
-    return buildQnaItems(data.summary.qna);
-  }, [data]);
+  const qnaItems = useMemo<QnaAccordionItem[]>(buildQnaItems, []);
 
   const handleSelectRestaurant = useCallback((placeId: string, options: RestaurantSelectionOptions = {}) => {
     setSelectedPlaceId(placeId);
@@ -350,7 +344,7 @@ export function HiddenBitesExperience() {
             Why this
             <span>data source?</span>
           </h2>
-          <p>Before we re-score anything, the first doubt comes up first: why Google Maps, and how we narrowed the city down to fifty.</p>
+          <p>Before we re-score, the two doubts that come up first — why Google Maps, and how we narrowed the city down to fifty.</p>
         </div>
         <QnaAccordion items={qnaItems} />
       </section>
@@ -445,46 +439,47 @@ export function HiddenBitesExperience() {
   );
 }
 
-function buildQnaItems(items: SummaryPayload["qna"]): QnaAccordionItem[] {
-  const fallbackItems: SummaryPayload["qna"] = [
+function buildQnaItems(): QnaAccordionItem[] {
+  return [
     {
-      question: "Why we chose Google Maps -- not Naver or Kakao.",
-      answer: "Three Korean review platforms, three trade-offs. We compared review counts, star ratings, and how heavily each source moves toward promotional content."
+      question: "Why we chose Google Maps — not Naver or Kakao.",
+      answer: "Three Korean review platforms, three trade-offs. We compared review counts, the presence of star ratings, and how heavily each one skews toward promotional content.",
+      tone: "yellow",
+      cards: [
+        {
+          title: "Google Maps",
+          meta: "stars: ✓ · mix: local + tourist",
+          body: "별점 + 리뷰 수 + 외국인·현지인이 혼재한 더 중립적인 데이터.",
+          tone: "yellow",
+          variant: "featured"
+        },
+        {
+          title: "Naver Map",
+          meta: "stars: ✕ · ads: high",
+          body: "광고성 리뷰 과다. 별점이 없어 정량 비교가 어렵다.",
+          tone: "yellow"
+        },
+        {
+          title: "Kakao Map",
+          meta: "stars: ✓ · volume: low",
+          body: "리뷰 수가 부족해 상위 50개를 안정적으로 추리기 어려웠다.",
+          tone: "yellow"
+        }
+      ]
     },
     {
       question: "How we picked the top 50.",
-      answer: "Restaurants were sorted by a weighted mix of star quality and review count, then reviewed as a Seoul-only sample."
+      answer: "Restaurants were ranked using a weighted sum of two signals over the last five years in Seoul: recency-weighted review volume + star-point strength. The top-50 candidates then enter the recalculation pipeline.",
+      tone: "pink",
+      formula: {
+        label: "Formula",
+        expression: "score(r_k) = 0.55 · log(reviews_5y) + 0.45 · stars · sqrt(reviews_30d)"
+      }
     },
     {
       question: "What is the HB Score?",
-      answer: "HB Score re-weights restaurant reviews by factor-level evidence extracted from review text."
-    }
-  ];
-  const sourceItems = items.length >= 3 ? items : fallbackItems;
-
-  return [
-    {
-      ...sourceItems[0],
-      tone: "yellow",
-      cards: [
-        { title: "Google Maps", body: "Star ratings, review counts, and a blend of local and international user insights.", tone: "yellow" },
-        { title: "Naver Map", body: "High volume of promotional content. Lack of star ratings limits quantitative analysis.", tone: "yellow" },
-        { title: "Kakao Map", body: "Insufficient review volume hindered reliable selection of the top 50 list.", tone: "yellow" }
-      ]
-    },
-    {
-      ...sourceItems[1],
-      tone: "pink",
-      cards: [
-        { title: "Formula", body: "Score = star rating, review count, five-year review window, and Seoul-only location filter.", tone: "pink" }
-      ]
-    },
-    {
-      ...sourceItems[2],
-      tone: "green",
-      cards: [
-        { title: "HB factor", body: "Taste, service, value, atmosphere, accessibility, wait queue, occasion, portion, cleanliness, uniqueness.", tone: "green" }
-      ]
+      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. You decide which factors matter, set their weights, and the page re-scores all 50 against your preferences. Move a slider — the leaderboard rearranges.",
+      tone: "green"
     }
   ];
 }
