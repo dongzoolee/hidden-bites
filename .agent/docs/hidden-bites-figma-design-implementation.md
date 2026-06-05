@@ -149,3 +149,18 @@
 - `ResizeObserver`와 window resize listener를 함께 사용해 반응형 줄바꿈과 font load 이후에도 answer panel 높이를 다시 맞춘다.
 - `prefers-reduced-motion: reduce` 환경에서는 Q&A answer와 chevron transition을 끈다.
 - Regression guard: `client/test/client-contract.test.mjs`가 height variable, ResizeObserver, reduced-motion, `display: none` 미사용 계약을 검증한다.
+
+## 2026-06-05 Hero and preview collage update
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 업데이트된 Hero/Preview 영역을 먼저 반영했다.
+- Hero description을 `Google's top-50 restaurants in Seoul, re-scored by the factors people actually mention in their reviews.`로 맞췄다.
+- Hero metric chip의 세 번째 항목을 `10 factors`에서 `NLP adjectives + keywords`로 변경했다.
+- Preview 영역의 단순 3-card placeholder를 Figma poster collage 구조로 교체했다.
+  - `Mutan COEX Store` dark report card
+  - `Jongno Naengmyeon 74.0` yellow score badge
+  - scatter chart preview
+  - score controls preview
+  - Seoul dot map preview
+- 실제 map section은 사용자 확인에 따라 Kakao 지도 구현을 유지했다. Preview collage 안의 map은 Figma poster 미리보기용 장식 surface로만 사용한다.
+- Mobile에서는 collage 요소를 static stack으로 전환해 카드 겹침과 text clipping을 방지했다.
+- Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero copy, metric chip, collage class, old 3-card placeholder 제거, mobile stack CSS를 검증한다.

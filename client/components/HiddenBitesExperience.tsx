@@ -29,6 +29,47 @@ const navigationItems = [
 
 const reportSectionId = "report";
 
+const heroDescription = "Google's top-50 restaurants in Seoul, re-scored by the factors people actually mention in their reviews.";
+
+const previewFactors = [
+  { label: "Taste", weight: 70 },
+  { label: "Service", weight: 40 },
+  { label: "Value", weight: 50 },
+  { label: "Atmosphere", weight: 90 },
+  { label: "Accessibility", weight: 50 },
+  { label: "Wait/queue", weight: 30 }
+];
+
+const previewChartDots = [
+  { x: 42, y: 64, radius: 3 },
+  { x: 47, y: 58, radius: 4 },
+  { x: 51, y: 46, radius: 3 },
+  { x: 55, y: 52, radius: 4 },
+  { x: 59, y: 39, radius: 3 },
+  { x: 62, y: 68, radius: 3 },
+  { x: 66, y: 56, radius: 4 },
+  { x: 69, y: 47, radius: 3 },
+  { x: 72, y: 33, radius: 3 },
+  { x: 75, y: 24, radius: 5 },
+  { x: 78, y: 41, radius: 3 },
+  { x: 81, y: 37, radius: 4 },
+  { x: 84, y: 50, radius: 3 },
+  { x: 88, y: 44, radius: 3 }
+];
+
+const previewMapDots = [
+  { x: 24, y: 54 },
+  { x: 28, y: 57 },
+  { x: 32, y: 51 },
+  { x: 58, y: 43 },
+  { x: 61, y: 48 },
+  { x: 64, y: 39 },
+  { x: 70, y: 45 },
+  { x: 78, y: 64 },
+  { x: 82, y: 60 },
+  { x: 86, y: 67 }
+];
+
 const limitationCards = [
   {
     number: "01",
@@ -206,11 +247,11 @@ export function HiddenBitesExperience() {
             <span>Hidden</span>
             <span>Bites.</span>
           </h1>
-          <p>{data.summary.description}</p>
+          <p>{heroDescription}</p>
           <div className="hero-metrics" aria-label="Hidden Bites metrics">
             <span>{data.summary.metadata.restaurantCount} restaurants</span>
             <span>5-yr review window</span>
-            <span>{data.summary.metadata.factorCount} factors</span>
+            <span>NLP adjectives + keywords</span>
           </div>
           <div className="hero-dots" aria-hidden="true">
             <i />
@@ -229,24 +270,75 @@ export function HiddenBitesExperience() {
             Top star points and most reviews become the entry point. The story then asks whether reviews reveal different
             reasons for being a matjip: taste, service, value, atmosphere, accessibility, and waiting friction.
           </p>
-          <div className="preview-collage" aria-label="Hidden Bites preview cards">
-            <div className="preview-card preview-card--dark">
-              <span>COEX Store</span>
-              <strong>4.93</strong>
-              <div className="preview-lines">
-                <i />
-                <i />
-                <i />
+          <div className="preview-collage" aria-label="Hidden Bites preview collage">
+            <article className="preview-report-card" aria-label="Mutan COEX Store preview">
+              <div className="preview-report-card__header">
+                <span>Individual evaluation</span>
+                <strong>Mutan COEX Store</strong>
+                <em>Rank #1 of 50 · Google baseline 4.7★</em>
               </div>
+              <b>4.93★</b>
+              <div className="preview-factor-grid">
+                {previewFactors.map((factor) => (
+                  <div className="preview-factor" key={factor.label}>
+                    <span>{factor.label}</span>
+                    <i style={{ width: `${factor.weight}%` }} />
+                  </div>
+                ))}
+              </div>
+              <div className="preview-report-card__cta">Go to Report</div>
+            </article>
+            <div className="preview-score-badge">
+              <span>Jongno Naengmyeon</span>
+              <strong>74.0</strong>
             </div>
-            <div className="preview-card preview-card--chart">
-              <span>HB Score graph</span>
-              <b>{data.summary.metadata.graphPointCount}</b>
-            </div>
-            <div className="preview-card preview-card--map">
-              <span>Seoul dots</span>
-              <b>{data.summary.metadata.mapPointCount}</b>
-            </div>
+            <article className="preview-chart-card" aria-label="HB score graph preview">
+              <div className="preview-card-toolbar">
+                <span>Scatter</span>
+                <span>Ranked list</span>
+                <strong>X: Taste</strong>
+              </div>
+              <h3>HB Score graph</h3>
+              <svg aria-hidden="true" viewBox="0 0 100 80">
+                <line x1="10" x2="10" y1="10" y2="68" />
+                <line x1="10" x2="94" y1="68" y2="68" />
+                <line x1="10" x2="94" y1="20" y2="20" />
+                <line x1="10" x2="94" y1="44" y2="44" />
+                {previewChartDots.map((dot) => (
+                  <circle cx={dot.x} cy={dot.y} key={`${dot.x}-${dot.y}`} r={dot.radius} />
+                ))}
+                <circle className="preview-chart-card__selected-dot" cx="75" cy="24" r="5.4" />
+              </svg>
+            </article>
+            <article className="preview-controls-card" aria-label="Score controls preview">
+              <h3>Score controls</h3>
+              <div className="preview-control-chip-grid">
+                {previewFactors.map((factor, index) => (
+                  <span className={index === 0 ? "preview-control-chip preview-control-chip--active" : "preview-control-chip"} key={factor.label}>
+                    {factor.label}
+                  </span>
+                ))}
+              </div>
+              <div className="preview-control-sliders">
+                {previewFactors.map((factor) => (
+                  <span key={factor.label}>
+                    <b>{factor.label}</b>
+                    <i>
+                      <em style={{ width: `${factor.weight}%` }} />
+                    </i>
+                  </span>
+                ))}
+              </div>
+            </article>
+            <article className="preview-map-card" aria-label="Seoul dot map preview">
+              <svg aria-hidden="true" viewBox="0 0 100 72">
+                <ellipse cx="52" cy="36" rx="42" ry="28" />
+                <path d="M8 41H92" />
+                {previewMapDots.map((dot) => (
+                  <circle cx={dot.x} cy={dot.y} key={`${dot.x}-${dot.y}`} r="2.6" />
+                ))}
+              </svg>
+            </article>
           </div>
         </div>
       </section>
