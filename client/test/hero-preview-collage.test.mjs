@@ -5,7 +5,7 @@ import { test } from "node:test";
 test("hero and preview match the updated Figma poster collage", async () => {
   const experience = await readFile("components/HiddenBitesExperience.tsx", "utf8");
   const css = await readFile("app/globals.css", "utf8");
-  const previewAsset = await readFile("public/figma/question-preview-collage.png");
+  const previewAsset = await readFile("public/figma/question-preview-collage.svg", "utf8");
   const heroMetricRules = [...css.matchAll(/\.hero-metrics > span\s*\{(?<body>[\s\S]*?)\}/g)];
   const heroMetricRule = heroMetricRules.at(-1)?.groups?.body ?? "";
   const heroMetricStrongRule = css.match(/\.hero-metrics strong\s*\{(?<body>[\s\S]*?)\}/)?.groups?.body ?? "";
@@ -30,10 +30,14 @@ test("hero and preview match the updated Figma poster collage", async () => {
   assert.match(experience, /role="img"/);
   assert.doesNotMatch(experience, /preview-report-card|preview-chart-card|preview-controls-card|preview-map-card|preview-score-badge/);
   assert.doesNotMatch(experience, /previewFactors|previewChartDots|previewMapDots/);
-  assert.deepEqual([...previewAsset.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.match(previewAsset, /<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="0 0 1104 336"/);
+  assert.match(previewAsset, /Mutan COEX Store/);
+  assert.match(previewAsset, /Score controls/);
+  assert.match(previewAsset, /Daehakro\/Jongno/);
+  assert.doesNotMatch(previewAsset, /<image\b|\.png/);
 
   assert.match(css, /\.question-card h2\s*\{[\s\S]*font-family: var\(--font-airbnb-extra-bold\);[\s\S]*max-width: 68rem;[\s\S]*text-transform: none;/);
   assert.match(css, /\.preview-collage\s*\{[\s\S]*margin: clamp\(2\.4rem, 4\.5vw, 4\.2rem\) calc\(var\(--question-card-pad\) \* -1\) calc\(var\(--question-card-pad\) \* -1\);/);
-  assert.match(css, /\.preview-collage__asset\s*\{[\s\S]*aspect-ratio: 1104 \/ 336;[\s\S]*background-image: url\("\/figma\/question-preview-collage\.png"\);[\s\S]*background-size: cover;/);
+  assert.match(css, /\.preview-collage__asset\s*\{[\s\S]*aspect-ratio: 1104 \/ 336;[\s\S]*background-image: url\("\/figma\/question-preview-collage\.svg"\);[\s\S]*background-size: cover;/);
   assert.doesNotMatch(css, /\.preview-report-card|\.preview-chart-card|\.preview-controls-card|\.preview-map-card|\.preview-score-badge/);
 });

@@ -494,7 +494,7 @@ img {
 
 .preview-collage__asset {
   aspect-ratio: 1104 / 336;
-  background-image: url("/figma/question-preview-collage.png");
+  background-image: url("/figma/question-preview-collage.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
