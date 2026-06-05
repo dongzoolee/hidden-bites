@@ -378,6 +378,12 @@ img {
   margin-top: 1.35rem;
 }
 
+.hero-metrics span {
+  background: #FF5A1F;
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .hero-dots {
   height: calc(var(--hero-title-size) * var(--hero-title-line-height) * 2);
   left: 0;

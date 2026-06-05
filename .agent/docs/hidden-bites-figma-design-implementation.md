@@ -165,6 +165,12 @@
 - Mobile에서는 collage 요소를 static stack으로 전환해 카드 겹침과 text clipping을 방지했다.
 - Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero copy, metric chip, collage class, old 3-card placeholder 제거, mobile stack CSS를 검증한다.
 
+### 2026-06-05 Hero metric chip color correction
+
+- Hero metric chip `50 restaurants`, `5-yr review window`, `NLP adjectives + keywords`의 Figma fill을 exact `#FF5A1F`로 맞췄다.
+- Hero metric chip font weight를 Figma 기준 `800`으로 명시했다.
+- Regression guard: `client/test/hero-preview-collage.test.mjs`가 hero metric chip의 exact color와 weight를 검증한다.
+
 ## 2026-06-05 QnA section update
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`, node `313:9287`의 업데이트된 QnA 섹션을 반영했다.

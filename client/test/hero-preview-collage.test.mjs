@@ -9,6 +9,7 @@ test("hero and preview match the updated Figma poster collage", async () => {
   assert.match(experience, /Google's top-50 restaurants in Seoul, re-scored by the factors people actually mention in their reviews\./);
   assert.match(experience, /NLP adjectives \+ keywords/);
   assert.doesNotMatch(experience, /data\.summary\.metadata\.factorCount\} factors/);
+  assert.match(css, /\.hero-metrics span\s*\{[\s\S]*background: #FF5A1F;[\s\S]*font-weight: 800;/);
   assert.match(experience, /aria-label="Hidden Bites preview collage"/);
   assert.match(experience, /preview-report-card/);
   assert.match(experience, /preview-chart-card/);
