@@ -360,17 +360,20 @@ function buildQnaItems(): QnaAccordionItem[] {
         {
           title: "Google Maps",
           body: "Star ratings, review counts, and a blend of local/international user insights",
+          bodyLines: ["Star ratings, review counts, and a blend of local/", "international user insights"],
           tone: "yellow",
           variant: "featured"
         },
         {
           title: "Naver Map",
           body: "\"High volume of promotional content. Lack of star ratings limits quantitative analysis.\"",
+          bodyLines: ["\"High volume of promotional content. Lack of star", "ratings limits quantitative analysis.\""],
           tone: "yellow"
         },
         {
           title: "Kakao Map",
           body: "\"Insufficient review volume hindered reliable selection of the top 50 list.\"",
+          bodyLines: ["\"Insufficient review volume hindered reliable", "selection of the top 50 list.\""],
           tone: "yellow"
         }
       ]

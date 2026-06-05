@@ -541,6 +541,11 @@ img {
   gap: 0.9rem;
 }
 
+.story-section--qna .qna {
+  margin-left: calc(clamp(2rem, 6vw, 5.5rem) * -1);
+  margin-right: calc(clamp(2rem, 6vw, 5.5rem) * -1);
+}
+
 .qna__item {
   border: 0;
   border-radius: 1.55rem;
@@ -653,7 +658,7 @@ img {
   border-radius: clamp(1.4rem, 1.56vw, 2rem);
   color: #7d642d;
   display: grid;
-  gap: clamp(1.25rem, 1.75vw, 2.2rem);
+  gap: clamp(1.2rem, 1.25vw, 1.6rem);
   min-height: clamp(9.25rem, 10.3vw, 13.15rem);
   padding: clamp(1.45rem, 2.08vw, 2.65rem) clamp(1.6rem, 2.6vw, 3.4rem);
 }
@@ -701,6 +706,10 @@ img {
   font-weight: 500;
   line-height: 1.36;
   margin: 0;
+}
+
+.qna-card__line {
+  display: block;
 }
 
 .qna-card--featured p {
@@ -2200,6 +2209,11 @@ img {
     grid-template-columns: auto minmax(0, 1fr) auto;
     min-height: 4.1rem;
     padding: 0.9rem;
+  }
+
+  .story-section--qna .qna {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .qna__button > span:not(.qna__number) {

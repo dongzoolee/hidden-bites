@@ -9,6 +9,7 @@ export type QnaCardVariant = "default" | "featured";
 export interface QnaCard {
   title: string;
   body: string;
+  bodyLines?: readonly string[];
   meta?: string;
   tone?: QnaTone;
   variant?: QnaCardVariant;
@@ -99,7 +100,15 @@ export function QnaAccordion({ items }: QnaAccordionProps) {
                     <article className={buildQnaCardClassName(card, tone)} key={card.title}>
                       <strong>{card.title}</strong>
                       {card.meta ? <span className="qna-card__meta">{card.meta}</span> : null}
-                      <p>{card.body}</p>
+                      <p>
+                        {card.bodyLines
+                          ? card.bodyLines.map((line) => (
+                              <span className="qna-card__line" key={line}>
+                                {line}
+                              </span>
+                            ))
+                          : card.body}
+                      </p>
                     </article>
                   ))}
                 </div>
