@@ -2274,6 +2274,10 @@ img {
     width: 1rem;
   }
 
+  .qna-card__line {
+    white-space: normal;
+  }
+
   .qna-card p {
     font-size: 0.98rem;
   }

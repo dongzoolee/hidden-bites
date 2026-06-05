@@ -61,6 +61,7 @@ test("QnA section matches the updated Figma accordion copy and states", async ()
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.story-section--qna \.qna\s*\{[\s\S]*margin-left: 0;[\s\S]*margin-right: 0;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.qna__answer > p\s*\{[\s\S]*margin-left: 0;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.qna-card strong\s*\{[\s\S]*font-size: 1\.55rem;/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.qna-card__line\s*\{[\s\S]*white-space: normal;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.qna-formula\s*\{[\s\S]*max-width: 100%;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.qna-formula code\s*\{[\s\S]*overflow-wrap: anywhere;[\s\S]*white-space: normal;/);
 });

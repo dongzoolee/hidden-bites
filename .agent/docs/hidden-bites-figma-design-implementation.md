@@ -204,7 +204,7 @@
 - Platform card body font는 Figma crop의 line width에 맞도록 기존 `Airbnb Cereal` webfont를 사용한다.
 - Card title 앞 원형 marker를 CSS pseudo-element로 추가하고, desktop에서 Figma 비율에 맞게 card radius, min-height, padding, title/body font-size, row gap을 clamp 값으로 조정했다.
 - QnA answer의 platform card row는 더 이상 prefix 영역이나 section padding 안쪽에 갇히지 않도록 desktop에서 viewport full-bleed로 배치하고, answer paragraph만 desktop에서 들여쓰기한다.
-- Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄여 text clipping을 방지한다.
+- Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄이고 `bodyLines` nowrap을 해제해 text clipping을 방지한다.
 - Regression guard: `client/test/qna-figma-accordion.test.mjs`가 exact platform copy, old meta/Korean copy 제거, marker pseudo-element, Figma crop card sizing, mobile override를 검증한다.
 
 ### 2026-06-05 Formula pill radius and typography correction
