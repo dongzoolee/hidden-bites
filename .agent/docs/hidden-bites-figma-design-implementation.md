@@ -231,4 +231,10 @@
 - Score controls와 Top pick card를 `score-control-stack`으로 묶어 Figma처럼 우측 세로 stack 레이아웃으로 분리했다.
 - Score controls panel은 dark `#1a1310`, radius `32px`, padding `32px`, Figma-sized label/chip/slider 스타일로 조정했다.
 - Top pick card는 yellow `#ffc842`, radius `32px`, min-height `204px`, `→ Top pick right now` label을 사용한다.
-- Regression guard: `client/test/score-plot-axis.test.mjs`가 default weights, score-control-stack ordering, panel/card radius, slider thumb 스타일을 검증한다.
+- Desktop score lab은 Figma 상위 container 기준 gap `24px`, right column `400px`를 사용한다.
+- Desktop에서는 Figma height를 유지하기 위해 control list를 내부 scroll로 두고, mobile에서는 chip/weight list를 모두 펼쳐 10개 factor를 조작할 수 있게 했다.
+- Browser validation:
+  - Desktop `1440x900`: `score-controls`와 `top-pick-card`가 형제이고 `controls.contains(topPick) === false`, 카드 폭 400px, gap 20px로 측정됐다.
+  - Mobile `390x844`: chip 10개, weight 10개가 렌더링되고 horizontal overflow가 없었다.
+- Figma MCP `get_design_context`와 read-only `use_figma`로 node `309:7867` context와 ancestry를 확인했다. 별도 `get_screenshot`은 transport error가 발생해 `get_design_context`의 visual reference와 로컬 Playwright screenshot을 기준으로 대조했다.
+- Regression guard: `client/test/score-plot-axis.test.mjs`가 default weights, score-control-stack ordering, 400px right column, 20px section gap, panel/card radius, slider thumb, mobile list expansion을 검증한다.
