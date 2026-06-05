@@ -177,9 +177,10 @@
 ### 2026-06-05 Question preview title and asset correction
 
 - Question card title은 `What are the real factors behind a great 맛집?` sentence case를 유지하고 CSS uppercase transform을 제거했다.
-- Question card title은 desktop/mobile 모두 two-line composition 안에 끝나도록 question 전용 font, line-height, max-width, mobile font-size를 조정했다.
+- Question card title은 desktop/mobile 모두 two-line composition 안에 끝나도록 question 전용 font, line-height, max-width, desktop/mobile font-size를 조정했다.
 - 하단 5개 preview component는 React/CSS 근사 구현을 제거하고 crisp vector SVG visual asset으로 교체했다.
 - `client/public/figma/question-preview-collage.svg`는 Figma composition을 따라 evaluation card, score badge, score graph, score controls, Seoul dot map을 vector shape/text로 구성한다.
+- Question card title의 Korean word `맛집`은 WAGURI span으로 분리해 Figma Korean display font를 적용했다.
 - Regression guard: `client/test/hero-preview-collage.test.mjs`가 sentence-case title, SVG asset surface, old five-component DOM/CSS 제거, raster image 미사용을 검증한다.
 
 ## 2026-06-05 QnA section update

@@ -229,7 +229,9 @@ export function HiddenBitesExperience() {
       <section className="story-section story-section--question" id="question">
         <div className="question-card">
           <p className="micro-label">The question</p>
-          <h2>What are the real factors behind a great 맛집?</h2>
+          <h2>
+            What are the real factors behind a great <span className="question-card__korean">맛집</span>?
+          </h2>
           <p>
             Top star points and most reviews become the entry point. The story then asks whether reviews reveal different
             reasons for being a matjip: taste, service, value, atmosphere, accessibility, and waiting friction.

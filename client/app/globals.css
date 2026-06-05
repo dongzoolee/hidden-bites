@@ -481,11 +481,16 @@ img {
 
 .question-card h2 {
   font-family: var(--font-airbnb-extra-bold);
-  font-size: clamp(3.4rem, 6.1vw, 6.1rem);
+  font-size: clamp(3rem, 5.15vw, 5.15rem);
   letter-spacing: 0;
   line-height: 0.98;
   max-width: 68rem;
   text-transform: none;
+}
+
+.question-card__korean {
+  font-family: "WAGURI", "Noto Sans KR", var(--font-body);
+  font-weight: 800;
 }
 
 .preview-collage {

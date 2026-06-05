@@ -23,7 +23,10 @@ test("hero and preview match the updated Figma poster collage", async () => {
   assert.doesNotMatch(heroMetricRule, /background:/);
   assert.match(heroMetricStrongRule, /color: #FF5A1F;/);
   assert.match(heroMetricStrongRule, /font-weight: 800;/);
-  assert.match(experience, /<h2>What are the real factors behind a great 맛집\?<\/h2>/);
+  assert.match(
+    experience,
+    /What are the real factors behind a great\s*<span className="question-card__korean">맛집<\/span>\?/,
+  );
   assert.doesNotMatch(experience, /WHAT ARE THE REAL FACTORS/);
   assert.match(experience, /aria-label="Hidden Bites preview collage from Figma"/);
   assert.match(experience, /className="preview-collage__asset"/);
@@ -36,7 +39,8 @@ test("hero and preview match the updated Figma poster collage", async () => {
   assert.match(previewAsset, /Daehakro\/Jongno/);
   assert.doesNotMatch(previewAsset, /<image\b|\.png/);
 
-  assert.match(css, /\.question-card h2\s*\{[\s\S]*font-family: var\(--font-airbnb-extra-bold\);[\s\S]*max-width: 68rem;[\s\S]*text-transform: none;/);
+  assert.match(css, /\.question-card h2\s*\{[\s\S]*font-family: var\(--font-airbnb-extra-bold\);[\s\S]*font-size: clamp\(3rem, 5\.15vw, 5\.15rem\);[\s\S]*max-width: 68rem;[\s\S]*text-transform: none;/);
+  assert.match(css, /\.question-card__korean\s*\{[\s\S]*font-family: "WAGURI", "Noto Sans KR", var\(--font-body\);[\s\S]*font-weight: 800;/);
   assert.match(css, /\.preview-collage\s*\{[\s\S]*margin: clamp\(2\.4rem, 4\.5vw, 4\.2rem\) calc\(var\(--question-card-pad\) \* -1\) calc\(var\(--question-card-pad\) \* -1\);/);
   assert.match(css, /\.preview-collage__asset\s*\{[\s\S]*aspect-ratio: 1104 \/ 336;[\s\S]*background-image: url\("\/figma\/question-preview-collage\.svg"\);[\s\S]*background-size: cover;/);
   assert.doesNotMatch(css, /\.preview-report-card|\.preview-chart-card|\.preview-controls-card|\.preview-map-card|\.preview-score-badge/);
