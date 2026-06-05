@@ -44,7 +44,8 @@ test("QnA section matches the updated Figma accordion copy and states", async ()
   assert.doesNotMatch(experience, /별점 \+ 리뷰 수|광고성 리뷰 과다|리뷰 수가 부족해/);
 
   assert.match(css, /\.qna__item\s*\{[\s\S]*border: 0;[\s\S]*border-radius: 1\.55rem;/);
-  assert.match(css, /\.story-section--qna \.qna\s*\{[\s\S]*margin-left: calc\(clamp\(2rem, 6vw, 5\.5rem\) \* -1\);[\s\S]*margin-right: calc\(clamp\(2rem, 6vw, 5\.5rem\) \* -1\);/);
+  assert.match(css, /\.story-section--qna \.qna\s*\{[\s\S]*margin-left: 0;[\s\S]*margin-right: 0;/);
+  assert.doesNotMatch(css, /\.story-section--qna \.qna\s*\{[\s\S]*margin-left: calc\(clamp\(2rem, 6vw, 5\.5rem\) \* -1\);[\s\S]*margin-right: calc\(clamp\(2rem, 6vw, 5\.5rem\) \* -1\);/);
   assert.match(css, /\.qna__number\s*\{[\s\S]*height: 2\.65rem;[\s\S]*width: 2\.65rem;/);
   assert.match(css, /\.qna-card--featured\s*\{[\s\S]*background: var\(--ink\);[\s\S]*color: var\(--paper\);/);
   assert.match(css, /\.qna-card\s*\{[\s\S]*background: #ffe4a3;[\s\S]*border-radius: clamp\(1\.4rem, 1\.56vw, 2rem\);[\s\S]*gap: clamp\(1\.2rem, 1\.25vw, 1\.6rem\);[\s\S]*min-height: clamp\(9\.25rem, 10\.3vw, 13\.15rem\);/);

@@ -216,6 +216,12 @@
 - Desktop에서는 수식을 한 줄로 유지해 Figma의 679px by 84px pill 비율을 보존하고, mobile media query에서만 wrapping을 허용한다.
 - Regression guard: `client/test/qna-figma-accordion.test.mjs`가 formula pill의 exact radius, padding, typography, color, expression을 검증한다.
 
+### 2026-06-06 QnA accordion section margin restoration
+
+- `Why this data source?` QnA accordion wrapper가 desktop에서 section horizontal padding을 negative margin으로 상쇄해 accordion rows가 좌우 끝까지 붙는 회귀를 수정했다.
+- `.story-section--qna .qna`의 좌우 margin을 `0`으로 고정해 기존 `.story-section` horizontal padding 안에서 accordion rows가 정렬되도록 복구했다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 QnA wrapper의 좌우 margin `0` 계약과 이전 negative margin 재도입 방지를 검증한다.
+
 ### 2026-06-05 Question preview PNG export
 
 ## 2026-06-05 HB Score graph Figma reimplementation

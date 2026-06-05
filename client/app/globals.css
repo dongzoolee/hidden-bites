@@ -551,8 +551,8 @@ img {
 }
 
 .story-section--qna .qna {
-  margin-left: calc(clamp(2rem, 6vw, 5.5rem) * -1);
-  margin-right: calc(clamp(2rem, 6vw, 5.5rem) * -1);
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .qna__item {
