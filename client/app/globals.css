@@ -669,6 +669,7 @@ img {
   display: grid;
   gap: clamp(1.2rem, 1.25vw, 1.6rem);
   min-height: clamp(9.25rem, 10.3vw, 13.15rem);
+  min-width: 0;
   padding: clamp(1.45rem, 2.08vw, 2.65rem) clamp(1.6rem, 2.6vw, 3.4rem);
 }
 
@@ -716,10 +717,15 @@ img {
   font-weight: 500;
   line-height: 1.46;
   margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .qna-card__line {
   display: block;
+  max-width: 100%;
+  overflow-wrap: normal;
   white-space: nowrap;
 }
 
@@ -2554,6 +2560,13 @@ img {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1600px) {
+  .qna-card__line {
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 }
 

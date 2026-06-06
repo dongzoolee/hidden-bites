@@ -346,3 +346,18 @@
 - `The Unique & Fun Keywords` subtitle에서 `Click a keyword chip`을 bold underline 처리했다.
 - Review quote grid는 2x2 layout, 22px radius, Figma tone colors를 사용하고 footer는 author/rating metadata 대신 `KEYWORD: a · b · c` 형태로 렌더링한다.
 - Regression guard: `client/test/report-section-figma-parity.test.mjs`가 selected dropdown, explorer button scroll/focus, report header/rating typography, adjective subtitle, emotion graph structure, keyword subtitle, snippet footer/radius를 검증한다.
+
+### 2026-06-06 QnA platform card text overflow fix
+
+- `Why we chose Google Maps — not Naver or Kakao.` answer의 platform comparison cards에서 Google Maps body text가 dark featured card 오른쪽을 넘어가던 문제를 수정했다.
+- Google Maps와 Naver Map의 `bodyLines`를 card content width 기준으로 다시 나누어 2048px desktop에서 수동 line composition이 card padding 안에 남도록 했다.
+- `.qna-card`와 body paragraph에 `min-width: 0`, `max-width: 100%`, `overflow-wrap: anywhere`를 추가해 grid column 안에서 text intrinsic width가 card를 밀어내지 않도록 했다.
+- 1600px 이하에서는 `.qna-card__line`의 `nowrap`을 해제해 1440px desktop, tablet, mobile에서도 text가 card 내부에서 자연스럽게 wrapping된다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 overflow-safe `bodyLines`, card `min-width`, body wrapping, 1600px breakpoint 계약을 검증한다.
+- Verification:
+  - `yarn --cwd client test`
+  - `yarn --cwd client typecheck`
+  - `yarn --cwd client lint`
+  - `git diff --check`
+  - Playwright Chromium에서 2048x768, 1440x820, 1024x768, 390x844 viewport의 `.qna-card` text/card bounding box overflow가 모두 0임을 확인했다.
+- Mobile MCP validation은 사용 가능한 device가 없어 진행하지 못했다. `mobile_list_available_devices` 결과는 empty devices였고, Playwright 390px mobile viewport로 대체 검증했다.
