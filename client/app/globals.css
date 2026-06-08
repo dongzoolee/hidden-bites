@@ -1624,7 +1624,7 @@ img {
 .emotion-chip-row {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 44px 0;
 }
 
@@ -1663,6 +1663,17 @@ img {
   font-weight: 700;
   line-height: 1.06;
   margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
+.emotion-chip em {
+  color: rgba(26, 19, 16, 0.62);
+  display: block;
+  font-family: var(--font-korean);
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.24;
+  margin-top: 8px;
   overflow-wrap: anywhere;
 }
 
@@ -1754,9 +1765,9 @@ img {
   bottom: 0;
   display: grid;
   gap: 32px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   left: 72px;
-  min-width: 640px;
+  min-width: 560px;
   position: absolute;
   right: 40px;
   top: 44px;
@@ -1766,7 +1777,7 @@ img {
   align-items: center;
   display: grid;
   gap: 4px;
-  grid-template-rows: 345px 28px 21px 20px;
+  grid-template-rows: 325px 28px 21px 20px 34px;
   justify-items: center;
   min-width: 78px;
 }
@@ -1775,7 +1786,7 @@ img {
   align-items: end;
   align-self: end;
   display: flex;
-  height: 345px;
+  height: 325px;
   justify-content: center;
   position: relative;
   width: 78px;
@@ -1807,7 +1818,8 @@ img {
 
 .emotion-graph__column span,
 .emotion-graph__column b,
-.emotion-graph__column em {
+.emotion-graph__column em,
+.emotion-graph__column small {
   color: var(--ink);
   text-align: center;
 }
@@ -1831,6 +1843,15 @@ img {
   line-height: 1.2;
 }
 
+.emotion-graph__column small {
+  color: rgba(26, 19, 16, 0.62);
+  font-family: var(--font-korean);
+  font-size: 12px;
+  line-height: 1.2;
+  max-width: 104px;
+  overflow-wrap: anywhere;
+}
+
 .keyword-section {
   display: grid;
   gap: 16px;
@@ -1839,16 +1860,67 @@ img {
 .keyword-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .keyword-chip {
   background: var(--paper-soft);
+  color: var(--ink);
+  cursor: pointer;
+  gap: 8px;
+  line-height: 1.15;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  white-space: normal;
+}
+
+.keyword-chip:hover,
+.keyword-chip:focus-visible {
+  box-shadow: 0 8px 18px rgba(26, 19, 16, 0.12);
+  transform: translateY(-1px);
+}
+
+.keyword-chip strong {
+  align-items: center;
+  background: rgba(255, 247, 233, 0.34);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: center;
+  min-width: 24px;
+  padding: 2px 6px;
 }
 
 .keyword-chip.keyword-chip--active {
   background: var(--orange);
   color: var(--paper);
+  box-shadow: 0 10px 20px rgba(26, 19, 16, 0.16);
+}
+
+.keyword-summary {
+  align-items: center;
+  color: var(--orange-deep);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.keyword-summary strong,
+.keyword-summary span {
+  background: rgba(255, 247, 232, 0.72);
+  border: 1px solid rgba(26, 19, 16, 0.14);
+  border-radius: 999px;
+  padding: 6px 10px;
 }
 
 .snippet-grid {
@@ -1898,6 +1970,32 @@ img {
   font-weight: 400;
   letter-spacing: 0.02em;
   opacity: 0.85;
+}
+
+.keyword-empty {
+  align-items: center;
+  background: rgba(255, 247, 232, 0.58);
+  border: 2px dashed rgba(26, 19, 16, 0.22);
+  border-radius: 22px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-height: 168px;
+  padding: 28px;
+  text-align: center;
+}
+
+.keyword-empty strong {
+  font-family: var(--font-korean);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.keyword-empty span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .restaurant-explorer {
@@ -2626,7 +2724,7 @@ img {
   }
 
   .emotion-chip-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .limitation-grid {
@@ -2989,12 +3087,12 @@ img {
   }
 
   .emotion-graph__column {
-    grid-template-rows: 292px 24px 18px 18px;
+    grid-template-rows: 270px 24px 18px 18px 34px;
     min-width: 70px;
   }
 
   .emotion-graph__bar-wrap {
-    height: 292px;
+    height: 270px;
     width: 68px;
   }
 
@@ -3013,6 +3111,11 @@ img {
 
   .emotion-graph__column em {
     font-size: 12px;
+  }
+
+  .emotion-graph__column small {
+    font-size: 11px;
+    max-width: 84px;
   }
 
   .snippet {

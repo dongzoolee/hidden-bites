@@ -54,13 +54,20 @@ export interface KeywordEvidence {
   snippets: ReviewSnippet[];
 }
 
-export interface EmotionBucket {
+export interface AdjectiveEvidence {
+  adjective: string;
+  count: number;
+}
+
+export interface AdjectiveBucket {
   id: string;
   label: string;
   emoji: string;
   count: number;
   share: number;
-  terms: string[];
+  averageShare: number;
+  koreanLabel: string;
+  topAdjectives: AdjectiveEvidence[];
 }
 
 export interface FactorScore {
@@ -89,7 +96,7 @@ export interface RestaurantReport {
   district: string;
   topFactor: FactorScore;
   factorScores: FactorScore[];
-  emotionBuckets: EmotionBucket[];
+  adjectiveBuckets: AdjectiveBucket[];
   keywords: KeywordEvidence[];
   reviewSample: ReviewSnippet[];
 }
@@ -126,7 +133,8 @@ export interface WebReportPayload {
     sourcePointsPath: string;
     sourceLocationsPath: string;
     sourceReviewDir: string;
-    emotionBucketCount: number;
+    sourceAdjectivesPath: string;
+    adjectiveBucketCount: number;
   };
   summary: Omit<SummaryPayload, "metadata">;
   factors: HbFactor[];

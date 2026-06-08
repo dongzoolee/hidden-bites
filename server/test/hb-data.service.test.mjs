@@ -38,5 +38,8 @@ test("HbDataService returns reports and rejects missing ids", () => {
   assert.equal(report.district, restaurant.district);
   assert.equal(report.factorScores.length, 10);
   assert.ok(report.keywords.length > 0);
+  assert.equal(report.adjectiveBuckets.length, 4);
+  assert.ok(report.adjectiveBuckets.some((bucket) => bucket.count > 0));
+  assert.equal(report.funnyKeywords, undefined);
   assert.throws(() => service.getRestaurantReport("missing-place"), /Restaurant report not found/);
 });

@@ -1,16 +1,17 @@
 {
   "metadata": {
-    "generatedAt": "2026-06-03T05:48:10.000Z",
+    "generatedAt": "2026-06-08T16:23:14.672Z",
     "sourceScorePath": "datasets/derived/hb-score-restaurants.json",
     "sourcePointsPath": "datasets/derived/hb-score-factor-restaurant-points.json",
     "sourceLocationsPath": "datasets/google-places-seoul-top-restaurants-2026-05-15-locations.json",
     "sourceReviewDir": "datasets/google-maps-reviews-2026-05-16",
+    "sourceAdjectivesPath": "datasets/derived/review-adjectives.json",
     "restaurantCount": 50,
     "factorCount": 10,
     "graphPointCount": 500,
     "mapPointCount": 50,
     "reportCount": 50,
-    "emotionBucketCount": 5
+    "adjectiveBucketCount": 4
   },
   "summary": {
     "title": "Hidden Bites",
@@ -8567,76 +8568,77 @@
           "meanFactorDistance": 0.744379
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 639,
-          "share": 0.0905,
-          "terms": [
-            "친절",
-            "깔끔",
-            "쾌적",
-            "조용",
-            "안심"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 4202,
-          "share": 0.5953,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 1635,
-          "share": 0.2316,
-          "terms": [
-            "트러플",
-            "특별",
-            "처음",
-            "시그니처",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 534,
+          "share": 0.4262,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 163
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 148
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 134
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 89
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 239,
-          "share": 0.0339,
-          "terms": [
-            "괜찮",
-            "일반",
-            "적당",
-            "기본",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 128,
+          "share": 0.1022,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 128
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 344,
-          "share": 0.0487,
-          "terms": [
-            "웨이팅",
-            "비싸",
-            "기다",
-            "대기",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 244,
+          "share": 0.1947,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 137
+            },
+            {
+              "adjective": "느끼하다",
+              "count": 107
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -8997,76 +8999,59 @@
           "meanFactorDistance": 0.806775
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 363,
-          "share": 0.1257,
-          "terms": [
-            "친절",
-            "깔끔",
-            "편안",
-            "아늑",
-            "쾌적"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2084,
-          "share": 0.7219,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 129,
-          "share": 0.0447,
-          "terms": [
-            "처음",
-            "특별",
-            "트러플",
-            "시그니처",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 153,
+          "share": 0.3262,
+          "topAdjectives": [
+            {
+              "adjective": "신선하다",
+              "count": 67
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 56
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 30
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 79,
-          "share": 0.0274,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "보통",
-            "일반"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 232,
-          "share": 0.0804,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -9427,76 +9412,63 @@
           "meanFactorDistance": 0.823783
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 314,
-          "share": 0.1535,
-          "terms": [
-            "친절",
-            "깨끗",
-            "편안",
-            "깔끔",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1511,
-          "share": 0.7385,
-          "terms": [
-            "맛있",
-            "최고",
-            "좋았",
-            "추천",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 83,
-          "share": 0.0406,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 454,
+          "share": 0.6667,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 220
+            },
+            {
+              "adjective": "신선하다",
+              "count": 178
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 30
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 26
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 39,
-          "share": 0.0191,
-          "terms": [
-            "괜찮",
-            "적당",
-            "간단",
-            "보통",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 99,
-          "share": 0.0484,
-          "terms": [
-            "기다",
-            "대기",
-            "아쉬",
-            "늦",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -9857,76 +9829,67 @@
           "meanFactorDistance": 0.840405
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 1213,
-          "share": 0.2098,
-          "terms": [
-            "친절",
-            "편안",
-            "깨끗",
-            "아늑",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 4265,
-          "share": 0.7378,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 152,
-          "share": 0.0263,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 1295,
+          "share": 0.7413,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 864
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 156
+            },
+            {
+              "adjective": "신선하다",
+              "count": 124
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 95
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 56
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 48,
-          "share": 0.0083,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "일반",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 103,
-          "share": 0.0178,
-          "terms": [
-            "기다",
-            "대기",
-            "늦",
-            "불편",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -10287,76 +10250,64 @@
           "meanFactorDistance": 0.88665
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 406,
-          "share": 0.1088,
-          "terms": [
-            "친절",
-            "깨끗",
-            "편안",
-            "깔끔",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 82,
+          "share": 0.0745,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 82
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 3065,
-          "share": 0.8211,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 63,
-          "share": 0.0169,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 558,
+          "share": 0.5068,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 391
+            },
+            {
+              "adjective": "신선하다",
+              "count": 95
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 72
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 138,
-          "share": 0.037,
-          "terms": [
-            "괜찮",
-            "적당",
-            "간단",
-            "평범",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 61,
-          "share": 0.0163,
-          "terms": [
-            "기다",
-            "아쉬",
-            "비싸",
-            "웨이팅",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -10717,76 +10668,68 @@
           "meanFactorDistance": 0.874247
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 462,
-          "share": 0.1555,
-          "terms": [
-            "친절",
-            "편안",
-            "깨끗",
-            "아늑",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 30,
+          "share": 0.0329,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 30
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2324,
-          "share": 0.782,
-          "terms": [
-            "최고",
-            "맛있",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 60,
-          "share": 0.0202,
-          "terms": [
-            "처음",
-            "놀라",
-            "특별",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 649,
+          "share": 0.7108,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 406
+            },
+            {
+              "adjective": "신선하다",
+              "count": 113
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 80
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 50
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 64,
-          "share": 0.0215,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "간단",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 62,
-          "share": 0.0209,
-          "terms": [
-            "기다",
-            "대기",
-            "늦",
-            "붐비",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -11147,76 +11090,73 @@
           "meanFactorDistance": 0.837204
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 536,
-          "share": 0.1438,
-          "terms": [
-            "친절",
-            "편안",
-            "깨끗",
-            "아늑",
-            "안심"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 113,
+          "share": 0.0775,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 113
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2578,
-          "share": 0.6917,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 151,
-          "share": 0.0405,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 890,
+          "share": 0.61,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 610
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 138
+            },
+            {
+              "adjective": "신선하다",
+              "count": 81
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 61
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 195,
-          "share": 0.0523,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "간단",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 267,
-          "share": 0.0716,
-          "terms": [
-            "기다",
-            "비싸",
-            "대기",
-            "아쉬",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 182,
+          "share": 0.1247,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 182
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -11577,76 +11517,73 @@
           "meanFactorDistance": 0.886932
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 194,
-          "share": 0.135,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "안심",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 40,
+          "share": 0.0813,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 40
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 822,
-          "share": 0.572,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 72,
-          "share": 0.0501,
-          "terms": [
-            "처음",
-            "특별",
-            "인상",
-            "놀라",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 118,
+          "share": 0.2398,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 59
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 32
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 27
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 123,
-          "share": 0.0856,
-          "terms": [
-            "괜찮",
-            "간단",
-            "기본",
-            "적당",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 96,
+          "share": 0.1951,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 65
+            },
+            {
+              "adjective": "깊다",
+              "count": 31
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 226,
-          "share": 0.1573,
-          "terms": [
-            "기다",
-            "대기",
-            "웨이팅",
-            "늦",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -12007,76 +11944,68 @@
           "meanFactorDistance": 0.844202
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 793,
-          "share": 0.1812,
-          "terms": [
-            "친절",
-            "편안",
-            "깔끔",
-            "깨끗",
-            "쾌적"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 39,
+          "share": 0.0354,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 3242,
-          "share": 0.7407,
-          "terms": [
-            "맛있",
-            "최고",
-            "좋았",
-            "추천",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 134,
-          "share": 0.0306,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 686,
+          "share": 0.6225,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 421
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 149
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 70
+            },
+            {
+              "adjective": "신선하다",
+              "count": 46
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 120,
-          "share": 0.0274,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "일반",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 88,
-          "share": 0.0201,
-          "terms": [
-            "기다",
-            "비싸",
-            "시끄",
-            "웨이팅",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -12437,76 +12366,67 @@
           "meanFactorDistance": 0.906908
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 570,
-          "share": 0.1506,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "편안",
-            "쾌적"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2983,
-          "share": 0.7879,
-          "terms": [
-            "맛있",
-            "최고",
-            "좋았",
-            "추천",
-            "재방문"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 73,
-          "share": 0.0193,
-          "terms": [
-            "처음",
-            "놀라",
-            "시그니처",
-            "특별",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 237,
+          "share": 0.4497,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 88
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 75
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 41
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 17
+            },
+            {
+              "adjective": "신선하다",
+              "count": 16
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 37,
-          "share": 0.0098,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "무난",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 123,
-          "share": 0.0325,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -12867,76 +12787,67 @@
           "meanFactorDistance": 0.819262
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 879,
-          "share": 0.2322,
-          "terms": [
-            "친절",
-            "깔끔",
-            "정갈",
-            "깨끗",
-            "쾌적"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2621,
-          "share": 0.6925,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 126,
-          "share": 0.0333,
-          "terms": [
-            "처음",
-            "트러플",
-            "특별",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 348,
+          "share": 0.5781,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 135
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 83
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 46
+            },
+            {
+              "adjective": "신선하다",
+              "count": 46
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 38
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 80,
-          "share": 0.0211,
-          "terms": [
-            "괜찮",
-            "기본",
-            "적당",
-            "간단",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 79,
-          "share": 0.0209,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "늦",
-            "대기",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -13297,76 +13208,72 @@
           "meanFactorDistance": 0.853092
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 290,
-          "share": 0.1296,
-          "terms": [
-            "친절",
-            "편안",
-            "아늑",
-            "깨끗",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 50,
+          "share": 0.0736,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 25
+            },
+            {
+              "adjective": "적당하다",
+              "count": 25
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1702,
-          "share": 0.7608,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 65,
-          "share": 0.0291,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 451,
+          "share": 0.6642,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 235
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 89
+            },
+            {
+              "adjective": "신선하다",
+              "count": 85
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 42
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 68,
-          "share": 0.0304,
-          "terms": [
-            "적당",
-            "괜찮",
-            "평범",
-            "기본",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 112,
-          "share": 0.0501,
-          "terms": [
-            "기다",
-            "대기",
-            "늦",
-            "비싸",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -13727,76 +13634,78 @@
           "meanFactorDistance": 0.789239
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 714,
-          "share": 0.1537,
-          "terms": [
-            "친절",
-            "깔끔",
-            "편안",
-            "쾌적",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 65,
+          "share": 0.0869,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 65
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 3227,
-          "share": 0.6947,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 444,
-          "share": 0.0956,
-          "terms": [
-            "처음",
-            "독특",
-            "특별",
-            "트러플",
-            "시그니처"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 338,
+          "share": 0.4519,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 119
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 100
+            },
+            {
+              "adjective": "신선하다",
+              "count": 68
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 51
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 143,
-          "share": 0.0308,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "간단",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 94,
+          "share": 0.1257,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 94
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 117,
-          "share": 0.0252,
-          "terms": [
-            "웨이팅",
-            "대기",
-            "기다",
-            "시끄",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 89,
+          "share": 0.119,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 89
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -14157,76 +14066,69 @@
           "meanFactorDistance": 0.865695
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 870,
-          "share": 0.2216,
-          "terms": [
-            "깔끔",
-            "친절",
-            "정갈",
-            "깨끗",
-            "쾌적"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 39,
+          "share": 0.0382,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2656,
-          "share": 0.6765,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 99,
-          "share": 0.0252,
-          "terms": [
-            "처음",
-            "트러플",
-            "특별",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 365,
+          "share": 0.3575,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 226
+            },
+            {
+              "adjective": "신선하다",
+              "count": 94
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 45
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 139,
-          "share": 0.0354,
-          "terms": [
-            "적당",
-            "괜찮",
-            "기본",
-            "보통",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 100,
+          "share": 0.0979,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 100
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 162,
-          "share": 0.0413,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "비싸",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -14587,76 +14489,73 @@
           "meanFactorDistance": 0.797291
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 373,
-          "share": 0.0812,
-          "terms": [
-            "친절",
-            "깔끔",
-            "쾌적",
-            "아늑",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 94,
+          "share": 0.1676,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 57
+            },
+            {
+              "adjective": "적당하다",
+              "count": 37
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2935,
-          "share": 0.6386,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "최고",
-            "재방문"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 185,
-          "share": 0.0403,
-          "terms": [
-            "처음",
-            "특별",
-            "독특",
-            "트러플",
-            "시그니처"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 106,
+          "share": 0.1889,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 72
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 34
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 164,
-          "share": 0.0357,
-          "terms": [
-            "괜찮",
-            "적당",
-            "무난",
-            "기본",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 939,
-          "share": 0.2043,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 89,
+          "share": 0.1586,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 47
+            },
+            {
+              "adjective": "아쉽다",
+              "count": 42
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -15017,76 +14916,77 @@
           "meanFactorDistance": 0.81857
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 439,
-          "share": 0.1368,
-          "terms": [
-            "친절",
-            "조용",
-            "깔끔",
-            "아늑",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2344,
-          "share": 0.7304,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 274,
-          "share": 0.0854,
-          "terms": [
-            "트러플",
-            "처음",
-            "독특",
-            "특별",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 257,
+          "share": 0.5099,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 89
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 45
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 42
+            },
+            {
+              "adjective": "신선하다",
+              "count": 42
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 83,
-          "share": 0.0259,
-          "terms": [
-            "적당",
-            "괜찮",
-            "일반",
-            "무난",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 49,
+          "share": 0.0972,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 49
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 69,
-          "share": 0.0215,
-          "terms": [
-            "대기",
-            "기다",
-            "웨이팅",
-            "아쉬",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 51,
+          "share": 0.1012,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 51
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -15447,76 +15347,74 @@
           "meanFactorDistance": 0.915558
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 131,
-          "share": 0.0815,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "여유",
-            "정갈"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 33,
+          "share": 0.0988,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 33
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 653,
-          "share": 0.4061,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 46,
-          "share": 0.0286,
-          "terms": [
-            "처음",
-            "특별",
-            "독특",
-            "인상",
-            "놀라"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 54,
+          "share": 0.1617,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 31
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 23
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 134,
-          "share": 0.0833,
-          "terms": [
-            "괜찮",
-            "기본",
-            "보통",
-            "일반",
-            "적당"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 94,
+          "share": 0.2814,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 94
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 644,
-          "share": 0.4005,
-          "terms": [
-            "대기",
-            "기다",
-            "웨이팅",
-            "아쉬",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 50,
+          "share": 0.1497,
+          "topAdjectives": [
+            {
+              "adjective": "아쉽다",
+              "count": 31
+            },
+            {
+              "adjective": "힘들다",
+              "count": 19
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -15877,76 +15775,68 @@
           "meanFactorDistance": 0.910908
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 460,
-          "share": 0.1673,
-          "terms": [
-            "친절",
-            "깨끗",
-            "깔끔",
-            "쾌적",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 101,
+          "share": 0.1984,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 76
+            },
+            {
+              "adjective": "적당하다",
+              "count": 25
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1905,
-          "share": 0.693,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 82,
-          "share": 0.0298,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 205,
+          "share": 0.4028,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 140
+            },
+            {
+              "adjective": "신선하다",
+              "count": 37
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 28
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 165,
-          "share": 0.06,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "평범",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 137,
-          "share": 0.0498,
-          "terms": [
-            "기다",
-            "늦",
-            "대기",
-            "웨이팅",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -16307,76 +16197,69 @@
           "meanFactorDistance": 0.855207
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 506,
-          "share": 0.1489,
-          "terms": [
-            "친절",
-            "편안",
-            "깨끗",
-            "깔끔",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 47,
+          "share": 0.0487,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 47
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2592,
-          "share": 0.7626,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 88,
-          "share": 0.0259,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 362,
+          "share": 0.3747,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 247
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 67
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 48
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 103,
-          "share": 0.0303,
-          "terms": [
-            "괜찮",
-            "적당",
-            "간단",
-            "기본",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 75,
+          "share": 0.0776,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 75
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 110,
-          "share": 0.0324,
-          "terms": [
-            "기다",
-            "대기",
-            "붐비",
-            "비싸",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -16737,76 +16620,68 @@
           "meanFactorDistance": 0.80731
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 542,
-          "share": 0.1258,
-          "terms": [
-            "친절",
-            "아늑",
-            "편안",
-            "깔끔",
-            "조용"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2927,
-          "share": 0.6793,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 277,
-          "share": 0.0643,
-          "terms": [
-            "처음",
-            "시그니처",
-            "독특",
-            "특별",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 424,
+          "share": 0.4019,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 166
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 92
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 91
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 75
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 176,
-          "share": 0.0408,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "간단",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 133,
+          "share": 0.1261,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 133
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 387,
-          "share": 0.0898,
-          "terms": [
-            "기다",
-            "웨이팅",
-            "대기",
-            "늦",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -17146,76 +17021,69 @@
           "meanFactorDistance": 0.899201
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 373,
-          "share": 0.1131,
-          "terms": [
-            "친절",
-            "깔끔",
-            "정갈",
-            "아늑",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 47,
+          "share": 0.126,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 47
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2266,
-          "share": 0.6871,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "재방문"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 101,
-          "share": 0.0306,
-          "terms": [
-            "처음",
-            "특별",
-            "시그니처",
-            "독특",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 135,
+          "share": 0.3619,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 48
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 44
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 43
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 116,
-          "share": 0.0352,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "평범",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 442,
-          "share": 0.134,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "늦",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 30,
+          "share": 0.0804,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 30
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -17576,76 +17444,73 @@
           "meanFactorDistance": 0.851829
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 642,
-          "share": 0.2003,
-          "terms": [
-            "친절",
-            "깨끗",
-            "깔끔",
-            "편안",
-            "정갈"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 61,
+          "share": 0.056,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 61
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2224,
-          "share": 0.6939,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 94,
-          "share": 0.0293,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 736,
+          "share": 0.6758,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 540
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 89
+            },
+            {
+              "adjective": "신선하다",
+              "count": 55
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 52
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 111,
-          "share": 0.0346,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "보통",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 134,
-          "share": 0.0418,
-          "terms": [
-            "기다",
-            "비싸",
-            "대기",
-            "아쉬",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 78,
+          "share": 0.0716,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 78
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -18006,76 +17871,63 @@
           "meanFactorDistance": 0.840953
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 554,
-          "share": 0.203,
-          "terms": [
-            "친절",
-            "여유",
-            "편안",
-            "아늑",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1684,
-          "share": 0.6171,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 250,
-          "share": 0.0916,
-          "terms": [
-            "특별",
-            "처음",
-            "새롭",
-            "트러플",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 132,
+          "share": 0.2477,
+          "topAdjectives": [
+            {
+              "adjective": "만족스럽다",
+              "count": 36
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 35
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 31
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 30
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 63,
-          "share": 0.0231,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "평범",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 178,
-          "share": 0.0652,
-          "terms": [
-            "기다",
-            "웨이팅",
-            "대기",
-            "아쉬",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -18436,76 +18288,63 @@
           "meanFactorDistance": 0.853536
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 628,
-          "share": 0.221,
-          "terms": [
-            "친절",
-            "깨끗",
-            "편안",
-            "깔끔",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2064,
-          "share": 0.7262,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 81,
-          "share": 0.0285,
-          "terms": [
-            "처음",
-            "놀라",
-            "특별",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 732,
+          "share": 0.7335,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 560
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 76
+            },
+            {
+              "adjective": "신선하다",
+              "count": 57
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 31,
-          "share": 0.0109,
-          "terms": [
-            "괜찮",
-            "적당",
-            "간단",
-            "기본",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 38,
-          "share": 0.0134,
-          "terms": [
-            "기다",
-            "대기",
-            "비싸",
-            "늦",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -18866,76 +18705,63 @@
           "meanFactorDistance": 0.852133
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 1024,
-          "share": 0.256,
-          "terms": [
-            "친절",
-            "깔끔",
-            "정갈",
-            "깨끗",
-            "조용"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2639,
-          "share": 0.6597,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 117,
-          "share": 0.0293,
-          "terms": [
-            "처음",
-            "특별",
-            "인상",
-            "신기",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 349,
+          "share": 0.3802,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 179
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 64
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 60
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 46
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 100,
-          "share": 0.025,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "간단",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 120,
-          "share": 0.03,
-          "terms": [
-            "웨이팅",
-            "대기",
-            "기다",
-            "늦",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -19296,76 +19122,77 @@
           "meanFactorDistance": 0.92646
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 167,
-          "share": 0.1513,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "조용",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 19,
+          "share": 0.0812,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 19
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 842,
-          "share": 0.7627,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 25,
-          "share": 0.0226,
-          "terms": [
-            "처음",
-            "특별",
-            "신기",
-            "인상",
-            "시그니처"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 67,
+          "share": 0.2863,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 21
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 18
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 16
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 12
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 27,
-          "share": 0.0245,
-          "terms": [
-            "괜찮",
-            "기본",
-            "간단",
-            "적당",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 43,
-          "share": 0.0389,
-          "terms": [
-            "비싸",
-            "늦",
-            "기다",
-            "불편",
-            "웨이팅"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 75,
+          "share": 0.3205,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 55
+            },
+            {
+              "adjective": "느끼하다",
+              "count": 20
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -19726,76 +19553,69 @@
           "meanFactorDistance": 0.889747
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 388,
-          "share": 0.1828,
-          "terms": [
-            "친절",
-            "깔끔",
-            "쾌적",
-            "깨끗",
-            "정갈"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 25,
+          "share": 0.0482,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 25
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1539,
-          "share": 0.7253,
-          "terms": [
-            "맛있",
-            "만족",
-            "최고",
-            "추천",
-            "좋았"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 71,
-          "share": 0.0335,
-          "terms": [
-            "처음",
-            "트러플",
-            "특별",
-            "인상",
-            "신기"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 154,
+          "share": 0.2967,
+          "topAdjectives": [
+            {
+              "adjective": "신선하다",
+              "count": 56
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 55
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 43
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 68,
-          "share": 0.032,
-          "terms": [
-            "괜찮",
-            "기본",
-            "적당",
-            "일반",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 56,
-          "share": 0.0264,
-          "terms": [
-            "비싸",
-            "기다",
-            "불편",
-            "아쉬",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 32,
+          "share": 0.0617,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 32
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -20156,76 +19976,68 @@
           "meanFactorDistance": 0.887634
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 244,
-          "share": 0.1415,
-          "terms": [
-            "친절",
-            "깨끗",
-            "편안",
-            "깔끔",
-            "안심"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 22,
+          "share": 0.0743,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 22
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1314,
-          "share": 0.7622,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 71,
-          "share": 0.0412,
-          "terms": [
-            "처음",
-            "특별",
-            "독특",
-            "놀라",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 165,
+          "share": 0.5574,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 106
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 22
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 19
+            },
+            {
+              "adjective": "신선하다",
+              "count": 18
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 41,
-          "share": 0.0238,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "간단",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 54,
-          "share": 0.0313,
-          "terms": [
-            "기다",
-            "늦",
-            "대기",
-            "비싸",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -20586,76 +20398,64 @@
           "meanFactorDistance": 0.835363
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 261,
-          "share": 0.1079,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "편안",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 33,
+          "share": 0.0805,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 33
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1811,
-          "share": 0.749,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 103,
-          "share": 0.0426,
-          "terms": [
-            "처음",
-            "특별",
-            "독특",
-            "색다",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 166,
+          "share": 0.4049,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 76
+            },
+            {
+              "adjective": "신선하다",
+              "count": 48
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 42
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 87,
-          "share": 0.036,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "보통",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 156,
-          "share": 0.0645,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "시끄",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -21016,76 +20816,64 @@
           "meanFactorDistance": 0.818866
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 368,
-          "share": 0.1514,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "쾌적",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1720,
-          "share": 0.7078,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 52,
-          "share": 0.0214,
-          "terms": [
-            "처음",
-            "특별",
-            "독특",
-            "인상",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 128,
+          "share": 0.3062,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 58
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 46
+            },
+            {
+              "adjective": "신선하다",
+              "count": 24
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 92,
-          "share": 0.0379,
-          "terms": [
-            "적당",
-            "기본",
-            "괜찮",
-            "평범",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 27,
+          "share": 0.0646,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 27
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 198,
-          "share": 0.0815,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "불편",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -21425,76 +21213,78 @@
           "meanFactorDistance": 0.848839
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 187,
-          "share": 0.1031,
-          "terms": [
-            "친절",
-            "깔끔",
-            "안심",
-            "쾌적",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 35,
+          "share": 0.0462,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 35
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 997,
-          "share": 0.5499,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 107,
-          "share": 0.059,
-          "terms": [
-            "처음",
-            "놀라",
-            "인상",
-            "특별",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 248,
+          "share": 0.3272,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 126
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 81
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 41
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 180,
-          "share": 0.0993,
-          "terms": [
-            "기본",
-            "괜찮",
-            "적당",
-            "보통",
-            "일반"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 220,
+          "share": 0.2902,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 175
+            },
+            {
+              "adjective": "깊다",
+              "count": 45
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 342,
-          "share": 0.1886,
-          "terms": [
-            "기다",
-            "웨이팅",
-            "대기",
-            "아쉬",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 48,
+          "share": 0.0633,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 48
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -21855,76 +21645,68 @@
           "meanFactorDistance": 0.813135
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 524,
-          "share": 0.2122,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "정갈",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1743,
-          "share": 0.706,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 83,
-          "share": 0.0336,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "시그니처"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 515,
+          "share": 0.6812,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 339
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 92
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 51
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 33
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 66,
-          "share": 0.0267,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "일반",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 53,
-          "share": 0.0215,
-          "terms": [
-            "비싸",
-            "시끄",
-            "아쉬",
-            "기다",
-            "대기"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 39,
+          "share": 0.0516,
+          "topAdjectives": [
+            {
+              "adjective": "비싸다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -22285,76 +22067,68 @@
           "meanFactorDistance": 0.717112
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 771,
-          "share": 0.1986,
-          "terms": [
-            "친절",
-            "아늑",
-            "편안",
-            "깔끔",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2798,
-          "share": 0.7208,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 175,
-          "share": 0.0451,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 708,
+          "share": 0.7052,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 534
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 68
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 57
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 49
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 63,
-          "share": 0.0162,
-          "terms": [
-            "괜찮",
-            "일반",
-            "적당",
-            "간단",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 36,
+          "share": 0.0359,
+          "topAdjectives": [
+            {
+              "adjective": "놀랍다",
+              "count": 36
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 75,
-          "share": 0.0193,
-          "terms": [
-            "기다",
-            "아쉬",
-            "늦",
-            "대기",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -22715,76 +22489,73 @@
           "meanFactorDistance": 0.873058
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 367,
-          "share": 0.1445,
-          "terms": [
-            "깔끔",
-            "친절",
-            "편안",
-            "쾌적",
-            "조용"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 31,
+          "share": 0.0747,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 31
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1862,
-          "share": 0.7331,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 115,
-          "share": 0.0453,
-          "terms": [
-            "처음",
-            "특별",
-            "신기",
-            "인상",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 135,
+          "share": 0.3253,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 77
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 31
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 27
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 98,
-          "share": 0.0386,
-          "terms": [
-            "적당",
-            "괜찮",
-            "기본",
-            "간단",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 118,
+          "share": 0.2843,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 77
+            },
+            {
+              "adjective": "깊다",
+              "count": 41
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 98,
-          "share": 0.0386,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -23145,76 +22916,60 @@
           "meanFactorDistance": 0.833861
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 762,
-          "share": 0.2439,
-          "terms": [
-            "깔끔",
-            "친절",
-            "조용",
-            "깨끗",
-            "정갈"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 2032,
-          "share": 0.6504,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 105,
-          "share": 0.0336,
-          "terms": [
-            "처음",
-            "트러플",
-            "특별",
-            "놀라",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 265,
+          "share": 0.3252,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 209
+            },
+            {
+              "adjective": "신선하다",
+              "count": 56
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 128,
-          "share": 0.041,
-          "terms": [
-            "적당",
-            "기본",
-            "괜찮",
-            "일반",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 71,
+          "share": 0.0871,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 71
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 97,
-          "share": 0.031,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "시끄",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -23575,76 +23330,65 @@
           "meanFactorDistance": 0.874393
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 310,
-          "share": 0.1664,
-          "terms": [
-            "친절",
-            "편안",
-            "아늑",
-            "깔끔",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 50,
+          "share": 0.0825,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 50
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1291,
-          "share": 0.693,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 62,
-          "share": 0.0333,
-          "terms": [
-            "특별",
-            "처음",
-            "인상",
-            "놀라",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 169,
+          "share": 0.2789,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 123
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 46
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 127,
-          "share": 0.0682,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "간단",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 51,
+          "share": 0.0842,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 51
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 73,
-          "share": 0.0392,
-          "terms": [
-            "기다",
-            "대기",
-            "아쉬",
-            "늦",
-            "웨이팅"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -24005,76 +23749,68 @@
           "meanFactorDistance": 0.893081
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 295,
-          "share": 0.1501,
-          "terms": [
-            "친절",
-            "편안",
-            "깨끗",
-            "아늑",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 107,
+          "share": 0.139,
+          "topAdjectives": [
+            {
+              "adjective": "적당하다",
+              "count": 61
+            },
+            {
+              "adjective": "괜찮다",
+              "count": 46
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1433,
-          "share": 0.7289,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 61,
-          "share": 0.031,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 293,
+          "share": 0.3805,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 225
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 35
+            },
+            {
+              "adjective": "신선하다",
+              "count": 33
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 140,
-          "share": 0.0712,
-          "terms": [
-            "적당",
-            "괜찮",
-            "간단",
-            "보통",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 37,
-          "share": 0.0188,
-          "terms": [
-            "기다",
-            "비싸",
-            "불편",
-            "아쉬",
-            "대기"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -24435,76 +24171,60 @@
           "meanFactorDistance": 0.846482
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 366,
-          "share": 0.1929,
-          "terms": [
-            "친절",
-            "아늑",
-            "깔끔",
-            "편안",
-            "조용"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 44,
+          "share": 0.0978,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 44
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1216,
-          "share": 0.641,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 121,
-          "share": 0.0638,
-          "terms": [
-            "처음",
-            "특별",
-            "색다",
-            "시그니처",
-            "신기"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 124,
+          "share": 0.2756,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 94
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 30
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 94,
-          "share": 0.0496,
-          "terms": [
-            "괜찮",
-            "적당",
-            "무난",
-            "기본",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 100,
-          "share": 0.0527,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "아쉬",
-            "비싸",
-            "늦"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -24865,76 +24585,63 @@
           "meanFactorDistance": 0.830665
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 458,
-          "share": 0.1836,
-          "terms": [
-            "친절",
-            "깨끗",
-            "편안",
-            "아늑",
-            "깔끔"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1825,
-          "share": 0.7315,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 97,
-          "share": 0.0389,
-          "terms": [
-            "처음",
-            "놀라",
-            "특별",
-            "인상",
-            "새롭"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 633,
+          "share": 0.672,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 369
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 132
+            },
+            {
+              "adjective": "신선하다",
+              "count": 83
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 49
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 61,
-          "share": 0.0244,
-          "terms": [
-            "괜찮",
-            "적당",
-            "평범",
-            "기본",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 54,
-          "share": 0.0216,
-          "terms": [
-            "비싸",
-            "기다",
-            "대기",
-            "불편",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -25295,76 +25002,64 @@
           "meanFactorDistance": 0.838589
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 391,
-          "share": 0.1667,
-          "terms": [
-            "친절",
-            "깔끔",
-            "조용",
-            "아늑",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1550,
-          "share": 0.661,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "재방문"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 102,
-          "share": 0.0435,
-          "terms": [
-            "처음",
-            "특별",
-            "색다",
-            "시그니처",
-            "신기"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 110,
+          "share": 0.4365,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 63
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 31
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 16
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 44,
-          "share": 0.0188,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "무난",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 258,
-          "share": 0.11,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "시끄"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 19,
+          "share": 0.0754,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 19
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -25725,76 +25420,64 @@
           "meanFactorDistance": 0.846679
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 376,
-          "share": 0.1856,
-          "terms": [
-            "친절",
-            "깔끔",
-            "안심",
-            "편안",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 38,
+          "share": 0.1092,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 38
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1398,
-          "share": 0.69,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "만족",
-            "최고"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 109,
-          "share": 0.0538,
-          "terms": [
-            "처음",
-            "색다",
-            "독특",
-            "신기",
-            "특별"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 113,
+          "share": 0.3247,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 68
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 26
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 19
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 98,
-          "share": 0.0484,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "간단",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 45,
-          "share": 0.0222,
-          "terms": [
-            "웨이팅",
-            "대기",
-            "기다",
-            "아쉬",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -26155,76 +25838,74 @@
           "meanFactorDistance": 0.910246
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 94,
-          "share": 0.0942,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "여유",
-            "조용"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 15,
+          "share": 0.0785,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 15
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 417,
-          "share": 0.4178,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "만족",
-            "좋았"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 27,
-          "share": 0.0271,
-          "terms": [
-            "처음",
-            "인상",
-            "특별",
-            "놀라",
-            "신기"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 29,
+          "share": 0.1518,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 16
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 13
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 82,
-          "share": 0.0822,
-          "terms": [
-            "기본",
-            "괜찮",
-            "보통",
-            "적당",
-            "일반"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 39,
+          "share": 0.2042,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 39
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 378,
-          "share": 0.3788,
-          "terms": [
-            "기다",
-            "대기",
-            "웨이팅",
-            "늦",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 29,
+          "share": 0.1518,
+          "topAdjectives": [
+            {
+              "adjective": "아쉽다",
+              "count": 16
+            },
+            {
+              "adjective": "힘들다",
+              "count": 13
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -26585,76 +26266,82 @@
           "meanFactorDistance": 0.860381
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 159,
-          "share": 0.1154,
-          "terms": [
-            "깔끔",
-            "친절",
-            "아늑",
-            "여유",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 43,
+          "share": 0.1265,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 43
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 599,
-          "share": 0.4347,
-          "terms": [
-            "맛있",
-            "좋았",
-            "추천",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 106,
-          "share": 0.0769,
-          "terms": [
-            "처음",
-            "독특",
-            "트러플",
-            "특별",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 113,
+          "share": 0.3324,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 40
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 39
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 34
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 129,
-          "share": 0.0936,
-          "terms": [
-            "괜찮",
-            "기본",
-            "일반",
-            "적당",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 50,
+          "share": 0.1471,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 26
+            },
+            {
+              "adjective": "깊다",
+              "count": 24
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 385,
-          "share": 0.2794,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "아쉬",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 70,
+          "share": 0.2059,
+          "topAdjectives": [
+            {
+              "adjective": "느끼하다",
+              "count": 36
+            },
+            {
+              "adjective": "아쉽다",
+              "count": 34
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -27015,76 +26702,67 @@
           "meanFactorDistance": 0.913483
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 383,
-          "share": 0.2292,
-          "terms": [
-            "친절",
-            "깔끔",
-            "안심",
-            "조용",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1224,
-          "share": 0.7325,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 29,
-          "share": 0.0174,
-          "terms": [
-            "처음",
-            "놀라",
-            "인상",
-            "특별",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 147,
+          "share": 0.6533,
+          "topAdjectives": [
+            {
+              "adjective": "신선하다",
+              "count": 56
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 39
+            },
+            {
+              "adjective": "훌륭하다",
+              "count": 24
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 15
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 13
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 23,
-          "share": 0.0138,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "일반",
-            "무난"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 12,
-          "share": 0.0072,
-          "terms": [
-            "늦",
-            "비싸",
-            "아쉬",
-            "기다",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -27445,76 +27123,65 @@
           "meanFactorDistance": 0.870468
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 298,
-          "share": 0.1744,
-          "terms": [
-            "친절",
-            "깨끗",
-            "깔끔",
-            "아늑",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 32,
+          "share": 0.057,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 32
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1254,
-          "share": 0.7338,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 38,
-          "share": 0.0222,
-          "terms": [
-            "처음",
-            "특별",
-            "놀라",
-            "독특",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 132,
+          "share": 0.2353,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 109
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 23
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 83,
-          "share": 0.0486,
-          "terms": [
-            "괜찮",
-            "적당",
-            "보통",
-            "기본",
-            "간단"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 37,
+          "share": 0.066,
+          "topAdjectives": [
+            {
+              "adjective": "매콤하다",
+              "count": 37
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 36,
-          "share": 0.0211,
-          "terms": [
-            "기다",
-            "늦",
-            "아쉬",
-            "붐비",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -27875,76 +27542,65 @@
           "meanFactorDistance": 0.905943
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 310,
-          "share": 0.2074,
-          "terms": [
-            "친절",
-            "깔끔",
-            "깨끗",
-            "쾌적",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 15,
+          "share": 0.0453,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 15
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1047,
-          "share": 0.7003,
-          "terms": [
-            "맛있",
-            "좋았",
-            "최고",
-            "추천",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 28,
-          "share": 0.0187,
-          "terms": [
-            "처음",
-            "특별",
-            "새롭",
-            "색다",
-            "신기"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 65,
+          "share": 0.1964,
+          "topAdjectives": [
+            {
+              "adjective": "깔끔하다",
+              "count": 50
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 15
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 63,
-          "share": 0.0421,
-          "terms": [
-            "기본",
-            "괜찮",
-            "적당",
-            "간단",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 17,
+          "share": 0.0514,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 17
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 47,
-          "share": 0.0314,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "대기",
-            "시끄",
-            "붐비"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -28305,76 +27961,67 @@
           "meanFactorDistance": 0.844558
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 481,
-          "share": 0.2139,
-          "terms": [
-            "친절",
-            "조용",
-            "깔끔",
-            "편안",
-            "아늑"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1550,
-          "share": 0.6892,
-          "terms": [
-            "맛있",
-            "추천",
-            "좋았",
-            "최고",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 118,
-          "share": 0.0525,
-          "terms": [
-            "특별",
-            "처음",
-            "인상",
-            "시그니처",
-            "트러플"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 212,
+          "share": 0.4862,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 65
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 57
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 33
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 31
+            },
+            {
+              "adjective": "신선하다",
+              "count": 26
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 57,
-          "share": 0.0253,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "간단",
-            "평범"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 43,
-          "share": 0.0191,
-          "terms": [
-            "아쉬",
-            "늦",
-            "불편",
-            "시끄",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -28735,76 +28382,68 @@
           "meanFactorDistance": 0.894331
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 281,
-          "share": 0.1445,
-          "terms": [
-            "친절",
-            "깔끔",
-            "정갈",
-            "깨끗",
-            "편안"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 17,
+          "share": 0.0545,
+          "topAdjectives": [
+            {
+              "adjective": "괜찮다",
+              "count": 17
+            }
+          ],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 1415,
-          "share": 0.7275,
-          "terms": [
-            "맛있",
-            "추천",
-            "최고",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 74,
-          "share": 0.038,
-          "terms": [
-            "처음",
-            "시그니처",
-            "특별",
-            "트러플",
-            "인상"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 129,
+          "share": 0.4135,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 43
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 41
+            },
+            {
+              "adjective": "만족스럽다",
+              "count": 24
+            },
+            {
+              "adjective": "깔끔하다",
+              "count": 21
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 41,
-          "share": 0.0211,
-          "terms": [
-            "괜찮",
-            "적당",
-            "기본",
-            "무난",
-            "보통"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 134,
-          "share": 0.0689,
-          "terms": [
-            "웨이팅",
-            "기다",
-            "늦",
-            "대기",
-            "아쉬"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -29165,76 +28804,55 @@
           "meanFactorDistance": 0.877737
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 65,
-          "share": 0.1014,
-          "terms": [
-            "친절",
-            "편안",
-            "깔끔",
-            "아늑",
-            "안심"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 433,
-          "share": 0.6755,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "만족"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 17,
-          "share": 0.0265,
-          "terms": [
-            "특별",
-            "처음",
-            "놀라",
-            "인상",
-            "색다"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 33,
+          "share": 0.1528,
+          "topAdjectives": [
+            {
+              "adjective": "훌륭하다",
+              "count": 21
+            },
+            {
+              "adjective": "부드럽다",
+              "count": 12
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 70,
-          "share": 0.1092,
-          "terms": [
-            "간단",
-            "기본",
-            "괜찮",
-            "보통",
-            "적당"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 56,
-          "share": 0.0874,
-          "terms": [
-            "기다",
-            "대기",
-            "웨이팅",
-            "불편",
-            "비싸"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [
@@ -29595,76 +29213,65 @@
           "meanFactorDistance": 0.921453
         }
       ],
-      "emotionBuckets": [
+      "adjectiveBuckets": [
         {
-          "id": "comfort",
-          "label": "Comfort",
-          "emoji": "😌",
-          "count": 48,
-          "share": 0.0833,
-          "terms": [
-            "친절",
-            "깔끔",
-            "아늑",
-            "여유",
-            "깨끗"
-          ]
+          "id": "everyday-calm",
+          "label": "Everyday Calm",
+          "emoji": "🌱",
+          "koreanLabel": "평온/일상",
+          "count": 0,
+          "share": 0,
+          "topAdjectives": [],
+          "averageShare": 0.0478
         },
         {
-          "id": "delight",
-          "label": "Delight",
-          "emoji": "😊",
-          "count": 374,
-          "share": 0.6493,
-          "terms": [
-            "맛있",
-            "최고",
-            "추천",
-            "좋았",
-            "재방문"
-          ]
-        },
-        {
-          "id": "surprise",
-          "label": "Surprise",
+          "id": "positive-gentle",
+          "label": "Positive & Gentle",
           "emoji": "✨",
-          "count": 29,
-          "share": 0.0503,
-          "terms": [
-            "처음",
-            "인상",
-            "특별",
-            "놀라",
-            "독특"
-          ]
+          "koreanLabel": "긍정/온화",
+          "count": 38,
+          "share": 0.125,
+          "topAdjectives": [
+            {
+              "adjective": "부드럽다",
+              "count": 23
+            },
+            {
+              "adjective": "따뜻하다",
+              "count": 15
+            }
+          ],
+          "averageShare": 0.4224
         },
         {
-          "id": "neutral",
-          "label": "Neutral",
-          "emoji": "·",
-          "count": 43,
-          "share": 0.0747,
-          "terms": [
-            "간단",
-            "괜찮",
-            "보통",
-            "평범",
-            "기본"
-          ]
+          "id": "intense-overwhelming",
+          "label": "Intense",
+          "emoji": "🔥",
+          "koreanLabel": "강렬/압도",
+          "count": 14,
+          "share": 0.0461,
+          "topAdjectives": [
+            {
+              "adjective": "진하다",
+              "count": 14
+            }
+          ],
+          "averageShare": 0.0493
         },
         {
-          "id": "friction",
-          "label": "Friction",
-          "emoji": "!",
-          "count": 82,
-          "share": 0.1424,
-          "terms": [
-            "대기",
-            "웨이팅",
-            "기다",
-            "아쉬",
-            "불편"
-          ]
+          "id": "negative-discomfort",
+          "label": "Discomfort",
+          "emoji": "😤",
+          "koreanLabel": "부정/불편",
+          "count": 18,
+          "share": 0.0592,
+          "topAdjectives": [
+            {
+              "adjective": "아쉽다",
+              "count": 18
+            }
+          ],
+          "averageShare": 0.0398
         }
       ],
       "keywords": [

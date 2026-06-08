@@ -2,92 +2,83 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import type { EmotionBucket, KeywordEvidence, RestaurantReport, ReviewSnippet } from "@/lib/api-types";
+import type { AdjectiveBucket, AdjectiveEvidence, KeywordEvidence, RestaurantReport, ReviewSnippet } from "@/lib/api-types";
 
 interface RestaurantReportPanelProps {
   report: RestaurantReport;
   onExploreAnotherRestaurant: () => void;
 }
 
-interface EmotionDisplayBucket {
+interface AdjectiveDisplayBucket {
   id: string;
   label: string;
   chipLabel: string;
   emoji: string;
   koreanLabel: string;
-  terms: string[];
   sharePercent: number;
+  averageSharePercent: number;
+  topAdjectives: AdjectiveEvidence[];
   color: string;
   textColor: string;
 }
 
-interface EmotionStyleConfig {
+interface AdjectiveStyleConfig {
   order: number;
   label: string;
   chipLabel: string;
-  koreanLabel: string;
   color: string;
-  emoji?: string;
   textColor?: string;
 }
 
-const emotionStyleById: Record<string, EmotionStyleConfig> = {
-  comfort: {
+const adjectiveStyleById: Record<string, AdjectiveStyleConfig> = {
+  "everyday-calm": {
     order: 0,
-    label: "Relieved",
-    chipLabel: "Relief",
-    koreanLabel: "안도·편안",
-    color: "#4d8ccf"
-  },
-  delight: {
-    order: 1,
-    label: "Pleasant",
-    chipLabel: "Joy",
-    koreanLabel: "유쾌·즐거움",
-    color: "#ff5a1f"
-  },
-  surprise: {
-    order: 2,
-    label: "Curious",
-    chipLabel: "Curiosity",
-    koreanLabel: "호기심·기대",
+    label: "Calm",
+    chipLabel: "Daily calm",
     color: "#3da06b"
   },
-  friction: {
-    order: 3,
-    label: "Frustrated",
-    chipLabel: "Fatigue",
-    koreanLabel: "불만·피로",
-    color: "#b87fd9"
+  "positive-gentle": {
+    order: 1,
+    label: "Warm",
+    chipLabel: "Positive",
+    color: "#ff5a1f"
   },
-  neutral: {
-    order: 4,
-    label: "Subtle",
-    chipLabel: "Subtle",
-    koreanLabel: "미미",
+  "intense-overwhelming": {
+    order: 2,
+    label: "Intense",
+    chipLabel: "Impact",
     color: "#ffc842",
     textColor: "#1a1310"
+  },
+  "negative-discomfort": {
+    order: 3,
+    label: "Friction",
+    chipLabel: "Discomfort",
+    color: "#b87fd9"
   }
 };
 
-const fallbackEmotionColors = ["#b22b18", "#ff8fb1", "#4d8ccf", "#3da06b", "#ffc842"];
+const fallbackAdjectiveColors = ["#3da06b", "#ff5a1f", "#ffc842", "#b87fd9"];
 const graphTickCount = 5;
 
 export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: RestaurantReportPanelProps) {
-  const [selectedKeyword, setSelectedKeyword] = useState<string>(report.keywords[0]?.keyword ?? "");
+  const [selectedKeyword, setSelectedKeyword] = useState<string>(getDefaultKeyword(report.keywords));
 
   useEffect(() => {
-    setSelectedKeyword(report.keywords[0]?.keyword ?? "");
+    setSelectedKeyword(getDefaultKeyword(report.keywords));
   }, [report.placeId, report.keywords]);
 
   const keywordEvidence = useMemo<KeywordEvidence | null>(
     () => report.keywords.find((keyword) => keyword.keyword === selectedKeyword) ?? report.keywords[0] ?? null,
     [report.keywords, selectedKeyword]
   );
-  const selectedSnippets = keywordEvidence?.snippets.length ? keywordEvidence.snippets : report.reviewSample;
-  const emotionDisplayBuckets = useMemo(() => buildEmotionDisplayBuckets(report.emotionBuckets), [report.emotionBuckets]);
-  const maxEmotionSharePercent = Math.max(...emotionDisplayBuckets.map((bucket) => bucket.sharePercent), 1);
-  const graphMaxPercent = Math.ceil(maxEmotionSharePercent / graphTickCount) * graphTickCount;
+  const selectedSnippets = keywordEvidence?.snippets ?? [];
+  const adjectiveDisplayBuckets = useMemo(() => buildAdjectiveDisplayBuckets(report.adjectiveBuckets), [report.adjectiveBuckets]);
+  const maxAdjectiveSharePercent = Math.max(
+    ...adjectiveDisplayBuckets.flatMap((bucket) => [bucket.sharePercent, bucket.averageSharePercent]),
+    1
+  );
+  const graphMaxPercent = Math.ceil(maxAdjectiveSharePercent / graphTickCount) * graphTickCount;
   const graphTicks = Array.from({ length: graphTickCount + 1 }, (_, index) => graphMaxPercent - (graphMaxPercent / graphTickCount) * index);
 
   return (
@@ -112,25 +103,26 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
           <p>
             <span>Macro analysis: Categories were defined </span>
             <strong>by selecting the top 10 most frequent adjective</strong>
-            <span>s for each emotion.</span>
+            <span>s for each category.</span>
           </p>
         </div>
 
-        <div className="emotion-chip-row" aria-label="Emotion buckets">
-          {emotionDisplayBuckets.map((bucket) => (
+        <div className="emotion-chip-row" aria-label="Review adjective buckets">
+          {adjectiveDisplayBuckets.map((bucket) => (
             <div className="emotion-chip" key={bucket.id}>
               <i style={{ backgroundColor: bucket.color }} />
               <span>{bucket.chipLabel}</span>
               <strong>
                 {bucket.emoji} {bucket.koreanLabel}
               </strong>
+              <em>{formatTopAdjectives(bucket.topAdjectives)}</em>
             </div>
           ))}
         </div>
 
-        <div className="emotion-graph" aria-label="Emotion category share graph">
+        <div className="emotion-graph" aria-label="Review adjective category share graph">
           <div className="emotion-graph__header">
-            <span>Emotion Graph</span>
+            <span>Adjective Graph</span>
             <h5>
               <strong>{formatGraphRestaurantName(report.displayPlaceName)}</strong>
               <span> — category share (%)</span>
@@ -149,10 +141,10 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
               ))}
             </div>
             <div className="emotion-graph__bars">
-              {emotionDisplayBuckets.map((bucket) => (
+              {adjectiveDisplayBuckets.map((bucket) => (
                 <div className="emotion-graph__column" key={bucket.id}>
                   <div className="emotion-graph__bar-wrap">
-                    <div className="emotion-graph__marker" aria-hidden="true" style={buildMarkerStyle(bucket.sharePercent, graphMaxPercent)} />
+                    <div className="emotion-graph__marker" aria-hidden="true" style={buildMarkerStyle(bucket.averageSharePercent, graphMaxPercent)} />
                     <div
                       className="emotion-graph__bar"
                       style={{
@@ -167,6 +159,7 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
                   <span>{bucket.emoji}</span>
                   <b>{bucket.label}</b>
                   <em>{bucket.koreanLabel}</em>
+                  <small>{formatTopAdjectives(bucket.topAdjectives)}</small>
                 </div>
               ))}
             </div>
@@ -179,29 +172,47 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
           <h4>The Unique & Fun Keywords</h4>
           <p>
             <strong>Click a keyword chip</strong>
-            <span> to filter the original reviews that mention it.</span>
+            <span> to see original review snippets behind each high-signal keyword.</span>
           </p>
         </div>
-        <div className="keyword-row" aria-label="Keyword filter">
+        <div className="keyword-row" aria-label="Review keyword filter">
           {report.keywords.map((keyword) => (
             <button
+              aria-pressed={keyword.keyword === keywordEvidence?.keyword}
               className={keyword.keyword === keywordEvidence?.keyword ? "keyword-chip keyword-chip--active" : "keyword-chip"}
               key={keyword.keyword}
               type="button"
               onClick={() => setSelectedKeyword(keyword.keyword)}
             >
-              {keyword.keyword}
+              <span>{keyword.keyword}</span>
+              <strong>{keyword.count}</strong>
             </button>
           ))}
         </div>
-        <div className="snippet-grid" data-testid="snippet-grid">
-          {selectedSnippets.slice(0, 4).map((snippet, index) => (
-            <blockquote className={`snippet snippet--tone-${(index % 4) + 1}`} key={snippet.sourceReviewId}>
-              <p>{snippet.text}</p>
-              <footer>{buildKeywordFooter(snippet, report.keywords, keywordEvidence?.keyword ?? null)}</footer>
-            </blockquote>
-          ))}
-        </div>
+        {keywordEvidence ? (
+          <div className="keyword-summary">
+            <strong>{keywordEvidence.count.toLocaleString()} keyword hits</strong>
+            <span>score {keywordEvidence.score.toFixed(1)}</span>
+          </div>
+        ) : null}
+        {selectedSnippets.length > 0 && keywordEvidence ? (
+          <div className="snippet-grid" data-testid="snippet-grid">
+            {selectedSnippets.map((snippet, index) => (
+              <blockquote
+                className={`snippet snippet--tone-${(index % 4) + 1}`}
+                key={snippet.sourceReviewId}
+              >
+                <p>{snippet.text}</p>
+                <footer>{buildKeywordFooter(snippet, keywordEvidence)}</footer>
+              </blockquote>
+            ))}
+          </div>
+        ) : (
+          <div className="keyword-empty" data-testid="keyword-empty">
+            <strong>해당 original review 없음</strong>
+            <span>{keywordEvidence?.keyword ?? "Keyword"} matched 0 reviews for this restaurant.</span>
+          </div>
+        )}
       </section>
 
       <section className="restaurant-explorer" aria-label="Explore another restaurant">
@@ -214,27 +225,32 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
   );
 }
 
-function buildEmotionDisplayBuckets(buckets: EmotionBucket[]): EmotionDisplayBucket[] {
+function getDefaultKeyword(keywords: KeywordEvidence[]): string {
+  return keywords[0]?.keyword ?? "";
+}
+
+function buildAdjectiveDisplayBuckets(buckets: AdjectiveBucket[]): AdjectiveDisplayBucket[] {
   return buckets
     .map((bucket, index) => {
-      const style = emotionStyleById[bucket.id];
-      const fallbackColor = fallbackEmotionColors[index % fallbackEmotionColors.length];
+      const style = adjectiveStyleById[bucket.id];
+      const fallbackColor = fallbackAdjectiveColors[index % fallbackAdjectiveColors.length];
 
       return {
         id: bucket.id,
         label: style?.label ?? bucket.label,
         chipLabel: style?.chipLabel ?? bucket.label,
-        emoji: style?.emoji ?? bucket.emoji,
-        koreanLabel: style?.koreanLabel ?? bucket.terms.slice(0, 2).join("·"),
-        terms: bucket.terms,
+        emoji: bucket.emoji,
+        koreanLabel: bucket.koreanLabel,
         sharePercent: bucket.share * 100,
+        averageSharePercent: bucket.averageShare * 100,
+        topAdjectives: bucket.topAdjectives,
         color: style?.color ?? fallbackColor,
         textColor: style?.textColor ?? "#fff7e9"
       };
     })
     .sort((left, right) => {
-      const leftOrder = emotionStyleById[left.id]?.order ?? 100;
-      const rightOrder = emotionStyleById[right.id]?.order ?? 100;
+      const leftOrder = adjectiveStyleById[left.id]?.order ?? 100;
+      const rightOrder = adjectiveStyleById[right.id]?.order ?? 100;
 
       return leftOrder - rightOrder || right.sharePercent - left.sharePercent || left.label.localeCompare(right.label);
     });
@@ -270,11 +286,15 @@ function formatPercentTick(value: number): string {
   return `${value.toFixed(1)}%`;
 }
 
-function buildKeywordFooter(snippet: ReviewSnippet, keywords: KeywordEvidence[], selectedKeyword: string | null): string {
-  const keywordCandidates = keywords.map((keyword) => keyword.keyword);
-  const matchedKeywords = keywordCandidates.filter((keyword) => snippet.text.includes(keyword));
-  const orderedKeywords = [selectedKeyword, ...matchedKeywords, ...keywordCandidates].filter((keyword): keyword is string => Boolean(keyword));
-  const uniqueKeywords = [...new Set(orderedKeywords)].slice(0, 3);
+function formatTopAdjectives(adjectives: AdjectiveEvidence[]): string {
+  const topAdjectives = adjectives.slice(0, 2).map((adjective) => adjective.adjective);
 
-  return `KEYWORD: ${uniqueKeywords.join(" · ")}`;
+  return topAdjectives.length > 0 ? topAdjectives.join(" · ") : "No mapped adjective";
+}
+
+function buildKeywordFooter(snippet: ReviewSnippet, keyword: KeywordEvidence): string {
+  const rating = snippet.rating === null ? "No rating" : `${snippet.rating.toFixed(1)} stars`;
+  const relativeTime = snippet.relativeTime ?? "Google Maps review";
+
+  return `KEYWORD: ${keyword.keyword} · ${rating} · ${relativeTime}`;
 }

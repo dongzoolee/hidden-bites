@@ -49,6 +49,9 @@ test("serves selected report and 404 for missing report", async () => {
     assert.equal(response.body.latitude, restaurants.body[0].latitude);
     assert.equal(response.body.longitude, restaurants.body[0].longitude);
     assert.equal(response.body.district, restaurants.body[0].district);
+    assert.equal(response.body.adjectiveBuckets.length, 4);
+    assert.ok(response.body.adjectiveBuckets.some((bucket) => bucket.count > 0));
+    assert.equal(response.body.funnyKeywords, undefined);
   });
   await request(app.getHttpServer()).get("/api/restaurants/missing-place/report").expect(404);
 });

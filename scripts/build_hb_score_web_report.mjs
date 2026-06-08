@@ -6,40 +6,15 @@ const scorePath = "datasets/derived/hb-score-restaurants.json";
 const pointsPath = "datasets/derived/hb-score-factor-restaurant-points.json";
 const locationsPath = "datasets/google-places-seoul-top-restaurants-2026-05-15-locations.json";
 const reviewsDir = "datasets/google-maps-reviews-2026-05-16";
+const adjectivesPath = "datasets/derived/review-adjectives.json";
 const outputPath = "datasets/derived/hb-score-web-report.json";
 
-const emotionDictionary = [
-  {
-    id: "comfort",
-    label: "Comfort",
-    emoji: "😌",
-    terms: ["편안", "아늑", "깔끔", "깨끗", "쾌적", "여유", "정갈", "조용", "친절", "안심"]
-  },
-  {
-    id: "delight",
-    label: "Delight",
-    emoji: "😊",
-    terms: ["맛있", "즐겁", "기분", "좋았", "최고", "만족", "추천", "재방문", "행복", "감동"]
-  },
-  {
-    id: "surprise",
-    label: "Surprise",
-    emoji: "✨",
-    terms: ["특별", "독특", "신기", "색다", "새롭", "놀라", "인상", "처음", "시그니처", "트러플"]
-  },
-  {
-    id: "neutral",
-    label: "Neutral",
-    emoji: "·",
-    terms: ["무난", "괜찮", "평범", "보통", "적당", "기본", "일반", "간단"]
-  },
-  {
-    id: "friction",
-    label: "Friction",
-    emoji: "!",
-    terms: ["웨이팅", "대기", "기다", "붐비", "시끄", "복잡", "늦", "불편", "아쉬", "비싸"]
-  }
-];
+const adjectiveCategoryMetadataByName = new Map([
+  ["🌱 평온/일상", { id: "everyday-calm", label: "Everyday Calm", emoji: "🌱", koreanLabel: "평온/일상" }],
+  ["✨ 긍정/온화", { id: "positive-gentle", label: "Positive & Gentle", emoji: "✨", koreanLabel: "긍정/온화" }],
+  ["🔥 강렬/압도", { id: "intense-overwhelming", label: "Intense", emoji: "🔥", koreanLabel: "강렬/압도" }],
+  ["😤 부정/불편", { id: "negative-discomfort", label: "Discomfort", emoji: "😤", koreanLabel: "부정/불편" }]
+]);
 
 const stopwords = new Set([
   "그리고",
@@ -89,6 +64,7 @@ const stopwords = new Set([
 const scoreData = JSON.parse(await readFile(scorePath, "utf8"));
 const pointsData = JSON.parse(await readFile(pointsPath, "utf8"));
 const locationsData = JSON.parse(await readFile(locationsPath, "utf8"));
+const adjectiveData = JSON.parse(await readFile(adjectivesPath, "utf8"));
 const reviewFiles = (await readdir(reviewsDir))
   .filter((name) => name.endsWith(".json"))
   .filter((name) => !name.endsWith(".partial.json"))
@@ -97,6 +73,9 @@ const reviewFiles = (await readdir(reviewsDir))
 
 const reviewsByPlaceId = new Map();
 const locationByPlaceId = new Map();
+const adjectiveCategories = buildAdjectiveCategories(adjectiveData.category_draft);
+const adjectiveProfileByRank = buildAdjectiveProfileByRank(adjectiveData.per_restaurant, adjectiveCategories);
+const adjectiveAverageShareByCategoryId = buildAdjectiveAverageShareByCategoryId(adjectiveProfileByRank, adjectiveCategories);
 
 for (const place of locationsData.places ?? []) {
   if (typeof place.place_id === "string") {
@@ -146,7 +125,7 @@ const reports = scoreData.restaurants.map((restaurant) => {
   const counts = restaurantTokenCounts.get(restaurant.place_id) ?? new Map();
   const location = restaurantLocationsByPlaceId.get(restaurant.place_id);
   const keywords = buildKeywordEvidence(reviews, counts, scoreData.restaurants.length);
-  const emotionBuckets = buildEmotionBuckets(reviews);
+  const adjectiveBuckets = buildAdjectiveBucketsForRestaurant(restaurant.place_rank);
   const factorScores = scoreData.factors.map((factor) => {
     const score = restaurant.scores[factor.id];
 
@@ -178,7 +157,7 @@ const reports = scoreData.restaurants.map((restaurant) => {
     district: location.district,
     topFactor,
     factorScores,
-    emotionBuckets,
+    adjectiveBuckets,
     keywords,
     reviewSample: reviews.slice(0, 4).map((review) => toSnippet(review, "recent"))
   };
@@ -191,12 +170,13 @@ const output = {
     sourcePointsPath: pointsPath,
     sourceLocationsPath: locationsPath,
     sourceReviewDir: reviewsDir,
+    sourceAdjectivesPath: adjectivesPath,
     restaurantCount: scoreData.restaurants.length,
     factorCount: scoreData.factors.length,
     graphPointCount: pointsData.points.length,
     mapPointCount: restaurantLocationsByPlaceId.size,
     reportCount: reports.length,
-    emotionBucketCount: emotionDictionary.length
+    adjectiveBucketCount: adjectiveCategories.length
   },
   summary: {
     title: "Hidden Bites",
@@ -328,45 +308,6 @@ function pickKeywordReviews(reviews, keyword) {
     .slice(0, 4);
 }
 
-function buildEmotionBuckets(reviews) {
-  const buckets = emotionDictionary.map((bucket) => {
-    const matchedTerms = new Map();
-    let count = 0;
-
-    for (const review of reviews) {
-      const text = typeof review.text === "string" ? review.text : "";
-
-      for (const term of bucket.terms) {
-        const matches = text.match(new RegExp(escapeRegExp(term), "g"));
-        const termCount = matches?.length ?? 0;
-
-        if (termCount > 0) {
-          matchedTerms.set(term, (matchedTerms.get(term) ?? 0) + termCount);
-          count += termCount;
-        }
-      }
-    }
-
-    return {
-      id: bucket.id,
-      label: bucket.label,
-      emoji: bucket.emoji,
-      count,
-      share: 0,
-      terms: [...matchedTerms.entries()]
-        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko-KR"))
-        .slice(0, 5)
-        .map(([term]) => term)
-    };
-  });
-  const total = buckets.reduce((sum, bucket) => sum + bucket.count, 0);
-
-  return buckets.map((bucket) => ({
-    ...bucket,
-    share: total > 0 ? round(bucket.count / total, 4) : 0
-  }));
-}
-
 function extractTokens(text) {
   const normalized = text
     .toLowerCase()
@@ -396,7 +337,7 @@ function extractTokens(text) {
 function toSnippet(review, keyword) {
   const text = typeof review.text === "string" ? review.text.replace(/\s+/g, " ").trim() : "";
   const maxLength = 150;
-  const keywordIndex = keyword === "recent" ? 0 : text.indexOf(keyword);
+  const keywordIndex = keyword === "recent" ? 0 : text.toLowerCase().indexOf(keyword.toLowerCase());
   const start = keywordIndex > 40 ? keywordIndex - 40 : 0;
   const clipped = text.slice(start, start + maxLength);
 
@@ -415,6 +356,150 @@ function round(value, digits) {
   return Math.round(value * multiplier) / multiplier;
 }
 
-function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function buildAdjectiveCategories(categoryDraft) {
+  const entries = Object.entries(categoryDraft ?? {});
+
+  if (entries.length !== 4) {
+    throw new Error(`Expected 4 review adjective categories, received ${entries.length}`);
+  }
+
+  return entries.map(([sourceLabel, adjectives], index) => {
+    const metadata = adjectiveCategoryMetadataByName.get(sourceLabel);
+
+    if (!metadata) {
+      throw new Error(`Unknown review adjective category: ${sourceLabel}`);
+    }
+
+    if (!Array.isArray(adjectives) || adjectives.length === 0) {
+      throw new Error(`Invalid adjective list for category: ${sourceLabel}`);
+    }
+
+    return {
+      ...metadata,
+      sourceLabel,
+      order: index,
+      adjectives
+    };
+  });
+}
+
+function buildAdjectiveProfileByRank(perRestaurant, categories) {
+  if (!Array.isArray(perRestaurant) || perRestaurant.length !== 50) {
+    throw new Error(`Expected 50 review adjective restaurant profiles, received ${Array.isArray(perRestaurant) ? perRestaurant.length : "invalid"}`);
+  }
+
+  const wordToCategoryId = new Map();
+
+  for (const category of categories) {
+    for (const adjective of category.adjectives) {
+      wordToCategoryId.set(adjective, category.id);
+    }
+  }
+
+  const profiles = new Map();
+
+  for (const restaurant of perRestaurant) {
+    const rank = restaurant.place_rank;
+    const topAdjectives = Array.isArray(restaurant.top30_adjs) ? restaurant.top30_adjs : [];
+
+    if (typeof rank !== "number") {
+      throw new Error("Review adjective profile is missing numeric place_rank");
+    }
+
+    if (profiles.has(rank)) {
+      throw new Error(`Duplicate review adjective profile for rank ${rank}`);
+    }
+
+    const totalTopAdjectiveCount = topAdjectives.reduce((sum, adjective) => sum + normalizeCount(adjective.count), 0);
+
+    if (totalTopAdjectiveCount <= 0) {
+      throw new Error(`Review adjective profile has no top adjective count for rank ${rank}`);
+    }
+
+    const bucketWork = new Map(categories.map((category) => [category.id, { count: 0, topAdjectives: [] }]));
+
+    for (const adjective of topAdjectives) {
+      if (typeof adjective.adj !== "string") {
+        continue;
+      }
+
+      const categoryId = wordToCategoryId.get(adjective.adj);
+
+      if (!categoryId) {
+        continue;
+      }
+
+      const bucket = bucketWork.get(categoryId);
+      const count = normalizeCount(adjective.count);
+      bucket.count += count;
+      bucket.topAdjectives.push({
+        adjective: adjective.adj,
+        count
+      });
+    }
+
+    const matchedAdjectiveCount = [...bucketWork.values()].reduce((sum, bucket) => sum + bucket.count, 0);
+
+    if (matchedAdjectiveCount <= 0) {
+      throw new Error(`Review adjective profile has no mapped adjectives for rank ${rank}`);
+    }
+
+    profiles.set(rank, {
+      rank,
+      totalTopAdjectiveCount,
+      matchedAdjectiveCount,
+      buckets: categories.map((category) => {
+        const bucket = bucketWork.get(category.id);
+
+        return {
+          id: category.id,
+          label: category.label,
+          emoji: category.emoji,
+          koreanLabel: category.koreanLabel,
+          count: bucket.count,
+          share: round(bucket.count / totalTopAdjectiveCount, 4),
+          topAdjectives: bucket.topAdjectives.sort((left, right) => right.count - left.count || left.adjective.localeCompare(right.adjective, "ko-KR"))
+        };
+      })
+    });
+  }
+
+  return profiles;
+}
+
+function buildAdjectiveAverageShareByCategoryId(profileByRank, categories) {
+  const averages = new Map();
+
+  for (const category of categories) {
+    const totalShare = [...profileByRank.values()].reduce((sum, profile) => {
+      const bucket = profile.buckets.find((candidate) => candidate.id === category.id);
+
+      return sum + (bucket?.share ?? 0);
+    }, 0);
+
+    averages.set(category.id, round(totalShare / profileByRank.size, 4));
+  }
+
+  return averages;
+}
+
+function buildAdjectiveBucketsForRestaurant(placeRank) {
+  const profile = adjectiveProfileByRank.get(placeRank);
+
+  if (!profile) {
+    throw new Error(`Missing review adjective profile for rank ${placeRank}`);
+  }
+
+  return profile.buckets.map((bucket) => ({
+    ...bucket,
+    averageShare: adjectiveAverageShareByCategoryId.get(bucket.id) ?? 0
+  }));
+}
+
+function normalizeCount(value) {
+  if (typeof value !== "number" || !Number.isFinite(value) || value < 0) {
+    return 0;
+  }
+
+  return value;
 }
