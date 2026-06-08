@@ -54,6 +54,20 @@ export interface KeywordEvidence {
   snippets: ReviewSnippet[];
 }
 
+export interface FunnyKeywordSnippet extends ReviewSnippet {
+  matchedTerms: string[];
+}
+
+export interface FunnyKeywordEvidence {
+  id: string;
+  label: string;
+  color: string;
+  terms: string[];
+  reviewCount: number;
+  matchCount: number;
+  snippets: FunnyKeywordSnippet[];
+}
+
 export interface AdjectiveEvidence {
   adjective: string;
   count: number;
@@ -98,6 +112,7 @@ export interface RestaurantReport {
   factorScores: FactorScore[];
   adjectiveBuckets: AdjectiveBucket[];
   keywords: KeywordEvidence[];
+  funnyKeywords: FunnyKeywordEvidence[];
   reviewSample: ReviewSnippet[];
 }
 

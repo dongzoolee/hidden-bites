@@ -24,13 +24,11 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(reportPanel, /buildAdjectiveDisplayBuckets\(report\.adjectiveBuckets\)/);
   assert.match(reportPanel, /averageSharePercent: bucket\.averageShare \* 100/);
   assert.match(reportPanel, /buildMarkerStyle\(bucket\.averageSharePercent, graphMaxPercent\)/);
-  assert.match(reportPanel, /<strong>Click a keyword chip<\/strong>/);
-  assert.match(reportPanel, /report\.keywords\.map\(\(keyword\) =>/);
-  assert.match(reportPanel, /keywordEvidence/);
-  assert.match(reportPanel, /selectedKeyword/);
-  assert.match(reportPanel, /buildKeywordFooter\(snippet, keywordEvidence\)/);
-  assert.match(reportPanel, /return `KEYWORD: \$\{keyword\.keyword\} · \$\{rating\} · \$\{relativeTime\}`/);
-  assert.doesNotMatch(reportPanel, /report\.funnyKeywords|funnyKeywordEvidence|buildFunnyKeywordFooter/);
+  assert.match(reportPanel, /<strong>Click a funny category chip<\/strong>/);
+  assert.match(reportPanel, /report\.funnyKeywords\.map\(\(keyword\) =>/);
+  assert.match(reportPanel, /buildFunnyKeywordFooter\(snippet, funnyKeywordEvidence\)/);
+  assert.match(reportPanel, /return `CATEGORY: \$\{keyword\.label\} · MATCH: \$\{snippet\.matchedTerms\.slice\(0, 5\)\.join\(" · "\)\}`/);
+  assert.doesNotMatch(reportPanel, /buildKeywordFooter|keywordEvidence|selectedKeyword|report\.keywords\.map/);
   assert.match(reportPanel, /className="emotion-graph__header"/);
   assert.match(reportPanel, /Adjective Graph/);
   assert.match(reportPanel, /category share \(%\)/);
@@ -46,7 +44,7 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(css, /\.restaurant-rating span\s*\{[\s\S]*font-family: var\(--font-body\);[\s\S]*font-size: 22px;[\s\S]*letter-spacing: 1px;/);
   assert.match(css, /\.restaurant-rating strong\s*\{[\s\S]*font-family: var\(--font-display\);[\s\S]*font-size: 44px;[\s\S]*line-height: 44px;/);
   assert.match(css, /\.report-section-heading p strong\s*\{[\s\S]*font-weight: 800;[\s\S]*text-decoration: underline;/);
-  assert.match(css, /\.keyword-summary\s*\{[\s\S]*font-family: var\(--font-mono\);/);
+  assert.match(css, /\.funny-keyword-summary\s*\{[\s\S]*font-family: var\(--font-mono\);/);
   assert.match(css, /\.emotion-chip-row\s*\{[\s\S]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/);
   assert.match(css, /\.emotion-chip em\s*\{[\s\S]*font-family: var\(--font-korean\);/);
   assert.match(css, /\.emotion-graph__plot\s*\{[\s\S]*height: 480px;[\s\S]*overflow-x: auto;/);
@@ -55,7 +53,8 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(css, /\.emotion-graph__bar\s*\{[\s\S]*border-radius: 999px 999px 0 0;[\s\S]*font-family: var\(--font-chart\);/);
   assert.match(css, /\.emotion-graph__column small\s*\{[\s\S]*font-family: var\(--font-korean\);/);
   assert.match(css, /\.snippet\s*\{[\s\S]*border-radius: 22px;[\s\S]*padding: 22px 24px;/);
+  assert.match(css, /\.snippet--funny\s*\{[\s\S]*border: 2px solid rgba\(26, 19, 16, 0\.18\);/);
   assert.match(css, /\.snippet footer\s*\{[\s\S]*font-family: var\(--font-mono\);[\s\S]*font-size: 12px;/);
-  assert.match(css, /\.keyword-empty\s*\{[\s\S]*border: 2px dashed rgba\(26, 19, 16, 0\.22\);/);
+  assert.match(css, /\.funny-keyword-empty\s*\{[\s\S]*border: 2px dashed rgba\(26, 19, 16, 0\.22\);/);
   assert.match(css, /\.restaurant-explorer button\s*\{[\s\S]*border-radius: 20px;[\s\S]*font-family: var\(--font-airbnb-bold\);/);
 });

@@ -51,7 +51,8 @@ test("serves selected report and 404 for missing report", async () => {
     assert.equal(response.body.district, restaurants.body[0].district);
     assert.equal(response.body.adjectiveBuckets.length, 4);
     assert.ok(response.body.adjectiveBuckets.some((bucket) => bucket.count > 0));
-    assert.equal(response.body.funnyKeywords, undefined);
+    assert.equal(response.body.funnyKeywords.length, 12);
+    assert.ok(response.body.funnyKeywords.some((keyword) => keyword.reviewCount > 0));
   });
   await request(app.getHttpServer()).get("/api/restaurants/missing-place/report").expect(404);
 });

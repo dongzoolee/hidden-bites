@@ -1902,6 +1902,27 @@ img {
   box-shadow: 0 10px 20px rgba(26, 19, 16, 0.16);
 }
 
+.funny-keyword-summary {
+  align-items: center;
+  color: var(--orange-deep);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.funny-keyword-summary strong,
+.funny-keyword-summary span {
+  background: rgba(255, 247, 232, 0.72);
+  border: 1px solid rgba(26, 19, 16, 0.14);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
 .keyword-summary {
   align-items: center;
   color: var(--orange-deep);
@@ -1957,6 +1978,10 @@ img {
   color: var(--paper);
 }
 
+.snippet--funny {
+  border: 2px solid rgba(26, 19, 16, 0.18);
+}
+
 .snippet p {
   font-family: var(--font-korean);
   font-size: 18px;
@@ -1970,6 +1995,32 @@ img {
   font-weight: 400;
   letter-spacing: 0.02em;
   opacity: 0.85;
+}
+
+.funny-keyword-empty {
+  align-items: center;
+  background: rgba(255, 247, 232, 0.58);
+  border: 2px dashed rgba(26, 19, 16, 0.22);
+  border-radius: 22px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-height: 168px;
+  padding: 28px;
+  text-align: center;
+}
+
+.funny-keyword-empty strong {
+  font-family: var(--font-korean);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.funny-keyword-empty span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .keyword-empty {

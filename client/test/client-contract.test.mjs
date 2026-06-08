@@ -79,9 +79,9 @@ test("client implements the required story surfaces", async () => {
   assert.doesNotMatch(reportPanel, /report\.placeName|restaurant\.placeName/);
   assert.match(reportPanel, /keyword-chip/);
   assert.match(reportPanel, /report\.adjectiveBuckets/);
-  assert.match(reportPanel, /report\.keywords\.map/);
-  assert.match(reportPanel, /buildKeywordFooter/);
-  assert.doesNotMatch(reportPanel, /report\.funnyKeywords|funnyKeywordEvidence/);
+  assert.match(reportPanel, /report\.funnyKeywords/);
+  assert.match(reportPanel, /funnyKeywordEvidence/);
+  assert.doesNotMatch(reportPanel, /report\.keywords\.map|buildKeywordFooter/);
   assert.match(css, /100svh/);
   assert.match(css, /font-family: "WAGURI"/);
   assert.match(css, /WAGURITTF\.woff2/);

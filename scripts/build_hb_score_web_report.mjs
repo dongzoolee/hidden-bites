@@ -16,6 +16,21 @@ const adjectiveCategoryMetadataByName = new Map([
   ["😤 부정/불편", { id: "negative-discomfort", label: "Discomfort", emoji: "😤", koreanLabel: "부정/불편" }]
 ]);
 
+const funnyKeywordCategories = [
+  { id: "crunch-boss", label: "🥨 Crunch Boss", color: "#F7C948", terms: ["바삭", "바삭바삭", "crispy", "crunchy", "튀김", "튀겨", "겉바속촉", "crunch", "fried", "golden", "crisped"] },
+  { id: "fire-bite", label: "🔥 Fire Bite", color: "#F4626C", terms: ["매운", "맵다", "매워", "불맛", "칼칼", "spicy", "hot", "chili", "pepper", "fiery", "불닭", "청양"] },
+  { id: "portion-monster", label: "🍖 Portion Monster", color: "#4CAF7D", terms: ["양이 많", "푸짐", "huge", "generous", "massive", "big portion", "양많", "가성비 좋", "넉넉"] },
+  { id: "wallet-saver", label: "💰 Wallet Saver", color: "#F4845F", terms: ["저렴", "싸다", "싸요", "가성비", "cheap", "affordable", "reasonable", "value", "budget", "가격 대비"] },
+  { id: "worth-the-wait", label: "⏳ Worth the Wait", color: "#9B82F3", terms: ["웨이팅", "줄", "기다", "대기", "wait", "line", "queue", "worth it", "줄 서", "대기 시간"] },
+  { id: "hidden-boss", label: "🕵️ Hidden Boss", color: "#5BB8F5", terms: ["숨겨진", "골목", "찾기 어", "hidden", "secret", "alley", "tucked", "gem", "underrated", "모르는 사람"] },
+  { id: "homefeel-energy", label: "🏡 Uncle / Homefeel Energy", color: "#F4C842", terms: ["친절", "따뜻", "편안", "아늑", "homey", "friendly", "cozy", "warm", "welcoming", "정겨"] },
+  { id: "emotional-support-meal", label: "🍲 Emotional Support Meal", color: "#F4626C", terms: ["위로", "힐링", "고향", "어머니", "엄마", "comfort", "heartwarming", "nostalgic", "soothing", "추억"] },
+  { id: "date-night-certified", label: "💑 Date Night Certified", color: "#4CAF7D", terms: ["데이트", "연인", "분위기", "romantic", "couple", "date", "anniversary", "intimate", "ambiance", "분위기 좋"] },
+  { id: "squad-goals", label: "👫 Squad Goals", color: "#F4845F", terms: ["친구", "무리", "단체", "friend", "group", "squad", "birthday", "party", "함께", "모임"] },
+  { id: "office-escape-plan", label: "🏢 Office Escape Plan", color: "#9B82F3", terms: ["점심", "직장", "회사", "lunch", "office", "work", "colleagues", "quick", "nearby", "weekday", "회식"] },
+  { id: "vibe-check", label: "🌊 Vibe Check", color: "#5BB8F5", terms: ["분위기", "인테리어", "감성", "aesthetic", "vibe", "atmosphere", "인스타", "예쁜", "인생샷"] }
+];
+
 const stopwords = new Set([
   "그리고",
   "그래서",
@@ -126,6 +141,7 @@ const reports = scoreData.restaurants.map((restaurant) => {
   const location = restaurantLocationsByPlaceId.get(restaurant.place_id);
   const keywords = buildKeywordEvidence(reviews, counts, scoreData.restaurants.length);
   const adjectiveBuckets = buildAdjectiveBucketsForRestaurant(restaurant.place_rank);
+  const funnyKeywords = buildFunnyKeywords(reviews);
   const factorScores = scoreData.factors.map((factor) => {
     const score = restaurant.scores[factor.id];
 
@@ -159,6 +175,7 @@ const reports = scoreData.restaurants.map((restaurant) => {
     factorScores,
     adjectiveBuckets,
     keywords,
+    funnyKeywords,
     reviewSample: reviews.slice(0, 4).map((review) => toSnippet(review, "recent"))
   };
 });
@@ -176,7 +193,8 @@ const output = {
     graphPointCount: pointsData.points.length,
     mapPointCount: restaurantLocationsByPlaceId.size,
     reportCount: reports.length,
-    adjectiveBucketCount: adjectiveCategories.length
+    adjectiveBucketCount: adjectiveCategories.length,
+    funnyKeywordCategoryCount: funnyKeywordCategories.length
   },
   summary: {
     title: "Hidden Bites",
@@ -306,6 +324,54 @@ function pickKeywordReviews(reviews, keyword) {
       return keywordParts.every((part) => text.includes(part));
     })
     .slice(0, 4);
+}
+
+function buildFunnyKeywords(reviews) {
+  const eligibleReviews = reviews
+    .map((review, index) => ({
+      review,
+      index,
+      text: typeof review.text === "string" ? review.text.replace(/\s+/g, " ").trim() : ""
+    }))
+    .filter((entry) => entry.text.length >= 15);
+
+  return funnyKeywordCategories.map((category) => {
+    const matches = eligibleReviews
+      .map((entry) => ({
+        ...entry,
+        matchedTerms: matchFunnyTerms(entry.text, category.terms)
+      }))
+      .filter((entry) => entry.matchedTerms.length > 0);
+    const matchCount = matches.reduce((sum, entry) => sum + entry.matchedTerms.length, 0);
+    const snippets = [...matches]
+      .sort((left, right) => {
+        const leftRating = typeof left.review.rating === "number" ? left.review.rating : 0;
+        const rightRating = typeof right.review.rating === "number" ? right.review.rating : 0;
+
+        return right.matchedTerms.length - left.matchedTerms.length || rightRating - leftRating || left.index - right.index;
+      })
+      .slice(0, 4)
+      .map((entry) => ({
+        ...toSnippet(entry.review, entry.matchedTerms[0] ?? "recent"),
+        matchedTerms: entry.matchedTerms
+      }));
+
+    return {
+      id: category.id,
+      label: category.label,
+      color: category.color,
+      terms: category.terms,
+      reviewCount: matches.length,
+      matchCount,
+      snippets
+    };
+  });
+}
+
+function matchFunnyTerms(text, terms) {
+  const normalizedText = text.toLowerCase();
+
+  return terms.filter((term) => normalizedText.includes(term.toLowerCase()));
 }
 
 function extractTokens(text) {

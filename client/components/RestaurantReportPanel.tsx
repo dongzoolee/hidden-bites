@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import type { AdjectiveBucket, AdjectiveEvidence, KeywordEvidence, RestaurantReport, ReviewSnippet } from "@/lib/api-types";
+import type { AdjectiveBucket, AdjectiveEvidence, FunnyKeywordEvidence, FunnyKeywordSnippet, RestaurantReport } from "@/lib/api-types";
 
 interface RestaurantReportPanelProps {
   report: RestaurantReport;
@@ -62,17 +62,17 @@ const fallbackAdjectiveColors = ["#3da06b", "#ff5a1f", "#ffc842", "#b87fd9"];
 const graphTickCount = 5;
 
 export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: RestaurantReportPanelProps) {
-  const [selectedKeyword, setSelectedKeyword] = useState<string>(getDefaultKeyword(report.keywords));
+  const [selectedFunnyKeywordId, setSelectedFunnyKeywordId] = useState<string>(getDefaultFunnyKeywordId(report.funnyKeywords));
 
   useEffect(() => {
-    setSelectedKeyword(getDefaultKeyword(report.keywords));
-  }, [report.placeId, report.keywords]);
+    setSelectedFunnyKeywordId(getDefaultFunnyKeywordId(report.funnyKeywords));
+  }, [report.placeId, report.funnyKeywords]);
 
-  const keywordEvidence = useMemo<KeywordEvidence | null>(
-    () => report.keywords.find((keyword) => keyword.keyword === selectedKeyword) ?? report.keywords[0] ?? null,
-    [report.keywords, selectedKeyword]
+  const funnyKeywordEvidence = useMemo<FunnyKeywordEvidence | null>(
+    () => report.funnyKeywords.find((keyword) => keyword.id === selectedFunnyKeywordId) ?? report.funnyKeywords[0] ?? null,
+    [report.funnyKeywords, selectedFunnyKeywordId]
   );
-  const selectedSnippets = keywordEvidence?.snippets ?? [];
+  const selectedFunnySnippets = funnyKeywordEvidence?.snippets ?? [];
   const adjectiveDisplayBuckets = useMemo(() => buildAdjectiveDisplayBuckets(report.adjectiveBuckets), [report.adjectiveBuckets]);
   const maxAdjectiveSharePercent = Math.max(
     ...adjectiveDisplayBuckets.flatMap((bucket) => [bucket.sharePercent, bucket.averageSharePercent]),
@@ -171,46 +171,48 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
         <div className="report-section-heading">
           <h4>The Unique & Fun Keywords</h4>
           <p>
-            <strong>Click a keyword chip</strong>
-            <span> to see original review snippets behind each high-signal keyword.</span>
+            <strong>Click a funny category chip</strong>
+            <span> to see original reviews that match its curated expression set.</span>
           </p>
         </div>
-        <div className="keyword-row" aria-label="Review keyword filter">
-          {report.keywords.map((keyword) => (
+        <div className="keyword-row" aria-label="Funny keyword category filter">
+          {report.funnyKeywords.map((keyword) => (
             <button
-              aria-pressed={keyword.keyword === keywordEvidence?.keyword}
-              className={keyword.keyword === keywordEvidence?.keyword ? "keyword-chip keyword-chip--active" : "keyword-chip"}
-              key={keyword.keyword}
+              aria-pressed={keyword.id === funnyKeywordEvidence?.id}
+              className={keyword.id === funnyKeywordEvidence?.id ? "keyword-chip keyword-chip--active" : "keyword-chip"}
+              key={keyword.id}
+              style={buildFunnyKeywordChipStyle(keyword, keyword.id === funnyKeywordEvidence?.id)}
               type="button"
-              onClick={() => setSelectedKeyword(keyword.keyword)}
+              onClick={() => setSelectedFunnyKeywordId(keyword.id)}
             >
-              <span>{keyword.keyword}</span>
-              <strong>{keyword.count}</strong>
+              <span>{keyword.label}</span>
+              <strong>{keyword.reviewCount}</strong>
             </button>
           ))}
         </div>
-        {keywordEvidence ? (
-          <div className="keyword-summary">
-            <strong>{keywordEvidence.count.toLocaleString()} keyword hits</strong>
-            <span>score {keywordEvidence.score.toFixed(1)}</span>
+        {funnyKeywordEvidence ? (
+          <div className="funny-keyword-summary">
+            <strong>{funnyKeywordEvidence.reviewCount.toLocaleString()} original reviews</strong>
+            <span>{funnyKeywordEvidence.matchCount.toLocaleString()} matched expressions</span>
           </div>
         ) : null}
-        {selectedSnippets.length > 0 && keywordEvidence ? (
+        {selectedFunnySnippets.length > 0 && funnyKeywordEvidence ? (
           <div className="snippet-grid" data-testid="snippet-grid">
-            {selectedSnippets.map((snippet, index) => (
+            {selectedFunnySnippets.map((snippet) => (
               <blockquote
-                className={`snippet snippet--tone-${(index % 4) + 1}`}
+                className="snippet snippet--funny"
                 key={snippet.sourceReviewId}
+                style={buildFunnyKeywordSnippetStyle(funnyKeywordEvidence.color)}
               >
                 <p>{snippet.text}</p>
-                <footer>{buildKeywordFooter(snippet, keywordEvidence)}</footer>
+                <footer>{buildFunnyKeywordFooter(snippet, funnyKeywordEvidence)}</footer>
               </blockquote>
             ))}
           </div>
         ) : (
-          <div className="keyword-empty" data-testid="keyword-empty">
+          <div className="funny-keyword-empty" data-testid="funny-keyword-empty">
             <strong>해당 original review 없음</strong>
-            <span>{keywordEvidence?.keyword ?? "Keyword"} matched 0 reviews for this restaurant.</span>
+            <span>{funnyKeywordEvidence?.label ?? "Funny keyword"} matched 0 reviews for this restaurant.</span>
           </div>
         )}
       </section>
@@ -225,8 +227,29 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
   );
 }
 
-function getDefaultKeyword(keywords: KeywordEvidence[]): string {
-  return keywords[0]?.keyword ?? "";
+function getDefaultFunnyKeywordId(funnyKeywords: FunnyKeywordEvidence[]): string {
+  return (funnyKeywords.find((keyword) => keyword.reviewCount > 0) ?? funnyKeywords[0])?.id ?? "";
+}
+
+function buildFunnyKeywordChipStyle(keyword: FunnyKeywordEvidence, isActive: boolean): CSSProperties {
+  if (isActive) {
+    return {
+      backgroundColor: keyword.color,
+      borderColor: keyword.color,
+      color: getReadableTextColor(keyword.color)
+    };
+  }
+
+  return {
+    borderColor: keyword.color
+  };
+}
+
+function buildFunnyKeywordSnippetStyle(color: string): CSSProperties {
+  return {
+    backgroundColor: color,
+    color: getReadableTextColor(color)
+  };
 }
 
 function buildAdjectiveDisplayBuckets(buckets: AdjectiveBucket[]): AdjectiveDisplayBucket[] {
@@ -292,9 +315,21 @@ function formatTopAdjectives(adjectives: AdjectiveEvidence[]): string {
   return topAdjectives.length > 0 ? topAdjectives.join(" · ") : "No mapped adjective";
 }
 
-function buildKeywordFooter(snippet: ReviewSnippet, keyword: KeywordEvidence): string {
-  const rating = snippet.rating === null ? "No rating" : `${snippet.rating.toFixed(1)} stars`;
-  const relativeTime = snippet.relativeTime ?? "Google Maps review";
+function buildFunnyKeywordFooter(snippet: FunnyKeywordSnippet, keyword: FunnyKeywordEvidence): string {
+  return `CATEGORY: ${keyword.label} · MATCH: ${snippet.matchedTerms.slice(0, 5).join(" · ")}`;
+}
 
-  return `KEYWORD: ${keyword.keyword} · ${rating} · ${relativeTime}`;
+function getReadableTextColor(hexColor: string): string {
+  const normalized = hexColor.replace("#", "");
+
+  if (!/^[0-9a-f]{6}$/i.test(normalized)) {
+    return "#fff7e9";
+  }
+
+  const red = Number.parseInt(normalized.slice(0, 2), 16);
+  const green = Number.parseInt(normalized.slice(2, 4), 16);
+  const blue = Number.parseInt(normalized.slice(4, 6), 16);
+  const luminance = (0.299 * red + 0.587 * green + 0.114 * blue) / 255;
+
+  return luminance > 0.62 ? "#1a1310" : "#fff7e9";
 }

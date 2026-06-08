@@ -64,7 +64,7 @@ for (const report of reportData.reports) {
   assert.equal(report.factorScores.length, 10);
   assert.equal(report.emotionBuckets, undefined);
   assert.equal(report.adjectiveBuckets.length, 4);
-  assert.equal(report.funnyKeywords, undefined);
+  assert.equal(report.funnyKeywords.length, 12);
   assert.ok(report.keywords.length > 0);
   assert.ok(report.reviewSample.length > 0);
   assert.equal(typeof report.latitude, "number");
@@ -75,6 +75,31 @@ for (const report of reportData.reports) {
 
   for (const keyword of report.keywords) {
     assert.ok(keyword.snippets.length > 0);
+  }
+
+  assert.ok(report.funnyKeywords.some((keyword) => keyword.reviewCount > 0));
+
+  for (const keyword of report.funnyKeywords) {
+    assert.equal(typeof keyword.id, "string");
+    assert.equal(typeof keyword.label, "string");
+    assert.equal(typeof keyword.color, "string");
+    assert.ok(Array.isArray(keyword.terms));
+    assert.ok(keyword.reviewCount >= 0);
+    assert.ok(keyword.matchCount >= 0);
+    assert.ok(keyword.snippets.length <= 4);
+
+    if (keyword.reviewCount === 0) {
+      assert.equal(keyword.snippets.length, 0);
+    }
+
+    for (const snippet of keyword.snippets) {
+      assert.ok(snippet.text.length >= 15);
+      assert.ok(snippet.matchedTerms.length > 0);
+
+      for (const matchedTerm of snippet.matchedTerms) {
+        assert.ok(keyword.terms.includes(matchedTerm));
+      }
+    }
   }
 
   assert.ok(report.adjectiveBuckets.some((bucket) => bucket.count > 0));
