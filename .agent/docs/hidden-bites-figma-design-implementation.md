@@ -373,6 +373,19 @@
   - Playwright Chromium에서 2048x768, 1440x820, 1024x768, 390x844 viewport의 `.qna-card` text/card bounding box overflow가 모두 0임을 확인했다.
 - Mobile MCP validation은 사용 가능한 device가 없어 진행하지 못했다. `mobile_list_available_devices` 결과는 empty devices였고, Playwright 390px mobile viewport로 대체 검증했다.
 
+### 2026-06-13 Favicon metadata update
+
+- `client/public/favicon.png`를 브라우저 favicon 용도에 맞춰 64x64 PNG로 리사이즈했다.
+- `client/app/layout.tsx`의 Next metadata `icons` 계약에 `/favicon.png`를 `image/png`, `64x64` favicon으로 명시했다.
+- Regression guard: `client/test/client-contract.test.mjs`가 layout metadata의 favicon URL/type/size와 실제 PNG signature 및 64x64 IHDR dimensions를 검증한다.
+- Verification:
+  - `yarn --cwd client test -- --test-reporter=spec`
+  - `yarn --cwd client typecheck`
+  - `yarn --cwd client lint`
+  - `yarn --cwd client build`
+  - `git diff --check`
+  - Playwright CLI `http://localhost:8096` head inspection confirmed `/favicon.png` shortcut/icon links and a 200 `image/png` favicon response.
+
 ### 2026-06-13 SEO Open Graph metadata update
 
 - `client/app/layout.tsx`의 루트 metadata에 기존 `title`과 `description`을 유지하면서 `openGraph.title`, `openGraph.description`, `siteName`, `type`, `locale`을 추가했다.

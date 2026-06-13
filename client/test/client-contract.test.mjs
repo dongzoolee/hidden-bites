@@ -12,6 +12,7 @@ test("client implements the required story surfaces", async () => {
   const seoulMap = await readFile("components/SeoulRestaurantMap.tsx", "utf8");
   const reportPanel = await readFile("components/RestaurantReportPanel.tsx", "utf8");
   const css = await readFile("app/globals.css", "utf8");
+  const favicon = await readFile("public/favicon.png");
 
   assert.match(page, /HiddenBitesExperience/);
   assert.match(experience, /story-section--hero/);
@@ -145,6 +146,13 @@ test("client implements the required story surfaces", async () => {
   assert.match(layout, /family=Bowlby\+One&family=Inter:wght@400;700&family=JetBrains\+Mono:wght@400;700&family=Noto\+Sans\+KR:wght@400;700&family=Sora:wght@400;600;700;800&display=swap/);
   assert.match(layout, /https:\/\/cdn\.jsdelivr\.net/);
   assert.match(layout, /https:\/\/a0\.muscache\.com/);
+  assert.match(layout, /icons:\s*\{/);
+  assert.match(layout, /url: "\/favicon\.png"/);
+  assert.match(layout, /sizes: "64x64"/);
+  assert.match(layout, /type: "image\/png"/);
+  assert.deepEqual([...favicon.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(favicon.readUInt32BE(16), 64);
+  assert.equal(favicon.readUInt32BE(20), 64);
   assert.doesNotMatch(css, /Georgia|"Courier New"/);
   assert.doesNotMatch(css, /\.qna__answer\s*\{[^}]*display:\s*none/s);
   assert.doesNotMatch(experience, /Loading Hidden Bites data story/);

@@ -10,6 +10,10 @@ export const metadata: Metadata = {
     siteName: "Hidden Bites",
     type: "website",
     locale: "en_US"
+  },
+  icons: {
+    icon: [{ url: "/favicon.png", sizes: "64x64", type: "image/png" }],
+    shortcut: [{ url: "/favicon.png", type: "image/png" }]
   }
 };
 
