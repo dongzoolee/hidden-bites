@@ -3,7 +3,14 @@ import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Hidden Bites",
-  description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores."
+  description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores.",
+  openGraph: {
+    title: "Hidden Bites",
+    description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores.",
+    siteName: "Hidden Bites",
+    type: "website",
+    locale: "en_US"
+  }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

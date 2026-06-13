@@ -6,6 +6,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Seoul Top 50 Restaurants",
   description: "Distribution of the top 50 restaurants in Seoul on Kakao Map",
+  openGraph: {
+    title: "Seoul Top 50 Restaurants | Hidden Bites",
+    description: "Explore the Seoul top 50 restaurant distribution on a Kakao Map powered by Hidden Bites location data.",
+    siteName: "Hidden Bites",
+    type: "website",
+    locale: "en_US"
+  },
 };
 
 interface TopRestaurantsData {

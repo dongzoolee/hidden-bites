@@ -372,3 +372,9 @@
   - `git diff --check`
   - Playwright Chromium에서 2048x768, 1440x820, 1024x768, 390x844 viewport의 `.qna-card` text/card bounding box overflow가 모두 0임을 확인했다.
 - Mobile MCP validation은 사용 가능한 device가 없어 진행하지 못했다. `mobile_list_available_devices` 결과는 empty devices였고, Playwright 390px mobile viewport로 대체 검증했다.
+
+### 2026-06-13 SEO Open Graph metadata update
+
+- `client/app/layout.tsx`의 루트 metadata에 기존 `title`과 `description`을 유지하면서 `openGraph.title`, `openGraph.description`, `siteName`, `type`, `locale`을 추가했다.
+- `client/app/map/page.tsx`의 standalone map metadata에도 route-specific `openGraph.title`과 `openGraph.description`을 추가해 공유 preview가 Hidden Bites 문맥을 갖도록 했다.
+- Regression guard: `client/test/seo-metadata.test.mjs`가 루트 layout과 `/map` 라우트의 title, description, Open Graph title, Open Graph description 계약을 검증한다.
