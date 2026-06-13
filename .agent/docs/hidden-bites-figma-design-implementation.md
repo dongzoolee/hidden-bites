@@ -308,14 +308,25 @@
 - Footer meta는 Figma의 `The team`, `The class`, `The story` 3컬럼 내용으로 교체했다.
   - `dongzoolee (developer) / me@leed.at`
   - `Eunhong Kim (designer) / its4hong@gmail.com`
-  - `Madina / abc@gmail.com`
-  - `Emilia / abc@gmail.com`
+  - `Madina / sadullayeva4554@gmail.com`
+  - `Emilia / arndtemilia2@gmail.com`
   - `26-1 Data Visualization`, `Sogang University · Art & Technology`, `advised by Prof. JeeWon Kim`
   - `web-desktop edition · 2026.05 · vol.01`
 - Footer meta typography는 Figma 기준 heading `11px`, body `14px / 22.4px`, column gap `32px`, top border padding `37px`로 조정했다.
 - Mobile에서는 team grid를 1컬럼 member stack으로 풀어 좁은 화면에서 email과 role이 clipping되지 않도록 했다.
 - Browser validation: `localhost:8096`에서 Playwright Chromium `1440x900` screenshot을 캡처해 footer title 줄 간격과 3컬럼 team/class/story copy가 렌더링되는 것을 확인했다.
 - Regression guard: `client/test/footer-figma-parity.test.mjs`가 footer title line-height, Figma meta copy, typography, mobile override를 검증한다.
+
+### 2026-06-13 Footer team email update
+
+- Footer team metadata에서 Madina 이메일을 `sadullayeva4554@gmail.com`, Emilia 이메일을 `arndtemilia2@gmail.com`로 교체했다.
+- Regression guard: `client/test/footer-figma-parity.test.mjs`가 두 이메일이 placeholder로 되돌아가지 않도록 검증한다.
+- Verification:
+  - `yarn --cwd client test -- --test-reporter=spec`
+  - `yarn --cwd client typecheck`
+  - `yarn --cwd client lint`
+  - `yarn --cwd client build`
+  - `rg -n "sadullayeva4554|arndtemilia2" client/out`
 
 ### 2026-06-05 Limitation cards Figma parity correction
 

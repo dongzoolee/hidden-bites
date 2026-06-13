@@ -75,8 +75,8 @@ const limitationCards = [
 const footerTeamMembers: FooterTeamMember[] = [
   { name: "dongzoolee", role: "developer", email: "me@leed.at" },
   { name: "Eunhong Kim", role: "designer", email: "its4hong@gmail.com" },
-  { name: "Madina", role: null, email: "abc@gmail.com" },
-  { name: "Emilia", role: null, email: "abc@gmail.com" }
+  { name: "Madina", role: null, email: "sadullayeva4554@gmail.com" },
+  { name: "Emilia", role: null, email: "arndtemilia2@gmail.com" }
 ];
 
 export function HiddenBitesExperience() {

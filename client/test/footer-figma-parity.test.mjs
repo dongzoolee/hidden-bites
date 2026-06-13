@@ -11,8 +11,8 @@ test("footer matches the Figma title rhythm and metadata", async () => {
   assert.match(experience, /const footerTeamMembers: FooterTeamMember\[\] = \[/);
   assert.match(experience, /name: "dongzoolee", role: "developer", email: "me@leed\.at"/);
   assert.match(experience, /name: "Eunhong Kim", role: "designer", email: "its4hong@gmail\.com"/);
-  assert.match(experience, /name: "Madina", role: null, email: "abc@gmail\.com"/);
-  assert.match(experience, /name: "Emilia", role: null, email: "abc@gmail\.com"/);
+  assert.match(experience, /name: "Madina", role: null, email: "sadullayeva4554@gmail\.com"/);
+  assert.match(experience, /name: "Emilia", role: null, email: "arndtemilia2@gmail\.com"/);
   assert.match(experience, /className="footer-team-grid"/);
   assert.match(experience, /className="footer-team-role"/);
   assert.doesNotMatch(experience, /data\.summary\.members\.join/);
