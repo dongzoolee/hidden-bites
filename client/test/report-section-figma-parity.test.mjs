@@ -33,7 +33,7 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(reportPanel, /formatEmotionCategoryWords\(bucket\.adjectives\)/);
   assert.match(reportPanel, /adjectives: bucket\.adjectives/);
   assert.match(reportPanel, /averageSharePercent: bucket\.averageShare \* 100/);
-  assert.match(reportPanel, /buildMarkerStyle\(bucket\.sharePercent, bucket\.averageSharePercent, graphMaxPercent\)/);
+  assert.match(reportPanel, /buildMarkerStyle\(bucket\.sharePercent, graphMaxPercent\)/);
   assert.match(reportPanel, /relief:\s*\{[\s\S]*label: "Relief"[\s\S]*color: "#4d8ccf"/);
   assert.match(reportPanel, /regret:\s*\{[\s\S]*label: "Regret"[\s\S]*color: "#ff8fb1"/);
   assert.match(reportPanel, /<strong>Click a funny category chip<\/strong>/);

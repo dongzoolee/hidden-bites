@@ -21,8 +21,8 @@ test("emotion graph label and bar baseline layout stay aligned", async () => {
   assert.match(css, /\.emotion-graph__bar-wrap\s*\{[\s\S]*height: 325px;/);
   assert.match(reportPanel, /height: `\$\{getGraphPositionPercent\(bucket\.sharePercent, graphMaxPercent\)\}%`/);
   assert.doesNotMatch(reportPanel, /Math\.max\(36/);
-  assert.match(reportPanel, /buildMarkerStyle\(bucket\.sharePercent, bucket\.averageSharePercent, graphMaxPercent\)/);
-  assert.match(reportPanel, /Math\.max\(barPositionPercent, averagePositionPercent\) \+ graphMarkerGapPercent/);
+  assert.match(reportPanel, /buildMarkerStyle\(bucket\.sharePercent, graphMaxPercent\)/);
+  assert.match(reportPanel, /const markerPositionPercent = barPositionPercent \+ graphMarkerGapPercent/);
   assert.match(css, /\.emotion-graph__bar\s*\{[\s\S]*border-radius: 999px 999px 0 0;[\s\S]*width: 76px;[\s\S]*\}/);
   assert.doesNotMatch(css, /\.emotion-graph__bar\s*\{[\s\S]*min-height: 36px;/);
   assert.doesNotMatch(css, /\.emotion-graph__bar\s*\{[\s\S]*padding-top: 14px;/);

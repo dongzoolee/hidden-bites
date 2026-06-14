@@ -200,7 +200,7 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
                     <div
                       className="emotion-graph__marker"
                       aria-hidden="true"
-                      style={buildMarkerStyle(bucket.sharePercent, bucket.averageSharePercent, graphMaxPercent)}
+                      style={buildMarkerStyle(bucket.sharePercent, graphMaxPercent)}
                     />
                     <div className="emotion-graph__bar" style={buildBarStyle(bucket, graphMaxPercent)} />
                     <strong className="emotion-graph__bar-value" style={buildBarValueStyle(bucket, graphMaxPercent)}>
@@ -347,10 +347,9 @@ function buildBarValueStyle(bucket: AdjectiveDisplayBucket, graphMaxPercent: num
   };
 }
 
-function buildMarkerStyle(sharePercent: number, averageSharePercent: number, graphMaxPercent: number): CSSProperties {
+function buildMarkerStyle(sharePercent: number, graphMaxPercent: number): CSSProperties {
   const barPositionPercent = getGraphPositionPercent(sharePercent, graphMaxPercent);
-  const averagePositionPercent = getGraphPositionPercent(averageSharePercent, graphMaxPercent);
-  const markerPositionPercent = Math.max(barPositionPercent, averagePositionPercent) + graphMarkerGapPercent;
+  const markerPositionPercent = barPositionPercent + graphMarkerGapPercent;
 
   return {
     bottom: `${Math.min(100 - graphMarkerTopInsetPercent, markerPositionPercent)}%`

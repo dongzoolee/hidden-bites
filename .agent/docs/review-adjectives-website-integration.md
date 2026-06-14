@@ -67,8 +67,8 @@
 
 - `RestaurantReportPanel`의 bar height 계산에서 36% minimum clamp를 제거해 `sharePercent === 0`인 category는 실제 `height: 0%`로 렌더링된다.
 - bar value text를 `.emotion-graph__bar-value` absolute label로 분리해 label padding이나 min-height가 bar box height를 다시 키우지 않도록 했다.
-- `.emotion-graph__marker` 위치는 해당 category의 restaurant share와 all-50 average position 중 더 높은 기준에 `graphMarkerGapPercent`를 더해, diamond가 각 bar 위에 일정한 여백을 두고 떠 있도록 했다.
-- Regression guard: `client/test/emotion-graph-layout.test.mjs`가 minimum clamp, `min-height: 36px`, `padding-top: 14px` 재도입을 막고 marker가 `sharePercent`와 `averageSharePercent`를 함께 받는 계약을 검증한다.
+- `.emotion-graph__marker` 위치는 해당 category의 restaurant share bar top에 `graphMarkerGapPercent`를 더해, diamond가 각 bar 위에 일정한 여백을 두고 떠 있도록 했다.
+- Regression guard: `client/test/emotion-graph-layout.test.mjs`가 minimum clamp, `min-height: 36px`, `padding-top: 14px` 재도입을 막고 marker가 `sharePercent` 기반 bar position에 붙는 계약을 검증한다.
 
 ## 2026-06-14 Figma 7-category emotion taxonomy
 
