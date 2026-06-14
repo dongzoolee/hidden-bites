@@ -529,6 +529,7 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
           label: category.label,
           emoji: category.emoji,
           koreanLabel: category.koreanLabel,
+          adjectives: category.adjectives,
           count: bucket.count,
           share: round(bucket.count / totalTopAdjectiveCount, 4),
           topAdjectives: bucket.topAdjectives.sort((left, right) => right.count - left.count || left.adjective.localeCompare(right.adjective, "ko-KR"))

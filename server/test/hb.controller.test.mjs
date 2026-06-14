@@ -51,6 +51,7 @@ test("serves selected report and 404 for missing report", async () => {
     assert.equal(response.body.district, restaurants.body[0].district);
     assert.equal(response.body.adjectiveBuckets.length, 7);
     assert.ok(response.body.adjectiveBuckets.some((bucket) => bucket.count > 0));
+    assert.ok(response.body.adjectiveBuckets.every((bucket) => Array.isArray(bucket.adjectives) && bucket.adjectives.length === 10));
     assert.equal(response.body.funnyKeywords.length, 12);
     assert.ok(response.body.funnyKeywords.some((keyword) => keyword.reviewCount > 0));
   });

@@ -111,6 +111,9 @@ for (const report of reportData.reports) {
     assert.equal(typeof bucket.label, "string");
     assert.equal(typeof bucket.emoji, "string");
     assert.equal(typeof bucket.koreanLabel, "string");
+    assert.ok(Array.isArray(bucket.adjectives));
+    assert.equal(bucket.adjectives.length, 10);
+    assert.ok(bucket.adjectives.every((adjective) => typeof adjective === "string" && adjective.length > 0));
     assert.ok(bucket.count >= 0);
     assert.ok(bucket.share >= 0 && bucket.share <= 1);
     assert.ok(bucket.averageShare >= 0 && bucket.averageShare <= 1);

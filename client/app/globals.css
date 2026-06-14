@@ -1641,22 +1641,53 @@ img {
   text-underline-position: from-font;
 }
 
+.emotion-category {
+  display: grid;
+  gap: 10px;
+  margin: 44px 0;
+}
+
+.emotion-category > span {
+  color: #5b5b5b;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
 .emotion-chip-row {
+  align-items: start;
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(7, minmax(128px, 1fr));
-  margin: 44px 0;
   overflow-x: auto;
   padding-bottom: 2px;
 }
 
 .emotion-chip {
   background: var(--paper);
+  border: 0;
   border-radius: 12px;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  gap: 4px;
   min-width: 0;
   overflow: hidden;
   padding: 28px 12px 12px;
   position: relative;
+  text-align: left;
+  transition: min-height 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  width: 100%;
+}
+
+.emotion-chip:hover,
+.emotion-chip:focus-visible {
+  box-shadow: 0 8px 18px rgba(26, 19, 16, 0.14);
+  transform: translateY(-1px);
+}
+
+.emotion-chip--open {
+  min-height: 174px;
 }
 
 .emotion-chip i {
@@ -1668,7 +1699,7 @@ img {
   top: 0;
 }
 
-.emotion-chip span {
+.emotion-chip__label {
   color: var(--orange-deep);
   display: block;
   font-family: var(--font-mono);
@@ -1678,25 +1709,51 @@ img {
   text-transform: uppercase;
 }
 
-.emotion-chip strong {
-  display: block;
+.emotion-chip__summary {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  min-height: 22px;
+}
+
+.emotion-chip__summary strong {
   font-family: var(--font-korean);
   font-size: 13px;
   font-weight: 700;
   line-height: 1.06;
-  margin-top: 6px;
   overflow-wrap: anywhere;
 }
 
-.emotion-chip em {
-  color: rgba(26, 19, 16, 0.62);
+.emotion-chip__chevron {
+  color: var(--ink);
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
+}
+
+.emotion-chip__chevron--open {
+  transform: rotate(180deg);
+}
+
+.emotion-chip__words {
+  color: #3b2a20;
   display: block;
   font-family: var(--font-korean);
-  font-size: 12px;
-  font-style: normal;
-  line-height: 1.24;
-  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 17.6px;
+  max-height: 0;
+  opacity: 0;
   overflow-wrap: anywhere;
+  overflow: hidden;
+  padding-top: 0;
+  transition: max-height 180ms ease, opacity 180ms ease, padding-top 180ms ease;
+}
+
+.emotion-chip--open .emotion-chip__words {
+  max-height: 96px;
+  opacity: 1;
+  padding-top: 3px;
 }
 
 .emotion-graph {
@@ -1826,17 +1883,17 @@ img {
 }
 
 .emotion-graph__bar {
-  align-items: flex-start;
   border-radius: 999px 999px 0 0;
-  color: var(--paper);
-  display: flex;
+  width: 76px;
+}
+
+.emotion-graph__bar-value {
   font-family: var(--font-chart);
   font-size: 17.4px;
   font-weight: 700;
-  justify-content: center;
-  min-height: 36px;
-  padding-top: 14px;
-  width: 76px;
+  line-height: 1.2;
+  position: absolute;
+  z-index: 3;
 }
 
 .emotion-graph__column span,
@@ -3132,9 +3189,12 @@ img {
     justify-items: start;
   }
 
+  .emotion-category {
+    margin: 28px 0;
+  }
+
   .emotion-chip-row {
     grid-template-columns: 1fr;
-    margin: 28px 0;
   }
 
   .emotion-graph__header h5 {
@@ -3168,8 +3228,11 @@ img {
   }
 
   .emotion-graph__bar {
-    font-size: 14px;
     width: 62px;
+  }
+
+  .emotion-graph__bar-value {
+    font-size: 14px;
   }
 
   .emotion-graph__column span {

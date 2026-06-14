@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import type { AdjectiveBucket, AdjectiveEvidence, FunnyKeywordEvidence, FunnyKeywordSnippet, RestaurantReport } from "@/lib/api-types";
@@ -17,6 +18,7 @@ interface AdjectiveDisplayBucket {
   koreanLabel: string;
   sharePercent: number;
   averageSharePercent: number;
+  adjectives: string[];
   topAdjectives: AdjectiveEvidence[];
   color: string;
   textColor: string;
@@ -84,13 +86,20 @@ const adjectiveStyleById: Record<string, AdjectiveStyleConfig> = {
 
 const fallbackAdjectiveColors = ["#4d8ccf", "#3da06b", "#b22b18", "#ff5a1f", "#ffc842", "#b87fd9", "#ff8fb1"];
 const graphTickCount = 5;
+const graphMarkerGapPercent = 7;
+const graphMarkerTopInsetPercent = 7;
 
 export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: RestaurantReportPanelProps) {
   const [selectedFunnyKeywordId, setSelectedFunnyKeywordId] = useState<string>(getDefaultFunnyKeywordId(report.funnyKeywords));
+  const [openEmotionCategoryId, setOpenEmotionCategoryId] = useState<string | null>(null);
 
   useEffect(() => {
     setSelectedFunnyKeywordId(getDefaultFunnyKeywordId(report.funnyKeywords));
   }, [report.placeId, report.funnyKeywords]);
+
+  useEffect(() => {
+    setOpenEmotionCategoryId(null);
+  }, [report.placeId]);
 
   const funnyKeywordEvidence = useMemo<FunnyKeywordEvidence | null>(
     () => report.funnyKeywords.find((keyword) => keyword.id === selectedFunnyKeywordId) ?? report.funnyKeywords[0] ?? null,
@@ -131,17 +140,37 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
           </p>
         </div>
 
-        <div className="emotion-chip-row" aria-label="Review adjective buckets">
-          {adjectiveDisplayBuckets.map((bucket) => (
-            <div className="emotion-chip" key={bucket.id}>
-              <i style={{ backgroundColor: bucket.color }} />
-              <span>{bucket.chipLabel}</span>
-              <strong>
-                {bucket.emoji} {bucket.koreanLabel}
-              </strong>
-              <em>{formatTopAdjectives(bucket.topAdjectives)}</em>
-            </div>
-          ))}
+        <div className="emotion-category">
+          <span>Emotion Category</span>
+          <div className="emotion-chip-row" aria-label="Review emotion categories">
+            {adjectiveDisplayBuckets.map((bucket) => {
+              const isOpen = openEmotionCategoryId === bucket.id;
+              const wordsId = `emotion-category-words-${bucket.id}`;
+
+              return (
+                <button
+                  aria-controls={wordsId}
+                  aria-expanded={isOpen}
+                  className={isOpen ? "emotion-chip emotion-chip--open" : "emotion-chip"}
+                  key={bucket.id}
+                  type="button"
+                  onClick={() => setOpenEmotionCategoryId(isOpen ? null : bucket.id)}
+                >
+                  <i style={{ backgroundColor: bucket.color }} />
+                  <span className="emotion-chip__label">{bucket.chipLabel}</span>
+                  <span className="emotion-chip__summary">
+                    <strong>
+                      {bucket.emoji} {bucket.koreanLabel}
+                    </strong>
+                    <ChevronDown aria-hidden="true" className={isOpen ? "emotion-chip__chevron emotion-chip__chevron--open" : "emotion-chip__chevron"} size={18} />
+                  </span>
+                  <span aria-hidden={!isOpen} className="emotion-chip__words" id={wordsId}>
+                    {formatEmotionCategoryWords(bucket.adjectives)}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="emotion-graph" aria-label="Review emotion category share graph">
@@ -168,17 +197,15 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
               {adjectiveDisplayBuckets.map((bucket) => (
                 <div className="emotion-graph__column" key={bucket.id}>
                   <div className="emotion-graph__bar-wrap">
-                    <div className="emotion-graph__marker" aria-hidden="true" style={buildMarkerStyle(bucket.averageSharePercent, graphMaxPercent)} />
                     <div
-                      className="emotion-graph__bar"
-                      style={{
-                        backgroundColor: bucket.color,
-                        color: bucket.textColor,
-                        height: `${Math.max(36, (bucket.sharePercent / graphMaxPercent) * 100)}%`
-                      }}
-                    >
-                      <strong>{bucket.sharePercent.toFixed(1)}</strong>
-                    </div>
+                      className="emotion-graph__marker"
+                      aria-hidden="true"
+                      style={buildMarkerStyle(bucket.sharePercent, bucket.averageSharePercent, graphMaxPercent)}
+                    />
+                    <div className="emotion-graph__bar" style={buildBarStyle(bucket, graphMaxPercent)} />
+                    <strong className="emotion-graph__bar-value" style={buildBarValueStyle(bucket, graphMaxPercent)}>
+                      {bucket.sharePercent.toFixed(1)}
+                    </strong>
                   </div>
                   <span>{bucket.emoji}</span>
                   <b>{bucket.label}</b>
@@ -290,6 +317,7 @@ function buildAdjectiveDisplayBuckets(buckets: AdjectiveBucket[]): AdjectiveDisp
         koreanLabel: bucket.koreanLabel,
         sharePercent: bucket.share * 100,
         averageSharePercent: bucket.averageShare * 100,
+        adjectives: bucket.adjectives,
         topAdjectives: bucket.topAdjectives,
         color: style?.color ?? fallbackColor,
         textColor: style?.textColor ?? "#fff7e9"
@@ -303,10 +331,38 @@ function buildAdjectiveDisplayBuckets(buckets: AdjectiveBucket[]): AdjectiveDisp
     });
 }
 
-function buildMarkerStyle(sharePercent: number, graphMaxPercent: number): CSSProperties {
+function buildBarStyle(bucket: AdjectiveDisplayBucket, graphMaxPercent: number): CSSProperties {
   return {
-    bottom: `${Math.min(100, Math.max(0, (sharePercent / graphMaxPercent) * 100 + 7))}%`
+    backgroundColor: bucket.color,
+    height: `${getGraphPositionPercent(bucket.sharePercent, graphMaxPercent)}%`
   };
+}
+
+function buildBarValueStyle(bucket: AdjectiveDisplayBucket, graphMaxPercent: number): CSSProperties {
+  const barPositionPercent = getGraphPositionPercent(bucket.sharePercent, graphMaxPercent);
+
+  return {
+    bottom: `max(6px, calc(${barPositionPercent}% - 36px))`,
+    color: bucket.sharePercent > 0 ? bucket.textColor : "#1a1310"
+  };
+}
+
+function buildMarkerStyle(sharePercent: number, averageSharePercent: number, graphMaxPercent: number): CSSProperties {
+  const barPositionPercent = getGraphPositionPercent(sharePercent, graphMaxPercent);
+  const averagePositionPercent = getGraphPositionPercent(averageSharePercent, graphMaxPercent);
+  const markerPositionPercent = Math.max(barPositionPercent, averagePositionPercent) + graphMarkerGapPercent;
+
+  return {
+    bottom: `${Math.min(100 - graphMarkerTopInsetPercent, markerPositionPercent)}%`
+  };
+}
+
+function getGraphPositionPercent(sharePercent: number, graphMaxPercent: number): number {
+  if (graphMaxPercent <= 0) {
+    return 0;
+  }
+
+  return Math.min(100, Math.max(0, (sharePercent / graphMaxPercent) * 100));
 }
 
 function formatAddressSummary(formattedAddress: string, district: string): string {
@@ -337,6 +393,10 @@ function formatTopAdjectives(adjectives: AdjectiveEvidence[]): string {
   const topAdjectives = adjectives.slice(0, 2).map((adjective) => adjective.adjective);
 
   return topAdjectives.length > 0 ? topAdjectives.join(" · ") : "No mapped adjective";
+}
+
+function formatEmotionCategoryWords(adjectives: string[]): string {
+  return adjectives.join(" · ");
 }
 
 function buildFunnyKeywordFooter(snippet: FunnyKeywordSnippet, keyword: FunnyKeywordEvidence): string {

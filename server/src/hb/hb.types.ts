@@ -81,6 +81,7 @@ export interface AdjectiveBucket {
   share: number;
   averageShare: number;
   koreanLabel: string;
+  adjectives: string[];
   topAdjectives: AdjectiveEvidence[];
 }
 
