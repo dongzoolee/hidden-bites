@@ -101,7 +101,7 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /--font-airbnb-extra-bold: "AirbnbCereal_W_XBd", "Airbnb Cereal", var\(--font-body\);/);
   assert.match(css, /body\s*\{[\s\S]*font-family: var\(--font-body\);/);
   assert.match(css, /\.hero-poster h1,[\s\S]*\.story-footer h2\s*\{[\s\S]*font-family: var\(--font-display\);/);
-  assert.match(css, /\.story-section--hero\s*\{[\s\S]*padding-left: 2rem;[\s\S]*padding-right: 2rem;/);
+  assert.match(css, /\.story-section--hero\s*\{[\s\S]*padding-left: clamp\(2rem, 6vw, 5\.5rem\);[\s\S]*padding-right: clamp\(2rem, 6vw, 5\.5rem\);/);
   assert.match(css, /\.story-section--hero \.story-nav\s*\{[\s\S]*gap: 0;[\s\S]*justify-content: flex-start;[\s\S]*margin-bottom: clamp\(5rem, 7vw, 6\.75rem\);/);
   assert.match(css, /\.story-section--hero \.story-brand\s*\{\s*display: block;\s*\}/);
   assert.match(css, /\.story-section--hero \.story-nav__links\s*\{[\s\S]*flex-wrap: nowrap;[\s\S]*justify-content: flex-start;[\s\S]*margin-left: clamp\(1\.25rem, 2vw, 2\.15rem\);/);
@@ -124,7 +124,7 @@ test("client implements the required story surfaces", async () => {
   assert.match(css, /\.section-kicker,[\s\S]*\.control-label\s*\{[\s\S]*font-family: var\(--font-mono\);/);
   assert.match(css, /\.score-axis-label\s*\{[\s\S]*font-family: var\(--font-chart\);/);
   assert.match(css, /\.report-section-heading h4\s*\{[\s\S]*font-family: var\(--font-airbnb-extra-bold\);/);
-  assert.match(css, /\.selected-restaurant-dropdown\s*\{[\s\S]*max-width: min\(100%, 750px\);[\s\S]*position: relative;/);
+  assert.match(css, /\.selected-restaurant-dropdown\s*\{[\s\S]*max-width: none;[\s\S]*min-width: 750px;[\s\S]*position: relative;[\s\S]*width: max-content;/);
   assert.match(css, /\.selected-restaurant-dropdown__button\s*\{[\s\S]*background: var\(--orange\);[\s\S]*color: var\(--paper\);[\s\S]*font-family: var\(--font-display\);/);
   assert.match(css, /\.selected-restaurant-dropdown__button::before\s*\{[\s\S]*border-top: clamp\([^;]+ solid var\(--paper\);/);
   assert.match(css, /\.selected-restaurant-dropdown__menu\s*\{[\s\S]*position: absolute;[\s\S]*z-index: 20;/);

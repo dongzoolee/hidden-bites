@@ -33,7 +33,7 @@
   - 모든 report에 `adjectiveBuckets.length === 4`가 있다.
   - `emotionBuckets`는 report payload에 남지 않는다.
 - server test는 selected report API가 4개 adjective bucket을 반환하는지 확인한다.
-- client test는 4개 adjective graph, all-50 average marker, top adjective label, 기존 keyword chip/snippet footer 계약을 확인한다.
+- client test는 4개 emotion graph column, all-50 average marker, top adjective label, graph y-scroll 제거, 0% baseline alignment, 기존 keyword chip/snippet footer 계약을 확인한다.
 
 ## 실행한 검증
 
@@ -49,3 +49,10 @@
 
 - `top30_adjs` 필드명은 최종 JSON에 그대로 남아 있지만 실제 데이터는 식당별 top10 adjective로 취급한다.
 - GraphQL, Prisma, client codegen 변경은 없다.
+
+## 2026-06-14 emotion graph UI correction
+
+- `RestaurantReportPanel`의 graph eyebrow를 `Adjective Graph`에서 `Emotion Graph`로 변경했다.
+- `.emotion-graph__plot`에 `overflow-y: hidden`을 추가해 graph area에 세로 scrollbar가 생기지 않도록 했다.
+- bar grid item 정렬을 top-start로 바꾸고 desktop `325px`, mobile `293.333px` bar wrap height를 사용해 각 bar의 bottom edge가 0% grid line과 일치하도록 조정했다.
+- `client/test/emotion-graph-layout.test.mjs`를 추가해 label, y-scroll 제거, desktop/mobile 0% baseline alignment 계약을 고정했다.

@@ -120,9 +120,9 @@ export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: Re
           ))}
         </div>
 
-        <div className="emotion-graph" aria-label="Review adjective category share graph">
+        <div className="emotion-graph" aria-label="Review emotion category share graph">
           <div className="emotion-graph__header">
-            <span>Adjective Graph</span>
+            <span>Emotion Graph</span>
             <h5>
               <strong>{formatGraphRestaurantName(report.displayPlaceName)}</strong>
               <span> — category share (%)</span>

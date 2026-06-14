@@ -1,5 +1,45 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-14 Q&A formula card indentation
+
+- `How we picked the top 50.` 답변의 formula 카드가 답변 본문보다 왼쪽으로 붙어 보이던 문제를 수정했다.
+- `.qna__answer`에 `--qna-answer-content-offset: 4.5rem` 계약을 두고 답변 본문과 `.qna-formula`가 같은 left offset을 공유한다.
+- Formula 카드는 기존 `fit-content` 폭을 유지하되 desktop에서는 `max-width: min(calc(100% - var(--qna-answer-content-offset)), 42.4375rem)`로 offset만큼의 가로 공간을 보정한다.
+- Mobile에서는 `--qna-answer-content-offset: 0`, `.qna-formula { margin-left: 0; max-width: 100%; }`로 좁은 화면 clipping을 막는다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 desktop formula indentation과 mobile reset 계약을 검증한다.
+
+## 2026-06-14 QnA card description wrapping correction
+
+- QnA platform card description의 의도적인 개행을 제거했다.
+- `QnaCard.bodyLines`와 `.qna-card__line` 렌더링/CSS 계약을 제거하고, Google/Naver/Kakao Map card는 `body` 문자열 하나로 자연스럽게 wrapping되도록 했다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 QnA card에서 `bodyLines`와 `.qna-card__line`이 재도입되지 않고 Naver/Kakao 설명이 단일 body 문자열로 유지되는지 검증한다.
+
+## 2026-06-14 Hero horizontal section padding
+
+- Hero section의 좌우 padding을 다른 `.story-section`과 같은 `clamp(2rem, 6vw, 5.5rem)` 값으로 맞췄다.
+- 기존 hero 상하 padding, nav layout, title scale, colored dot 위치 계약은 유지했다.
+- Regression guard: `client/test/client-contract.test.mjs`가 hero left/right padding이 공통 섹션 horizontal padding과 동일한 clamp 값인지 검증한다.
+
+## 2026-06-14 Q&A description title flow
+
+- `5 - 1 · Q&A` 섹션의 description이 desktop에서 title 오른쪽 column에 배치되던 `split-heading` 2-column 계약을 제거했다.
+- `.split-heading`은 단일 grid column과 `max-width: min(100%, 62rem)`을 사용해 다른 story heading처럼 title 바로 아래에 description이 이어진다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 단일 column heading 계약과 이전 2-column grid 계약 금지를 검증한다.
+
+## 2026-06-14 HB Scores kicker color update
+
+- `5 - 2 · HB Scores` 섹션 키커만 scores section orange background 위에서 `#ffc842` 글자색을 사용하도록 `.story-section--scores .section-kicker` override를 추가했다.
+- 전역 `.section-kicker` 색은 유지해 Q&A, report, limitations 등 다른 섹션의 기존 색상 계약은 바꾸지 않았다.
+- Regression guard: `client/test/score-heading-copy.test.mjs`가 HB Scores prompt copy와 scores section kicker의 exact `#ffc842` 색상 override를 함께 검증한다.
+
+## 2026-06-14 Report description two-line layout
+
+- Selected restaurant report heading의 description을 `.selected-heading__description` 그룹으로 묶었다.
+- Desktop에서는 `.selected-heading`과 `.selected-heading__description` 폭을 `min(100%, 112rem)`로 넓히고, 각 description 문단에 `white-space: nowrap`을 적용해 첫 문장과 두 번째 문장이 각각 한 줄씩만 차지하도록 했다.
+- `max-width: 1100px`에 걸려 첫 문장이 `original reviews.` 앞에서 개행되던 상태를 제거했다.
+- `max-width: 1100px` 이하 responsive 구간에서는 description 문단의 `white-space`를 `normal`로 되돌려 좁은 화면에서 가로 clipping이 생기지 않게 했다.
+- Regression guard: `client/test/report-section-figma-parity.test.mjs`가 description wrapper, 두 문장 순서, desktop `112rem` 폭, desktop `nowrap`, tablet/mobile `normal` override를 검증한다.
+
 ## 2026-06-03 Hero title and decoration parity fix
 
 - Hero title이 Figma 첨부 기준보다 절반 폭으로 작게 보이던 원인을 `hero-poster`의 `max-width: 64rem`과 `story-nav` flow margin으로 확인했다.
@@ -79,6 +119,14 @@
 - `Selected:` report heading dropdown이 공통 `.restaurant-select` 규칙에 의해 paper background와 paper text 조합이 되어 글자가 보이지 않던 문제를 수정했다.
 - `.selected-heading__select.restaurant-select`를 공통 select 규칙 뒤에 배치해 Figma처럼 orange filled dropdown, paper text, large rounded surface, custom triangle indicator를 유지하도록 했다.
 - `client/test/client-contract.test.mjs`에 selected heading dropdown의 cascade order, orange/text contrast, native appearance 제거 계약을 추가했다.
+
+### 2026-06-14 Selected dropdown restaurant name overflow
+
+- `Selected:` report heading의 custom restaurant dropdown에서 선택된 식당명이 `750px` max width와 `text-overflow: ellipsis` 때문에 잘리던 문제를 수정했다.
+- `.selected-restaurant-dropdown`과 `.selected-restaurant-dropdown__button`은 명시 minimum width를 유지하되 `width: max-content`로 실제 식당명 길이가 더 길면 가로로 확장된다.
+- 선택된 식당명 span과 option strong은 `overflow: visible`, `text-overflow: clip`, `white-space: nowrap` 계약으로 바뀌어 이름을 말줄임하지 않는다.
+- Mobile media query에서는 minimum width를 `32rem`으로 낮추되 긴 이름은 동일하게 content width까지 확장된다.
+- Regression guard: `client/test/selected-restaurant-dropdown-overflow.test.mjs`가 selected dropdown의 max-content width, visible overflow, ellipsis 제거 계약을 검증한다.
 
 ## 2026-06-03 Score mode toggle contrast fix
 
@@ -200,11 +248,11 @@
 - User가 다시 제공한 Figma node `313:9287`의 전체 metadata/design context/screenshot과 read-only inspection은 120초 timeout이 발생했다.
 - 첨부된 Figma crop을 기준으로 Q1의 Google Maps / Naver Map / Kakao Map 비교 카드를 다시 맞췄다.
 - Platform card의 이전 meta row와 한국어 body copy를 제거하고, Figma crop의 영어 문구와 quoted Naver/Kakao 설명을 반영했다.
-- Platform card body는 원문 `body`를 유지하면서 Figma crop과 같은 두 줄 구성을 위해 `bodyLines`를 추가하고, line span을 nowrap으로 렌더링한다.
+- Platform card body는 `body` 단일 문자열로 렌더링하며, 의도적인 line span 없이 card width에 맞춰 자연스럽게 wrapping된다.
 - Platform card body font는 Figma crop의 line width에 맞도록 기존 `Airbnb Cereal` webfont를 사용한다.
 - Card title 앞 원형 marker를 CSS pseudo-element로 추가하고, desktop에서 Figma 비율에 맞게 card radius, min-height, padding, title/body font-size, row gap을 clamp 값으로 조정했다.
 - QnA answer의 platform card row는 더 이상 prefix 영역이나 section padding 안쪽에 갇히지 않도록 desktop에서 viewport full-bleed로 배치하고, answer paragraph만 desktop에서 들여쓰기한다.
-- Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄이고 `bodyLines` nowrap을 해제해 text clipping을 방지한다.
+- Mobile에서는 card stack 시 title marker, title/body font-size, padding, paragraph indent를 줄이고 body paragraph가 자연스럽게 wrapping되도록 해 text clipping을 방지한다.
 - Regression guard: `client/test/qna-figma-accordion.test.mjs`가 exact platform copy, old meta/Korean copy 제거, marker pseudo-element, Figma crop card sizing, mobile override를 검증한다.
 
 ### 2026-06-05 Formula pill radius and typography correction
@@ -353,7 +401,8 @@
 - `Explore another restaurant`는 restaurant selector가 아니라 button으로 바꾸고, 클릭 시 `selected-restaurant-picker`로 smooth scroll 후 dropdown button에 focus한다.
 - `RestaurantReportPanel` header는 restaurant name title 아래에 restaurant info row를 배치하고, right-most rating block은 실제 `★★★★★`와 Figma에서 확인한 `Bowlby One` display rating을 사용한다.
 - `The Review Adjectives` subtitle은 Figma copy인 `Macro analysis: Categories were defined by selecting the top 10 most frequent adjectives for each emotion.`으로 맞췄고, `by selecting the top 10 most frequent adjective` 구간은 bold underline 처리했다.
-- Emotion graph는 현재 derived report schema가 제공하는 5개 emotion bucket을 보존하면서 Figma의 graph header, y-axis ticks, grid lines, rounded bars, diamond markers, emoji/English/Korean labels 구조로 재구성했다.
+- Emotion graph는 현재 derived report schema가 제공하는 4개 adjective bucket을 emotion bucket display로 렌더링하면서 Figma의 graph header, y-axis ticks, grid lines, rounded bars, diamond markers, emoji/English/Korean labels 구조로 재구성했다.
+- 2026-06-14 correction: graph eyebrow는 `Emotion Graph`로 표시하고, plot area는 세로 scrollbar 없이 bar grid item을 top-start로 정렬해 desktop/mobile bar bottom edge가 0% grid line에 맞도록 조정했다.
 - `The Unique & Fun Keywords` subtitle에서 `Click a keyword chip`을 bold underline 처리했다.
 - Review quote grid는 2x2 layout, 22px radius, Figma tone colors를 사용하고 footer는 author/rating metadata 대신 `KEYWORD: a · b · c` 형태로 렌더링한다.
 - Regression guard: `client/test/report-section-figma-parity.test.mjs`가 selected dropdown, explorer button scroll/focus, report header/rating typography, adjective subtitle, emotion graph structure, keyword subtitle, snippet footer/radius를 검증한다.
@@ -361,10 +410,9 @@
 ### 2026-06-06 QnA platform card text overflow fix
 
 - `Why we chose Google Maps — not Naver or Kakao.` answer의 platform comparison cards에서 Google Maps body text가 dark featured card 오른쪽을 넘어가던 문제를 수정했다.
-- Google Maps와 Naver Map의 `bodyLines`를 card content width 기준으로 다시 나누어 2048px desktop에서 수동 line composition이 card padding 안에 남도록 했다.
+- Google Maps와 Naver Map의 platform card body는 수동 line composition 없이 단일 문자열로 유지한다.
 - `.qna-card`와 body paragraph에 `min-width: 0`, `max-width: 100%`, `overflow-wrap: anywhere`를 추가해 grid column 안에서 text intrinsic width가 card를 밀어내지 않도록 했다.
-- 1600px 이하에서는 `.qna-card__line`의 `nowrap`을 해제해 1440px desktop, tablet, mobile에서도 text가 card 내부에서 자연스럽게 wrapping된다.
-- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 overflow-safe `bodyLines`, card `min-width`, body wrapping, 1600px breakpoint 계약을 검증한다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 card `min-width`, body wrapping, `bodyLines`/`.qna-card__line` 재도입 금지 계약을 검증한다.
 - Verification:
   - `yarn --cwd client test`
   - `yarn --cwd client typecheck`

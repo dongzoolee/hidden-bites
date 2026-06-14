@@ -304,8 +304,10 @@ export function HiddenBitesExperience() {
         <div className="selected-heading" id={selectedRestaurantPickerId}>
           <h2>Selected:</h2>
           <SelectedRestaurantDropdown restaurants={data.restaurants} selectedPlaceId={selectedRestaurant?.placeId ?? selectedPlaceId ?? ""} onSelectPlace={handleSelectRestaurant} />
-          <p>The report links macro emotional adjective patterns with micro keyword evidence from original reviews.</p>
-          <p>Selecting another dot in HB Scores would refresh this panel.</p>
+          <div className="selected-heading__description">
+            <p>The report links macro emotional adjective patterns with micro keyword evidence from original reviews.</p>
+            <p>Selecting another dot in HB Scores would refresh this panel.</p>
+          </div>
         </div>
         {report ? (
           <RestaurantReportPanel report={report} onExploreAnotherRestaurant={handleExploreAnotherRestaurant} />
@@ -518,20 +520,17 @@ function buildQnaItems(): QnaAccordionItem[] {
         {
           title: "Google Maps",
           body: "Star ratings, review counts, and a blend of local/international user insights",
-          bodyLines: ["Star ratings, review counts, and a blend of", "local/international user insights"],
           tone: "yellow",
           variant: "featured"
         },
         {
           title: "Naver Map",
           body: "\"High volume of promotional content. Lack of star ratings limits quantitative analysis.\"",
-          bodyLines: ["\"High volume of promotional content. Lack", "of star ratings limits quantitative analysis.\""],
           tone: "yellow"
         },
         {
           title: "Kakao Map",
           body: "\"Insufficient review volume hindered reliable selection of the top 50 list.\"",
-          bodyLines: ["\"Insufficient review volume hindered reliable", "selection of the top 50 list.\""],
           tone: "yellow"
         }
       ]

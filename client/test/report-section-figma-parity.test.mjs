@@ -13,6 +13,8 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(experience, /document\.getElementById\(selectedRestaurantDropdownButtonId\)\?\.focus\(\{ preventScroll: true \}\)/);
   assert.match(experience, /aria-haspopup="listbox"/);
   assert.match(experience, /role="listbox"/);
+  assert.match(experience, /className="selected-heading__description"/);
+  assert.match(experience, /The report links macro emotional adjective patterns with micro keyword evidence from original reviews\.<\/p>\s*<p>Selecting another dot in HB Scores would refresh this panel\.<\/p>/);
   assert.doesNotMatch(experience, /id="selected-report-restaurant-select"|selected-heading__select restaurant-select/);
 
   assert.ok(reportPanel.indexOf("<h3>{report.displayPlaceName}</h3>") < reportPanel.indexOf("restaurant-report-meta"));
@@ -30,7 +32,7 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(reportPanel, /return `CATEGORY: \$\{keyword\.label\} · MATCH: \$\{snippet\.matchedTerms\.slice\(0, 5\)\.join\(" · "\)\}`/);
   assert.doesNotMatch(reportPanel, /buildKeywordFooter|keywordEvidence|selectedKeyword|report\.keywords\.map/);
   assert.match(reportPanel, /className="emotion-graph__header"/);
-  assert.match(reportPanel, /Adjective Graph/);
+  assert.match(reportPanel, /Emotion Graph/);
   assert.match(reportPanel, /category share \(%\)/);
   assert.match(reportPanel, /vs all-50 average/);
   assert.match(reportPanel, /className="emotion-graph__marker"/);
@@ -40,6 +42,10 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.doesNotMatch(reportPanel, /<select|ExternalLink|googleMapsUri|restaurant-select/);
 
   assert.match(css, /\.selected-restaurant-dropdown__menu\s*\{[\s\S]*font-size: 16px;|\.selected-restaurant-dropdown__option strong\s*\{[\s\S]*font-size: 16px;/);
+  assert.match(css, /\.selected-heading\s*\{[\s\S]*max-width: min\(100%, 112rem\);/);
+  assert.match(css, /\.selected-heading__description\s*\{[\s\S]*display: grid;[\s\S]*max-width: min\(100%, 112rem\);/);
+  assert.match(css, /\.selected-heading__description p\s*\{[\s\S]*max-width: none;[\s\S]*white-space: nowrap;/);
+  assert.match(css, /@media \(max-width: 1100px\)[\s\S]*\.selected-heading__description p\s*\{[\s\S]*white-space: normal;/);
   assert.match(css, /\.restaurant-report-meta\s*\{[\s\S]*font-family: var\(--font-mono\);[\s\S]*white-space: nowrap;/);
   assert.match(css, /\.restaurant-rating span\s*\{[\s\S]*font-family: var\(--font-body\);[\s\S]*font-size: 22px;[\s\S]*letter-spacing: 1px;/);
   assert.match(css, /\.restaurant-rating strong\s*\{[\s\S]*font-family: var\(--font-display\);[\s\S]*font-size: 44px;[\s\S]*line-height: 44px;/);
@@ -47,7 +53,7 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(css, /\.funny-keyword-summary\s*\{[\s\S]*font-family: var\(--font-mono\);/);
   assert.match(css, /\.emotion-chip-row\s*\{[\s\S]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/);
   assert.match(css, /\.emotion-chip em\s*\{[\s\S]*font-family: var\(--font-korean\);/);
-  assert.match(css, /\.emotion-graph__plot\s*\{[\s\S]*height: 480px;[\s\S]*overflow-x: auto;/);
+  assert.match(css, /\.emotion-graph__plot\s*\{[\s\S]*height: 480px;[\s\S]*overflow-x: auto;[\s\S]*overflow-y: hidden;/);
   assert.match(css, /\.emotion-graph__grid span\s*\{[\s\S]*border-top: 2px solid rgba\(26, 19, 16, 0\.12\);/);
   assert.match(css, /\.emotion-graph__marker\s*\{[\s\S]*transform: rotate\(45deg\);/);
   assert.match(css, /\.emotion-graph__bar\s*\{[\s\S]*border-radius: 999px 999px 0 0;[\s\S]*font-family: var\(--font-chart\);/);

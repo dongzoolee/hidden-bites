@@ -183,8 +183,8 @@ img {
 .story-section--hero {
   min-height: auto;
   padding-bottom: clamp(2rem, 4vw, 3rem);
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: clamp(2rem, 6vw, 5.5rem);
+  padding-right: clamp(2rem, 6vw, 5.5rem);
   padding-top: clamp(1.8rem, 3vw, 2.6rem);
 }
 
@@ -515,9 +515,10 @@ img {
 
 .split-heading {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 0.65fr);
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr);
   margin: 0 0 2rem;
+  max-width: min(100%, 62rem);
 }
 
 .split-heading h2 span,
@@ -627,6 +628,7 @@ img {
 }
 
 .qna__answer {
+  --qna-answer-content-offset: 4.5rem;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -650,7 +652,7 @@ img {
   color: inherit;
   font-size: 1rem;
   line-height: 1.55;
-  margin: 0 0 0 4.5rem;
+  margin: 0 0 0 var(--qna-answer-content-offset);
   max-width: 62rem;
 }
 
@@ -722,13 +724,6 @@ img {
   overflow-wrap: anywhere;
 }
 
-.qna-card__line {
-  display: block;
-  max-width: 100%;
-  overflow-wrap: normal;
-  white-space: nowrap;
-}
-
 .qna-card--featured p {
   color: #e9dcc8;
 }
@@ -739,8 +734,9 @@ img {
   color: var(--ink);
   display: grid;
   gap: 6px;
+  margin-left: var(--qna-answer-content-offset);
   margin-top: 1rem;
-  max-width: min(100%, 42.4375rem);
+  max-width: min(calc(100% - var(--qna-answer-content-offset)), 42.4375rem);
   padding: 18px 20px;
   width: fit-content;
 }
@@ -775,6 +771,10 @@ img {
 .story-section--scores {
   background: var(--orange);
   color: var(--paper);
+}
+
+.story-section--scores .section-kicker {
+  color: #ffc842;
 }
 
 .score-heading {
@@ -1411,17 +1411,30 @@ img {
 
 .selected-heading {
   margin-bottom: 56px;
-  max-width: 1100px;
+  max-width: min(100%, 112rem);
+  overflow: visible;
 }
 
 .selected-heading h2 {
   margin-bottom: 12px;
 }
 
+.selected-heading__description {
+  display: grid;
+  max-width: min(100%, 112rem);
+}
+
+.selected-heading__description p {
+  max-width: none;
+  white-space: nowrap;
+}
+
 .selected-restaurant-dropdown {
   margin-bottom: 18px;
-  max-width: min(100%, 750px);
+  max-width: none;
+  min-width: 750px;
   position: relative;
+  width: max-content;
   z-index: 8;
 }
 
@@ -1439,11 +1452,12 @@ img {
   justify-content: flex-start;
   line-height: 0.98;
   min-height: clamp(5.2rem, 9vw, 8.2rem);
-  overflow: hidden;
+  min-width: 750px;
+  overflow: visible;
   padding: clamp(1rem, 2vw, 1.65rem) clamp(1rem, 2vw, 2rem) clamp(1rem, 2vw, 1.75rem) clamp(4.7rem, 7vw, 6.8rem);
   position: relative;
   text-align: left;
-  width: 100%;
+  width: max-content;
 }
 
 .selected-restaurant-dropdown__button::before {
@@ -1460,8 +1474,10 @@ img {
 
 .selected-restaurant-dropdown__button span {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 0 0 auto;
+  min-width: max-content;
+  overflow: visible;
+  text-overflow: clip;
   white-space: nowrap;
 }
 
@@ -1479,11 +1495,13 @@ img {
   gap: 4px;
   left: 0;
   max-height: min(380px, 56vh);
+  min-width: 100%;
   overflow: auto;
   padding: 10px;
   position: absolute;
-  right: 0;
+  right: auto;
   top: calc(100% + 8px);
+  width: max-content;
   z-index: 20;
 }
 
@@ -1496,16 +1514,18 @@ img {
   display: grid;
   gap: 2px;
   min-height: 56px;
+  min-width: max-content;
   padding: 8px 14px;
   text-align: left;
+  width: 100%;
 }
 
 .selected-restaurant-dropdown__option strong {
   font-family: var(--font-airbnb-bold);
   font-size: 16px;
   font-weight: 700;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
   white-space: nowrap;
 }
 
@@ -1723,6 +1743,7 @@ img {
 .emotion-graph__plot {
   height: 480px;
   overflow-x: auto;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -1761,7 +1782,7 @@ img {
 }
 
 .emotion-graph__bars {
-  align-items: end;
+  align-items: start;
   bottom: 0;
   display: grid;
   gap: 32px;
@@ -1770,7 +1791,7 @@ img {
   min-width: 560px;
   position: absolute;
   right: 40px;
-  top: 44px;
+  top: 0;
 }
 
 .emotion-graph__column {
@@ -2712,13 +2733,6 @@ img {
   }
 }
 
-@media (max-width: 1600px) {
-  .qna-card__line {
-    overflow-wrap: anywhere;
-    white-space: normal;
-  }
-}
-
 @media (max-width: 1380px) {
   .score-lab {
     grid-template-columns: 1fr;
@@ -2784,6 +2798,10 @@ img {
 
   .restaurant-rating {
     justify-items: start;
+  }
+
+  .selected-heading__description p {
+    white-space: normal;
   }
 }
 
@@ -2923,6 +2941,7 @@ img {
   }
 
   .qna__answer {
+    --qna-answer-content-offset: 0;
     padding: 0 0.9rem;
   }
 
@@ -2975,10 +2994,6 @@ img {
     width: 1rem;
   }
 
-  .qna-card__line {
-    white-space: normal;
-  }
-
   .limitation-card {
     border-radius: 1.75rem;
     min-height: 0;
@@ -2995,6 +3010,7 @@ img {
 
   .qna-formula {
     border-radius: 20px;
+    margin-left: 0;
     max-width: 100%;
   }
 
@@ -3074,13 +3090,15 @@ img {
   }
 
   .selected-restaurant-dropdown {
-    max-width: 100%;
+    max-width: none;
+    min-width: 32rem;
   }
 
   .selected-restaurant-dropdown__button {
     border-radius: 1rem;
     font-size: clamp(1.7rem, 8.5vw, 2.9rem);
     min-height: 4.9rem;
+    min-width: 32rem;
     padding-left: 3.6rem;
   }
 
@@ -3138,12 +3156,12 @@ img {
   }
 
   .emotion-graph__column {
-    grid-template-rows: 270px 24px 18px 18px 34px;
+    grid-template-rows: 293.333px 24px 18px 18px 34px;
     min-width: 70px;
   }
 
   .emotion-graph__bar-wrap {
-    height: 270px;
+    height: 293.333px;
     width: 68px;
   }
 
