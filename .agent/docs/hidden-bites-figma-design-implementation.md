@@ -448,3 +448,13 @@
 - `client/app/layout.tsx`의 루트 metadata에 기존 `title`과 `description`을 유지하면서 `openGraph.title`, `openGraph.description`, `siteName`, `type`, `locale`을 추가했다.
 - `client/app/map/page.tsx`의 standalone map metadata에도 route-specific `openGraph.title`과 `openGraph.description`을 추가해 공유 preview가 Hidden Bites 문맥을 갖도록 했다.
 - Regression guard: `client/test/seo-metadata.test.mjs`가 루트 layout과 `/map` 라우트의 title, description, Open Graph title, Open Graph description 계약을 검증한다.
+
+### 2026-06-14 Open Graph image metadata update
+
+- `client/public/open_graph.png`를 social preview 이미지 자산으로 채택했다.
+- `client/lib/social-preview.ts`에 production metadata base `https://hidden-bites.leed.at`, preview image URL, 1200x630 dimensions, alt text를 고정했다.
+- `client/app/layout.tsx`와 `client/app/map/page.tsx`는 같은 preview image를 `openGraph.images`와 Twitter `summary_large_image` metadata에 사용한다.
+- Regression guard: `client/test/seo-metadata.test.mjs`가 루트와 `/map` metadata의 image 연결, production metadata base, PNG signature, 1200x630 dimensions를 검증한다.
+- Verification: `yarn test`, `yarn typecheck`, `yarn lint`, `yarn build:web`, `git diff --check`가 통과했다.
+- Local static export verification: `http://localhost:8096/`와 `/map/`는 `https://hidden-bites.leed.at/open_graph.png`를 `og:image`와 `twitter:image`로 출력했고, `http://localhost:8096/open_graph.png`는 200 `image/png`로 응답했다.
+- Production check: `https://hidden-bites.leed.at/open_graph.png`는 변경 배포 전 상태에서 403을 반환했다. 다음 client deploy가 `client/public/open_graph.png`를 S3/CloudFront public asset으로 올려야 한다.

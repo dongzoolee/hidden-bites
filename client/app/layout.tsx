@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { siteUrl, socialPreviewImage, socialPreviewImageUrl } from "@/lib/social-preview";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: "Hidden Bites",
   description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores.",
   openGraph: {
@@ -9,7 +11,14 @@ export const metadata: Metadata = {
     description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores.",
     siteName: "Hidden Bites",
     type: "website",
-    locale: "en_US"
+    locale: "en_US",
+    images: [socialPreviewImage]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hidden Bites",
+    description: "Google top 50 Seoul restaurants recalculated by Hidden Bites factor scores.",
+    images: [socialPreviewImageUrl]
   },
   icons: {
     icon: [{ url: "/favicon.png", sizes: "64x64", type: "image/png" }],

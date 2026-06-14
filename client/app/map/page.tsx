@@ -1,9 +1,11 @@
 import { KakaoMap } from "@/components/KakaoMap";
 import topRestaurantsData from "@/data/top-restaurants-locations.json";
 import type { RestaurantSummary } from "@/lib/api-types";
+import { siteUrl, socialPreviewImage, socialPreviewImageUrl } from "@/lib/social-preview";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: "Seoul Top 50 Restaurants",
   description: "Distribution of the top 50 restaurants in Seoul on Kakao Map",
   openGraph: {
@@ -11,8 +13,15 @@ export const metadata: Metadata = {
     description: "Explore the Seoul top 50 restaurant distribution on a Kakao Map powered by Hidden Bites location data.",
     siteName: "Hidden Bites",
     type: "website",
-    locale: "en_US"
+    locale: "en_US",
+    images: [socialPreviewImage]
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Seoul Top 50 Restaurants | Hidden Bites",
+    description: "Explore the Seoul top 50 restaurant distribution on a Kakao Map powered by Hidden Bites location data.",
+    images: [socialPreviewImageUrl]
+  }
 };
 
 interface TopRestaurantsData {
