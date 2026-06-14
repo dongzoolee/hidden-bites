@@ -289,7 +289,10 @@ export function HiddenBitesExperience() {
         <div className="score-heading">
           <h2>HB Scores: re-scoring Hidden Bites</h2>
           <p>
-            <strong>Drag a slider.</strong> The chart recalculates Google&apos;s star points using only the factor weights you care about; the highlighted dot is the
+            <strong>
+              <u>Drag a slider</u>.
+            </strong>{" "}
+            The chart recalculates Google&apos;s star points using only the factor weights you care about; the highlighted dot is the
             top pick under your current preference.
           </p>
         </div>
