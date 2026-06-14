@@ -56,3 +56,4 @@
 - `.emotion-graph__plot`에 `overflow-y: hidden`을 추가해 graph area에 세로 scrollbar가 생기지 않도록 했다.
 - bar grid item 정렬을 top-start로 바꾸고 desktop `325px`, mobile `293.333px` bar wrap height를 사용해 각 bar의 bottom edge가 0% grid line과 일치하도록 조정했다.
 - `client/test/emotion-graph-layout.test.mjs`를 추가해 label, y-scroll 제거, desktop/mobile 0% baseline alignment 계약을 고정했다.
+- Browser DOM verification에서 desktop `2048x1100`, mobile `390x844` 모두 `Emotion Graph`, `overflow-y: hidden`, `hasVerticalScrollbar=false`, bar bottom과 0% line delta `0px`를 확인했다.
