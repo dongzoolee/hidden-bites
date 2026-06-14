@@ -26,6 +26,8 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(reportPanel, /buildAdjectiveDisplayBuckets\(report\.adjectiveBuckets\)/);
   assert.match(reportPanel, /averageSharePercent: bucket\.averageShare \* 100/);
   assert.match(reportPanel, /buildMarkerStyle\(bucket\.averageSharePercent, graphMaxPercent\)/);
+  assert.match(reportPanel, /relief:\s*\{[\s\S]*label: "Relief"[\s\S]*color: "#4d8ccf"/);
+  assert.match(reportPanel, /regret:\s*\{[\s\S]*label: "Regret"[\s\S]*color: "#ff8fb1"/);
   assert.match(reportPanel, /<strong>Click a funny category chip<\/strong>/);
   assert.match(reportPanel, /report\.funnyKeywords\.map\(\(keyword\) =>/);
   assert.match(reportPanel, /buildFunnyKeywordFooter\(snippet, funnyKeywordEvidence\)/);
@@ -51,9 +53,10 @@ test("selected report section follows the Figma interaction and visual contract"
   assert.match(css, /\.restaurant-rating strong\s*\{[\s\S]*font-family: var\(--font-display\);[\s\S]*font-size: 44px;[\s\S]*line-height: 44px;/);
   assert.match(css, /\.report-section-heading p strong\s*\{[\s\S]*font-weight: 800;[\s\S]*text-decoration: underline;/);
   assert.match(css, /\.funny-keyword-summary\s*\{[\s\S]*font-family: var\(--font-mono\);/);
-  assert.match(css, /\.emotion-chip-row\s*\{[\s\S]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/);
+  assert.match(css, /\.emotion-chip-row\s*\{[\s\S]*grid-template-columns: repeat\(7, minmax\(128px, 1fr\)\);[\s\S]*overflow-x: auto;/);
   assert.match(css, /\.emotion-chip em\s*\{[\s\S]*font-family: var\(--font-korean\);/);
   assert.match(css, /\.emotion-graph__plot\s*\{[\s\S]*height: 480px;[\s\S]*overflow-x: auto;[\s\S]*overflow-y: hidden;/);
+  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*grid-template-columns: repeat\(7, 1fr\);[\s\S]*min-width: 980px;/);
   assert.match(css, /\.emotion-graph__grid span\s*\{[\s\S]*border-top: 2px solid rgba\(26, 19, 16, 0\.12\);/);
   assert.match(css, /\.emotion-graph__marker\s*\{[\s\S]*transform: rotate\(45deg\);/);
   assert.match(css, /\.emotion-graph__bar\s*\{[\s\S]*border-radius: 999px 999px 0 0;[\s\S]*font-family: var\(--font-chart\);/);

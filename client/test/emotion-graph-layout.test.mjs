@@ -12,9 +12,13 @@ test("emotion graph label and bar baseline layout stay aligned", async () => {
 
   assert.match(css, /\.emotion-graph__plot\s*\{[\s\S]*height: 480px;[\s\S]*overflow-x: auto;[\s\S]*overflow-y: hidden;[\s\S]*position: relative;/);
   assert.match(css, /\.emotion-graph__grid\s*\{[\s\S]*bottom: 90px;[\s\S]*grid-template-rows: repeat\(6, 1fr\);/);
-  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*align-items: start;[\s\S]*bottom: 0;[\s\S]*top: 0;/);
+  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*align-items: start;/);
+  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*grid-template-columns: repeat\(7, 1fr\);/);
+  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*min-width: 980px;/);
+  assert.match(css, /\.emotion-graph__bars\s*\{[\s\S]*bottom: 0;[\s\S]*top: 0;/);
   assert.match(css, /\.emotion-graph__column\s*\{[\s\S]*grid-template-rows: 325px 28px 21px 20px 34px;/);
   assert.match(css, /\.emotion-graph__bar-wrap\s*\{[\s\S]*height: 325px;/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__bars\s*\{[\s\S]*min-width: 860px;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__column\s*\{[\s\S]*grid-template-rows: 293\.333px 24px 18px 18px 34px;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__bar-wrap\s*\{[\s\S]*height: 293\.333px;/);
 });

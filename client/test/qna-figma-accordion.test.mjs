@@ -37,7 +37,9 @@ test("QnA section matches the updated Figma accordion copy and states", async ()
   assert.match(experience, /label: "Formula"/);
   assert.ok(experience.includes("score(rₖ) = 0.55 · log(reviews_5y) + 0.45 · stars · √reviews_30d"));
   assert.match(experience, /What is the HB Score\?/);
-  assert.match(experience, /Adjective and keyword frequencies are extracted from every review per restaurant\. You decide which factors matter, set their weights, and the page re-scores all 50 against your preferences\. Move a slider — the leaderboard rearranges\./);
+  assert.match(experience, /HB Score breaks a restaurant's Google reviews into factor-level scores\. An NLI model measures how strongly each review relates to factors such as Taste, Service, Wait\/Queue, or Cleanliness, then weights the review rating by that relevance and adds a small review-volume reliability bonus\./);
+  assert.doesNotMatch(experience, /Adjective and keyword frequencies are extracted from every review per restaurant/);
+  assert.doesNotMatch(experience, /Move a slider — the leaderboard rearranges/);
   assert.doesNotMatch(experience, /Before we re-score anything/);
   assert.doesNotMatch(experience, /Score = star rating, review count, five-year review window, and Seoul-only location filter/);
   assert.doesNotMatch(experience, /HB Score re-weights restaurant reviews by factor-level evidence extracted from review text/);

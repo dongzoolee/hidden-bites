@@ -546,7 +546,7 @@ function buildQnaItems(): QnaAccordionItem[] {
     },
     {
       question: "What is the HB Score?",
-      answer: "Adjective and keyword frequencies are extracted from every review per restaurant. You decide which factors matter, set their weights, and the page re-scores all 50 against your preferences. Move a slider — the leaderboard rearranges.",
+      answer: "HB Score breaks a restaurant's Google reviews into factor-level scores. An NLI model measures how strongly each review relates to factors such as Taste, Service, Wait/Queue, or Cleanliness, then weights the review rating by that relevance and adds a small review-volume reliability bonus.",
       tone: "green"
     }
   ];

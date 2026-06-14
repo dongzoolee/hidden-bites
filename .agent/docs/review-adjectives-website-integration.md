@@ -13,11 +13,15 @@
 - `review-adjectives.json`의 `category_draft`, `global_top100`, `per_restaurant`, `metadata` 구조는 보존했다.
 - `scripts/build_hb_score_web_report.mjs`는 `place_rank` 기준으로 HB score restaurant과 adjective profile을 join한다.
 - 각 restaurant report는 기존 `emotionBuckets` 대신 `adjectiveBuckets`를 포함한다.
-- `adjectiveBuckets`는 4개 category를 고정으로 제공한다.
-  - `everyday-calm`: `🌱 평온/일상`
-  - `positive-gentle`: `✨ 긍정/온화`
-  - `intense-overwhelming`: `🔥 강렬/압도`
-  - `negative-discomfort`: `😤 부정/불편`
+- `adjectiveBuckets`는 Figma node `313:9492`의 7개 Emotion Category를 고정으로 제공한다.
+  - `relief`: `😌 안도·편안`
+  - `joy`: `😊 유쾌·즐거움`
+  - `intense`: `🔥 강렬`
+  - `curiosity`: `🧐 호기심·기대`
+  - `subtle`: `😐 미미`
+  - `fatigue`: `😤 불만·피로`
+  - `regret`: `💧 아쉬움`
+- 7개 category adjective 사전은 `scripts/review_emotion_categories.mjs`에 고정했고, `adj_counts`의 식당별 `top30_adjs` count를 이 사전으로 매칭해 graph 값을 만든다.
 - 각 bucket은 `count`, `share`, `averageShare`, `topAdjectives`를 가진다.
 - `share`는 해당 식당 `top30_adjs` 필드에 담긴 top adjective count 전체 대비 category count 비율이다.
 - `averageShare`는 동일한 기준으로 계산한 all-50 평균 share다.
@@ -28,12 +32,12 @@
 
 - `scripts/validate_hb_score_web_report.mjs`는 다음 계약을 검증한다.
   - score restaurant 50개와 adjective profile 50개 rank가 일치한다.
-  - adjective category는 4개다.
+  - Figma 기반 emotion category는 7개다.
   - 모든 restaurant profile에 최소 1개 mapped adjective가 있다.
-  - 모든 report에 `adjectiveBuckets.length === 4`가 있다.
+  - 모든 report에 `adjectiveBuckets.length === 7`이 있다.
   - `emotionBuckets`는 report payload에 남지 않는다.
-- server test는 selected report API가 4개 adjective bucket을 반환하는지 확인한다.
-- client test는 4개 emotion graph column, all-50 average marker, top adjective label, graph y-scroll 제거, 0% baseline alignment, 기존 keyword chip/snippet footer 계약을 확인한다.
+- server test는 selected report API가 7개 adjective bucket을 반환하는지 확인한다.
+- client test는 7개 emotion graph column, all-50 average marker, top adjective label, graph y-scroll 제거, 0% baseline alignment, 기존 keyword chip/snippet footer 계약을 확인한다.
 
 ## 실행한 검증
 
@@ -41,8 +45,8 @@
 - `cd server && yarn test && yarn type-check && yarn lint`
 - `cd client && yarn test && yarn typecheck && yarn lint && yarn build`
 - Browser viewport 검증:
-  - desktop `1440x1100`: 4개 adjective chip, 4개 graph column, 6개 keyword chip, snippet 4개, body overflow 없음
-  - mobile `390x844`: 4개 adjective chip, 4개 graph column, 6개 keyword chip, snippet 4개, body overflow 없음
+  - desktop `1440x1100`: 7개 adjective chip, 7개 graph column, 12개 keyword chip, snippet 최대 4개, body overflow 없음
+  - mobile `390x844`: 7개 adjective chip, 7개 graph column, 12개 keyword chip, snippet 최대 4개, body overflow 없음
   - 남은 콘솔 에러는 `favicon.ico` 404 1건뿐이다.
 
 ## 참고
@@ -57,3 +61,11 @@
 - bar grid item 정렬을 top-start로 바꾸고 desktop `325px`, mobile `293.333px` bar wrap height를 사용해 각 bar의 bottom edge가 0% grid line과 일치하도록 조정했다.
 - `client/test/emotion-graph-layout.test.mjs`를 추가해 label, y-scroll 제거, desktop/mobile 0% baseline alignment 계약을 고정했다.
 - Browser DOM verification에서 desktop `2048x1100`, mobile `390x844` 모두 `Emotion Graph`, `overflow-y: hidden`, `hasVerticalScrollbar=false`, bar bottom과 0% line delta `0px`를 확인했다.
+
+## 2026-06-14 Figma 7-category emotion taxonomy
+
+- Figma file `g1aNjTsNQVz5KPEVqMC4qY`의 `Toggle_Closed` node `313:9401`, `Toggle_Open` node `313:9492`를 MCP `get_design_context`와 `get_screenshot`으로 확인했다.
+- 사이트의 Emotion Category는 `Relief`, `Joy`, `Intense`, `Curiosity`, `Subtle`, `Fatigue`, `Regret` 7개로 고정한다.
+- `datasets/derived/review-adjectives.json`의 legacy `category_draft` 4개 분류는 source artifact 보존용으로 남겨두고, 웹 graph 집계에는 사용하지 않는다.
+- `scripts/build_hb_score_web_report.mjs`는 `scripts/review_emotion_categories.mjs`의 7개 adjective 사전을 기준으로 식당별 `top30_adjs` count를 bucket count로 집계한다.
+- `metadata.adjectiveBucketCount`는 `7`, `metadata.adjectiveTaxonomySource`는 `figma:g1aNjTsNQVz5KPEVqMC4qY:313:9492`로 기록한다.

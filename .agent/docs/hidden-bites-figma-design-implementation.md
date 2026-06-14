@@ -408,8 +408,9 @@
 - `Explore another restaurant`는 restaurant selector가 아니라 button으로 바꾸고, 클릭 시 `selected-restaurant-picker`로 smooth scroll 후 dropdown button에 focus한다.
 - `RestaurantReportPanel` header는 restaurant name title 아래에 restaurant info row를 배치하고, right-most rating block은 실제 `★★★★★`와 Figma에서 확인한 `Bowlby One` display rating을 사용한다.
 - `The Review Adjectives` subtitle은 Figma copy인 `Macro analysis: Categories were defined by selecting the top 10 most frequent adjectives for each emotion.`으로 맞췄고, `by selecting the top 10 most frequent adjective` 구간은 bold underline 처리했다.
-- Emotion graph는 현재 derived report schema가 제공하는 4개 adjective bucket을 emotion bucket display로 렌더링하면서 Figma의 graph header, y-axis ticks, grid lines, rounded bars, diamond markers, emoji/English/Korean labels 구조로 재구성했다.
+- Emotion graph는 Figma node `313:9492` 기준 7개 adjective bucket을 emotion bucket display로 렌더링하면서 Figma의 graph header, y-axis ticks, grid lines, rounded bars, diamond markers, emoji/English/Korean labels 구조로 재구성했다.
 - 2026-06-14 correction: graph eyebrow는 `Emotion Graph`로 표시하고, plot area는 세로 scrollbar 없이 bar grid item을 top-start로 정렬해 desktop/mobile bar bottom edge가 0% grid line에 맞도록 조정했다.
+- 2026-06-14 taxonomy update: Emotion Category는 `Relief`, `Joy`, `Intense`, `Curiosity`, `Subtle`, `Fatigue`, `Regret` 7개로 고정했고, `scripts/review_emotion_categories.mjs`의 adjective 사전으로 `adj_counts` 식당별 top adjective count를 집계한다.
 - `The Unique & Fun Keywords` subtitle에서 `Click a keyword chip`을 bold underline 처리했다.
 - Review quote grid는 2x2 layout, 22px radius, Figma tone colors를 사용하고 footer는 author/rating metadata 대신 `KEYWORD: a · b · c` 형태로 렌더링한다.
 - Regression guard: `client/test/report-section-figma-parity.test.mjs`가 selected dropdown, explorer button scroll/focus, report header/rating typography, adjective subtitle, emotion graph structure, keyword subtitle, snippet footer/radius를 검증한다.

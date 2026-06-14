@@ -1644,8 +1644,10 @@ img {
 .emotion-chip-row {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(128px, 1fr));
   margin: 44px 0;
+  overflow-x: auto;
+  padding-bottom: 2px;
 }
 
 .emotion-chip {
@@ -1785,10 +1787,10 @@ img {
   align-items: start;
   bottom: 0;
   display: grid;
-  gap: 32px;
-  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  grid-template-columns: repeat(7, 1fr);
   left: 72px;
-  min-width: 560px;
+  min-width: 980px;
   position: absolute;
   right: 40px;
   top: 0;
@@ -3149,9 +3151,9 @@ img {
   }
 
   .emotion-graph__bars {
-    gap: 24px;
+    gap: 18px;
     left: 58px;
-    min-width: 520px;
+    min-width: 860px;
     right: 24px;
   }
 

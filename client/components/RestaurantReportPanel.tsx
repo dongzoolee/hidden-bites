@@ -31,34 +31,58 @@ interface AdjectiveStyleConfig {
 }
 
 const adjectiveStyleById: Record<string, AdjectiveStyleConfig> = {
-  "everyday-calm": {
+  relief: {
     order: 0,
-    label: "Calm",
-    chipLabel: "Daily calm",
-    color: "#3da06b"
+    label: "Relief",
+    chipLabel: "Relief",
+    color: "#4d8ccf",
+    textColor: "#1a1310"
   },
-  "positive-gentle": {
+  joy: {
     order: 1,
-    label: "Warm",
-    chipLabel: "Positive",
-    color: "#ff5a1f"
+    label: "Joy",
+    chipLabel: "Joy",
+    color: "#3da06b",
+    textColor: "#1a1310"
   },
-  "intense-overwhelming": {
+  intense: {
     order: 2,
     label: "Intense",
-    chipLabel: "Impact",
+    chipLabel: "Intense",
+    color: "#b22b18",
+    textColor: "#fff7e9"
+  },
+  curiosity: {
+    order: 3,
+    label: "Curiosity",
+    chipLabel: "Curiosity",
+    color: "#ff5a1f",
+    textColor: "#1a1310"
+  },
+  subtle: {
+    order: 4,
+    label: "Subtle",
+    chipLabel: "Subtle",
     color: "#ffc842",
     textColor: "#1a1310"
   },
-  "negative-discomfort": {
-    order: 3,
-    label: "Friction",
-    chipLabel: "Discomfort",
-    color: "#b87fd9"
+  fatigue: {
+    order: 5,
+    label: "Fatigue",
+    chipLabel: "Fatigue",
+    color: "#b87fd9",
+    textColor: "#1a1310"
+  },
+  regret: {
+    order: 6,
+    label: "Regret",
+    chipLabel: "Regret",
+    color: "#ff8fb1",
+    textColor: "#1a1310"
   }
 };
 
-const fallbackAdjectiveColors = ["#3da06b", "#ff5a1f", "#ffc842", "#b87fd9"];
+const fallbackAdjectiveColors = ["#4d8ccf", "#3da06b", "#b22b18", "#ff5a1f", "#ffc842", "#b87fd9", "#ff8fb1"];
 const graphTickCount = 5;
 
 export function RestaurantReportPanel({ report, onExploreAnotherRestaurant }: RestaurantReportPanelProps) {

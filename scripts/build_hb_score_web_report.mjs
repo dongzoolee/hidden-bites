@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { buildDisplayPlaceName } from "./restaurant_display_names.mjs";
+import { reviewEmotionCategories } from "./review_emotion_categories.mjs";
 
 const scorePath = "datasets/derived/hb-score-restaurants.json";
 const pointsPath = "datasets/derived/hb-score-factor-restaurant-points.json";
@@ -8,13 +9,6 @@ const locationsPath = "datasets/google-places-seoul-top-restaurants-2026-05-15-l
 const reviewsDir = "datasets/google-maps-reviews-2026-05-16";
 const adjectivesPath = "datasets/derived/review-adjectives.json";
 const outputPath = "datasets/derived/hb-score-web-report.json";
-
-const adjectiveCategoryMetadataByName = new Map([
-  ["🌱 평온/일상", { id: "everyday-calm", label: "Everyday Calm", emoji: "🌱", koreanLabel: "평온/일상" }],
-  ["✨ 긍정/온화", { id: "positive-gentle", label: "Positive & Gentle", emoji: "✨", koreanLabel: "긍정/온화" }],
-  ["🔥 강렬/압도", { id: "intense-overwhelming", label: "Intense", emoji: "🔥", koreanLabel: "강렬/압도" }],
-  ["😤 부정/불편", { id: "negative-discomfort", label: "Discomfort", emoji: "😤", koreanLabel: "부정/불편" }]
-]);
 
 const funnyKeywordCategories = [
   { id: "crunch-boss", label: "🥨 Crunch Boss", color: "#F7C948", terms: ["바삭", "바삭바삭", "crispy", "crunchy", "튀김", "튀겨", "겉바속촉", "crunch", "fried", "golden", "crisped"] },
@@ -88,7 +82,7 @@ const reviewFiles = (await readdir(reviewsDir))
 
 const reviewsByPlaceId = new Map();
 const locationByPlaceId = new Map();
-const adjectiveCategories = buildAdjectiveCategories(adjectiveData.category_draft);
+const adjectiveCategories = buildAdjectiveCategories();
 const adjectiveProfileByRank = buildAdjectiveProfileByRank(adjectiveData.per_restaurant, adjectiveCategories);
 const adjectiveAverageShareByCategoryId = buildAdjectiveAverageShareByCategoryId(adjectiveProfileByRank, adjectiveCategories);
 
@@ -194,6 +188,7 @@ const output = {
     mapPointCount: restaurantLocationsByPlaceId.size,
     reportCount: reports.length,
     adjectiveBucketCount: adjectiveCategories.length,
+    adjectiveTaxonomySource: "figma:g1aNjTsNQVz5KPEVqMC4qY:313:9492",
     funnyKeywordCategoryCount: funnyKeywordCategories.length
   },
   summary: {
@@ -422,29 +417,41 @@ function round(value, digits) {
   return Math.round(value * multiplier) / multiplier;
 }
 
-function buildAdjectiveCategories(categoryDraft) {
-  const entries = Object.entries(categoryDraft ?? {});
-
-  if (entries.length !== 4) {
-    throw new Error(`Expected 4 review adjective categories, received ${entries.length}`);
+function buildAdjectiveCategories() {
+  if (reviewEmotionCategories.length !== 7) {
+    throw new Error(`Expected 7 review emotion categories, received ${reviewEmotionCategories.length}`);
   }
 
-  return entries.map(([sourceLabel, adjectives], index) => {
-    const metadata = adjectiveCategoryMetadataByName.get(sourceLabel);
+  const seenIds = new Set();
+  const seenAdjectives = new Set();
 
-    if (!metadata) {
-      throw new Error(`Unknown review adjective category: ${sourceLabel}`);
+  return reviewEmotionCategories.map((category, index) => {
+    if (seenIds.has(category.id)) {
+      throw new Error(`Duplicate review emotion category id: ${category.id}`);
     }
 
-    if (!Array.isArray(adjectives) || adjectives.length === 0) {
-      throw new Error(`Invalid adjective list for category: ${sourceLabel}`);
+    seenIds.add(category.id);
+
+    if (!Array.isArray(category.adjectives) || category.adjectives.length !== 10) {
+      throw new Error(`Invalid adjective list for category: ${category.id}`);
+    }
+
+    for (const adjective of category.adjectives) {
+      if (seenAdjectives.has(adjective)) {
+        throw new Error(`Duplicate review emotion adjective: ${adjective}`);
+      }
+
+      seenAdjectives.add(adjective);
     }
 
     return {
-      ...metadata,
-      sourceLabel,
+      id: category.id,
+      label: category.label,
+      emoji: category.emoji,
+      koreanLabel: category.koreanLabel,
+      color: category.color,
       order: index,
-      adjectives
+      adjectives: category.adjectives
     };
   });
 }

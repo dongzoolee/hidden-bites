@@ -38,7 +38,7 @@ test("HbDataService returns reports and rejects missing ids", () => {
   assert.equal(report.district, restaurant.district);
   assert.equal(report.factorScores.length, 10);
   assert.ok(report.keywords.length > 0);
-  assert.equal(report.adjectiveBuckets.length, 4);
+  assert.equal(report.adjectiveBuckets.length, 7);
   assert.ok(report.adjectiveBuckets.some((bucket) => bucket.count > 0));
   assert.equal(report.funnyKeywords.length, 12);
   assert.ok(report.funnyKeywords.some((keyword) => keyword.reviewCount > 0));

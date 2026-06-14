@@ -49,7 +49,7 @@ test("serves selected report and 404 for missing report", async () => {
     assert.equal(response.body.latitude, restaurants.body[0].latitude);
     assert.equal(response.body.longitude, restaurants.body[0].longitude);
     assert.equal(response.body.district, restaurants.body[0].district);
-    assert.equal(response.body.adjectiveBuckets.length, 4);
+    assert.equal(response.body.adjectiveBuckets.length, 7);
     assert.ok(response.body.adjectiveBuckets.some((bucket) => bucket.count > 0));
     assert.equal(response.body.funnyKeywords.length, 12);
     assert.ok(response.body.funnyKeywords.some((keyword) => keyword.reviewCount > 0));

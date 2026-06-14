@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { assertKoreanDisplayPlaceName } from "./restaurant_display_names.mjs";
+import { reviewEmotionCategories } from "./review_emotion_categories.mjs";
 
 const scorePath = "datasets/derived/hb-score-restaurants.json";
 const pointsPath = "datasets/derived/hb-score-factor-restaurant-points.json";
@@ -16,14 +17,15 @@ assert.equal(scoreData.restaurants.length, 50);
 assert.equal(scoreData.factors.length, 10);
 assert.equal(pointsData.points.length, 500);
 assert.equal(adjectiveData.per_restaurant.length, 50);
-assert.equal(Object.keys(adjectiveData.category_draft).length, 4);
+assert.equal(reviewEmotionCategories.length, 7);
 assert.equal(reportData.restaurants.length, 50);
 assert.equal(reportData.factors.length, 10);
 assert.equal(reportData.points.length, 500);
 assert.equal(reportData.reports.length, 50);
 assert.equal(reportData.metadata.mapPointCount, 50);
 assert.equal(reportData.metadata.sourceAdjectivesPath, adjectivesPath);
-assert.equal(reportData.metadata.adjectiveBucketCount, 4);
+assert.equal(reportData.metadata.adjectiveBucketCount, 7);
+assert.equal(reportData.metadata.adjectiveTaxonomySource, "figma:g1aNjTsNQVz5KPEVqMC4qY:313:9492");
 
 const restaurantIds = new Set(reportData.restaurants.map((restaurant) => restaurant.placeId));
 const reportIds = new Set(reportData.reports.map((report) => report.placeId));
@@ -37,7 +39,7 @@ assert.deepEqual(scoreRanks, adjectiveRanks);
 
 for (const restaurant of adjectiveData.per_restaurant) {
   const topAdjectives = Array.isArray(restaurant.top30_adjs) ? restaurant.top30_adjs : [];
-  const categoryWords = new Set(Object.values(adjectiveData.category_draft).flat());
+  const categoryWords = new Set(reviewEmotionCategories.flatMap((category) => category.adjectives));
   const matchedAdjectives = topAdjectives.filter((adjective) => categoryWords.has(adjective.adj));
 
   assert.ok(topAdjectives.length > 0);
@@ -63,7 +65,7 @@ for (const point of reportData.points) {
 for (const report of reportData.reports) {
   assert.equal(report.factorScores.length, 10);
   assert.equal(report.emotionBuckets, undefined);
-  assert.equal(report.adjectiveBuckets.length, 4);
+  assert.equal(report.adjectiveBuckets.length, 7);
   assert.equal(report.funnyKeywords.length, 12);
   assert.ok(report.keywords.length > 0);
   assert.ok(report.reviewSample.length > 0);
