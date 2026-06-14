@@ -473,7 +473,7 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
 
   for (const restaurant of perRestaurant) {
     const rank = restaurant.place_rank;
-    const topAdjectives = Array.isArray(restaurant.top30_adjs) ? restaurant.top30_adjs : [];
+    const adjectiveCounts = getRestaurantAdjectiveCounts(restaurant);
 
     if (typeof rank !== "number") {
       throw new Error("Review adjective profile is missing numeric place_rank");
@@ -483,15 +483,15 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
       throw new Error(`Duplicate review adjective profile for rank ${rank}`);
     }
 
-    const totalTopAdjectiveCount = topAdjectives.reduce((sum, adjective) => sum + normalizeCount(adjective.count), 0);
+    const totalAdjectiveCount = adjectiveCounts.reduce((sum, adjective) => sum + normalizeCount(adjective.count), 0);
 
-    if (totalTopAdjectiveCount <= 0) {
-      throw new Error(`Review adjective profile has no top adjective count for rank ${rank}`);
+    if (totalAdjectiveCount <= 0) {
+      throw new Error(`Review adjective profile has no adjective count for rank ${rank}`);
     }
 
     const bucketWork = new Map(categories.map((category) => [category.id, { count: 0, topAdjectives: [] }]));
 
-    for (const adjective of topAdjectives) {
+    for (const adjective of adjectiveCounts) {
       if (typeof adjective.adj !== "string") {
         continue;
       }
@@ -519,7 +519,7 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
 
     profiles.set(rank, {
       rank,
-      totalTopAdjectiveCount,
+      totalAdjectiveCount,
       matchedAdjectiveCount,
       buckets: categories.map((category) => {
         const bucket = bucketWork.get(category.id);
@@ -531,7 +531,7 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
           koreanLabel: category.koreanLabel,
           adjectives: category.adjectives,
           count: bucket.count,
-          share: round(bucket.count / totalTopAdjectiveCount, 4),
+          share: round(bucket.count / totalAdjectiveCount, 4),
           topAdjectives: bucket.topAdjectives.sort((left, right) => right.count - left.count || left.adjective.localeCompare(right.adjective, "ko-KR"))
         };
       })
@@ -539,6 +539,18 @@ function buildAdjectiveProfileByRank(perRestaurant, categories) {
   }
 
   return profiles;
+}
+
+function getRestaurantAdjectiveCounts(restaurant) {
+  if (Array.isArray(restaurant.adjective_counts) && restaurant.adjective_counts.length > 0) {
+    return restaurant.adjective_counts;
+  }
+
+  if (Array.isArray(restaurant.top30_adjs) && restaurant.top30_adjs.length > 0) {
+    return restaurant.top30_adjs;
+  }
+
+  return [];
 }
 
 function buildAdjectiveAverageShareByCategoryId(profileByRank, categories) {

@@ -17,6 +17,7 @@ assert.equal(scoreData.restaurants.length, 50);
 assert.equal(scoreData.factors.length, 10);
 assert.equal(pointsData.points.length, 500);
 assert.equal(adjectiveData.per_restaurant.length, 50);
+assert.equal(adjectiveData.metadata.full_adjective_counts, true);
 assert.equal(reviewEmotionCategories.length, 7);
 assert.equal(reportData.restaurants.length, 50);
 assert.equal(reportData.factors.length, 10);
@@ -38,12 +39,20 @@ assert.deepEqual(restaurantIds, reportIds);
 assert.deepEqual(scoreRanks, adjectiveRanks);
 
 for (const restaurant of adjectiveData.per_restaurant) {
+  const adjectiveCounts = getRestaurantAdjectiveCounts(restaurant);
+  const filteredAdjectiveCounts = Array.isArray(restaurant.filtered_adjective_counts) ? restaurant.filtered_adjective_counts : [];
   const topAdjectives = Array.isArray(restaurant.top30_adjs) ? restaurant.top30_adjs : [];
   const categoryWords = new Set(reviewEmotionCategories.flatMap((category) => category.adjectives));
-  const matchedAdjectives = topAdjectives.filter((adjective) => categoryWords.has(adjective.adj));
+  const matchedAdjectives = adjectiveCounts.filter((adjective) => categoryWords.has(adjective.adj));
 
+  assert.ok(adjectiveCounts.length > 0);
+  assert.ok(filteredAdjectiveCounts.length > 0);
   assert.ok(topAdjectives.length > 0);
   assert.ok(matchedAdjectives.length > 0);
+
+  assertValidAdjectiveCounts(adjectiveCounts);
+  assertValidAdjectiveCounts(filteredAdjectiveCounts);
+  assertValidAdjectiveCounts(topAdjectives);
 }
 
 for (const restaurant of reportData.restaurants) {
@@ -126,4 +135,33 @@ for (const report of reportData.reports) {
   }
 }
 
+const mutanReport = reportData.reports.find((report) => report.placeRank === 1);
+assert.ok(mutanReport);
+assert.equal(mutanReport.adjectiveBuckets.filter((bucket) => bucket.count > 0).length, 7);
+
 console.log("hb-score web report validation passed");
+
+function getRestaurantAdjectiveCounts(restaurant) {
+  if (Array.isArray(restaurant.adjective_counts) && restaurant.adjective_counts.length > 0) {
+    return restaurant.adjective_counts;
+  }
+
+  if (Array.isArray(restaurant.top30_adjs) && restaurant.top30_adjs.length > 0) {
+    return restaurant.top30_adjs;
+  }
+
+  return [];
+}
+
+function assertValidAdjectiveCounts(adjectiveCounts) {
+  const seen = new Set();
+
+  for (const adjective of adjectiveCounts) {
+    assert.equal(typeof adjective.adj, "string");
+    assert.ok(adjective.adj.length > 0);
+    assert.equal(typeof adjective.count, "number");
+    assert.ok(adjective.count > 0);
+    assert.equal(seen.has(adjective.adj), false);
+    seen.add(adjective.adj);
+  }
+}
