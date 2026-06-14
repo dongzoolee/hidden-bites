@@ -1,5 +1,12 @@
 # Hidden Bites Figma Design Implementation
 
+## 2026-06-14 Q&A description title flow
+
+- `5 - 1 · Q&A` 섹션의 description이 desktop에서 title 오른쪽 column에 배치되던 `split-heading` 2-column 계약을 제거했다.
+- `.split-heading`은 단일 grid column과 `max-width: min(100%, 62rem)`을 사용해 다른 story heading처럼 title 바로 아래에 description이 이어진다.
+- Regression guard: `client/test/qna-figma-accordion.test.mjs`가 단일 column heading 계약과 이전 2-column grid 계약 금지를 검증한다.
+- Browser verification: Playwright 2048px viewport에서 앱 CSS를 로드한 Q&A section rendering 좌표가 `descriptionTop >= headingBottom`, `descriptionLeft === headingLeft`로 확인됐다.
+
 ## 2026-06-14 Q&A formula card indentation
 
 - `How we picked the top 50.` 답변의 formula 카드가 답변 본문보다 왼쪽으로 붙어 보이던 문제를 수정했다.
