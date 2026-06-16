@@ -459,3 +459,13 @@
 - Verification: `yarn test`, `yarn typecheck`, `yarn lint`, `yarn build:web`, `git diff --check`가 통과했다.
 - Local static export verification: `http://localhost:8096/`와 `/map/`는 `https://hidden-bites.leed.at/open_graph.png`를 `og:image`와 `twitter:image`로 출력했고, `http://localhost:8096/open_graph.png`는 200 `image/png`로 응답했다.
 - Production check: `https://hidden-bites.leed.at/open_graph.png`는 변경 배포 전 상태에서 403을 반환했다. 다음 client deploy가 `client/public/open_graph.png`를 S3/CloudFront public asset으로 올려야 한다.
+
+### 2026-06-17 Map district note spacing update
+
+- `SeoulRestaurantMap` analysis card에서 마지막 district row와 dense-area description 사이 간격을 늘리기 위해 `.map-note`의 `margin-top`을 `48px`로 조정했다.
+- Regression guard: `client/test/map-district-note-spacing.test.mjs`가 district list가 note보다 먼저 렌더링되고 `.map-note` spacing이 `48px`로 유지되는지 검증한다.
+- Verification:
+  - `yarn --cwd client test -- --test-reporter=spec`
+  - `yarn --cwd client typecheck`
+  - `yarn --cwd client lint`
+  - `git diff --check`
