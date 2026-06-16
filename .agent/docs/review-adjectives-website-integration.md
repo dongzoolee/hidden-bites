@@ -84,6 +84,11 @@
 - `.emotion-graph__column small`에서 `overflow-wrap: anywhere`를 제거하고 `overflow-wrap: normal`, `word-break: keep-all`을 적용해 `엄청나다` 같은 한국어 형용사가 글자 단위로 쪼개지지 않도록 했다.
 - Regression guard: `client/test/emotion-graph-layout.test.mjs`가 Emotion Graph adjective label의 Korean word-break contract와 `overflow-wrap: anywhere` 재도입 금지를 검증한다.
 
+## 2026-06-17 Emotion Graph x-axis label spacing
+
+- `.emotion-graph__column`의 label row를 desktop `40px`, mobile `34px`로 늘리고 emoji label에 desktop `12px`, mobile `10px` top padding을 적용해 0% x-axis와 emotion label 사이 여백을 추가했다.
+- Regression guard: `client/test/emotion-graph-layout.test.mjs`가 desktop/mobile label row height와 emoji top padding 계약을 검증한다.
+
 ## 2026-06-14 Figma 7-category emotion taxonomy
 
 - Figma file `g1aNjTsNQVz5KPEVqMC4qY`의 `Toggle_Closed` node `313:9401`, `Toggle_Open` node `313:9492`를 MCP `get_design_context`와 `get_screenshot`으로 확인했다.

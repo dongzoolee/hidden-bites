@@ -1876,7 +1876,7 @@ img {
   align-items: center;
   display: grid;
   gap: 4px;
-  grid-template-rows: 325px 28px 21px 20px 34px;
+  grid-template-rows: 325px 40px 21px 20px 34px;
   justify-items: center;
   min-width: 78px;
 }
@@ -1927,6 +1927,7 @@ img {
   font-family: var(--font-body);
   font-size: 27px;
   line-height: 1;
+  padding-top: 12px;
 }
 
 .emotion-graph__column b {
@@ -3238,7 +3239,7 @@ img {
   }
 
   .emotion-graph__column {
-    grid-template-rows: 293.333px 24px 18px 18px 34px;
+    grid-template-rows: 293.333px 34px 18px 18px 34px;
     min-width: 70px;
   }
 
@@ -3257,6 +3258,7 @@ img {
 
   .emotion-graph__column span {
     font-size: 22px;
+    padding-top: 10px;
   }
 
   .emotion-graph__column b {
