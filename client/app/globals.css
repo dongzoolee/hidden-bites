@@ -1929,7 +1929,8 @@ img {
   font-size: 12px;
   line-height: 1.2;
   max-width: 104px;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .keyword-section {

@@ -5,6 +5,9 @@ import { test } from "node:test";
 test("emotion graph label and bar baseline layout stay aligned", async () => {
   const reportPanel = await readFile("components/RestaurantReportPanel.tsx", "utf8");
   const css = await readFile("app/globals.css", "utf8");
+  const adjectiveLabelStyle = css
+    .split("}")
+    .find((block) => block.trimStart().startsWith(".emotion-graph__column small {")) ?? "";
 
   assert.match(reportPanel, /<span>Emotion Category<\/span>/);
   assert.match(reportPanel, /aria-label="Review emotion category share graph"/);
@@ -27,6 +30,9 @@ test("emotion graph label and bar baseline layout stay aligned", async () => {
   assert.doesNotMatch(css, /\.emotion-graph__bar\s*\{[\s\S]*min-height: 36px;/);
   assert.doesNotMatch(css, /\.emotion-graph__bar\s*\{[\s\S]*padding-top: 14px;/);
   assert.match(css, /\.emotion-graph__bar-value\s*\{[\s\S]*font-family: var\(--font-chart\);[\s\S]*position: absolute;[\s\S]*z-index: 3;/);
+  assert.match(adjectiveLabelStyle, /overflow-wrap: normal;/);
+  assert.match(adjectiveLabelStyle, /word-break: keep-all;/);
+  assert.doesNotMatch(adjectiveLabelStyle, /overflow-wrap: anywhere;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__bars\s*\{[\s\S]*min-width: 860px;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__column\s*\{[\s\S]*grid-template-rows: 293\.333px 24px 18px 18px 34px;/);
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.emotion-graph__bar-wrap\s*\{[\s\S]*height: 293\.333px;/);
