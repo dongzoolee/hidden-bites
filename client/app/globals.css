@@ -883,7 +883,13 @@ img {
   width: 100%;
 }
 
-.score-graph-plot svg {
+.score-graph-canvas {
+  height: 500px;
+  position: relative;
+  width: 100%;
+}
+
+.score-graph-canvas svg {
   display: block;
   height: 500px;
   overflow: visible;
@@ -991,6 +997,7 @@ img {
 .map-tooltip {
   background: var(--ink);
   border-radius: 0.6rem;
+  box-sizing: border-box;
   color: var(--paper);
   display: grid;
   gap: 0.25rem;
@@ -1004,16 +1011,28 @@ img {
   z-index: 4;
 }
 
+.score-tooltip {
+  min-width: 10.5rem;
+  width: max-content;
+}
+
+.score-tooltip--left {
+  transform: translate(calc(-100% - 0.8rem), -50%);
+}
+
 .score-tooltip span,
 .map-tooltip span {
   font-family: var(--font-body);
   font-size: 0.78rem;
+  line-height: 1.25;
 }
 
 .score-tooltip strong,
 .map-tooltip strong {
   font-family: var(--font-airbnb-bold);
   font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: normal;
 }
 
 .score-ranked-list {
@@ -3114,7 +3133,7 @@ img {
     overflow-x: auto;
   }
 
-  .score-graph-plot svg {
+  .score-graph-canvas {
     min-width: 720px;
   }
 

@@ -182,83 +182,85 @@ export function ScorePlot({ factors, points, selectedPlaceId, onSelectPlace }: S
 
           {scoreMode === "scatter" ? (
             <div className="score-graph-plot" data-testid="score-chart">
-              <svg aria-label="HB score scatter plot" role="img" viewBox={`0 0 ${chart.width} ${chart.height}`}>
-                {yTickLabels.map((label, index) => {
-                  const y = yTickScale(index);
+              <div className="score-graph-canvas">
+                <svg aria-label="HB score scatter plot" role="img" viewBox={`0 0 ${chart.width} ${chart.height}`}>
+                  {yTickLabels.map((label, index) => {
+                    const y = yTickScale(index);
 
-                  return (
-                    <g key={label}>
-                      <line className="score-grid-line" x1={chart.left} x2={chart.left + chart.plotWidth} y1={y} y2={y} />
-                      <text className="score-axis-label score-axis-label--y" x={chart.left - 10} y={y + 5}>
-                        {label}
-                      </text>
-                    </g>
-                  );
-                })}
+                    return (
+                      <g key={label}>
+                        <line className="score-grid-line" x1={chart.left} x2={chart.left + chart.plotWidth} y1={y} y2={y} />
+                        <text className="score-axis-label score-axis-label--y" x={chart.left - 10} y={y + 5}>
+                          {label}
+                        </text>
+                      </g>
+                    );
+                  })}
 
-                {xTickValues.map((tick) => {
-                  const x = xScale(tick);
+                  {xTickValues.map((tick) => {
+                    const x = xScale(tick);
 
-                  return (
-                    <g key={tick}>
-                      <line className="score-grid-line" x1={x} x2={x} y1={chart.top} y2={chart.top + chart.plotHeight} />
-                      <text className="score-axis-label score-axis-label--x" x={x} y={chart.top + chart.plotHeight + 34}>
-                        {tick}
-                      </text>
-                    </g>
-                  );
-                })}
+                    return (
+                      <g key={tick}>
+                        <line className="score-grid-line" x1={x} x2={x} y1={chart.top} y2={chart.top + chart.plotHeight} />
+                        <text className="score-axis-label score-axis-label--x" x={x} y={chart.top + chart.plotHeight + 34}>
+                          {tick}
+                        </text>
+                      </g>
+                    );
+                  })}
 
-                <line className="score-axis-line" x1={chart.left} x2={chart.left} y1={chart.top} y2={chart.top + chart.plotHeight} />
-                <line className="score-axis-line" x1={chart.left} x2={chart.left + chart.plotWidth} y1={chart.top + chart.plotHeight} y2={chart.top + chart.plotHeight} />
+                  <line className="score-axis-line" x1={chart.left} x2={chart.left} y1={chart.top} y2={chart.top + chart.plotHeight} />
+                  <line className="score-axis-line" x1={chart.left} x2={chart.left + chart.plotWidth} y1={chart.top + chart.plotHeight} y2={chart.top + chart.plotHeight} />
 
-                {dotScores.map((score) => {
-                  const isSelected = score.placeId === selectedPlaceId;
-                  const isTopPick = score.placeId === topScore?.placeId;
+                  {dotScores.map((score) => {
+                    const isSelected = score.placeId === selectedPlaceId;
+                    const isTopPick = score.placeId === topScore?.placeId;
 
-                  return (
-                    <circle
-                      aria-label={`${score.displayPlaceName} ${selectedFactor?.label ?? "Factor"} index ${score.factorIndex.toFixed(0)} HB score ${score.chartScore.toFixed(2)}`}
-                      className={buildScoreDotClassName(isSelected, isTopPick)}
-                      cx={score.x}
-                      cy={score.y}
-                      key={score.placeId}
-                      r={isSelected ? 6.5 : 5.5}
-                      role="button"
-                      tabIndex={0}
-                      onBlur={() => setTooltip(null)}
-                      onClick={() => handleReportSelection(score.placeId)}
-                      onFocus={() => setTooltip({ x: score.x, y: score.y, rank: plotScores.findIndex((item) => item.placeId === score.placeId) + 1, score })}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          handleReportSelection(score.placeId);
-                        }
-                      }}
-                      onMouseEnter={() => setTooltip({ x: score.x, y: score.y, rank: plotScores.findIndex((item) => item.placeId === score.placeId) + 1, score })}
-                      onMouseLeave={() => setTooltip(null)}
-                    />
-                  );
-                })}
-              </svg>
+                    return (
+                      <circle
+                        aria-label={`${score.displayPlaceName} ${selectedFactor?.label ?? "Factor"} index ${score.factorIndex.toFixed(0)} HB score ${score.chartScore.toFixed(2)}`}
+                        className={buildScoreDotClassName(isSelected, isTopPick)}
+                        cx={score.x}
+                        cy={score.y}
+                        key={score.placeId}
+                        r={isSelected ? 6.5 : 5.5}
+                        role="button"
+                        tabIndex={0}
+                        onBlur={() => setTooltip(null)}
+                        onClick={() => handleReportSelection(score.placeId)}
+                        onFocus={() => setTooltip({ x: score.x, y: score.y, rank: plotScores.findIndex((item) => item.placeId === score.placeId) + 1, score })}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            handleReportSelection(score.placeId);
+                          }
+                        }}
+                        onMouseEnter={() => setTooltip({ x: score.x, y: score.y, rank: plotScores.findIndex((item) => item.placeId === score.placeId) + 1, score })}
+                        onMouseLeave={() => setTooltip(null)}
+                      />
+                    );
+                  })}
+                </svg>
 
-              {topScore && topCalloutPosition ? (
-                <div className="score-top-callout" style={buildPositionStyle(topCalloutPosition)}>
-                  <span aria-hidden="true">👑</span>
-                  <strong>{topScore.displayPlaceName}</strong>
-                </div>
-              ) : null}
+                {topScore && topCalloutPosition ? (
+                  <div className="score-top-callout" style={buildPositionStyle(topCalloutPosition)}>
+                    <span aria-hidden="true">👑</span>
+                    <strong>{topScore.displayPlaceName}</strong>
+                  </div>
+                ) : null}
 
-              {tooltip ? (
-                <div className="score-tooltip" style={{ left: `${(tooltip.x / chart.width) * 100}%`, top: `${(tooltip.y / chart.height) * 100}%` }}>
-                  <strong>{tooltip.score.displayPlaceName}</strong>
-                  <span>Rank {tooltip.rank}</span>
-                  <span>
-                    {selectedFactor?.label ?? "Factor"} index {tooltip.score.factorIndex.toFixed(0)}
-                  </span>
-                  <span>HB score {tooltip.score.chartScore.toFixed(2)}</span>
-                </div>
-              ) : null}
+                {tooltip ? (
+                  <div className={buildTooltipClassName(tooltip.x)} style={{ left: `${(tooltip.x / chart.width) * 100}%`, top: `${(tooltip.y / chart.height) * 100}%` }}>
+                    <strong>{tooltip.score.displayPlaceName}</strong>
+                    <span>Rank {tooltip.rank}</span>
+                    <span>
+                      {selectedFactor?.label ?? "Factor"} index {tooltip.score.factorIndex.toFixed(0)}
+                    </span>
+                    <span>HB score {tooltip.score.chartScore.toFixed(2)}</span>
+                  </div>
+                ) : null}
+              </div>
             </div>
           ) : (
             <ol className="score-ranked-list" aria-label="HB score ranked list">
@@ -554,6 +556,10 @@ function buildPositionStyle(position: CalloutPosition): CSSProperties {
     left: `${position.left}%`,
     top: `${position.top}%`
   };
+}
+
+function buildTooltipClassName(x: number): string {
+  return x > chart.left + chart.plotWidth * 0.82 ? "score-tooltip score-tooltip--left" : "score-tooltip";
 }
 
 function buildFactorColorStyle(color: string): CSSProperties & { "--factor-color": string } {
