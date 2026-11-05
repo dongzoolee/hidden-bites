@@ -278,6 +278,10 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
 - 변경 전 distribution config는 세션 scratchpad에 백업만 했고 저장소에는 넣지 않았다. 되돌릴 때는 `aws cloudfront get-distribution-config`로 현재 ETag를 받아 두 behavior와 origin을 다시 추가한다.
 - 확인: `aws cloudfront wait distribution-deployed` 완료 후 `/`, `/data/summary.json` 200, `/api/summary`와 `/health`는 CloudFront function의 SPA fallback으로 client `index.html`을 반환해 backend에 더 이상 도달하지 않는다.
 - ECR repository `hidden-bites-server`(image 3개)는 사용자가 2026-11-06에 `aws ecr delete-repository --force`로 직접 삭제했다.
-- 미완료(사용자 확인 필요):
-  - backend container 정리: `bible`(`115.68.177.250`) SSH 접속 시 `REMOTE HOST IDENTIFICATION HAS CHANGED` 경고가 나서 명령을 실행하지 않았다. `prod`(`115.68.223.98`)에는 `hidden-bites` container가 없었고, `relay`에는 hidden-bites 관련 nginx/caddy 설정 파일이 없었다. host key 변경 원인을 확인한 뒤 실제 container 위치를 찾아 `docker rm -f hidden-bites-server`로 정리해야 한다.
-  - GitHub secret `SERVER_HOST`, `SERVER_USERNAME`, `SERVER_PASSWORD`, `SSH_PRIVATE_KEY`는 더 이상 workflow에서 쓰지 않는다.
+- 실제 backend 위치: CloudFront origin `v92c_hiihciwhdi28.leed.at` → `relay`(`3.36.140.235`) nginx stream `proxy_pass 10.77.0.2:443` → `mini`(`10.77.0.2`, ssh `ProxyJump relay`) nginx `/etc/nginx/conf.d/hidden-bites.conf` → `127.0.0.1:8097` container. 이전 문서의 `bible`(`115.68.177.250`)은 현재 경로가 아니다.
+- `mini` 정리(2026-11-06):
+  - container `hidden-bites-server`(image `hidden-bites-server:1334aeb…`) `docker rm -f`, 해당 image 삭제, 비어 있던 `hidden_bites_network` 삭제. 이후 `8097` listener 없음.
+  - `/etc/nginx/conf.d/hidden-bites.conf`는 삭제하지 않고 `/etc/nginx/hidden-bites.conf.removed-20261106`으로 옮겼다(conf.d 밖이라 로드되지 않음). `nginx -t` 통과 후 reload, 같은 nginx의 biblabely/tab-monitor/teacher-bo 설정은 그대로이며 nginx `active`.
+  - `relay`의 stream forward(`10.77.0.2:22`, `:443`)는 다른 서비스도 쓰므로 건드리지 않았다.
+- 주의: `bible`(`115.68.177.250`)은 SSH 접속 시 `REMOTE HOST IDENTIFICATION HAS CHANGED` 경고가 나서 명령을 실행하지 않았다. hidden-bites와는 무관하지만 host key 변경 원인 확인이 필요하다.
+- GitHub secret `SERVER_HOST`, `SERVER_USERNAME`, `SERVER_PASSWORD`, `SSH_PRIVATE_KEY`는 더 이상 이 저장소 workflow에서 쓰지 않는다.
