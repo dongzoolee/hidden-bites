@@ -277,7 +277,7 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
 - 남은 origin은 `hidden-bites-s3` 하나이며 default behavior가 그대로 사용한다.
 - 변경 전 distribution config는 세션 scratchpad에 백업만 했고 저장소에는 넣지 않았다. 되돌릴 때는 `aws cloudfront get-distribution-config`로 현재 ETag를 받아 두 behavior와 origin을 다시 추가한다.
 - 확인: `aws cloudfront wait distribution-deployed` 완료 후 `/`, `/data/summary.json` 200, `/api/summary`와 `/health`는 CloudFront function의 SPA fallback으로 client `index.html`을 반환해 backend에 더 이상 도달하지 않는다.
+- ECR repository `hidden-bites-server`(image 3개)는 사용자가 2026-11-06에 `aws ecr delete-repository --force`로 직접 삭제했다.
 - 미완료(사용자 확인 필요):
   - backend container 정리: `bible`(`115.68.177.250`) SSH 접속 시 `REMOTE HOST IDENTIFICATION HAS CHANGED` 경고가 나서 명령을 실행하지 않았다. `prod`(`115.68.223.98`)에는 `hidden-bites` container가 없었고, `relay`에는 hidden-bites 관련 nginx/caddy 설정 파일이 없었다. host key 변경 원인을 확인한 뒤 실제 container 위치를 찾아 `docker rm -f hidden-bites-server`로 정리해야 한다.
-  - ECR repository `hidden-bites-server`(image 3개)는 영구 삭제라 직접 실행해야 한다: `aws ecr delete-repository --repository-name hidden-bites-server --force --region ap-northeast-2`
   - GitHub secret `SERVER_HOST`, `SERVER_USERNAME`, `SERVER_PASSWORD`, `SSH_PRIVATE_KEY`는 더 이상 workflow에서 쓰지 않는다.
