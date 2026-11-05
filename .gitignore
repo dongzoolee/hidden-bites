@@ -8,7 +8,6 @@ client/node_modules/
 client/.next/
 client/out/
 client/client-build/
-server/node_modules/
-server/dist/
+client/public/data/
 coverage/
 *.tsbuildinfo

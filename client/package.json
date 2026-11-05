@@ -4,9 +4,10 @@
   "private": true,
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "dev": "next dev -p 8096",
-    "build": "next build",
-    "build:web": "rm -rf out client-build && next build && mv out client-build",
+    "data:export": "node scripts/export-static-data.mjs",
+    "dev": "yarn data:export && next dev -p 8096",
+    "build": "yarn data:export && next build",
+    "build:web": "rm -rf out client-build && yarn data:export && next build && mv out client-build",
     "start": "serve client-build -l 8096",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",

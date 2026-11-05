@@ -3,78 +3,13 @@ name: Deploy Job
 on:
   workflow_call:
     inputs:
-      registry:
-        description: ECR registry URL
-        required: false
-        type: string
       deploy_client:
         description: Deploy client
         required: false
         type: boolean
         default: false
-      deploy_server:
-        description: Deploy server
-        required: false
-        type: boolean
-        default: false
 
 jobs:
-  deploy_backend:
-    if: ${{ inputs.deploy_server == true }}
-    runs-on: ubicloud-standard-2
-    steps:
-      - name: Deploy backend container
-        uses: appleboy/ssh-action@v1.2.0
-        env:
-          REGISTRY: ${{ inputs.registry }}
-          TAG: ${{ github.sha }}
-          SERVER_REPOSITORY: hidden-bites-server
-          SERVER_PORT: 8097
-          AWS_REGION: ap-northeast-2
-          APP_AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          APP_AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          passphrase: ${{ secrets.SERVER_PASSWORD }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: REGISTRY,TAG,SERVER_REPOSITORY,SERVER_PORT,AWS_REGION,APP_AWS_ACCESS_KEY_ID,APP_AWS_SECRET_ACCESS_KEY
-          script: |
-            set -eu
-
-            if [ -z "$REGISTRY" ]; then
-              echo "registry is required for backend deploy" >&2
-              exit 1
-            fi
-
-            docker_cmd() {
-              if docker info >/dev/null 2>&1; then
-                docker "$@"
-              else
-                sudo docker "$@"
-              fi
-            }
-
-            aws ecr get-login-password --region "$AWS_REGION" \
-              | docker_cmd login --username AWS --password-stdin "$REGISTRY"
-
-            docker_cmd network inspect hidden_bites_network >/dev/null 2>&1 \
-              || docker_cmd network create hidden_bites_network >/dev/null
-
-            docker_cmd pull "$REGISTRY/$SERVER_REPOSITORY:$TAG"
-            docker_cmd container rm -f "$SERVER_REPOSITORY" >/dev/null 2>&1 || true
-            docker_cmd run -d \
-              --name "$SERVER_REPOSITORY" \
-              --restart=always \
-              --network=hidden_bites_network \
-              -p "$SERVER_PORT:$SERVER_PORT" \
-              -e NODE_ENV=production \
-              -e PORT="$SERVER_PORT" \
-              -e HIDDEN_BITES_DATA_ROOT="/app/datasets/derived" \
-              "$REGISTRY/$SERVER_REPOSITORY:$TAG"
-
-            docker_cmd image prune --all --force
-
   deploy_client:
     if: ${{ inputs.deploy_client == true }}
     runs-on: ubicloud-standard-2

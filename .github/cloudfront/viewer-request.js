@@ -9,10 +9,6 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri || "/";
 
-  if (uri.indexOf("/api/") === 0 || uri === "/health") {
-    return request;
-  }
-
   if (uri.indexOf(CLIENT_PREFIX + "/") === 0) {
     return request;
   }
