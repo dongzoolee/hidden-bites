@@ -25,8 +25,8 @@ assert.equal(rewrite("/report?place=abc"), "/client-build/index.html");
 assert.equal(rewrite("/_next/static/chunks/app.js"), "/client-build/_next/static/chunks/app.js");
 assert.equal(rewrite("/favicon.ico"), "/client-build/favicon.ico");
 assert.equal(rewrite("/client-build/index.html"), "/client-build/index.html");
-assert.equal(rewrite("/api/summary"), "/api/summary");
-assert.equal(rewrite("/api/restaurants/place/report"), "/api/restaurants/place/report");
-assert.equal(rewrite("/health"), "/health");
+assert.equal(rewrite("/data/summary.json"), "/client-build/data/summary.json");
+assert.equal(rewrite("/data/hb-scores.json"), "/client-build/data/hb-scores.json");
+assert.equal(rewrite("/data/reports/ChIJlQqAYNelfDURg2zfveD4eW4.json"), "/client-build/data/reports/ChIJlQqAYNelfDURg2zfveD4eW4.json");
 
 console.log("viewer-request tests passed");

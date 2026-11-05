@@ -11,7 +11,6 @@ jobs:
     runs-on: ubicloud-standard-2
     outputs:
       client: ${{ steps.filter.outputs.client }}
-      server: ${{ steps.filter.outputs.server }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,16 +26,10 @@ jobs:
           filters: |
             client:
               - 'client/**'
+              - 'datasets/derived/hb-score-web-report.json'
               - '.github/cloudfront/**'
               - '.github/scripts/**'
               - '.github/workflows/build-client.yml'
-              - '.github/workflows/deploy.yml'
-              - '.github/workflows/release-deploy.yml'
-            server:
-              - 'server/**'
-              - 'datasets/derived/hb-score-web-report.json'
-              - 'infra/**'
-              - '.github/workflows/build-server.yml'
               - '.github/workflows/deploy.yml'
               - '.github/workflows/release-deploy.yml'
 
@@ -46,21 +39,12 @@ jobs:
     uses: ./.github/workflows/build-client.yml
     secrets: inherit
 
-  build_server:
-    needs: changes
-    if: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.server == 'true' }}
-    uses: ./.github/workflows/build-server.yml
-    secrets: inherit
-
   deploy:
     needs:
       - changes
       - build_client
-      - build_server
-    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && (github.event_name == 'workflow_dispatch' || needs.changes.outputs.client == 'true' || needs.changes.outputs.server == 'true') }}
+    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && (github.event_name == 'workflow_dispatch' || needs.changes.outputs.client == 'true') }}
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
-      registry: ${{ needs.build_server.outputs.registry || '' }}
       deploy_client: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.client == 'true' }}
-      deploy_server: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.server == 'true' }}

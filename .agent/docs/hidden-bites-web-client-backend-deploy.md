@@ -2,16 +2,14 @@
 
 ## 목적
 
-Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로 분리해 웹 배포 가능한 구조로 만들었다. Figma `g1aNjTsNQVz5KPEVqMC4qY`, node `192:45` wireframe을 MCP로 확인했고, 사용자가 확정한 3개 `100svh` 화면 구조에 맞춰 hero/QnA, HB Scores, selected restaurant report를 한 페이지 scroll-snap UI로 구현했다.
+Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 NestJS read-only REST backend를 함께 두었으나 2026-11-06에 제거하고 정적 JSON 파일로 대체했다(아래 `2026-11-06 Backend 제거` 참고). Figma `g1aNjTsNQVz5KPEVqMC4qY`, node `192:45` wireframe을 MCP로 확인했고, 사용자가 확정한 3개 `100svh` 화면 구조에 맞춰 hero/QnA, HB Scores, selected restaurant report를 한 페이지 scroll-snap UI로 구현했다.
 
 ## Client
 
 - 경로: `client/`
 - Stack: Next.js App Router, React 19, TypeScript strict, ESLint flat config, Yarn lockfile
 - Static export output: `client/client-build`
-- API base:
-  - production: same-origin `/api`
-  - local verification: `NEXT_PUBLIC_API_BASE_URL=http://localhost:8097`
+- Data: same-origin static JSON `/data/summary.json`, `/data/hb-scores.json`, `/data/restaurants.json`, `/data/reports/<placeId>.json`
 - UI:
   - `intro`: Hidden Bites title, class/meta, description, Seoul top restaurant map preview, QnA accordion
   - `scores`: 10 factor filters, 500-dot HB score scatter plot, selected restaurant query param sync
@@ -21,9 +19,9 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
   - mobile sections use internal vertical scroll when needed
   - score chart uses horizontal overflow only inside the chart on narrow screens
 
-## Backend
+## Backend (2026-11-06 제거됨, historical)
 
-- 경로: `server/`
+- 경로: `server/` (삭제됨)
 - Stack: NestJS REST API, TypeScript strict, ESLint flat config, Yarn lockfile
 - Port: `8097`
 - Endpoints:
@@ -251,3 +249,25 @@ Hidden Bites를 Next.js static export client와 NestJS read-only REST backend로
 - `client/app/layout.tsx`에 `https://a0.muscache.com` preconnect를 추가했다.
 - CDN font HEAD check에서 `HTTP/2 200`, `content-type: font/woff2`, `access-control-allow-origin: *`, `cache-control: public, max-age=31536000`을 확인했다.
 - 회귀 테스트 `client/test/client-contract.test.mjs`가 CDN URL과 preconnect가 유지되는지 검증한다.
+
+## 2026-11-06 Backend 제거, 정적 JSON 전환
+
+- 배경: NestJS server는 `datasets/derived/hb-score-web-report.json`을 메모리에 올려 `summary`, `hb-scores`, `restaurants`, `reports[placeId]`로 잘라 GET 응답만 했다. 인증, DB, secret, 쓰기, 요청 시점 계산이 없어 정적 파일로 완전히 대체 가능했다.
+- `client/scripts/export-static-data.mjs`:
+  - canonical `datasets/derived/hb-score-web-report.json`을 읽어 `client/public/data/`에 `summary.json`(server와 같은 metadata subset), `hb-scores.json`, `restaurants.json`, `reports/<placeId>.json` 50개를 쓴다.
+  - placeId가 `^[A-Za-z0-9_-]+$`인지, 중복이 없는지, 모든 restaurant에 report가 있는지 검증하고 실패 시 build를 중단한다.
+  - 출력 디렉터리는 `.gitignore` 처리된 build artifact이며 매번 지우고 다시 만든다.
+- `client/package.json`: `data:export` 추가, `dev`/`build`/`build:web`이 먼저 `yarn data:export`를 실행한다.
+- `client/lib/api.ts`: `/data/*.json`을 fetch한다. 함수 이름과 반환 타입은 그대로라 컴포넌트 변경 없음. `NEXT_PUBLIC_API_BASE_URL` 제거.
+- `client/next.config.ts`: dev `/api`, `/health` proxy rewrite와 `HIDDEN_BITES_API_PROXY_TARGET` 제거.
+- 삭제: `server/`, `infra/nginx/hidden-bites.conf`, root `.dockerignore`, `.github/workflows/build-server.yml`, `deploy.yml`의 `deploy_backend` job, `release-deploy.yml`의 server filter/build job.
+- CI: `build-client.yml`은 non-cone sparse checkout으로 `/client/`, `/.github/cloudfront/`, `/datasets/derived/hb-score-web-report.json`을 받는다. release client filter에 `datasets/derived/hb-score-web-report.json`을 추가했다.
+- CloudFront function: `/api/*`, `/health` passthrough 제거. `/data/*.json`은 확장자가 있으므로 `/client-build/data/*.json`으로 rewrite된다. S3 sync 기본 cache-control(`max-age=300,must-revalidate`)이 적용된다.
+- Regression guard:
+  - `client/test/static-data-export.test.mjs`: export 결과가 canonical payload와 일치하는지, 모든 restaurant report 파일이 존재하는지, client가 `/api`·proxy를 쓰지 않는지 검증.
+  - `.github/cloudfront/viewer-request.test.js`: `/data/...` rewrite 검증.
+  - `.github/scripts/validate-release-deploy-workflow.sh`: server/build-server 부재, export script, sparse checkout dataset 포함 검증.
+- Verification: client `yarn typecheck`, `yarn lint`, `yarn test`(23 pass), `yarn build:web` 통과. `serve client-build`(8096)에서 초기 로드 시 `/data/summary.json`, `/data/restaurants.json`, `/data/hb-scores.json`, 선택 report만 요청하고 `/api` 요청 없음, score dot 클릭 시 다른 `/data/reports/<placeId>.json`이 로드되어 report 갱신 확인.
+- 배포 후 수동 정리(라이브 AWS/원격 서버라 이 변경에 포함하지 않음):
+  - CloudFront `E1NJZVQR76TW2Z`의 `/api/*`, `/health` ordered behavior와 backend origin `115.68.177.250.sslip.io:8097` 제거. 새 client 배포 전에 지우면 현재 라이브 client가 깨지므로 반드시 배포 후 진행.
+  - 원격 호스트의 `hidden-bites-server` container와 ECR repository `hidden-bites-server` 정리.
