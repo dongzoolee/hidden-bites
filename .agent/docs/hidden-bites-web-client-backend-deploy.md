@@ -268,6 +268,16 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
   - `.github/cloudfront/viewer-request.test.js`: `/data/...` rewrite 검증.
   - `.github/scripts/validate-release-deploy-workflow.sh`: server/build-server 부재, export script, sparse checkout dataset 포함 검증.
 - Verification: client `yarn typecheck`, `yarn lint`, `yarn test`(23 pass), `yarn build:web` 통과. `serve client-build`(8096)에서 초기 로드 시 `/data/summary.json`, `/data/restaurants.json`, `/data/hb-scores.json`, 선택 report만 요청하고 `/api` 요청 없음, score dot 클릭 시 다른 `/data/reports/<placeId>.json`이 로드되어 report 갱신 확인.
-- 배포 후 수동 정리(라이브 AWS/원격 서버라 이 변경에 포함하지 않음):
-  - CloudFront `E1NJZVQR76TW2Z`의 `/api/*`, `/health` ordered behavior와 backend origin `115.68.177.250.sslip.io:8097` 제거. 새 client 배포 전에 지우면 현재 라이브 client가 깨지므로 반드시 배포 후 진행.
-  - 원격 호스트의 `hidden-bites-server` container와 ECR repository `hidden-bites-server` 정리.
+- 배포: PR dongzoolee/hidden-bites#1 squash merge(`e69ceee`) 후 `release`로 push, Release Deploy run `42056339514` 성공(`changes`, `build_client`, `deploy_client`).
+- 라이브 확인: `https://hidden-bites.leed.at/data/{summary,restaurants,hb-scores}.json`과 `/data/reports/<placeId>.json`이 `200 application/json`, 배포된 JS bundle에 `summary.json`이 있고 `/api/summary` 참조 없음.
+
+## 2026-11-06 CloudFront Backend Route 정리
+
+- 새 client 배포·라이브 확인 후 CloudFront `E1NJZVQR76TW2Z`에서 ordered behavior `/api/*`, `/health`와 origin `hidden-bites-api`(`v92c_hiihciwhdi28.leed.at`, `3.36.140.235` = ssh config의 `relay`)를 제거했다. 이전 문서의 `115.68.177.250.sslip.io` origin은 그 사이 이 값으로 바뀌어 있었다.
+- 남은 origin은 `hidden-bites-s3` 하나이며 default behavior가 그대로 사용한다.
+- 변경 전 distribution config는 세션 scratchpad에 백업만 했고 저장소에는 넣지 않았다. 되돌릴 때는 `aws cloudfront get-distribution-config`로 현재 ETag를 받아 두 behavior와 origin을 다시 추가한다.
+- 확인: `aws cloudfront wait distribution-deployed` 완료 후 `/`, `/data/summary.json` 200, `/api/summary`와 `/health`는 CloudFront function의 SPA fallback으로 client `index.html`을 반환해 backend에 더 이상 도달하지 않는다.
+- 미완료(사용자 확인 필요):
+  - backend container 정리: `bible`(`115.68.177.250`) SSH 접속 시 `REMOTE HOST IDENTIFICATION HAS CHANGED` 경고가 나서 명령을 실행하지 않았다. `prod`(`115.68.223.98`)에는 `hidden-bites` container가 없었고, `relay`에는 hidden-bites 관련 nginx/caddy 설정 파일이 없었다. host key 변경 원인을 확인한 뒤 실제 container 위치를 찾아 `docker rm -f hidden-bites-server`로 정리해야 한다.
+  - ECR repository `hidden-bites-server`(image 3개)는 영구 삭제라 직접 실행해야 한다: `aws ecr delete-repository --repository-name hidden-bites-server --force --region ap-northeast-2`
+  - GitHub secret `SERVER_HOST`, `SERVER_USERNAME`, `SERVER_PASSWORD`, `SSH_PRIVATE_KEY`는 더 이상 workflow에서 쓰지 않는다.
