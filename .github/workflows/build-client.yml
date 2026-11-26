@@ -20,22 +20,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24.14.0"
-          cache: yarn
-          cache-dependency-path: client/yarn.lock
+
+      - name: Enable pnpm via corepack
+        run: |
+          corepack enable
+          echo "COREPACK_ENABLE_DOWNLOAD_PROMPT=0" >> "$GITHUB_ENV"
+          COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm --version
+        working-directory: client
+
+      - name: Restore pnpm store cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.14.0"
+          cache: pnpm
+          cache-dependency-path: client/pnpm-lock.yaml
 
       - name: Install dependencies
-        run: corepack enable && yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
         working-directory: client
 
       - name: Validate CloudFront function
         run: node .github/cloudfront/viewer-request.test.js
 
       - name: Check client
-        run: yarn typecheck && yarn lint && yarn test
+        run: pnpm typecheck && pnpm lint && pnpm test
         working-directory: client
 
       - name: Build client
-        run: yarn build:web
+        run: pnpm build:web
         working-directory: client
         env:
           NEXT_PUBLIC_KAKAO_MAP_API_KEY: ${{ secrets.KAKAO_MAP_API_KEY }}

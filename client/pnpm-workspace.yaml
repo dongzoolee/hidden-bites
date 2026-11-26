@@ -1,0 +1,5 @@
+nodeLinker: hoisted
+autoInstallPeers: false
+packageImportMethod: clone-or-copy
+ignoredBuiltDependencies:
+  - sharp

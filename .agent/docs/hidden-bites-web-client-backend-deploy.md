@@ -7,7 +7,7 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
 ## Client
 
 - 경로: `client/`
-- Stack: Next.js App Router, React 19, TypeScript strict, ESLint flat config, Yarn lockfile
+- Stack: Next.js App Router, React 19, TypeScript strict, ESLint flat config, pnpm lockfile (`client/pnpm-lock.yaml`, 2026-11-26 yarn에서 전환, `pnpm.md` 참고)
 - Static export output: `client/client-build`
 - Data: same-origin static JSON `/data/summary.json`, `/data/hb-scores.json`, `/data/restaurants.json`, `/data/reports/<placeId>.json`
 - UI:
@@ -73,10 +73,10 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
   - `yarn build`
   - 테스트 4개 통과: health, summary/scores/restaurants/report success, missing report 404
 - Client:
-  - `yarn typecheck`
-  - `yarn lint`
-  - `yarn test`
-  - `yarn build:web`
+  - `pnpm typecheck`
+  - `pnpm lint`
+  - `pnpm test`
+  - `pnpm build:web`
   - 테스트 1개 통과: QnA, HB Scores, selected report, keyword snippet surface contract
 - Deploy scripts:
   - `node .github/cloudfront/viewer-request.test.js`
@@ -158,7 +158,8 @@ Hidden Bites는 Next.js static export client 단독 구조다. 초기에는 Nest
 - GitHub Actions reusable build jobs는 `actions/setup-node` cache를 `yarn`으로 바꾸고, `yarn install --frozen-lockfile`, `yarn typecheck`, `yarn lint`, `yarn test`, `yarn build:web`, `yarn type-check`, `yarn build`를 사용하도록 변경했다.
 - `server/Dockerfile`은 `server/yarn.lock`을 복사하고 `corepack enable && yarn install --frozen-lockfile`, `corepack enable && yarn build`, production runner의 `yarn install --frozen-lockfile --production=true && yarn cache clean` 경로로 변경했다.
 - `.github/scripts/validate-release-deploy-workflow.sh`는 `client/yarn.lock`, `server/yarn.lock`, `packageManager: yarn@1.22.22`, `RUN corepack enable && yarn build`, Dockerfile 내 `RUN npm` 미사용을 검증한다.
-- 기존 npm lockfile 기반 문구는 historical note로만 남아 있으며, 현재 실행 기준은 Yarn이다.
+- 기존 npm lockfile 기반 문구는 historical note로만 남아 있다.
+- 2026-11-26 pnpm 10으로 다시 옮겼다(`pnpm.md`). 이 절의 yarn 명령은 historical note이고 현재 실행 기준은 pnpm이다.
 - `client`와 `server` 디렉터리에서 사용자가 실행하는 `yarn` 명령은 `Already up-to-date`로 통과한다.
 
 ## 2026-06-03 Local API Proxy Repair

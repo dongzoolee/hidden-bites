@@ -51,6 +51,6 @@ test("client reads static data files instead of a backend API", async () => {
   assert.doesNotMatch(api, /\/api\//);
   assert.doesNotMatch(api, /NEXT_PUBLIC_API_BASE_URL/);
   assert.doesNotMatch(nextConfig, /rewrites|8097|HIDDEN_BITES_API_PROXY_TARGET/);
-  assert.match(packageJson.scripts.dev, /^yarn data:export && /);
-  assert.match(packageJson.scripts["build:web"], /yarn data:export && next build/);
+  assert.match(packageJson.scripts.dev, /^pnpm data:export && /);
+  assert.match(packageJson.scripts["build:web"], /pnpm data:export && next build/);
 });
